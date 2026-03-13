@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Example Image Title",
+    "series": "example-series",
+    "tags": ["tag1", "tag2", "tag3"],
+    "folder": "photography/example_folder",
+    "file": "example_001.jpg",
+    "prompt": "Your photography prompt text here...",
+    "promptId": "prompt-example-id",
+    "camera": "85mm f/1.8",
+    "mood": "Warm, Gentle",
+    "generator": "Midjourney v6",
+    "createdAt": "2026-03-10",
+    "favorite": false
+  }
+]

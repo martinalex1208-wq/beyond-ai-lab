@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Library | Beyond AI Lab</title>
+  <meta name="description" content="A structured archive of original songs, lyrical ideas, moods, and reusable style directions.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/libraries.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="music-library-main">
+    <!-- Hero -->
+    <section class="music-library-hero">
+      <h1 class="music-library-hero-title">Music Library</h1>
+      <p class="music-library-hero-subtitle">A structured archive of original songs, lyrical ideas, moods, and reusable style directions.</p>
+      <div class="library-quick-add">
+        <a href="add-entry.html?type=song" class="library-quick-add-link quick-add-link btn btn-secondary">Add Song</a>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="music-library-section section">
+      <div class="music-library-controls section-inner">
+        <label for="musicLibraryCategoryFilter" class="music-library-control-label">Category</label>
+        <select id="musicLibraryCategoryFilter" class="music-library-select" aria-label="Filter by category">
+          <option value="">All</option>
+        </select>
+        <label for="musicLibraryFavoriteFilter" class="music-library-control-label">Favorites</label>
+        <select id="musicLibraryFavoriteFilter" class="music-library-select" aria-label="Filter by favorites">
+          <option value="">All</option>
+          <option value="only">Favorites Only</option>
+        </select>
+        <label for="musicLibraryGeneratorFilter" class="music-library-control-label">Generator</label>
+        <select id="musicLibraryGeneratorFilter" class="music-library-select" aria-label="Filter by generator">
+          <option value="">All Generators</option>
+        </select>
+        <label for="musicLibraryMoodFilter" class="music-library-control-label">Mood</label>
+        <select id="musicLibraryMoodFilter" class="music-library-select" aria-label="Filter by mood">
+          <option value="">All Moods</option>
+        </select>
+        <label for="musicLibrarySortFilter" class="music-library-control-label">Sort</label>
+        <select id="musicLibrarySortFilter" class="music-library-select" aria-label="Sort order">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="title-az">Title A-Z</option>
+        </select>
+        <label for="musicLibraryTagSearch" class="music-library-control-label">Search tags</label>
+        <input type="text" id="musicLibraryTagSearch" class="music-library-search" placeholder="Search by tag..." aria-label="Search by tag">
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="music-library-section section">
+      <div class="section-inner">
+        <div id="musicLibraryGrid" class="music-library-grid section-grid"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="music-library-section section music-library-cta-section">
+      <div class="music-library-cta section-inner">
+        <a href="music-lab.html" class="btn-cta btn btn-primary">Open Music Lab</a>
+        <a href="index.html" class="btn-cta btn-cta--outline btn btn-secondary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="musicLibraryModal" class="music-library-modal">
+    <span class="music-library-modal-close" aria-label="Close">&times;</span>
+    <div class="music-library-modal-content">
+      <div class="music-library-modal-info library-detail">
+        <div class="music-library-modal-header">
+          <div>
+            <h3 id="musicLibraryModalTitle" class="music-library-modal-title library-detail-title"></h3>
+            <p id="musicLibraryModalSubtitle" class="music-library-modal-subtitle" style="display:none;"></p>
+          </div>
+          <button type="button" id="musicLibraryModalFavoriteToggle" class="music-library-modal-favorite-toggle favorite-toggle" aria-label="Add to favorites">☆</button>
+        </div>
+        <div id="musicLibraryModalMeta" class="music-library-modal-meta library-detail-meta"></div>
+        <div id="musicLibraryModalTags" class="music-library-modal-tags"></div>
+        <div id="musicLibraryModalLyrics" class="music-library-modal-lyrics" style="display:none;">
+          <span class="music-library-modal-label">Lyrics</span>
+          <pre class="music-library-modal-lyrics-text"></pre>
+        </div>
+        <div id="musicLibraryModalCopyActions" class="music-library-modal-copy-actions library-detail-actions" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./js/library-core.js"></script>
+  <script src="./script.js"></script>
+  <script>
+(function () {
+  const JSON_PATH = './data/songs.json';
+  const FAVORITES_STORAGE_KEY = 'musicLibraryFavorites';
+  const grid = document.getElementById('musicLibraryGrid');
+  const categoryFilter = document.getElementById('musicLibraryCategoryFilter');
+  const favoriteFilter = document.getElementById('musicLibraryFavoriteFilter');
+  const generatorFilter = document.getElementById('musicLibraryGeneratorFilter');
+  const moodFilter = document.getElementById('musicLibraryMoodFilter');
+  const sortFilter = document.getElementById('musicLibrarySortFilter');
+  const tagSearch = document.getElementById('musicLibraryTagSearch');
+  const modal = document.getElementById('musicLibraryModal');
+  const closeBtn = document.querySelector('#musicLibraryModal .music-library-modal-close');
+
+  var rawData = [];
+  var lastRenderedList = [];
+  var currentModalItem = null;
+
+  if (!grid) return;
+
+  function getItemKey(item) {
+    return typeof getItemUniqueKey === 'function' ? getItemUniqueKey(item) : (item.id || '');
+  }
+
+  function getFavoritesFromStorage() {
+    try {
+      var raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function setFavoriteInStorage(key, value) {
+    try {
+      var obj = getFavoritesFromStorage();
+      obj[key] = value;
+      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(obj));
+    } catch (e) {}
+  }
+
+  function getActualFavorite(item) {
+    if (typeof window.getActualFavorite === 'function') return window.getActualFavorite(item, FAVORITES_STORAGE_KEY);
+    var key = getItemKey(item);
+    var stored = getFavoritesFromStorage();
+    if (key && stored.hasOwnProperty(key)) return stored[key] === true;
+    return item.favorite === true;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  var formatSeries = (typeof formatSeriesLabel === 'function' ? formatSeriesLabel : function (s) { if (!s) return ''; return String(s).replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }); });
+  var truncateTextLocal = (typeof truncateText === 'function' ? truncateText : function (p, maxLen) { if (!p) return ''; var s = String(p).trim(); return s.length <= maxLen ? s : s.slice(0, maxLen) + '...'; });
+
+  function formatDate(d) {
+    if (!d) return '';
+    return String(d);
+  }
+
+  function formatMood(m) {
+    if (!m) return '';
+    if (Array.isArray(m)) return m.join(', ');
+    return String(m);
+  }
+
+  function handleCopyToClipboard(text, buttonEl, originalLabel) {
+    var label = originalLabel || buttonEl.textContent;
+    navigator.clipboard.writeText(text).then(function () {
+      buttonEl.textContent = 'Copied!';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    }).catch(function () {
+      buttonEl.textContent = 'Failed';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    });
+  }
+
+  function buildCard(item, index) {
+    var title = item.title || '';
+    var subtitle = item.subtitle || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var lyrics = item.lyrics || '';
+    var style = item.style || '';
+    var mood = formatMood(item.mood);
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+    var favorite = getActualFavorite(item);
+
+    var tagsHtml = '';
+    if (tags.length > 0) {
+      tagsHtml = '<div class="music-library-tags">' +
+        tags.map(function (t) { return '<span class="music-library-tag">' + escapeHtml(t) + '</span>'; }).join('') +
+        '</div>';
+    }
+
+    var metaParts = [];
+    if (style) metaParts.push('<span class="music-library-meta-item library-card-meta-item">' + escapeHtml(truncateTextLocal(style, 60)) + '</span>');
+    if (mood) metaParts.push('<span class="music-library-meta-item library-card-meta-item">' + escapeHtml(mood) + '</span>');
+    if (generator) metaParts.push('<span class="music-library-meta-item library-card-meta-item">' + escapeHtml(generator) + '</span>');
+    if (createdAt) metaParts.push('<span class="music-library-meta-item library-card-meta-item">' + escapeHtml(formatDate(createdAt)) + '</span>');
+    if (favorite) metaParts.push('<span class="music-library-favorite">★ Favorite</span>');
+    var metaHtml = metaParts.length > 0 ? '<div class="music-library-meta library-card-meta">' + metaParts.join('') + '</div>' : '';
+
+    var lyricsHtml = '';
+    if (lyrics) {
+      lyricsHtml = '<div class="music-library-lyrics-preview library-card-text">' + escapeHtml(truncateTextLocal(lyrics.replace(/\n/g, ' '), 160)) + '</div>';
+    }
+
+    var copyBtns = [];
+    if (lyrics) copyBtns.push('<button type="button" class="music-library-copy-button copy-button btn btn-outline" data-copy-type="lyrics">Copy Lyrics</button>');
+    if (style) copyBtns.push('<button type="button" class="music-library-copy-button copy-button btn btn-outline" data-copy-type="style">Copy Style</button>');
+    var copyActionsHtml = copyBtns.length > 0 ? '<div class="music-library-copy-actions library-card-actions">' + copyBtns.join('') + '</div>' : '';
+
+    var favSymbol = favorite ? '★' : '☆';
+    var favAria = favorite ? 'Remove from favorites' : 'Add to favorites';
+    var favToggleHtml = '<button type="button" class="music-library-favorite-toggle favorite-toggle' + (favorite ? ' is-favorite' : '') + '" aria-label="' + escapeHtml(favAria) + '" title="' + escapeHtml(favAria) + '">' + favSymbol + '</button>';
+
+    return '<div class="music-library-card library-card" data-card-index="' + (index !== undefined ? index : '') + '">' +
+      '<div class="music-library-card-body">' +
+        '<div class="music-library-card-header">' +
+          favToggleHtml +
+          '<h3 class="music-library-title library-card-title">' + escapeHtml(title) + '</h3>' +
+          (subtitle ? '<span class="music-library-subtitle library-card-subtitle">' + escapeHtml(subtitle) + '</span>' : '') +
+          (series ? '<span class="music-library-series library-card-subtitle">' + escapeHtml(formatSeries(series)) + '</span>' : '') +
+        '</div>' +
+        metaHtml +
+        lyricsHtml +
+        copyActionsHtml +
+        tagsHtml +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderModalInfo(item) {
+    var titleEl = document.getElementById('musicLibraryModalTitle');
+    var subtitleEl = document.getElementById('musicLibraryModalSubtitle');
+    var favToggleEl = document.getElementById('musicLibraryModalFavoriteToggle');
+    var metaEl = document.getElementById('musicLibraryModalMeta');
+    var tagsEl = document.getElementById('musicLibraryModalTags');
+    var lyricsWrap = document.getElementById('musicLibraryModalLyrics');
+    var lyricsText = lyricsWrap ? lyricsWrap.querySelector('.music-library-modal-lyrics-text') : null;
+
+    var title = item.title || '';
+    var subtitle = item.subtitle || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var lyrics = item.lyrics || '';
+    var style = item.style || '';
+    var mood = formatMood(item.mood);
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+
+    if (titleEl) titleEl.textContent = title;
+    if (subtitleEl) {
+      if (subtitle) {
+        subtitleEl.textContent = subtitle;
+        subtitleEl.style.display = '';
+      } else {
+        subtitleEl.style.display = 'none';
+      }
+    }
+    var fav = getActualFavorite(item);
+    if (favToggleEl) {
+      favToggleEl.textContent = fav ? '★' : '☆';
+      favToggleEl.setAttribute('aria-label', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.setAttribute('title', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.classList.toggle('is-favorite', fav);
+    }
+    var detailParts = [];
+    if (series) detailParts.push('<div class="music-library-modal-detail-row"><span class="music-library-modal-label">Series</span> ' + escapeHtml(formatSeries(series)) + '</div>');
+    if (style) detailParts.push('<div class="music-library-modal-detail-row"><span class="music-library-modal-label">Style</span> ' + escapeHtml(style) + '</div>');
+    if (mood) detailParts.push('<div class="music-library-modal-detail-row"><span class="music-library-modal-label">Mood</span> ' + escapeHtml(mood) + '</div>');
+    if (generator) detailParts.push('<div class="music-library-modal-detail-row"><span class="music-library-modal-label">Generator</span> ' + escapeHtml(generator) + '</div>');
+    if (createdAt) detailParts.push('<div class="music-library-modal-detail-row"><span class="music-library-modal-label">Created</span> ' + escapeHtml(formatDate(createdAt)) + '</div>');
+    if (metaEl) {
+      metaEl.innerHTML = detailParts.join('');
+      metaEl.style.display = detailParts.length > 0 ? '' : 'none';
+    }
+    if (tagsEl) {
+      tagsEl.innerHTML = tags.length > 0 ? tags.map(function (t) { return '<span class="music-library-tag">' + escapeHtml(t) + '</span>'; }).join('') : '';
+      tagsEl.style.display = tags.length > 0 ? '' : 'none';
+    }
+    if (lyricsWrap && lyricsText) {
+      if (lyrics) {
+        lyricsText.textContent = lyrics;
+        lyricsWrap.style.display = '';
+      } else {
+        lyricsWrap.style.display = 'none';
+      }
+    }
+    var copyActionsEl = document.getElementById('musicLibraryModalCopyActions');
+    if (copyActionsEl) {
+      var copyBtns = [];
+      if (lyrics) copyBtns.push('<button type="button" class="music-library-modal-copy-button copy-button btn btn-outline" data-copy-type="lyrics">Copy Lyrics</button>');
+      if (style) copyBtns.push('<button type="button" class="music-library-modal-copy-button copy-button btn btn-outline" data-copy-type="style">Copy Style</button>');
+      copyActionsEl.innerHTML = copyBtns.join('');
+      copyActionsEl.style.display = copyBtns.length > 0 ? '' : 'none';
+    }
+  }
+
+  function getFilteredAndSorted() {
+    var category = (categoryFilter && categoryFilter.value) ? categoryFilter.value : '';
+    var favoriteVal = (favoriteFilter && favoriteFilter.value) ? favoriteFilter.value : '';
+    var generatorVal = (generatorFilter && generatorFilter.value) ? generatorFilter.value : '';
+    var moodVal = (moodFilter && moodFilter.value) ? moodFilter.value : '';
+    var tagQuery = typeof normalizeTagSearch === 'function' ? normalizeTagSearch(tagSearch && tagSearch.value) : ((tagSearch && tagSearch.value) ? String(tagSearch.value).trim().toLowerCase() : '');
+    var sortVal = (sortFilter && sortFilter.value) ? sortFilter.value : 'newest';
+
+    var list = rawData.slice();
+
+    if (category) {
+      list = list.filter(function (item) { return (item.series || '') === category; });
+    }
+    if (favoriteVal === 'only') {
+      list = list.filter(function (item) { return getActualFavorite(item); });
+    }
+    if (generatorVal) {
+      list = list.filter(function (item) { return (item.generator || '') === generatorVal; });
+    }
+    if (moodVal) {
+      list = list.filter(function (item) {
+        return typeof matchMoodToken === 'function' ? matchMoodToken(item.mood, moodVal) : (function () {
+          var m = formatMood(item.mood);
+          if (!m) return false;
+          var parts = m.split(',').map(function (p) { return p.trim(); });
+          return parts.indexOf(moodVal) !== -1;
+        })();
+      });
+    }
+    if (tagQuery) {
+      list = list.filter(function (item) {
+        var tags = typeof safeArray === 'function' ? safeArray(item.tags) : (Array.isArray(item.tags) ? item.tags : []);
+        return typeof matchesTagSearch === 'function' ? matchesTagSearch(tags, tagQuery) : tags.some(function (t) { return String(t).toLowerCase().indexOf(tagQuery) !== -1; });
+      });
+    }
+
+    list = typeof sortLibraryItems === 'function' ? sortLibraryItems(list, sortVal) : (function () {
+      if (sortVal === 'oldest') list.sort(function (a, b) { var da = (a.createdAt || '').toString(); var db = (b.createdAt || '').toString(); return da < db ? -1 : da > db ? 1 : 0; });
+      else if (sortVal === 'title-az') list.sort(function (a, b) { var ta = (a.title || '').toLowerCase(); var tb = (b.title || '').toLowerCase(); return ta < tb ? -1 : ta > tb ? 1 : 0; });
+      else list.sort(function (a, b) { var da = (a.createdAt || '').toString(); var db = (b.createdAt || '').toString(); return da > db ? -1 : da < db ? 1 : 0; });
+      return list;
+    })();
+
+    return list;
+  }
+
+  function render() {
+    var list = getFilteredAndSorted();
+    lastRenderedList = list;
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'music-library-empty library-empty';
+      empty.innerHTML = typeof buildLibraryEmptyState === 'function' ? buildLibraryEmptyState('No songs found for this filter.', 'add-entry.html?type=song', 'Add Song') : 'No songs found for this filter.<div class="library-empty-action"><a href="add-entry.html?type=song" class="library-empty-action-link">Add Song</a></div>';
+      grid.appendChild(empty);
+      return;
+    }
+    list.forEach(function (item, index) {
+      grid.insertAdjacentHTML('beforeend', buildCard(item, index));
+    });
+  }
+
+  function initModal() {
+    if (!modal || !closeBtn) return;
+    grid.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.music-library-favorite-toggle');
+      if (favToggle) {
+        e.preventDefault();
+        e.stopPropagation();
+        var card = favToggle.closest('.music-library-card');
+        var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+        var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+        if (item) {
+          var key = getItemKey(item);
+          var next = !getActualFavorite(item);
+          setFavoriteInStorage(key, next);
+          if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+            if (modal.classList.contains('is-open') && currentModalItem && getItemKey(currentModalItem) === key) {
+              modal.classList.remove('is-open');
+            }
+            render();
+          } else {
+            card.outerHTML = buildCard(item, idx);
+          }
+          if (modal.classList.contains('is-open') && currentModalItem && getItemKey(currentModalItem) === key) {
+            var lbFavEl = document.getElementById('musicLibraryModalFavoriteToggle');
+            if (lbFavEl) {
+              lbFavEl.textContent = next ? '★' : '☆';
+              lbFavEl.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.classList.toggle('is-favorite', next);
+            }
+          }
+        }
+        return;
+      }
+      if (e.target.closest('.music-library-copy-button') || e.target.closest('.music-library-copy-actions')) {
+        var btn = e.target.closest('.music-library-copy-button');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var card = btn.closest('.music-library-card');
+          var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+          var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+          if (item) {
+            var type = btn.getAttribute('data-copy-type');
+            var text = type === 'lyrics' ? (item.lyrics || '') : (type === 'style' ? (item.style || '') : '');
+            if (text) handleCopyToClipboard(text, btn, type === 'lyrics' ? 'Copy Lyrics' : 'Copy Style');
+          }
+        }
+        return;
+      }
+      var card = e.target.closest('.music-library-card');
+      if (!card) return;
+      var cards = grid.querySelectorAll('.music-library-card');
+      var idx = Array.prototype.indexOf.call(cards, card);
+      var item = lastRenderedList[idx];
+      if (item) {
+        currentModalItem = item;
+        renderModalInfo(item);
+        modal.classList.add('is-open');
+      }
+    });
+    modal.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.music-library-modal-favorite-toggle');
+      if (favToggle && currentModalItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var key = getItemKey(currentModalItem);
+        var next = !getActualFavorite(currentModalItem);
+        setFavoriteInStorage(key, next);
+        favToggle.textContent = next ? '★' : '☆';
+        favToggle.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.classList.toggle('is-favorite', next);
+        if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+          modal.classList.remove('is-open');
+          render();
+        } else {
+          var cards = grid.querySelectorAll('.music-library-card');
+          for (var i = 0; i < cards.length; i++) {
+            var c = cards[i];
+            var cIdx = parseInt(c.getAttribute('data-card-index'), 10);
+            var it = lastRenderedList[cIdx];
+            if (it && getItemKey(it) === key) {
+              c.outerHTML = buildCard(it, cIdx);
+              break;
+            }
+          }
+        }
+        return;
+      }
+      var btn = e.target.closest('.music-library-modal-copy-button');
+      if (btn && currentModalItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var type = btn.getAttribute('data-copy-type');
+        var text = type === 'lyrics' ? (currentModalItem.lyrics || '') : (type === 'style' ? (currentModalItem.style || '') : '');
+        if (text) handleCopyToClipboard(text, btn, type === 'lyrics' ? 'Copy Lyrics' : 'Copy Style');
+      }
+    });
+    closeBtn.addEventListener('click', function () {
+      modal.classList.remove('is-open');
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.classList.remove('is-open');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') modal.classList.remove('is-open');
+    });
+  }
+
+  function populateCategoryFilter() {
+    if (!categoryFilter) return;
+    var seriesSet = {};
+    rawData.forEach(function (item) {
+      var s = item.series || '';
+      if (s) seriesSet[s] = true;
+    });
+    Object.keys(seriesSet).sort().forEach(function (s) {
+      var opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = formatSeries(s);
+      categoryFilter.appendChild(opt);
+    });
+  }
+
+  function populateGeneratorFilter() {
+    if (!generatorFilter) return;
+    var genSet = {};
+    rawData.forEach(function (item) {
+      var g = (item.generator || '').trim();
+      if (g) genSet[g] = true;
+    });
+    Object.keys(genSet).sort().forEach(function (g) {
+      var opt = document.createElement('option');
+      opt.value = g;
+      opt.textContent = g;
+      generatorFilter.appendChild(opt);
+    });
+  }
+
+  function populateMoodFilter() {
+    if (!moodFilter) return;
+    var moodSet = {};
+    var fmt = typeof formatMoodTokens === 'function' ? formatMoodTokens : function (m) { var s = formatMood(m); return s ? s.split(',').map(function (p) { return p.trim(); }).filter(Boolean) : []; };
+    rawData.forEach(function (item) {
+      fmt(item.mood).forEach(function (p) { moodSet[p] = true; });
+    });
+    Object.keys(moodSet).sort().forEach(function (m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      moodFilter.appendChild(opt);
+    });
+  }
+
+  fetch(JSON_PATH)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (!Array.isArray(data)) return;
+      rawData = data;
+      populateCategoryFilter();
+      populateGeneratorFilter();
+      populateMoodFilter();
+      render();
+      initModal();
+      if (categoryFilter) categoryFilter.addEventListener('change', render);
+      if (favoriteFilter) favoriteFilter.addEventListener('change', render);
+      if (generatorFilter) generatorFilter.addEventListener('change', render);
+      if (moodFilter) moodFilter.addEventListener('change', render);
+      if (sortFilter) sortFilter.addEventListener('change', render);
+      if (tagSearch) tagSearch.addEventListener('input', render);
+    })
+    .catch(function (err) {
+      console.warn('Music library load failed:', err);
+    });
+})();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "song-resulting-blooms",
+    "title": "隨之而來的繁花",
+    "subtitle": "The Resulting Blooms",
+    "series": "original-songs",
+    "tags": ["bloom", "growth", "hope"],
+    "lyrics": "When the rain falls gently on the ground\nSeeds awaken, breaking through the soil\nPetals unfold in the morning light\nEvery bloom tells a story of resilience\n\n隨之而來的繁花\n開在我們走過的路\n每一朵都是記憶\n每一瓣都是祝福",
+    "style": "Indie folk, acoustic guitar, soft vocals, bilingual",
+    "mood": "Gentle, Hopeful",
+    "generator": "Suno",
+    "createdAt": "2026-03-10",
+    "favorite": true
+  },
+  {
+    "id": "song-one-hour-road",
+    "title": "One Hour Road",
+    "subtitle": "",
+    "series": "road-songs",
+    "tags": ["road", "freedom", "motion"],
+    "lyrics": "One hour on the road\nWindows down, radio on\nMiles of asphalt stretching out\nNothing behind, everything ahead",
+    "style": "Upbeat, driving rhythm, electric guitar",
+    "mood": "Upbeat, Freedom",
+    "generator": "Suno",
+    "createdAt": "2026-03-08"
+  },
+  {
+    "id": "song-if-that-day",
+    "title": "If That Day Without You",
+    "subtitle": "",
+    "series": "story-songs",
+    "tags": ["memory", "gratitude", "turning-points"],
+    "lyrics": "If that day without you\nI would never have known\nHow the light could change\nWhen someone truly sees you",
+    "style": "Reflective ballad, piano-led",
+    "mood": "Reflective, Gentle",
+    "generator": "Suno",
+    "createdAt": "2026-03-05",
+    "favorite": true
+  },
+  {
+    "id": "song-city-night",
+    "title": "City Night",
+    "subtitle": "都市的夜",
+    "series": "urban-songs",
+    "tags": ["urban", "night", "ambient"],
+    "lyrics": "Neon signs and empty streets\nFootsteps echo in the rain\nCity night holds its breath\nWaiting for the dawn",
+    "style": "Ambient, synth, minimal",
+    "mood": "Melancholic, Ambient",
+    "generator": "Suno",
+    "createdAt": "2026-03-01"
+  },
+  {
+    "id": "song-summer-breeze",
+    "title": "Summer Breeze",
+    "subtitle": "",
+    "series": "original-songs",
+    "tags": ["summer", "light", "easy"],
+    "lyrics": "Summer breeze through the window\nCarrying the scent of flowers\nLazy afternoon, nothing to do\nJust the sky and you",
+    "mood": "Light, Easy",
+    "createdAt": "2026-02-28"
+  }
+]

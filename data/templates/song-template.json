@@ -1,0 +1,15 @@
+[
+  {
+    "id": "song-example-id",
+    "title": "Example Song Title",
+    "subtitle": "Optional subtitle",
+    "series": "original-songs",
+    "tags": ["tag1", "tag2", "tag3"],
+    "lyrics": "Your lyrics here...\n\nVerse 2...",
+    "style": "Indie folk, acoustic guitar, soft vocals",
+    "mood": "Gentle, Hopeful",
+    "generator": "Suno",
+    "createdAt": "2026-03-10",
+    "favorite": false
+  }
+]

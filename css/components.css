@@ -1,0 +1,425 @@
+/* Beyond AI Lab - Reusable Components */
+
+/* ===== Design System (non-breaking base layer) ===== */
+/* Section Layout System */
+.section {
+  padding: 4rem 2rem;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.section-actions {
+  margin-top: 1rem;
+}
+
+.section-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Card */
+.card {
+  background: rgba(8, 16, 24, 0.72);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 255, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.08);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.card-meta {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  min-height: 36px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: rgba(0, 212, 255, 0.22);
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 212, 255, 0.14);
+  border-color: rgba(0, 212, 255, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(0, 212, 255, 0.35);
+  color: var(--accent-dim);
+}
+
+/* btn-danger-subtle: low-key danger (e.g. Clear Draft) */
+.btn-danger-subtle {
+  background: transparent;
+  border: 1px solid rgba(180, 80, 80, 0.3);
+  color: var(--text-muted);
+}
+
+.btn-danger-subtle:hover {
+  border-color: rgba(220, 100, 100, 0.45);
+  color: rgba(220, 140, 140, 0.95);
+}
+
+/* Ensure button elements inherit btn styles correctly */
+button.btn {
+  border: 1px solid transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+button.btn-primary { border-color: rgba(0, 212, 255, 0.4); }
+button.btn-secondary { border-color: rgba(0, 212, 255, 0.3); }
+button.btn-outline { border-color: rgba(0, 212, 255, 0.4); }
+button.btn-ghost { border-color: rgba(0, 212, 255, 0.2); }
+button.btn-danger-subtle { border-color: rgba(180, 80, 80, 0.3); }
+
+/* Favorite toggle: semantic layer (page-specific classes provide full styling) */
+.favorite-toggle {
+  /* Base: prompt-library-favorite-toggle, image-library-favorite-toggle, etc. */
+  cursor: pointer;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-line--accent {
+  color: var(--accent);
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+
+/* ===== Creator Section ===== */
+.creator {
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.creator-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.creator-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+.creator-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.creator-name {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.creator-age {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.creator-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+
+/* ===== Labs Section ===== */
+.labs {
+  padding: 4rem 2rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.section-title-num {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.lab-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.lab-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.05) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.lab-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.lab-card:hover::before {
+  opacity: 1;
+}
+
+.lab-icon {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.lab-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.lab-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+
+/* ===== Library Shared (compound class pattern) ===== */
+/* Use alongside page-specific classes (e.g. prompt-library-card library-card) */
+
+.library-card {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-title {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-subtitle {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-text {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-meta {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-meta-item {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-card-actions {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-empty {
+  /* Base: page-specific (e.g. prompt-library-empty) provides full styling */
+}
+
+.library-empty-action {
+  /* Base: defined in libraries.css */
+}
+
+.library-empty-action-link {
+  /* Base: defined in libraries.css */
+}
+
+.library-detail {
+  /* Base: modal/lightbox info area */
+}
+
+.library-detail-title {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-detail-meta {
+  /* Base: page-specific classes provide full styling */
+}
+
+.library-detail-actions {
+  /* Base: page-specific classes provide full styling */
+}
+
+.copy-button {
+  /* Base: page-specific classes provide full styling */
+}
+
+.favorite-toggle {
+  /* Base: page-specific classes provide full styling */
+}
+
+.quick-add-link {
+  /* Base: library-quick-add-link in libraries.css provides full styling */
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "prompt-golden-hour-portrait",
+    "title": "Golden Hour Portrait",
+    "series": "portrait-prompts",
+    "tags": ["portrait", "golden-hour", "soft-light"],
+    "prompt": "Professional photography of a young woman in soft morning light, golden hour, natural expression, shallow depth of field, 85mm lens, warm tones, editorial style, high resolution.",
+    "camera": "85mm f/1.8",
+    "mood": "Warm · Gentle",
+    "generator": "Midjourney v6",
+    "createdAt": "2026-03-10",
+    "favorite": true
+  },
+  {
+    "id": "prompt-cafe-lifestyle",
+    "title": "Cafe Lifestyle",
+    "series": "lifestyle-prompts",
+    "tags": ["lifestyle", "coffee", "cafe"],
+    "prompt": "Woman holding coffee cup in a cozy cafe, natural lighting, lifestyle photography, candid moment, bokeh background.",
+    "mood": "Cozy · Ambient",
+    "generator": "DALL-E 3",
+    "createdAt": "2026-03-11"
+  },
+  {
+    "id": "prompt-urban-street-walk",
+    "title": "Urban Street Walk",
+    "series": "street-prompts",
+    "tags": ["street", "urban", "cinematic"],
+    "prompt": "Street photography of a woman walking in urban setting, afternoon light, cinematic color grading, candid portrait.",
+    "camera": "50mm f/2",
+    "mood": "Urban · Serene",
+    "createdAt": "2026-03-12"
+  },
+  {
+    "id": "prompt-bookstore-culture",
+    "title": "Bookstore Culture",
+    "series": "lifestyle-prompts",
+    "tags": ["books", "culture", "indoor"],
+    "prompt": "Person browsing books in a vintage bookstore, warm ambient lighting, shallow depth of field, film grain aesthetic."
+  },
+  {
+    "id": "prompt-park-nature-moment",
+    "title": "Park Nature Moment",
+    "series": "nature-prompts",
+    "tags": ["nature", "park", "outdoor"],
+    "prompt": "Peaceful moment in a sun-dappled park, soft natural light through trees, relaxed pose, organic colors.",
+    "mood": "Natural · Peaceful",
+    "favorite": true
+  }
+]

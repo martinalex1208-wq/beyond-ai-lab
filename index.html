@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond AI Lab — AI Music · Visual · Coding · Impact</title>
+  <meta name="description" content="A creative system for AI music, visuals, prompts, storytelling, and experimentation. Steve Lu's evolving home for generative creation.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/home.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="home-hero lab-hub-hero" id="hero">
+      <h1 class="home-hero-title">
+        <span class="hero-title-line">Beyond</span>
+        <span class="hero-title-line hero-title-line--accent">AI Lab</span>
+      </h1>
+      <p class="home-hero-subtitle">A creative system for AI creation—structured workflows across prompts, images, music, stories, and impact. Collect, refine, and reuse.</p>
+      <div class="home-hero-actions">
+        <a href="prompt-library.html" class="btn-cta btn btn-primary">Explore Prompt Library</a>
+        <a href="search.html" class="btn-cta btn-cta--outline btn btn-secondary">Unified Search</a>
+      </div>
+    </section>
+
+    <!-- Labs Overview Section -->
+    <section class="lab-hub-section section" id="labs">
+      <div class="lab-hub-section-inner section-inner">
+        <h2 class="lab-hub-section-title section-title">Labs</h2>
+        <div class="lab-hub-grid section-grid">
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Prompt Library</h3>
+            <p class="lab-hub-card-text">Structured archive of prompts, camera language, moods, and reusable creative directions.</p>
+            <a href="prompt-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Image Library</h3>
+            <p class="lab-hub-card-text">Curated visual archive linked with prompts, tags, generators, and moods.</p>
+            <a href="image-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Music Library</h3>
+            <p class="lab-hub-card-text">Structured archive of songs, lyrics, styles, moods, and reusable directions.</p>
+            <a href="music-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Story Library</h3>
+            <p class="lab-hub-card-text">Structured archive of narratives, reflections, project texts, and creative writing.</p>
+            <a href="story-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Unified Search</h3>
+            <p class="lab-hub-card-text">Search across prompts, images, songs, and stories in one structured archive.</p>
+            <a href="search.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Add Entry</h3>
+            <p class="lab-hub-card-text">Create structured JSON entries for prompts, images, songs, and stories.</p>
+            <a href="add-entry.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Music Lab</h3>
+            <p class="lab-hub-card-text">AI music creation, composition tools, and sonic experimentation.</p>
+            <a href="music-lab.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Story Lab</h3>
+            <p class="lab-hub-card-text">Narrative and content creation with AI-assisted storytelling.</p>
+            <a href="story-lab.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Impact Lab</h3>
+            <p class="lab-hub-card-text">Social impact practice and meaningful application of creative work.</p>
+            <a href="impact-lab.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Vibe Coding Lab</h3>
+            <p class="lab-hub-card-text">Atmospheric, intuitive programming and generative code experiments.</p>
+            <a href="vibe-coding-lab.html" class="lab-hub-card-link">Open →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Libraries Section -->
+    <section class="lab-feature-section section" id="featured-libraries">
+      <div class="lab-feature-section-inner section-inner">
+        <h2 class="lab-feature-section-title section-title">Featured Libraries</h2>
+        <div class="lab-feature-grid section-grid">
+          <article class="lab-feature-card">
+            <div class="lab-feature-card-content">
+              <h3 class="lab-feature-card-title">Prompt Library</h3>
+              <p class="lab-feature-card-text">Archive of prompts, camera language, moods, and reusable directions. Filter by series, generator, mood—copy and refine for your next creation.</p>
+              <a href="prompt-library.html" class="btn-cta">Explore Prompt Library</a>
+            </div>
+          </article>
+          <article class="lab-feature-card">
+            <div class="lab-feature-card-content">
+              <h3 class="lab-feature-card-title">Image Library</h3>
+              <p class="lab-feature-card-text">Curated visual archive linked with prompts, tags, generators, and moods. Browse, favorite, and trace back to the prompts that created them.</p>
+              <a href="image-library.html" class="btn-cta">Explore Image Library</a>
+            </div>
+          </article>
+          <article class="lab-feature-card">
+            <div class="lab-feature-card-content">
+              <h3 class="lab-feature-card-title">Story Library</h3>
+              <p class="lab-feature-card-text">Structured archive of narratives, reflections, project texts, and creative writing. Filter by series, mood, generator—copy and refine for your next creation.</p>
+              <a href="story-library.html" class="btn-cta">Explore Story Library</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Additions Section -->
+    <section class="latest-additions-section section" id="latest-additions">
+      <div class="latest-additions-inner section-inner">
+        <h2 class="latest-additions-title section-title">Latest Additions</h2>
+        <div class="latest-additions-grid section-grid">
+          <div class="latest-additions-group" id="latestAdditionsPrompts">
+            <h3 class="latest-additions-group-title">Latest Prompts</h3>
+            <div class="latest-additions-list" id="latestAdditionsPromptsList"></div>
+          </div>
+          <div class="latest-additions-group" id="latestAdditionsImages">
+            <h3 class="latest-additions-group-title">Latest Images</h3>
+            <div class="latest-additions-list" id="latestAdditionsImagesList"></div>
+          </div>
+          <div class="latest-additions-group" id="latestAdditionsSongs">
+            <h3 class="latest-additions-group-title">Latest Songs</h3>
+            <div class="latest-additions-list" id="latestAdditionsSongsList"></div>
+          </div>
+          <div class="latest-additions-group" id="latestAdditionsStories">
+            <h3 class="latest-additions-group-title">Latest Stories</h3>
+            <div class="latest-additions-list" id="latestAdditionsStoriesList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archive Stats Section -->
+    <section class="archive-stats-section section" id="archive-stats">
+      <div class="archive-stats-inner section-inner">
+        <h2 class="archive-stats-title section-title">Archive Stats</h2>
+        <div class="archive-stats-grid section-grid">
+          <div class="archive-stats-card card" data-type="prompts">
+            <span class="archive-stats-number" id="archiveStatsPrompts">—</span>
+            <span class="archive-stats-label">Prompts</span>
+            <p class="archive-stats-text card-text">reusable creative directions</p>
+          </div>
+          <div class="archive-stats-card card" data-type="images">
+            <span class="archive-stats-number" id="archiveStatsImages">—</span>
+            <span class="archive-stats-label">Images</span>
+            <p class="archive-stats-text card-text">curated visual archive</p>
+          </div>
+          <div class="archive-stats-card card" data-type="songs">
+            <span class="archive-stats-number" id="archiveStatsSongs">—</span>
+            <span class="archive-stats-label">Songs</span>
+            <p class="archive-stats-text card-text">lyrical and musical ideas</p>
+          </div>
+          <div class="archive-stats-card card" data-type="stories">
+            <span class="archive-stats-number" id="archiveStatsStories">—</span>
+            <span class="archive-stats-label">Stories</span>
+            <p class="archive-stats-text card-text">narratives and reflections</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Favorites Section -->
+    <section class="featured-favorites-section section" id="featured-favorites">
+      <div class="featured-favorites-inner section-inner">
+        <h2 class="featured-favorites-title section-title">Featured Favorites</h2>
+        <div class="featured-favorites-grid section-grid">
+          <div class="featured-favorites-group" id="featuredFavoritesPrompts">
+            <h3 class="featured-favorites-group-title">Favorite Prompts</h3>
+            <div class="featured-favorites-list" id="featuredFavoritesPromptsList"></div>
+          </div>
+          <div class="featured-favorites-group" id="featuredFavoritesImages">
+            <h3 class="featured-favorites-group-title">Favorite Images</h3>
+            <div class="featured-favorites-list" id="featuredFavoritesImagesList"></div>
+          </div>
+          <div class="featured-favorites-group" id="featuredFavoritesSongs">
+            <h3 class="featured-favorites-group-title">Favorite Songs</h3>
+            <div class="featured-favorites-list" id="featuredFavoritesSongsList"></div>
+          </div>
+          <div class="featured-favorites-group" id="featuredFavoritesStories">
+            <h3 class="featured-favorites-group-title">Favorite Stories</h3>
+            <div class="featured-favorites-list" id="featuredFavoritesStoriesList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continue Creating Section -->
+    <section class="continue-creating-section section" id="continue-creating">
+      <div class="continue-creating-inner section-inner">
+        <h2 class="continue-creating-title section-title">Continue Creating</h2>
+        <div id="continueCreatingContent" class="continue-creating-content"></div>
+      </div>
+    </section>
+
+    <!-- Recent Activity Section -->
+    <section class="recent-activity-section section" id="recent-activity">
+      <div class="recent-activity-inner section-inner">
+        <h2 class="recent-activity-title section-title">Recent Activity</h2>
+        <div id="recentActivityList" class="recent-activity-list"></div>
+      </div>
+    </section>
+
+    <!-- Quick Add Section -->
+    <section class="quick-add-section section" id="quick-add">
+      <div class="quick-add-inner section-inner">
+        <h2 class="quick-add-title section-title">Quick Add</h2>
+        <div class="quick-add-grid section-grid">
+          <a href="add-entry.html?type=prompt" class="quick-add-card card">
+            <h3 class="quick-add-card-title card-title">Add Prompt</h3>
+            <p class="quick-add-card-text card-text">Create a new prompt entry.</p>
+            <span class="quick-add-card-link">Open →</span>
+          </a>
+          <a href="add-entry.html?type=image" class="quick-add-card card">
+            <h3 class="quick-add-card-title card-title">Add Image</h3>
+            <p class="quick-add-card-text card-text">Create a new image entry.</p>
+            <span class="quick-add-card-link">Open →</span>
+          </a>
+          <a href="add-entry.html?type=song" class="quick-add-card card">
+            <h3 class="quick-add-card-title card-title">Add Song</h3>
+            <p class="quick-add-card-text card-text">Create a new song entry.</p>
+            <span class="quick-add-card-link">Open →</span>
+          </a>
+          <a href="add-entry.html?type=story" class="quick-add-card card">
+            <h3 class="quick-add-card-title card-title">Add Story</h3>
+            <p class="quick-add-card-text card-text">Create a new story entry.</p>
+            <span class="quick-add-card-link">Open →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow / Philosophy Section -->
+    <section class="lab-workflow-section section" id="workflow">
+      <div class="lab-workflow-section-inner section-inner">
+        <h2 class="lab-workflow-section-title section-title">How We Work</h2>
+        <div class="lab-workflow-grid section-grid">
+          <div class="lab-workflow-step">
+            <span class="lab-workflow-step-num">01</span>
+            <h3 class="lab-workflow-step-title">Collect</h3>
+            <p class="lab-workflow-step-text">Gather prompts, images, sounds, and ideas into structured archives.</p>
+          </div>
+          <div class="lab-workflow-step">
+            <span class="lab-workflow-step-num">02</span>
+            <h3 class="lab-workflow-step-title">Structure</h3>
+            <p class="lab-workflow-step-text">Organize by tags, moods, generators—make connections visible.</p>
+          </div>
+          <div class="lab-workflow-step">
+            <span class="lab-workflow-step-num">03</span>
+            <h3 class="lab-workflow-step-title">Refine</h3>
+            <p class="lab-workflow-step-text">Iterate, remix, and improve. Let each piece inform the next.</p>
+          </div>
+          <div class="lab-workflow-step">
+            <span class="lab-workflow-step-num">04</span>
+            <h3 class="lab-workflow-step-title">Reuse</h3>
+            <p class="lab-workflow-step-text">Build on what works. Prompts link to images, ideas cross labs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="#labs">Labs</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="steve.html">Creator</a></li>
+          <li><a href="glimmer100.html">Glimmer 100</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+          <li><a href="story-library.html">Story Library</a></li>
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

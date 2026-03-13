@@ -1,0 +1,40 @@
+[
+  {
+    "id": "one-hour-road",
+    "title": "One Hour Road",
+    "type": "Original",
+    "mood": ["Upbeat", "Freedom"],
+    "summary": "An upbeat road-driven piece shaped by rhythm, motion, and freedom.",
+    "lyricsPage": "one-hour-road.html",
+    "sunoUrl": "#",
+    "featured": true,
+    "tags": ["road", "freedom", "motion", "rhythm"],
+    "year": 2026,
+    "language": "English",
+    "status": "published",
+    "coverImage": "images/music/one-hour-road.jpg",
+    "relatedStoryPage": null,
+    "relatedVisualPage": "visual-works.html",
+    "hasLyrics": true,
+    "hasDetailPage": true
+  },
+  {
+    "id": "if-that-day-without-you",
+    "title": "If That Day Without You",
+    "type": "Story Song",
+    "mood": ["Reflective", "Gentle"],
+    "summary": "A reflective story song about memory, gratitude, and turning points.",
+    "lyricsPage": "if-that-day-without-you.html",
+    "sunoUrl": "#",
+    "featured": true,
+    "tags": ["memory", "gratitude", "turning-points"],
+    "year": 2026,
+    "language": "English",
+    "status": "published",
+    "coverImage": "images/music/if-that-day-without-you.jpg",
+    "relatedStoryPage": "when-memory-becomes-story.html",
+    "relatedVisualPage": "series-cinematic-mood.html",
+    "hasLyrics": true,
+    "hasDetailPage": true
+  }
+]

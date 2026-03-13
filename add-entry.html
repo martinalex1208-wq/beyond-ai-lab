@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Entry | Beyond AI Lab</title>
+  <meta name="description" content="Create structured JSON entries for prompts, images, songs, and stories.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/add-entry.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="add-entry-main">
+    <!-- Hero -->
+    <section class="add-entry-hero">
+      <h1 class="add-entry-hero-title">Add Entry</h1>
+      <p class="add-entry-hero-subtitle">Create structured JSON entries for prompts, images, songs, and stories.</p>
+      <p id="addEntryContextNote" class="add-entry-context-note" style="display:none;" aria-live="polite"></p>
+    </section>
+
+    <!-- Entry Type Selector -->
+    <section class="add-entry-section">
+      <div class="add-entry-controls">
+        <label for="addEntryType" class="add-entry-label">Entry Type</label>
+        <select id="addEntryType" class="add-entry-select" aria-label="Select entry type">
+          <option value="prompt">Prompt</option>
+          <option value="image">Image</option>
+          <option value="song">Song</option>
+          <option value="story">Story</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Example Actions -->
+    <section class="add-entry-section">
+      <div class="add-entry-example-actions">
+        <button type="button" class="add-entry-example-button" data-example="prompt">Load Prompt Example</button>
+        <button type="button" class="add-entry-example-button" data-example="image">Load Image Example</button>
+        <button type="button" class="add-entry-example-button" data-example="song">Load Song Example</button>
+        <button type="button" class="add-entry-example-button" data-example="story">Load Story Example</button>
+      </div>
+      <div id="addEntryTemplateStatus" class="add-entry-template-status" style="display:none;" aria-live="polite"></div>
+    </section>
+
+    <!-- Dynamic Form Area -->
+    <section class="add-entry-section">
+      <div id="addEntryFormContainer" class="add-entry-form"></div>
+    </section>
+
+    <!-- Validation Summary -->
+    <section class="add-entry-section">
+      <div id="addEntryValidation" class="add-entry-validation">
+        <h3 class="add-entry-validation-title">Validation</h3>
+        <div id="addEntryValidationContent" class="add-entry-validation-content"></div>
+      </div>
+    </section>
+
+    <!-- JSON Preview Area -->
+    <section class="add-entry-section">
+      <h3 class="add-entry-preview-title">JSON Preview</h3>
+      <div class="add-entry-preview">
+        <pre id="addEntryJsonPreview" class="add-entry-preview-code"></pre>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="add-entry-section">
+      <div class="add-entry-actions">
+        <span class="add-entry-actions-group">
+          <button type="button" id="addEntryCopyJson" class="add-entry-button btn btn-primary">Copy JSON</button>
+          <span id="addEntryValidationHint" class="add-entry-validation-hint" style="display:none;">Contains validation issues</span>
+        </span>
+        <button type="button" id="addEntryCopyCompact" class="add-entry-button add-entry-button--outline btn btn-outline">Copy Compact JSON</button>
+        <button type="button" id="addEntryDownloadJson" class="add-entry-button add-entry-button--outline btn btn-outline">Download JSON</button>
+        <button type="button" id="addEntryDownloadCompact" class="add-entry-button add-entry-button--outline btn btn-outline">Download Compact JSON</button>
+        <button type="button" id="addEntryReset" class="add-entry-button add-entry-button--outline btn btn-outline">Reset Form</button>
+      </div>
+      <div class="add-entry-actions add-entry-actions-secondary">
+        <span class="add-entry-actions-label">Array Item Format:</span>
+        <button type="button" id="addEntryCopyArrayItem" class="add-entry-button add-entry-button--outline btn btn-outline">Copy Array Item</button>
+        <button type="button" id="addEntryDownloadArrayItem" class="add-entry-button add-entry-button--outline btn btn-outline">Download Array Item</button>
+      </div>
+    </section>
+
+    <!-- Publish Checklist -->
+    <section class="add-entry-section">
+      <div class="add-entry-publish">
+        <h3 class="add-entry-publish-title">Publish Checklist</h3>
+        <p id="addEntryPublishWarning" class="add-entry-publish-warning" style="display:none;" aria-live="polite">Contains validation issues</p>
+        <p class="add-entry-publish-target">
+          <span class="add-entry-publish-target-label">Target file:</span>
+          <code id="addEntryPublishTarget" class="add-entry-publish-target-path">data/prompts.json</code>
+        </p>
+        <ol class="add-entry-publish-steps">
+          <li>Review required fields</li>
+          <li>Copy Array Item or Download JSON</li>
+          <li>Paste into the target data file</li>
+          <li>Save the file</li>
+          <li>Refresh the site and verify the entry</li>
+        </ol>
+        <p class="add-entry-publish-note">
+          Array Item is best for appending to existing JSON arrays. Standard JSON is useful for backup or editing.
+        </p>
+      </div>
+    </section>
+
+    <!-- Draft Actions -->
+    <section class="add-entry-section">
+      <div class="add-entry-draft-actions">
+        <span id="addEntryDraftStatus" class="add-entry-draft-status" style="display:none;" aria-live="polite"></span>
+        <button type="button" id="addEntryClearDraft" class="add-entry-draft-button btn btn-danger-subtle">Clear Draft</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="add-entry.html">Add Entry</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+          <li><a href="story-library.html">Story Library</a></li>
+          <li><a href="add-entry.html">Add Entry</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./script.js"></script>
+  <script>
+(function () {
+  var typeSelect = document.getElementById('addEntryType');
+  var formContainer = document.getElementById('addEntryFormContainer');
+  var jsonPreview = document.getElementById('addEntryJsonPreview');
+  var validationContent = document.getElementById('addEntryValidationContent');
+  var validationHint = document.getElementById('addEntryValidationHint');
+  var copyBtn = document.getElementById('addEntryCopyJson');
+  var copyCompactBtn = document.getElementById('addEntryCopyCompact');
+  var resetBtn = document.getElementById('addEntryReset');
+  var downloadBtn = document.getElementById('addEntryDownloadJson');
+  var downloadCompactBtn = document.getElementById('addEntryDownloadCompact');
+  var copyArrayItemBtn = document.getElementById('addEntryCopyArrayItem');
+  var downloadArrayItemBtn = document.getElementById('addEntryDownloadArrayItem');
+  var draftStatus = document.getElementById('addEntryDraftStatus');
+  var clearDraftBtn = document.getElementById('addEntryClearDraft');
+  var templateStatus = document.getElementById('addEntryTemplateStatus');
+  var contextNote = document.getElementById('addEntryContextNote');
+  var publishTarget = document.getElementById('addEntryPublishTarget');
+  var publishWarning = document.getElementById('addEntryPublishWarning');
+
+  var TARGET_FILES = {
+    prompt: 'data/prompts.json',
+    image: 'data/images.json',
+    song: 'data/songs.json',
+    story: 'data/stories.json'
+  };
+
+  var TEMPLATE_URLS = {
+    prompt: 'data/templates/prompt-template.json',
+    image: 'data/templates/image-template.json',
+    song: 'data/templates/song-template.json',
+    story: 'data/templates/story-template.json'
+  };
+
+  var DEFAULT_FILENAMES = {
+    prompt: 'prompt-entry.json',
+    image: 'image-entry.json',
+    song: 'song-entry.json',
+    story: 'story-entry.json'
+  };
+
+  var ARRAY_ITEM_FILENAMES = {
+    prompt: 'prompt-array-item.json',
+    image: 'image-array-item.json',
+    song: 'song-array-item.json',
+    story: 'story-array-item.json'
+  };
+
+  var DRAFT_TYPE_KEY = 'addEntryDraftType';
+  var DRAFT_DATA_KEY = 'addEntryDraftData';
+  var VALID_TYPES = ['prompt', 'image', 'song', 'story'];
+
+  var DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+  var ID_RE = /^[a-z0-9\-]+$/;
+  var SERIES_RE = /^[a-z0-9\-]+$/;
+  var isValidDate = (typeof isValidDateString === 'function' ? isValidDateString : function (v) { if (v === undefined || v === null) return false; var s = String(v).trim(); return s ? DATE_RE.test(s) : false; });
+
+  var FIELD_DEFS = {
+    prompt: [
+      { key: 'id', type: 'text', label: 'ID', placeholder: 'prompt-example-id', hasGenerateId: true, prefix: 'prompt-' },
+      { key: 'title', type: 'text', label: 'Title', placeholder: 'Example Title' },
+      { key: 'series', type: 'text', label: 'Series', placeholder: 'example-series' },
+      { key: 'tags', type: 'tags', label: 'Tags', placeholder: 'tag1, tag2, tag3' },
+      { key: 'prompt', type: 'textarea', label: 'Prompt', placeholder: 'Your prompt text...' },
+      { key: 'camera', type: 'text', label: 'Camera', placeholder: '85mm f/1.8' },
+      { key: 'mood', type: 'text', label: 'Mood', placeholder: 'Warm, Gentle' },
+      { key: 'generator', type: 'text', label: 'Generator', placeholder: 'Midjourney v6' },
+      { key: 'createdAt', type: 'text', label: 'Created At', placeholder: 'YYYY-MM-DD', defaultToday: true },
+      { key: 'favorite', type: 'checkbox', label: 'Favorite', default: false }
+    ],
+    image: [
+      { key: 'title', type: 'text', label: 'Title', placeholder: 'Example Image Title' },
+      { key: 'series', type: 'text', label: 'Series', placeholder: 'example-series' },
+      { key: 'tags', type: 'tags', label: 'Tags', placeholder: 'tag1, tag2, tag3' },
+      { key: 'folder', type: 'text', label: 'Folder', placeholder: 'photography/example_folder' },
+      { key: 'file', type: 'text', label: 'File', placeholder: 'example_001.jpg' },
+      { key: 'prompt', type: 'textarea', label: 'Prompt', placeholder: 'Your prompt text...' },
+      { key: 'promptId', type: 'text', label: 'Prompt ID', placeholder: 'prompt-example-id' },
+      { key: 'camera', type: 'text', label: 'Camera', placeholder: '85mm f/1.8' },
+      { key: 'mood', type: 'text', label: 'Mood', placeholder: 'Warm, Gentle' },
+      { key: 'generator', type: 'text', label: 'Generator', placeholder: 'Midjourney v6' },
+      { key: 'createdAt', type: 'text', label: 'Created At', placeholder: 'YYYY-MM-DD', defaultToday: true },
+      { key: 'favorite', type: 'checkbox', label: 'Favorite', default: false }
+    ],
+    song: [
+      { key: 'id', type: 'text', label: 'ID', placeholder: 'song-example-id', hasGenerateId: true, prefix: 'song-' },
+      { key: 'title', type: 'text', label: 'Title', placeholder: 'Example Song Title' },
+      { key: 'subtitle', type: 'text', label: 'Subtitle', placeholder: 'Optional subtitle' },
+      { key: 'series', type: 'text', label: 'Series', placeholder: 'original-songs' },
+      { key: 'tags', type: 'tags', label: 'Tags', placeholder: 'tag1, tag2, tag3' },
+      { key: 'lyrics', type: 'textarea', label: 'Lyrics', placeholder: 'Your lyrics...' },
+      { key: 'style', type: 'text', label: 'Style', placeholder: 'Indie folk, acoustic guitar' },
+      { key: 'mood', type: 'text', label: 'Mood', placeholder: 'Gentle, Hopeful' },
+      { key: 'generator', type: 'text', label: 'Generator', placeholder: 'Suno' },
+      { key: 'createdAt', type: 'text', label: 'Created At', placeholder: 'YYYY-MM-DD', defaultToday: true },
+      { key: 'favorite', type: 'checkbox', label: 'Favorite', default: false }
+    ],
+    story: [
+      { key: 'id', type: 'text', label: 'ID', placeholder: 'story-example-id', hasGenerateId: true, prefix: 'story-' },
+      { key: 'title', type: 'text', label: 'Title', placeholder: 'Example Story Title' },
+      { key: 'subtitle', type: 'text', label: 'Subtitle', placeholder: 'Optional subtitle' },
+      { key: 'series', type: 'text', label: 'Series', placeholder: 'essays' },
+      { key: 'tags', type: 'tags', label: 'Tags', placeholder: 'tag1, tag2, tag3' },
+      { key: 'content', type: 'textarea', label: 'Content', placeholder: 'Full story content...' },
+      { key: 'summary', type: 'text', label: 'Summary', placeholder: 'Short summary' },
+      { key: 'mood', type: 'text', label: 'Mood', placeholder: 'Reflective, Gentle' },
+      { key: 'generator', type: 'text', label: 'Generator', placeholder: 'Human' },
+      { key: 'createdAt', type: 'text', label: 'Created At', placeholder: 'YYYY-MM-DD', defaultToday: true },
+      { key: 'favorite', type: 'checkbox', label: 'Favorite', default: false }
+    ]
+  };
+
+  function getToday() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + day;
+  }
+
+  function slugify(str) {
+    if (!str) return '';
+    return String(str)
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9\-]/g, '')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  function renderForm(type) {
+    var defs = FIELD_DEFS[type] || [];
+    var html = '<div class="add-entry-grid">';
+    defs.forEach(function (f) {
+      var fullClass = (f.type === 'textarea') ? ' add-entry-field--full' : '';
+      html += '<div class="add-entry-field' + fullClass + '">';
+      html += '<label for="addEntry_' + f.key + '" class="add-entry-label">' + escapeHtml(f.label) + '</label>';
+      if (f.type === 'textarea') {
+        html += '<textarea id="addEntry_' + f.key + '" class="add-entry-textarea" placeholder="' + escapeHtml(f.placeholder || '') + '" rows="4"></textarea>';
+      } else if (f.type === 'checkbox') {
+        html += '<label class="add-entry-checkbox-wrap"><input type="checkbox" id="addEntry_' + f.key + '" class="add-entry-checkbox" ' + (f.default ? 'checked' : '') + '><span>' + (f.default ? 'Yes' : 'No') + '</span></label>';
+      } else {
+        var extra = '';
+        if (f.hasGenerateId) extra = ' <button type="button" class="add-entry-gen-id" data-prefix="' + escapeHtml(f.prefix || '') + '" data-target="addEntry_' + f.key + '">Generate ID</button>';
+        html += '<div class="add-entry-input-wrap">';
+        html += '<input type="text" id="addEntry_' + f.key + '" class="add-entry-input" placeholder="' + escapeHtml(f.placeholder || '') + '" value="' + (f.defaultToday ? getToday() : '') + '">';
+        html += extra + '</div>';
+      }
+      html += '</div>';
+    });
+    html += '</div>';
+    formContainer.innerHTML = html;
+
+    document.querySelectorAll('.add-entry-gen-id').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var targetId = btn.getAttribute('data-target');
+        var prefix = btn.getAttribute('data-prefix') || '';
+        var titleEl = document.getElementById('addEntry_title');
+        var targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+        var title = titleEl ? titleEl.value.trim() : '';
+        if (!title) return;
+        var slug = prefix + slugify(title);
+        targetEl.value = slug;
+        updatePreview();
+      });
+    });
+
+    document.querySelectorAll('#addEntryFormContainer input, #addEntryFormContainer textarea').forEach(function (el) {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function getFormData(type) {
+    var defs = FIELD_DEFS[type] || [];
+    var obj = {};
+    defs.forEach(function (f) {
+      var el = document.getElementById('addEntry_' + f.key);
+      if (!el) return;
+      var val;
+      if (f.type === 'checkbox') {
+        val = el.checked;
+      } else if (f.type === 'tags') {
+        var raw = (el.value || '').trim();
+        val = raw ? raw.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : [];
+      } else {
+        val = (el.value || '').trim();
+        if (f.key === 'createdAt' && !val && f.defaultToday) val = getToday();
+      }
+      obj[f.key] = val;
+    });
+    return obj;
+  }
+
+  function runValidation(type, data) {
+    var errors = [];
+    var notes = [];
+
+    function required(key, label) {
+      var val = data[key];
+      if (val === undefined || val === null) return true;
+      if (typeof val === 'string' && !val.trim()) return true;
+      if (Array.isArray(val) && val.length === 0 && key !== 'tags') return true;
+      return false;
+    }
+
+    if (type === 'prompt') {
+      if (required(data.id, 'id')) errors.push('id is required');
+      if (required(data.title, 'title')) errors.push('title is required');
+      if (required(data.series, 'series')) errors.push('series is required');
+      if (required(data.prompt, 'prompt')) errors.push('prompt is required');
+      if (required(data.createdAt, 'createdAt')) errors.push('createdAt is required');
+    } else if (type === 'image') {
+      if (required(data.title, 'title')) errors.push('title is required');
+      if (required(data.series, 'series')) errors.push('series is required');
+      if (required(data.folder, 'folder')) errors.push('folder is required');
+      if (required(data.file, 'file')) errors.push('file is required');
+      if (required(data.createdAt, 'createdAt')) errors.push('createdAt is required');
+      if (data.prompt && (data.prompt + '').trim()) {
+        if (!data.promptId || !String(data.promptId).trim()) notes.push('prompt has content; consider adding promptId to link with prompts.json');
+      }
+    } else if (type === 'song') {
+      if (required(data.id, 'id')) errors.push('id is required');
+      if (required(data.title, 'title')) errors.push('title is required');
+      if (required(data.series, 'series')) errors.push('series is required');
+      if (required(data.lyrics, 'lyrics')) errors.push('lyrics is required');
+      if (required(data.createdAt, 'createdAt')) errors.push('createdAt is required');
+    } else if (type === 'story') {
+      if (required(data.id, 'id')) errors.push('id is required');
+      if (required(data.title, 'title')) errors.push('title is required');
+      if (required(data.series, 'series')) errors.push('series is required');
+      if (required(data.content, 'content')) errors.push('content is required');
+      if (required(data.createdAt, 'createdAt')) errors.push('createdAt is required');
+    }
+
+    var createdAt = (data.createdAt || '').toString().trim();
+    if (createdAt && !isValidDate(createdAt)) errors.push('createdAt must be YYYY-MM-DD');
+
+    var idVal = data.id;
+    if (idVal !== undefined && idVal !== null && String(idVal).trim()) {
+      var idStr = String(idVal).trim();
+      if (/\s/.test(idStr)) errors.push('id must not contain spaces');
+      if (!ID_RE.test(idStr)) errors.push('id should use lowercase letters, numbers, and hyphens only');
+    }
+
+    var seriesVal = data.series;
+    if (seriesVal !== undefined && seriesVal !== null && String(seriesVal).trim()) {
+      var seriesStr = String(seriesVal).trim();
+      if (!SERIES_RE.test(seriesStr)) notes.push('series is recommended to use lowercase letters, numbers, and hyphens');
+    }
+
+    var tagsVal = data.tags;
+    if (Array.isArray(tagsVal) && tagsVal.length > 0) {
+      var hasEmpty = tagsVal.some(function (t) { return !String(t).trim(); });
+      if (hasEmpty) errors.push('tags should not contain empty items');
+    }
+
+    return { errors: errors, notes: notes };
+  }
+
+  function updatePublishTarget() {
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var path = TARGET_FILES[type] || 'data/entries.json';
+    if (publishTarget) publishTarget.textContent = path;
+  }
+
+  function updateValidation() {
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var data = getFormData(type);
+    var result = runValidation(type, data);
+    var html = '';
+
+    if (result.errors.length > 0) {
+      html += '<ul class="add-entry-validation-list">';
+      result.errors.forEach(function (msg) {
+        html += '<li class="add-entry-validation-item is-error">' + escapeHtml(msg) + '</li>';
+      });
+      html += '</ul>';
+      if (validationHint) validationHint.style.display = '';
+      if (publishWarning) publishWarning.style.display = '';
+    } else {
+      if (validationHint) validationHint.style.display = 'none';
+      if (publishWarning) publishWarning.style.display = 'none';
+      if (result.notes.length > 0) {
+        html += '<ul class="add-entry-validation-list">';
+        result.notes.forEach(function (msg) {
+          html += '<li class="add-entry-validation-item is-note">' + escapeHtml(msg) + '</li>';
+        });
+        html += '</ul>';
+      } else {
+        html += '<p class="add-entry-validation-success">Ready to copy JSON.</p>';
+      }
+    }
+
+    if (validationContent) validationContent.innerHTML = html;
+  }
+
+  function updatePreview(skipSave) {
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var data = getFormData(type);
+    var jsonStr = JSON.stringify([data], null, 2);
+    if (jsonPreview) jsonPreview.textContent = jsonStr;
+    updateValidation();
+    if (!skipSave) saveDraft();
+  }
+
+  function saveDraft() {
+    try {
+      var type = (typeSelect && typeSelect.value) || 'prompt';
+      var data = getFormData(type);
+      localStorage.setItem(DRAFT_TYPE_KEY, type);
+      localStorage.setItem(DRAFT_DATA_KEY, JSON.stringify(data));
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function populateFormFromData(type, data) {
+    if (!data || typeof data !== 'object') return;
+    var defs = FIELD_DEFS[type] || [];
+    defs.forEach(function (f) {
+      var el = document.getElementById('addEntry_' + f.key);
+      if (!el) return;
+      var val = data[f.key];
+      if (f.type === 'checkbox') {
+        el.checked = !!val;
+      } else if (f.type === 'tags') {
+        el.value = Array.isArray(val) ? val.join(', ') : (val != null ? String(val) : '');
+      } else {
+        el.value = val !== undefined && val !== null ? String(val) : '';
+      }
+    });
+  }
+
+  function restoreDraft() {
+    try {
+      var savedType = localStorage.getItem(DRAFT_TYPE_KEY);
+      var savedDataRaw = localStorage.getItem(DRAFT_DATA_KEY);
+      if (!savedType || VALID_TYPES.indexOf(savedType) === -1) return false;
+      var data = null;
+      if (savedDataRaw) {
+        data = JSON.parse(savedDataRaw);
+        if (!data || typeof data !== 'object') data = null;
+      }
+      if (typeSelect) typeSelect.value = savedType;
+      renderForm(savedType);
+      if (data) populateFormFromData(savedType, data);
+      updatePreview();
+      if (draftStatus) {
+        draftStatus.textContent = 'Draft restored from local storage.';
+        draftStatus.style.display = '';
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearDraft() {
+    try {
+      localStorage.removeItem(DRAFT_TYPE_KEY);
+      localStorage.removeItem(DRAFT_DATA_KEY);
+    } catch (e) {
+      /* ignore */
+    }
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    renderForm(type);
+    updatePreview(true);
+    if (draftStatus) {
+      draftStatus.textContent = 'Draft cleared.';
+      draftStatus.style.display = '';
+      setTimeout(function () {
+        draftStatus.textContent = '';
+        draftStatus.style.display = 'none';
+      }, 2000);
+    }
+  }
+
+  function copyToClipboard(text, btn) {
+    var label = btn ? btn.textContent : '';
+    navigator.clipboard.writeText(text).then(function () {
+      if (btn) btn.textContent = 'Copied!';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    }).catch(function () {
+      if (btn) btn.textContent = 'Failed';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    });
+  }
+
+  function getDownloadFilename(type, data) {
+    var id = data && data.id;
+    if (id !== undefined && id !== null && String(id).trim()) {
+      return String(id).trim() + '.json';
+    }
+    return DEFAULT_FILENAMES[type] || 'entry.json';
+  }
+
+  function getArrayItemFilename(type, data) {
+    var id = data && data.id;
+    if (id !== undefined && id !== null && String(id).trim()) {
+      return String(id).trim() + '-array-item.json';
+    }
+    return ARRAY_ITEM_FILENAMES[type] || 'array-item.json';
+  }
+
+  function getArrayItemString(data) {
+    var objStr = JSON.stringify(data, null, 2);
+    return ',\n' + objStr;
+  }
+
+  function downloadJson(compact, btn) {
+    var label = btn ? btn.textContent : '';
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var data = getFormData(type);
+    var jsonStr = compact ? JSON.stringify(data) : JSON.stringify(data, null, 2);
+    var filename = getDownloadFilename(type, data);
+    try {
+      var blob = new Blob([jsonStr], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      if (btn) btn.textContent = 'Downloaded!';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    } catch (e) {
+      if (btn) btn.textContent = 'Failed';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    }
+  }
+
+  function copyArrayItem(btn) {
+    var label = btn ? btn.textContent : '';
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var data = getFormData(type);
+    var str = getArrayItemString(data);
+    copyToClipboard(str, btn);
+  }
+
+  function downloadArrayItem(btn) {
+    var label = btn ? btn.textContent : '';
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    var data = getFormData(type);
+    var str = getArrayItemString(data);
+    var filename = getArrayItemFilename(type, data);
+    try {
+      var blob = new Blob([str], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      if (btn) btn.textContent = 'Downloaded!';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    } catch (e) {
+      if (btn) btn.textContent = 'Failed';
+      setTimeout(function () { if (btn) btn.textContent = label; }, 1500);
+    }
+  }
+
+  function resetForm() {
+    var type = (typeSelect && typeSelect.value) || 'prompt';
+    renderForm(type);
+    updatePreview();
+  }
+
+  function showTemplateStatus(msg, isError) {
+    if (!templateStatus) return;
+    templateStatus.textContent = msg;
+    templateStatus.style.display = msg ? '' : 'none';
+    templateStatus.className = 'add-entry-template-status' + (isError ? ' add-entry-template-status--error' : '');
+  }
+
+  function loadExample(type) {
+    var url = TEMPLATE_URLS[type];
+    if (!url) {
+      showTemplateStatus('Unable to load template.', true);
+      return;
+    }
+    showTemplateStatus('');
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Fetch failed');
+        return res.json();
+      })
+      .then(function (arr) {
+        if (!Array.isArray(arr) || !arr[0]) throw new Error('Invalid template');
+        var data = arr[0];
+        if (typeSelect) typeSelect.value = type;
+        renderForm(type);
+        populateFormFromData(type, data);
+        updatePublishTarget();
+        updatePreview();
+        showTemplateStatus('Template loaded.', false);
+      })
+      .catch(function () {
+        showTemplateStatus('Unable to load template.', true);
+      });
+  }
+
+  document.querySelectorAll('.add-entry-example-button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var type = btn.getAttribute('data-example');
+      if (type) loadExample(type);
+    });
+  });
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', function () {
+      renderForm(typeSelect.value);
+      updatePublishTarget();
+      updatePreview();
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var type = (typeSelect && typeSelect.value) || 'prompt';
+      var data = getFormData(type);
+      var jsonStr = JSON.stringify([data], null, 2);
+      copyToClipboard(jsonStr, copyBtn);
+    });
+  }
+
+  if (copyCompactBtn) {
+    copyCompactBtn.addEventListener('click', function () {
+      var type = (typeSelect && typeSelect.value) || 'prompt';
+      var data = getFormData(type);
+      var jsonStr = JSON.stringify([data]);
+      copyToClipboard(jsonStr, copyCompactBtn);
+    });
+  }
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function () {
+      downloadJson(false, downloadBtn);
+    });
+  }
+
+  if (downloadCompactBtn) {
+    downloadCompactBtn.addEventListener('click', function () {
+      downloadJson(true, downloadCompactBtn);
+    });
+  }
+
+  if (copyArrayItemBtn) {
+    copyArrayItemBtn.addEventListener('click', function () {
+      copyArrayItem(copyArrayItemBtn);
+    });
+  }
+
+  if (downloadArrayItemBtn) {
+    downloadArrayItemBtn.addEventListener('click', function () {
+      downloadArrayItem(downloadArrayItemBtn);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', resetForm);
+  }
+
+  if (clearDraftBtn) {
+    clearDraftBtn.addEventListener('click', clearDraft);
+  }
+
+  function getUrlType() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var t = (params.get('type') || '').toLowerCase().trim();
+      return VALID_TYPES.indexOf(t) !== -1 ? t : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function initFromUrlOrDraft() {
+    var urlType = getUrlType();
+    if (urlType) {
+      if (typeSelect) typeSelect.value = urlType;
+      renderForm(urlType);
+      var savedType = null;
+      var savedDataRaw = null;
+      try {
+        savedType = localStorage.getItem(DRAFT_TYPE_KEY);
+        savedDataRaw = localStorage.getItem(DRAFT_DATA_KEY);
+      } catch (e) {}
+      if (savedType === urlType && savedDataRaw) {
+        try {
+          var data = JSON.parse(savedDataRaw);
+          if (data && typeof data === 'object') populateFormFromData(urlType, data);
+        } catch (e) {}
+      }
+      updatePreview();
+      if (contextNote) {
+        contextNote.textContent = 'Quick add mode: ' + urlType.charAt(0).toUpperCase() + urlType.slice(1);
+        contextNote.style.display = '';
+      }
+    } else {
+      if (!restoreDraft()) {
+        renderForm('prompt');
+        updatePreview();
+      }
+    }
+    updatePublishTarget();
+  }
+
+  initFromUrlOrDraft();
+})();
+  </script>
+</body>
+
+</html>

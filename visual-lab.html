@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Lab | Beyond AI Lab</title>
+  <meta name="description" content="AI-generated visual experiments and image gallery. Explore portraits, sci-fi, fantasy, and curated artwork.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/legacy.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="visual-lab-main">
+    <section class="visual-lab-hero">
+      <p class="hero-tagline">AI Visual · Creative Lab</p>
+      <h1 class="hero-title">
+        <span class="hero-title-line hero-title-line--accent">Visual Lab</span>
+      </h1>
+      <p class="hero-subtitle">AI-generated visual experiments and image gallery</p>
+    </section>
+
+    <section class="visual-lab-content">
+      <div class="filter-bar">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="female-portrait">Female Portrait</button>
+        <button type="button" class="filter-btn" data-filter="sci-fi">Sci-Fi</button>
+        <button type="button" class="filter-btn" data-filter="fantasy-warrior">Fantasy Warrior</button>
+        <button type="button" class="filter-btn" data-filter="street">Street</button>
+        <button type="button" class="filter-btn" data-filter="cafe">Cafe</button>
+        <button type="button" class="filter-btn" data-filter="experimental">Experimental</button>
+      </div>
+
+      <div class="image-grid">
+        <article class="image-card" data-category="female-portrait">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Female Portrait</span>
+            <h3 class="image-title">Golden Hour Portrait</h3>
+            <p class="image-prompt">Soft natural light, warm tones, cinematic</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="sci-fi">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Sci-Fi</span>
+            <h3 class="image-title">Neon Cityscape</h3>
+            <p class="image-prompt">Cyberpunk metropolis, holographic ads</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="fantasy-warrior">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Fantasy Warrior</span>
+            <h3 class="image-title">Dragon Rider</h3>
+            <p class="image-prompt">Epic fantasy, armor, flying dragon</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="street">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Street</span>
+            <h3 class="image-title">Rainy Night Alley</h3>
+            <p class="image-prompt">Urban noir, wet pavement, reflections</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="cafe">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Cafe</span>
+            <h3 class="image-title">Cozy Corner</h3>
+            <p class="image-prompt">Warm café interior, steam, ambient light</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="experimental">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Experimental</span>
+            <h3 class="image-title">Digital Fractals</h3>
+            <p class="image-prompt">Abstract geometry, neural art fusion</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="female-portrait">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Female Portrait</span>
+            <h3 class="image-title">Studio Elegance</h3>
+            <p class="image-prompt">Professional studio, soft shadows</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="sci-fi">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Sci-Fi</span>
+            <h3 class="image-title">Space Station</h3>
+            <p class="image-prompt">Orbital habitat, Earth view, zero gravity</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="fantasy-warrior">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Fantasy Warrior</span>
+            <h3 class="image-title">Forest Guardian</h3>
+            <p class="image-prompt">Elven warrior, mystical forest, magic</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="street">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Street</span>
+            <h3 class="image-title">Tokyo Rush</h3>
+            <p class="image-prompt">Shinjuku crossing, motion blur, neon</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="cafe">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Cafe</span>
+            <h3 class="image-title">Paris Morning</h3>
+            <p class="image-prompt">Bistro terrace, croissants, espresso</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+
+        <article class="image-card" data-category="experimental">
+          <div class="image-placeholder" aria-hidden="true"></div>
+          <div class="image-info">
+            <span class="image-category">Experimental</span>
+            <h3 class="image-title">Dream Fusion</h3>
+            <p class="image-prompt">Surreal dreamscape, mixed media</p>
+            <button type="button" class="btn-view">View</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="ai-generator">
+        <h2>AI Image Generator</h2>
+        <input type="text" id="promptInput" placeholder="Enter your prompt...">
+        <button onclick="generateImage()">Generate</button>
+        <div id="generatedResult"></div>
+      </div>
+
+      <section class="gallery">
+        <h2>AI Gallery</h2>
+
+        <div class="gallery-toolbar">
+          <label for="sortSelect">Sort:</label>
+          <select id="sortSelect" onchange="changeSort(this.value)">
+            <option value="newest" selected>Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A–Z</option>
+          </select>
+        </div>
+
+        <div class="visual-filter">
+          <button data-category="all" onclick="filterSelection('all')">All</button>
+          <button data-category="ai_girl" onclick="filterSelection('ai_girl')">AI Girl</button>
+          <button data-category="scifi" onclick="filterSelection('scifi')">Sci-Fi</button>
+          <button data-category="warrior" onclick="filterSelection('warrior')">Warrior</button>
+          <button data-category="interior" onclick="filterSelection('interior')">Interior</button>
+        </div>
+
+        <div class="artwork-manager-bar">
+          <button type="button" id="addArtworkBtn" class="export-btn">Add New Artwork</button>
+        </div>
+
+        <div class="visual-gallery"></div>
+      </section>
+
+      <section class="photo-series">
+        <h2>AI Photography Series</h2>
+        <p class="series-subtitle">Female Portrait Collection</p>
+        <div class="photo-grid">
+          <img src="photography/female_series/female_001.jpg" alt="Summer Morning Girl">
+          <img src="photography/female_series/female_002.jpg" alt="Coffee Girl">
+          <img src="photography/female_series/female_003.jpg" alt="City Walk Girl">
+          <img src="photography/female_series/female_004.jpg" alt="Bookstore Girl">
+          <img src="photography/female_series/female_005.jpg" alt="Park Girl">
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#">Line</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox();" aria-label="Close">×</button>
+
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage(event)">‹</button>
+
+      <div class="lightbox-media-wrap">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+
+      <div class="lightbox-info">
+        <span id="lightbox-category" class="lightbox-info-category"></span>
+        <h3 id="lightbox-title">Artwork Title</h3>
+        <p id="lightbox-description">Artwork description...</p>
+
+        <div class="lightbox-prompt-box">
+          <div class="lightbox-info-label">Prompt Used</div>
+          <pre id="lightbox-prompt" class="prompt-text"></pre>
+          <button id="lightbox-copy-prompt" type="button" class="copy-btn">Copy Prompt</button>
+        </div>
+
+        <div class="lightbox-pinterest-box">
+          <div class="lightbox-info-label">Pinterest Caption</div>
+          <p id="lightbox-pinterest"></p>
+        </div>
+
+        <div class="lightbox-related">
+          <div class="lightbox-info-label">Style</div>
+          <p id="lightbox-style-name" class="lightbox-related-text"></p>
+
+          <div class="lightbox-info-label">Linked Prompt</div>
+          <div id="lightbox-linked-prompt" class="lightbox-linked-area"></div>
+
+          <div class="lightbox-info-label">Collection</div>
+          <div id="lightbox-linked-collection" class="lightbox-linked-area"></div>
+
+          <div id="lightbox-linked-actions" class="lightbox-linked-actions"></div>
+        </div>
+      </div>
+
+      <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage(event)">›</button>
+    </div>
+
+    <div id="lightbox-counter" class="lightbox-counter" onclick="event.stopPropagation()"></div>
+  </div>
+
+  <div id="editArtworkModal" class="edit-artwork-modal" aria-hidden="true">
+    <div class="edit-artwork-modal-backdrop"></div>
+    <div class="edit-artwork-modal-panel">
+      <h3 class="edit-artwork-modal-title">Edit Artwork</h3>
+      <form id="editArtworkForm" class="edit-artwork-form">
+        <label class="edit-artwork-label" for="editArtworkTitle">Title</label>
+        <input type="text" id="editArtworkTitle" class="edit-artwork-input" required>
+        <label class="edit-artwork-label" for="editArtworkCategory">Category</label>
+        <input type="text" id="editArtworkCategory" class="edit-artwork-input" placeholder="AI Girl, SciFi Visual, etc.">
+        <label class="edit-artwork-label" for="editArtworkDescription">Description</label>
+        <textarea id="editArtworkDescription" class="edit-artwork-textarea" rows="3"></textarea>
+        <label class="edit-artwork-label" for="editArtworkPrompt">Prompt</label>
+        <textarea id="editArtworkPrompt" class="edit-artwork-textarea" rows="4"></textarea>
+        <label class="edit-artwork-label" for="editArtworkPinterest">Pinterest Caption</label>
+        <input type="text" id="editArtworkPinterest" class="edit-artwork-input">
+        <label class="edit-artwork-label" for="editArtworkStyleName">Style Name</label>
+        <input type="text" id="editArtworkStyleName" class="edit-artwork-input">
+        <label class="edit-artwork-label" for="editArtworkLinkedPromptId">Linked Prompt ID</label>
+        <input type="text" id="editArtworkLinkedPromptId" class="edit-artwork-input" placeholder="0, saved-xxx, etc.">
+        <label class="edit-artwork-label" for="editArtworkLinkedCollectionId">Linked Collection ID</label>
+        <input type="text" id="editArtworkLinkedCollectionId" class="edit-artwork-input" placeholder="collection-xxx">
+        <label class="edit-artwork-label edit-artwork-featured-wrap">
+          <input type="checkbox" id="editArtworkFeatured" class="edit-artwork-checkbox">
+          Featured (show on homepage)
+        </label>
+        <div class="edit-artwork-modal-actions">
+          <button type="button" id="editArtworkCancelBtn" class="export-btn">Cancel</button>
+          <button type="submit" class="export-btn edit-artwork-save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="addArtworkModal" class="edit-artwork-modal" aria-hidden="true">
+    <div class="edit-artwork-modal-backdrop add-artwork-backdrop"></div>
+    <div class="edit-artwork-modal-panel">
+      <h3 class="edit-artwork-modal-title">Add New Artwork</h3>
+      <form id="addArtworkForm" class="edit-artwork-form">
+        <label class="edit-artwork-label" for="addArtworkImagePath">Image Path</label>
+        <input type="text" id="addArtworkImagePath" class="edit-artwork-input" required placeholder="./images/gallery/example.jpg">
+        <label class="edit-artwork-label" for="addArtworkTitle">Title</label>
+        <input type="text" id="addArtworkTitle" class="edit-artwork-input" required>
+        <label class="edit-artwork-label" for="addArtworkCategory">Category</label>
+        <input type="text" id="addArtworkCategory" class="edit-artwork-input" placeholder="AI Girl, SciFi Visual, etc.">
+        <label class="edit-artwork-label" for="addArtworkDescription">Description</label>
+        <textarea id="addArtworkDescription" class="edit-artwork-textarea" rows="3"></textarea>
+        <label class="edit-artwork-label" for="addArtworkPrompt">Prompt</label>
+        <textarea id="addArtworkPrompt" class="edit-artwork-textarea" rows="4"></textarea>
+        <label class="edit-artwork-label" for="addArtworkPinterest">Pinterest Caption</label>
+        <input type="text" id="addArtworkPinterest" class="edit-artwork-input">
+        <label class="edit-artwork-label" for="addArtworkStyleName">Style Name</label>
+        <input type="text" id="addArtworkStyleName" class="edit-artwork-input">
+        <label class="edit-artwork-label edit-artwork-featured-wrap">
+          <input type="checkbox" id="addArtworkFeatured" class="edit-artwork-checkbox">
+          Featured (show on homepage)
+        </label>
+        <div class="edit-artwork-modal-actions">
+          <button type="button" id="addArtworkCancelBtn" class="export-btn">Cancel</button>
+          <button type="submit" class="export-btn edit-artwork-save-btn">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="linkPromptModal" class="link-prompt-modal" aria-hidden="true">
+    <div id="linkPromptModalBackdrop" class="link-prompt-modal-backdrop"></div>
+    <div class="link-prompt-modal-panel">
+      <h3 class="link-prompt-modal-title">Link to Prompt</h3>
+      <p class="link-prompt-modal-hint">Select a prompt from Prompt Library to link with this artwork.</p>
+      <div id="linkPromptList" class="link-prompt-list"></div>
+      <div class="link-prompt-modal-actions">
+        <button type="button" id="linkPromptUnlinkBtn" class="export-btn">Unlink</button>
+        <button type="button" id="linkPromptCloseBtn" class="export-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="photoSeriesLightbox" class="photo-series-lightbox">
+    <span class="photo-series-lightbox-close">&times;</span>
+    <img id="photoSeriesLightboxImg" class="photo-series-lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+  <script src="visual-lab.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.querySelector('.photo-series .photo-grid');
+  const lightbox = document.getElementById('photoSeriesLightbox');
+  const lightboxImg = document.getElementById('photoSeriesLightboxImg');
+  const closeBtn = document.querySelector('.photo-series-lightbox-close');
+
+  if (!grid || !lightbox || !lightboxImg || !closeBtn) {
+    console.warn('Photo series lightbox elements not found');
+    return;
+  }
+
+  grid.addEventListener('click', function (e) {
+    const img = e.target.closest('img');
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    lightbox.classList.add('is-open');
+  });
+
+  closeBtn.addEventListener('click', function () {
+    lightbox.classList.remove('is-open');
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('is-open');
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('is-open');
+    }
+  });
+});
+</script>
+  <script>
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+  </script>
+</body>
+
+</html>

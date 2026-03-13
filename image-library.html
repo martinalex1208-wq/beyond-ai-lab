@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Library | Beyond AI Lab</title>
+  <meta name="description" content="A growing archive of AI-generated visuals. Browse and explore curated image collections.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/libraries.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="image-library-main">
+    <!-- Hero -->
+    <section class="image-library-hero">
+      <h1 class="image-library-hero-title">AI Image Library</h1>
+      <p class="image-library-hero-subtitle">A growing archive of AI-generated visuals</p>
+      <div class="library-quick-add">
+        <a href="add-entry.html?type=image" class="library-quick-add-link quick-add-link btn btn-secondary">Add Image</a>
+      </div>
+    </section>
+
+    <!-- Context Banner (when filtered by prompt) -->
+    <section id="imageLibraryContextBannerSection" class="image-library-section section" style="display:none;">
+      <div id="imageLibraryContextBanner" class="image-library-context-banner">
+        <span class="image-library-context-banner-text">Showing images linked to this prompt.</span>
+        <a href="image-library.html" class="image-library-context-banner-clear">Clear</a>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="image-library-section section">
+      <div class="image-library-controls section-inner">
+        <label for="imageLibraryCategoryFilter" class="image-library-control-label">Category</label>
+        <select id="imageLibraryCategoryFilter" class="image-library-select" aria-label="Filter by category">
+          <option value="">All</option>
+        </select>
+        <label for="imageLibraryFavoriteFilter" class="image-library-control-label">Favorites</label>
+        <select id="imageLibraryFavoriteFilter" class="image-library-select" aria-label="Filter by favorites">
+          <option value="">All</option>
+          <option value="only">Favorites Only</option>
+        </select>
+        <label for="imageLibraryGeneratorFilter" class="image-library-control-label">Generator</label>
+        <select id="imageLibraryGeneratorFilter" class="image-library-select" aria-label="Filter by generator">
+          <option value="">All Generators</option>
+        </select>
+        <label for="imageLibraryMoodFilter" class="image-library-control-label">Mood</label>
+        <select id="imageLibraryMoodFilter" class="image-library-select" aria-label="Filter by mood">
+          <option value="">All Moods</option>
+        </select>
+        <label for="imageLibrarySortFilter" class="image-library-control-label">Sort</label>
+        <select id="imageLibrarySortFilter" class="image-library-select" aria-label="Sort order">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="title-az">Title A-Z</option>
+        </select>
+        <label for="imageLibraryTagSearch" class="image-library-control-label">Search tags</label>
+        <input type="text" id="imageLibraryTagSearch" class="image-library-search" placeholder="Search by tag..." aria-label="Search by tag">
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="image-library-section section">
+      <div class="section-inner">
+        <div id="imageLibraryGrid" class="image-library-grid section-grid"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="image-library-section section image-library-cta-section">
+      <div class="image-library-cta section-inner">
+        <a href="visual-lab.html" class="btn-cta btn btn-primary">Open Visual Lab</a>
+        <a href="visual-works.html" class="btn-cta btn-cta--outline btn btn-secondary">Back to Visual Works</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="imageLibraryLightbox" class="photo-series-lightbox">
+    <span class="photo-series-lightbox-close" aria-label="Close">&times;</span>
+    <div class="photo-series-lightbox-content">
+      <div class="photo-series-lightbox-media-wrap">
+        <img id="imageLibraryLightboxImg" class="photo-series-lightbox-img" src="" alt="">
+      </div>
+      <div class="photo-series-lightbox-info library-detail">
+        <div class="photo-series-lightbox-header">
+          <h3 id="imageLibraryLightboxTitle" class="photo-series-lightbox-title library-detail-title"></h3>
+          <button type="button" id="imageLibraryLightboxFavoriteToggle" class="photo-series-lightbox-favorite-toggle favorite-toggle" aria-label="Add to favorites" style="display:none;">☆</button>
+        </div>
+        <div id="imageLibraryLightboxMeta" class="photo-series-lightbox-meta library-detail-meta"></div>
+        <div id="imageLibraryLightboxTags" class="photo-series-lightbox-tags"></div>
+        <div id="imageLibraryLightboxPrompt" class="photo-series-lightbox-prompt" style="display:none;">
+          <span class="photo-series-lightbox-label">Prompt</span>
+          <pre class="photo-series-lightbox-prompt-text"></pre>
+        </div>
+        <div id="imageLibraryLightboxCopyActions" class="photo-series-lightbox-copy-actions library-detail-actions" style="display:none;"></div>
+        <div id="imageLibraryLightboxViewPrompt" class="photo-series-lightbox-link-wrap" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./js/library-core.js"></script>
+  <script src="./script.js"></script>
+  <script>
+(function () {
+  const JSON_PATH = './data/images.json';
+  const FAVORITES_STORAGE_KEY = 'imageLibraryFavorites';
+  const grid = document.getElementById('imageLibraryGrid');
+  const categoryFilter = document.getElementById('imageLibraryCategoryFilter');
+  const favoriteFilter = document.getElementById('imageLibraryFavoriteFilter');
+  const generatorFilter = document.getElementById('imageLibraryGeneratorFilter');
+  const moodFilter = document.getElementById('imageLibraryMoodFilter');
+  const sortFilter = document.getElementById('imageLibrarySortFilter');
+  const tagSearch = document.getElementById('imageLibraryTagSearch');
+  const lightbox = document.getElementById('imageLibraryLightbox');
+  const lightboxImg = document.getElementById('imageLibraryLightboxImg');
+  const closeBtn = document.querySelector('#imageLibraryLightbox .photo-series-lightbox-close');
+
+  var rawData = [];
+  var lastRenderedList = [];
+  var currentLightboxItem = null;
+
+  function getUrlPromptParam() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      return params.get('prompt') || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  if (!grid) return;
+
+  function getItemKey(item) {
+    if (typeof getItemUniqueKey === 'function') return getItemUniqueKey(item);
+    var folder = (item.folder || '').replace(/\/$/, '');
+    var file = item.file || '';
+    return folder ? folder + '/' + file : file;
+  }
+
+  function getFavoritesFromStorage() {
+    try {
+      var raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function setFavoriteInStorage(key, value) {
+    try {
+      var obj = getFavoritesFromStorage();
+      obj[key] = value;
+      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(obj));
+    } catch (e) {}
+  }
+
+  function getActualFavorite(item) {
+    if (typeof window.getActualFavorite === 'function') return window.getActualFavorite(item, FAVORITES_STORAGE_KEY);
+    var key = getItemKey(item);
+    var stored = getFavoritesFromStorage();
+    if (key && stored.hasOwnProperty(key)) return stored[key] === true;
+    return item.favorite === true;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  var formatSeries = (typeof formatSeriesLabel === 'function' ? formatSeriesLabel : function (s) { if (!s) return ''; return String(s).replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }); });
+  var truncatePrompt = (typeof truncateText === 'function' ? truncateText : function (p, maxLen) { if (!p) return ''; var s = String(p).trim(); return s.length <= maxLen ? s : s.slice(0, maxLen) + '...'; });
+
+  function formatDate(d) {
+    if (!d) return '';
+    return String(d);
+  }
+
+  function handleCopyToClipboard(text, buttonEl, originalLabel) {
+    var label = originalLabel || buttonEl.textContent;
+    navigator.clipboard.writeText(text).then(function () {
+      buttonEl.textContent = 'Copied!';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    }).catch(function () {
+      buttonEl.textContent = 'Failed';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    });
+  }
+
+  function buildCard(item, index) {
+    var folder = item.folder || '';
+    var file = item.file || '';
+    var title = item.title || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var prompt = item.prompt || '';
+    var camera = item.camera || '';
+    var mood = item.mood || '';
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+    var favorite = getActualFavorite(item);
+    var imgSrc = './' + folder + '/' + file;
+
+    var tagsHtml = '';
+    if (tags.length > 0) {
+      tagsHtml = '<div class="image-library-tags">' +
+        tags.map(function (t) { return '<span class="image-library-tag">' + escapeHtml(t) + '</span>'; }).join('') +
+        '</div>';
+    }
+
+    var metaParts = [];
+    if (mood) metaParts.push('<span class="image-library-meta-item library-card-meta-item">' + escapeHtml(mood) + '</span>');
+    if (generator) metaParts.push('<span class="image-library-meta-item library-card-meta-item">' + escapeHtml(generator) + '</span>');
+    if (createdAt) metaParts.push('<span class="image-library-meta-item library-card-meta-item">' + escapeHtml(formatDate(createdAt)) + '</span>');
+    if (favorite) metaParts.push('<span class="image-library-favorite">★ Favorite</span>');
+    var metaHtml = metaParts.length > 0 ? '<div class="image-library-meta library-card-meta">' + metaParts.join('') + '</div>' : '';
+
+    var promptHtml = '';
+    if (prompt) {
+      promptHtml = '<div class="image-library-prompt-preview library-card-text">' + escapeHtml(truncatePrompt(prompt, 120)) + '</div>';
+    }
+
+    var promptId = item.promptId || '';
+    var copyBtns = [];
+    if (prompt) copyBtns.push('<button type="button" class="image-library-copy-button copy-button btn btn-outline" data-copy-type="prompt">Copy Prompt</button>');
+    if (camera) copyBtns.push('<button type="button" class="image-library-copy-button copy-button btn btn-outline" data-copy-type="camera">Copy Camera</button>');
+    if (promptId) copyBtns.push('<a href="prompt-library.html?prompt=' + escapeHtml(promptId) + '" class="image-library-link-button btn btn-secondary">View Prompt</a>');
+    var copyActionsHtml = copyBtns.length > 0 ? '<div class="image-library-copy-actions library-card-actions">' + copyBtns.join('') + '</div>' : '';
+
+    var favSymbol = favorite ? '★' : '☆';
+    var favAria = favorite ? 'Remove from favorites' : 'Add to favorites';
+    var favToggleHtml = '<button type="button" class="image-library-favorite-toggle favorite-toggle' + (favorite ? ' is-favorite' : '') + '" data-item-key="' + escapeHtml(getItemKey(item)) + '" aria-label="' + escapeHtml(favAria) + '" title="' + escapeHtml(favAria) + '">' + favSymbol + '</button>';
+
+    return '<div class="image-library-card library-card" data-card-index="' + (index !== undefined ? index : '') + '">' +
+      '<div class="image-library-image-wrap">' +
+        favToggleHtml +
+        '<img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(title) + '">' +
+      '</div>' +
+      '<h3 class="image-library-title library-card-title">' + escapeHtml(title) + '</h3>' +
+      (series ? '<span class="image-library-series library-card-subtitle">' + escapeHtml(formatSeries(series)) + '</span>' : '') +
+      metaHtml +
+      promptHtml +
+      copyActionsHtml +
+      tagsHtml +
+    '</div>';
+  }
+
+  function renderLightboxInfo(item) {
+    var titleEl = document.getElementById('imageLibraryLightboxTitle');
+    var favToggleEl = document.getElementById('imageLibraryLightboxFavoriteToggle');
+    var metaEl = document.getElementById('imageLibraryLightboxMeta');
+    var tagsEl = document.getElementById('imageLibraryLightboxTags');
+    var promptWrap = document.getElementById('imageLibraryLightboxPrompt');
+    var promptText = promptWrap ? promptWrap.querySelector('.photo-series-lightbox-prompt-text') : null;
+
+    var title = item.title || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var prompt = item.prompt || '';
+    var camera = item.camera || '';
+    var mood = item.mood || '';
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+
+    if (titleEl) titleEl.textContent = title;
+    var fav = getActualFavorite(item);
+    if (favToggleEl) {
+      favToggleEl.textContent = fav ? '★' : '☆';
+      favToggleEl.setAttribute('aria-label', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.setAttribute('title', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.classList.toggle('is-favorite', fav);
+      favToggleEl.style.display = '';
+    }
+    var detailParts = [];
+    if (series) detailParts.push('<div class="photo-series-lightbox-detail-row"><span class="photo-series-lightbox-label">Series</span> ' + escapeHtml(formatSeries(series)) + '</div>');
+    if (camera) detailParts.push('<div class="photo-series-lightbox-detail-row"><span class="photo-series-lightbox-label">Camera</span> ' + escapeHtml(camera) + '</div>');
+    if (mood) detailParts.push('<div class="photo-series-lightbox-detail-row"><span class="photo-series-lightbox-label">Mood</span> ' + escapeHtml(mood) + '</div>');
+    if (generator) detailParts.push('<div class="photo-series-lightbox-detail-row"><span class="photo-series-lightbox-label">Generator</span> ' + escapeHtml(generator) + '</div>');
+    if (createdAt) detailParts.push('<div class="photo-series-lightbox-detail-row"><span class="photo-series-lightbox-label">Created</span> ' + escapeHtml(formatDate(createdAt)) + '</div>');
+    if (metaEl) {
+      metaEl.innerHTML = detailParts.join('');
+      metaEl.style.display = detailParts.length > 0 ? '' : 'none';
+    }
+    if (tagsEl) {
+      tagsEl.innerHTML = tags.length > 0 ? tags.map(function (t) { return '<span class="image-library-tag">' + escapeHtml(t) + '</span>'; }).join('') : '';
+      tagsEl.style.display = tags.length > 0 ? '' : 'none';
+    }
+    if (promptWrap && promptText) {
+      if (prompt) {
+        promptText.textContent = prompt;
+        promptWrap.style.display = '';
+      } else {
+        promptWrap.style.display = 'none';
+      }
+    }
+    var promptId = item.promptId || '';
+    var copyActionsEl = document.getElementById('imageLibraryLightboxCopyActions');
+    if (copyActionsEl) {
+      var copyBtns = [];
+      if (prompt) copyBtns.push('<button type="button" class="photo-series-lightbox-copy-button copy-button btn btn-outline" data-copy-type="prompt">Copy Prompt</button>');
+      if (camera) copyBtns.push('<button type="button" class="photo-series-lightbox-copy-button copy-button btn btn-outline" data-copy-type="camera">Copy Camera</button>');
+      copyActionsEl.innerHTML = copyBtns.join('');
+      copyActionsEl.style.display = copyBtns.length > 0 ? '' : 'none';
+    }
+    var viewPromptEl = document.getElementById('imageLibraryLightboxViewPrompt');
+    if (viewPromptEl) {
+      if (promptId) {
+        viewPromptEl.innerHTML = '<a href="prompt-library.html?prompt=' + escapeHtml(promptId) + '" class="photo-series-lightbox-link-button btn btn-secondary">View Prompt</a>';
+        viewPromptEl.style.display = '';
+      } else {
+        viewPromptEl.innerHTML = '';
+        viewPromptEl.style.display = 'none';
+      }
+    }
+  }
+
+  function getFilteredAndSorted() {
+    var category = (categoryFilter && categoryFilter.value) ? categoryFilter.value : '';
+    var favoriteVal = (favoriteFilter && favoriteFilter.value) ? favoriteFilter.value : '';
+    var generatorVal = (generatorFilter && generatorFilter.value) ? generatorFilter.value : '';
+    var moodVal = (moodFilter && moodFilter.value) ? moodFilter.value : '';
+    var tagQuery = typeof normalizeTagSearch === 'function' ? normalizeTagSearch(tagSearch && tagSearch.value) : ((tagSearch && tagSearch.value) ? String(tagSearch.value).trim().toLowerCase() : '');
+    var sortVal = (sortFilter && sortFilter.value) ? sortFilter.value : 'newest';
+    var urlPrompt = getUrlPromptParam();
+
+    var list = rawData.slice();
+
+    if (urlPrompt) {
+      list = list.filter(function (item) { return (item.promptId || '') === urlPrompt; });
+    }
+    if (category) {
+      list = list.filter(function (item) { return (item.series || '') === category; });
+    }
+    if (favoriteVal === 'only') {
+      list = list.filter(function (item) { return getActualFavorite(item); });
+    }
+    if (generatorVal) {
+      list = list.filter(function (item) { return (item.generator || '') === generatorVal; });
+    }
+    if (moodVal) {
+      list = list.filter(function (item) {
+        return typeof matchMoodToken === 'function' ? matchMoodToken(item.mood, moodVal) : (function () {
+          var m = item.mood || '';
+          if (!m) return false;
+          var parts = m.split(',').map(function (p) { return p.trim(); });
+          return parts.indexOf(moodVal) !== -1;
+        })();
+      });
+    }
+    if (tagQuery) {
+      list = list.filter(function (item) {
+        var tags = typeof safeArray === 'function' ? safeArray(item.tags) : (Array.isArray(item.tags) ? item.tags : []);
+        return typeof matchesTagSearch === 'function' ? matchesTagSearch(tags, tagQuery) : tags.some(function (t) { return String(t).toLowerCase().indexOf(tagQuery) !== -1; });
+      });
+    }
+
+    list = typeof sortLibraryItems === 'function' ? sortLibraryItems(list, sortVal) : (function () {
+      if (sortVal === 'oldest') list.reverse();
+      else if (sortVal === 'title-az') list.sort(function (a, b) { var ta = (a.title || '').toLowerCase(); var tb = (b.title || '').toLowerCase(); return ta < tb ? -1 : ta > tb ? 1 : 0; });
+      return list;
+    })();
+
+    return list;
+  }
+
+  function render() {
+    var list = getFilteredAndSorted();
+    lastRenderedList = list;
+    var urlPrompt = getUrlPromptParam();
+    var bannerSection = document.getElementById('imageLibraryContextBannerSection');
+    if (bannerSection) {
+      bannerSection.style.display = urlPrompt ? '' : 'none';
+    }
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'image-library-empty library-empty';
+      empty.innerHTML = typeof buildLibraryEmptyState === 'function' ? buildLibraryEmptyState('No images found for this filter.', 'add-entry.html?type=image', 'Add Image') : 'No images found for this filter.<div class="library-empty-action"><a href="add-entry.html?type=image" class="library-empty-action-link">Add Image</a></div>';
+      grid.appendChild(empty);
+      return;
+    }
+    list.forEach(function (item, index) {
+      grid.insertAdjacentHTML('beforeend', buildCard(item, index));
+    });
+  }
+
+  function initLightbox() {
+    if (!lightbox || !lightboxImg || !closeBtn) return;
+    grid.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.image-library-favorite-toggle');
+      if (favToggle) {
+        e.preventDefault();
+        e.stopPropagation();
+        var card = favToggle.closest('.image-library-card');
+        var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+        var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+        if (item) {
+          var key = getItemKey(item);
+          var next = !getActualFavorite(item);
+          setFavoriteInStorage(key, next);
+          if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+            if (lightbox.classList.contains('is-open') && currentLightboxItem && getItemKey(currentLightboxItem) === key) {
+              lightbox.classList.remove('is-open');
+            }
+            render();
+          } else {
+            var newCard = buildCard(item, idx);
+            card.outerHTML = newCard;
+          }
+          if (lightbox.classList.contains('is-open') && currentLightboxItem && getItemKey(currentLightboxItem) === key) {
+            var lbFavEl = document.getElementById('imageLibraryLightboxFavoriteToggle');
+            if (lbFavEl) {
+              lbFavEl.textContent = next ? '★' : '☆';
+              lbFavEl.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.classList.toggle('is-favorite', next);
+            }
+          }
+        }
+        return;
+      }
+      if (e.target.closest('.image-library-link-button')) {
+        return;
+      }
+      if (e.target.closest('.image-library-copy-button') || e.target.closest('.image-library-copy-actions')) {
+        var btn = e.target.closest('.image-library-copy-button');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var card = btn.closest('.image-library-card');
+          var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+          var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+          if (item) {
+            var type = btn.getAttribute('data-copy-type');
+            var text = type === 'prompt' ? (item.prompt || '') : (type === 'camera' ? (item.camera || '') : '');
+            if (text) handleCopyToClipboard(text, btn, type === 'prompt' ? 'Copy Prompt' : 'Copy Camera');
+          }
+        }
+        return;
+      }
+      var card = e.target.closest('.image-library-card');
+      if (!card) return;
+      var wrap = e.target.closest('.image-library-image-wrap');
+      var img = wrap ? wrap.querySelector('img') : e.target.closest('img');
+      if (!img) return;
+      var cards = grid.querySelectorAll('.image-library-card');
+      var idx = Array.prototype.indexOf.call(cards, card);
+      var item = lastRenderedList[idx];
+      if (item) {
+        currentLightboxItem = item;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        renderLightboxInfo(item);
+        lightbox.classList.add('is-open');
+      }
+    });
+    lightbox.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.photo-series-lightbox-favorite-toggle');
+      if (favToggle && currentLightboxItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var key = getItemKey(currentLightboxItem);
+        var next = !getActualFavorite(currentLightboxItem);
+        setFavoriteInStorage(key, next);
+        favToggle.textContent = next ? '★' : '☆';
+        favToggle.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.classList.toggle('is-favorite', next);
+        if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+          lightbox.classList.remove('is-open');
+          render();
+        } else {
+          var cards = grid.querySelectorAll('.image-library-card');
+          for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var idx = parseInt(card.getAttribute('data-card-index'), 10);
+            var item = lastRenderedList[idx];
+            if (item && getItemKey(item) === key) {
+              card.outerHTML = buildCard(item, idx);
+              break;
+            }
+          }
+        }
+        return;
+      }
+      var btn = e.target.closest('.photo-series-lightbox-copy-button');
+      if (btn && currentLightboxItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var type = btn.getAttribute('data-copy-type');
+        var text = type === 'prompt' ? (currentLightboxItem.prompt || '') : (type === 'camera' ? (currentLightboxItem.camera || '') : '');
+        if (text) handleCopyToClipboard(text, btn, type === 'prompt' ? 'Copy Prompt' : 'Copy Camera');
+      }
+    });
+    closeBtn.addEventListener('click', function () {
+      lightbox.classList.remove('is-open');
+    });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) lightbox.classList.remove('is-open');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') lightbox.classList.remove('is-open');
+    });
+  }
+
+  function populateCategoryFilter() {
+    if (!categoryFilter) return;
+    var seriesSet = {};
+    rawData.forEach(function (item) {
+      var s = item.series || '';
+      if (s) seriesSet[s] = true;
+    });
+    var seriesList = Object.keys(seriesSet).sort();
+    seriesList.forEach(function (s) {
+      var opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = formatSeries(s);
+      categoryFilter.appendChild(opt);
+    });
+  }
+
+  function populateGeneratorFilter() {
+    if (!generatorFilter) return;
+    var genSet = {};
+    rawData.forEach(function (item) {
+      var g = (item.generator || '').trim();
+      if (g) genSet[g] = true;
+    });
+    var genList = Object.keys(genSet).sort();
+    genList.forEach(function (g) {
+      var opt = document.createElement('option');
+      opt.value = g;
+      opt.textContent = g;
+      generatorFilter.appendChild(opt);
+    });
+  }
+
+  function populateMoodFilter() {
+    if (!moodFilter) return;
+    var moodSet = {};
+    var fmt = typeof formatMoodTokens === 'function' ? formatMoodTokens : function (m) { var s = (m || '').toString(); return s ? s.split(',').map(function (p) { return p.trim(); }).filter(Boolean) : []; };
+    rawData.forEach(function (item) {
+      fmt(item.mood).forEach(function (p) { moodSet[p] = true; });
+    });
+    var moodList = Object.keys(moodSet).sort();
+    moodList.forEach(function (m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      moodFilter.appendChild(opt);
+    });
+  }
+
+  fetch(JSON_PATH)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (!Array.isArray(data)) return;
+      rawData = data;
+      populateCategoryFilter();
+      populateGeneratorFilter();
+      populateMoodFilter();
+      render();
+      initLightbox();
+      if (categoryFilter) categoryFilter.addEventListener('change', render);
+      if (favoriteFilter) favoriteFilter.addEventListener('change', render);
+      if (generatorFilter) generatorFilter.addEventListener('change', render);
+      if (moodFilter) moodFilter.addEventListener('change', render);
+      if (sortFilter) sortFilter.addEventListener('change', render);
+      if (tagSearch) tagSearch.addEventListener('input', render);
+    })
+    .catch(function (err) {
+      console.warn('Image library JSON load failed:', err);
+    });
+})();
+  </script>
+</body>
+
+</html>

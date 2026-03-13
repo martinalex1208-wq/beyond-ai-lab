@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Coding Lab | Beyond AI Lab</title>
+  <meta name="description" content="Creative systems built with AI, code, and curiosity. Vibe coding projects and philosophy.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/vibe-coding.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="vibe-coding-main">
+    <section class="vibe-coding-hero">
+      <p class="hero-tagline">Vibe Coding Lab</p>
+      <h1 class="hero-title">
+        <span class="hero-title-line hero-title-line--accent">Vibe Coding Lab</span>
+      </h1>
+      <p class="hero-subtitle">Creative systems built with AI, code, and curiosity</p>
+    </section>
+
+    <section class="vibe-section" id="what-is">
+      <div class="vibe-card">
+        <h2 class="vibe-section-title">What is Vibe Coding</h2>
+        <p class="vibe-desc">Vibe Coding 是在 AI 輔助下，將想法轉化為實用創意工具的開發方式。不追求完美架構，而是專注於快速迭代、實驗與學習——用好奇心驅動，讓靈感落地成可用的系統。</p>
+      </div>
+    </section>
+
+    <section class="vibe-section" id="projects">
+      <h2 class="vibe-section-title vibe-section-title--centered">Projects</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3 class="project-title">1919 Event Webpage</h3>
+          <p class="project-desc">公益環島活動專頁，整合活動資訊、報名與募款流程。</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">LINE Futures Message Automation</h3>
+          <p class="project-desc">自動化發送期貨相關訊息至 LINE 群組，節省重複操作時間。</p>
+          <div class="project-tags">
+            <span class="tag">Automation</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">Daily AI Image Generation</h3>
+          <p class="project-desc">每日自動生成 AI 圖像的系統，結合排程與 API 串接。</p>
+          <div class="project-tags">
+            <span class="tag">AI</span>
+            <span class="tag">Automation</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">Beyond AI Lab Website</h3>
+          <p class="project-desc">本網站，整合 Music Lab、Visual Lab、Story Lab 等創作實驗室。</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="vibe-section" id="workflow">
+      <h2 class="vibe-section-title vibe-section-title--centered">Workflow</h2>
+      <div class="workflow-flow">
+        <span class="workflow-step">Idea</span>
+        <span class="workflow-arrow">→</span>
+        <span class="workflow-step">Prompt</span>
+        <span class="workflow-arrow">→</span>
+        <span class="workflow-step">Agent</span>
+        <span class="workflow-arrow">→</span>
+        <span class="workflow-step">Code</span>
+        <span class="workflow-arrow">→</span>
+        <span class="workflow-step">Test</span>
+        <span class="workflow-arrow">→</span>
+        <span class="workflow-step">Improve</span>
+      </div>
+    </section>
+
+    <section class="vibe-section" id="philosophy">
+      <div class="vibe-philosophy-card">
+        <p class="vibe-philosophy">"Curiosity turns ideas into systems."</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#">Line</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

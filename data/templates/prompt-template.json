@@ -1,0 +1,14 @@
+[
+  {
+    "id": "prompt-example-id",
+    "title": "Example Title",
+    "series": "example-series",
+    "tags": ["tag1", "tag2", "tag3"],
+    "prompt": "Your photography prompt text here...",
+    "camera": "85mm f/1.8",
+    "mood": "Warm, Gentle",
+    "generator": "Midjourney v6",
+    "createdAt": "2026-03-10",
+    "favorite": false
+  }
+]

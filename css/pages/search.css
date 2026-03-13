@@ -1,0 +1,230 @@
+/* Beyond AI Lab - Unified Search */
+
+/* ===== Unified Search ===== */
+.unified-search-main {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 4rem;
+}
+
+.unified-search-hero {
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+}
+
+.unified-search-hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.unified-search-hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.unified-search-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+.unified-search-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.unified-search-control-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+}
+
+.unified-search-input {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  min-width: 240px;
+  flex: 1;
+  transition: border-color var(--transition);
+}
+
+.unified-search-input::placeholder {
+  color: var(--text-dim);
+}
+
+.unified-search-input:hover,
+.unified-search-input:focus {
+  border-color: var(--border-hover);
+  outline: none;
+}
+
+.unified-search-select {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.unified-search-select:hover,
+.unified-search-select:focus {
+  border-color: var(--border-hover);
+  outline: none;
+}
+
+.unified-search-placeholder {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.unified-search-summary {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.unified-search-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.unified-search-results-section {
+  padding-top: 0;
+}
+
+.unified-search-group {
+  margin-bottom: 2.5rem;
+}
+
+.unified-search-group-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.unified-search-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.unified-search-card {
+  background: rgba(8, 16, 24, 0.72);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.unified-search-card:hover {
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+}
+
+.unified-search-type {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.unified-search-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.unified-search-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.unified-search-preview {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0.5rem 0;
+  max-height: 4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.unified-search-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.unified-search-tag {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: rgba(0, 212, 255, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.unified-search-card-date {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.unified-search-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  align-self: flex-start;
+  min-height: 36px;
+}
+
+.unified-search-link:hover {
+  border-color: rgba(0, 212, 255, 0.65);
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .unified-search-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

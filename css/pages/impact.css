@@ -1,0 +1,134 @@
+/* Beyond AI Lab - Impact Lab */
+
+/* ===== Impact Lab ===== */
+.impact-lab-main {
+  padding-bottom: 4rem;
+}
+
+.impact-lab-hero {
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+}
+
+.impact-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.impact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.impact-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+.impact-card--warm {
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.impact-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.impact-section-title--centered {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.impact-desc {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.impact-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.highlight-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.highlight-item--leader {
+  grid-column: 1 / -1;
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.highlight-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.highlight-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.impact-block p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.impact-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.flow-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.flow-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.flow-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.impact-note {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 0;
+}
+
+.impact-cta-wrap {
+  margin: 1.25rem 0 0;
+}
+

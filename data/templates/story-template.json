@@ -1,0 +1,15 @@
+[
+  {
+    "id": "story-example-id",
+    "title": "Example Story Title",
+    "subtitle": "Optional subtitle",
+    "series": "essays",
+    "tags": ["tag1", "tag2", "tag3"],
+    "content": "Your full story content here...\n\nParagraph 2...",
+    "summary": "Short summary in one or two sentences.",
+    "mood": "Reflective, Gentle",
+    "generator": "Human",
+    "createdAt": "2026-03-10",
+    "favorite": false
+  }
+]

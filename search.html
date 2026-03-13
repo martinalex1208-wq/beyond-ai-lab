@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Search | Beyond AI Lab</title>
+  <meta name="description" content="Search across prompts, images, songs, and stories in one structured creative archive.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/search.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="unified-search-main">
+    <!-- Hero -->
+    <section class="unified-search-hero">
+      <h1 class="unified-search-hero-title">Unified Search</h1>
+      <p class="unified-search-hero-subtitle">Search across prompts, images, songs, and stories in one structured creative archive.</p>
+    </section>
+
+    <!-- Search Controls -->
+    <section class="unified-search-section">
+      <div class="unified-search-controls">
+        <label for="unifiedSearchInput" class="unified-search-control-label">Keyword</label>
+        <input type="text" id="unifiedSearchInput" class="unified-search-input" placeholder="Enter keyword to search..." aria-label="Search keyword" autocomplete="off">
+        <label for="unifiedSearchTypeFilter" class="unified-search-control-label">Type</label>
+        <select id="unifiedSearchTypeFilter" class="unified-search-select" aria-label="Filter by type">
+          <option value="">All Types</option>
+          <option value="prompts">Prompts</option>
+          <option value="images">Images</option>
+          <option value="songs">Songs</option>
+          <option value="stories">Stories</option>
+        </select>
+        <label for="unifiedSearchSortFilter" class="unified-search-control-label">Sort</label>
+        <select id="unifiedSearchSortFilter" class="unified-search-select" aria-label="Sort order">
+          <option value="relevance">Relevance</option>
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="title-az">Title A-Z</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Search Result Summary -->
+    <section class="unified-search-section unified-search-results-section">
+      <div id="unifiedSearchPlaceholder" class="unified-search-placeholder">
+        Start by entering a keyword to search the archive.
+      </div>
+      <div id="unifiedSearchSummary" class="unified-search-summary" style="display:none;"></div>
+      <div id="unifiedSearchResults" class="unified-search-results" style="display:none;"></div>
+      <div id="unifiedSearchEmpty" class="unified-search-empty" style="display:none;">No results found.</div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+          <li><a href="story-library.html">Story Library</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./script.js"></script>
+  <script>
+(function () {
+  const PROMPTS_PATH = './data/prompts.json';
+  const IMAGES_PATH = './data/images.json';
+  const SONGS_PATH = './data/songs.json';
+  const STORIES_PATH = './data/stories.json';
+
+  var allData = { prompts: [], images: [], songs: [], stories: [] };
+  var normalizedIndex = [];
+
+  var searchInput = document.getElementById('unifiedSearchInput');
+  var typeFilter = document.getElementById('unifiedSearchTypeFilter');
+  var sortFilter = document.getElementById('unifiedSearchSortFilter');
+  var placeholder = document.getElementById('unifiedSearchPlaceholder');
+  var summaryEl = document.getElementById('unifiedSearchSummary');
+  var resultsEl = document.getElementById('unifiedSearchResults');
+  var emptyEl = document.getElementById('unifiedSearchEmpty');
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  var truncateTextLocal = (typeof truncateText === 'function' ? truncateText : function (p, maxLen) { if (!p) return ''; var s = String(p).trim().replace(/\n/g, ' '); return s.length <= maxLen ? s : s.slice(0, maxLen) + '...'; });
+
+  function normalizePrompt(item) {
+    var preview = truncateTextLocal(item.prompt, 120);
+    return {
+      type: 'prompts',
+      id: item.id || '',
+      title: item.title || '',
+      subtitle: '',
+      summary: preview,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      createdAt: item.createdAt || '',
+      linkTarget: 'prompt-library.html?prompt=' + encodeURIComponent(item.id || '')
+    };
+  }
+
+  function normalizeImage(item, index) {
+    var preview = truncateTextLocal(item.prompt, 120);
+    var promptId = item.promptId || '';
+    var linkTarget = promptId ? 'image-library.html?prompt=' + encodeURIComponent(promptId) : 'image-library.html';
+    var key = item.id || ('image-' + (item.series || '') + '-' + (item.file || '') + '-' + index);
+    return {
+      type: 'images',
+      id: key,
+      title: item.title || '',
+      subtitle: '',
+      summary: preview,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      createdAt: item.createdAt || '',
+      linkTarget: linkTarget
+    };
+  }
+
+  function normalizeSong(item) {
+    var preview = truncateTextLocal(item.lyrics, 120);
+    return {
+      type: 'songs',
+      id: item.id || '',
+      title: item.title || '',
+      subtitle: item.subtitle || '',
+      summary: preview,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      createdAt: item.createdAt || '',
+      linkTarget: 'music-library.html'
+    };
+  }
+
+  function normalizeStory(item) {
+    var preview = truncateTextLocal(item.summary || item.content, 120);
+    return {
+      type: 'stories',
+      id: item.id || '',
+      title: item.title || '',
+      subtitle: item.subtitle || '',
+      summary: preview,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      createdAt: item.createdAt || '',
+      linkTarget: 'story-library.html'
+    };
+  }
+
+  function buildSearchableText(item, type) {
+    var parts = [];
+    if (type === 'prompts') {
+      parts.push(item.title, item.tags, item.prompt, item.camera, item.mood, item.generator);
+    } else if (type === 'images') {
+      parts.push(item.title, item.series, item.tags, item.prompt, item.camera, item.mood, item.generator);
+    } else if (type === 'songs') {
+      parts.push(item.title, item.subtitle, item.tags, item.lyrics, item.style, item.mood, item.generator);
+    } else if (type === 'stories') {
+      parts.push(item.title, item.subtitle, item.tags, item.summary, item.content, item.mood, item.generator);
+    }
+    return parts.map(function (p) {
+      if (Array.isArray(p)) return p.join(' ');
+      return String(p || '');
+    }).join(' ').toLowerCase();
+  }
+
+  function itemMatches(item, searchableText, query) {
+    if (!query) return false;
+    return searchableText.indexOf(query) !== -1;
+  }
+
+  function runSearch() {
+    var query = (searchInput && searchInput.value) ? searchInput.value.trim().toLowerCase() : '';
+    var typeVal = (typeFilter && typeFilter.value) ? typeFilter.value : '';
+    var sortVal = (sortFilter && sortFilter.value) ? sortFilter.value : 'relevance';
+
+    placeholder.style.display = query ? 'none' : '';
+    summaryEl.style.display = 'none';
+    resultsEl.style.display = 'none';
+    emptyEl.style.display = 'none';
+
+    if (!query) return;
+
+    var results = [];
+    var searchableCache = {};
+
+    function searchIn(list, type, normalizer) {
+      list.forEach(function (item, idx) {
+        var key = type + '-' + (item.id || item.file || idx);
+        if (!searchableCache[key]) {
+          searchableCache[key] = buildSearchableText(item, type);
+        }
+        if (itemMatches(item, searchableCache[key], query)) {
+          var norm = normalizer(item, idx);
+          if (typeVal && norm.type !== typeVal) return;
+          results.push(norm);
+        }
+      });
+    }
+
+    if (!typeVal || typeVal === 'prompts') searchIn(allData.prompts, 'prompts', normalizePrompt);
+    if (!typeVal || typeVal === 'images') searchIn(allData.images, 'images', function (item, idx) { return normalizeImage(item, idx); });
+    if (!typeVal || typeVal === 'songs') searchIn(allData.songs, 'songs', normalizeSong);
+    if (!typeVal || typeVal === 'stories') searchIn(allData.stories, 'stories', normalizeStory);
+
+    if (sortVal === 'newest') {
+      results.sort(function (a, b) {
+        var da = (a.createdAt || '').toString();
+        var db = (b.createdAt || '').toString();
+        return da > db ? -1 : da < db ? 1 : 0;
+      });
+    } else if (sortVal === 'oldest') {
+      results.sort(function (a, b) {
+        var da = (a.createdAt || '').toString();
+        var db = (b.createdAt || '').toString();
+        return da < db ? -1 : da > db ? 1 : 0;
+      });
+    } else if (sortVal === 'title-az') {
+      results.sort(function (a, b) {
+        var ta = (a.title || '').toLowerCase();
+        var tb = (b.title || '').toLowerCase();
+        return ta < tb ? -1 : ta > tb ? 1 : 0;
+      });
+    }
+    // relevance: keep order (prompts, images, songs, stories by type, then by createdAt desc within type)
+    else if (sortVal === 'relevance') {
+      var typeOrder = { prompts: 0, images: 1, songs: 2, stories: 3 };
+      results.sort(function (a, b) {
+        var oa = typeOrder[a.type] !== undefined ? typeOrder[a.type] : 4;
+        var ob = typeOrder[b.type] !== undefined ? typeOrder[b.type] : 4;
+        if (oa !== ob) return oa - ob;
+        var da = (a.createdAt || '').toString();
+        var db = (b.createdAt || '').toString();
+        return da > db ? -1 : da < db ? 1 : 0;
+      });
+    }
+
+    if (results.length === 0) {
+      emptyEl.style.display = '';
+      return;
+    }
+
+    summaryEl.textContent = results.length + ' result' + (results.length !== 1 ? 's' : '') + ' found';
+    summaryEl.style.display = '';
+
+    var groups = { prompts: [], images: [], songs: [], stories: [] };
+    results.forEach(function (r) {
+      if (groups[r.type]) groups[r.type].push(r);
+    });
+
+    var typeLabels = { prompts: 'Prompts', images: 'Images', songs: 'Songs', stories: 'Stories' };
+    var html = '';
+    ['prompts', 'images', 'songs', 'stories'].forEach(function (t) {
+      var list = groups[t];
+      if (list.length === 0) return;
+      html += '<div class="unified-search-group">';
+      html += '<h3 class="unified-search-group-title">' + escapeHtml(typeLabels[t]) + '</h3>';
+      html += '<div class="unified-search-grid">';
+      list.forEach(function (r) {
+        html += '<article class="unified-search-card">';
+        html += '<span class="unified-search-type">' + escapeHtml(typeLabels[r.type]) + '</span>';
+        html += '<h4 class="unified-search-card-title">' + escapeHtml(r.title) + '</h4>';
+        if (r.subtitle) html += '<span class="unified-search-card-subtitle">' + escapeHtml(r.subtitle) + '</span>';
+        if (r.summary) html += '<p class="unified-search-preview">' + escapeHtml(r.summary) + '</p>';
+        if (r.tags.length > 0) {
+          html += '<div class="unified-search-card-tags">';
+          r.tags.forEach(function (tag) { html += '<span class="unified-search-tag">' + escapeHtml(tag) + '</span>'; });
+          html += '</div>';
+        }
+        if (r.createdAt) html += '<span class="unified-search-card-date">' + escapeHtml(r.createdAt) + '</span>';
+        html += '<a href="' + escapeHtml(r.linkTarget) + '" class="unified-search-link">View</a>';
+        html += '</article>';
+      });
+      html += '</div></div>';
+    });
+
+    resultsEl.innerHTML = html;
+    resultsEl.style.display = '';
+  }
+
+  function loadAll() {
+    Promise.all([
+      fetch(PROMPTS_PATH).then(function (r) { return r.json(); }).catch(function () { return []; }),
+      fetch(IMAGES_PATH).then(function (r) { return r.json(); }).catch(function () { return []; }),
+      fetch(SONGS_PATH).then(function (r) { return r.json(); }).catch(function () { return []; }),
+      fetch(STORIES_PATH).then(function (r) { return r.json(); }).catch(function () { return []; })
+    ]).then(function (arr) {
+      allData.prompts = Array.isArray(arr[0]) ? arr[0] : [];
+      allData.images = Array.isArray(arr[1]) ? arr[1] : [];
+      allData.songs = Array.isArray(arr[2]) ? arr[2] : [];
+      allData.stories = Array.isArray(arr[3]) ? arr[3] : [];
+      runSearch();
+    });
+  }
+
+  if (searchInput) searchInput.addEventListener('input', runSearch);
+  if (searchInput) searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') runSearch();
+  });
+  if (typeFilter) typeFilter.addEventListener('change', runSearch);
+  if (sortFilter) sortFilter.addEventListener('change', runSearch);
+
+  loadAll();
+})();
+  </script>
+</body>
+
+</html>

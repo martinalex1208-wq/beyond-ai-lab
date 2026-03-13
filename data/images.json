@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Summer Morning Girl",
+    "file": "female_001.jpg",
+    "series": "female-portrait",
+    "folder": "photography/female_series",
+    "tags": ["portrait", "morning", "soft-light"],
+    "promptId": "prompt-golden-hour-portrait",
+    "prompt": "Professional photography of a young woman in soft morning light, golden hour, natural expression, shallow depth of field, 85mm lens, warm tones, editorial style, high resolution.",
+    "camera": "85mm f/1.8",
+    "mood": "Warm · Gentle",
+    "generator": "Midjourney v6",
+    "createdAt": "2026-03-10",
+    "favorite": true
+  },
+  {
+    "title": "Coffee Girl",
+    "file": "female_002.jpg",
+    "series": "female-portrait",
+    "folder": "photography/female_series",
+    "tags": ["portrait", "coffee", "lifestyle"],
+    "promptId": "prompt-cafe-lifestyle",
+    "prompt": "Woman holding coffee cup in a cozy cafe, natural lighting, lifestyle photography, candid moment, bokeh background.",
+    "mood": "Cozy · Ambient",
+    "generator": "DALL-E 3",
+    "createdAt": "2026-03-11"
+  },
+  {
+    "title": "City Walk Girl",
+    "file": "female_003.jpg",
+    "series": "female-portrait",
+    "folder": "photography/female_series",
+    "tags": ["portrait", "city", "street"],
+    "promptId": "prompt-urban-street-walk",
+    "prompt": "Street photography of a woman walking in urban setting, afternoon light, cinematic color grading, candid portrait.",
+    "camera": "50mm f/2",
+    "mood": "Urban · Serene",
+    "createdAt": "2026-03-12"
+  },
+  {
+    "title": "Bookstore Girl",
+    "file": "female_004.jpg",
+    "series": "female-portrait",
+    "folder": "photography/female_series",
+    "tags": ["portrait", "books", "culture"],
+    "promptId": "prompt-bookstore-culture"
+  },
+  {
+    "title": "Park Girl",
+    "file": "female_005.jpg",
+    "series": "female-portrait",
+    "folder": "photography/female_series",
+    "tags": ["portrait", "nature", "park"],
+    "promptId": "prompt-park-nature-moment",
+    "mood": "Natural · Peaceful",
+    "favorite": true
+  }
+]

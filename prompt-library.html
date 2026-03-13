@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Library | Beyond AI Lab</title>
+  <meta name="description" content="A structured archive of visual prompts, camera language, moods, and creative directions.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/libraries.css">
+  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="prompt-library-main">
+    <!-- Hero -->
+    <section class="prompt-library-hero">
+      <h1 class="prompt-library-hero-title">Prompt Library</h1>
+      <p class="prompt-library-hero-subtitle">A structured archive of visual prompts, camera language, moods, and creative directions.</p>
+      <div class="library-quick-add">
+        <a href="add-entry.html?type=prompt" class="library-quick-add-link quick-add-link btn btn-secondary">Add Prompt</a>
+      </div>
+    </section>
+
+    <!-- Context Banner (when opened from linked image) -->
+    <section id="promptLibraryContextBannerSection" class="prompt-library-section section" style="display:none;">
+      <div id="promptLibraryContextBanner" class="prompt-library-context-banner">
+        <span class="prompt-library-context-banner-text">Opened from linked image.</span>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="prompt-library-section section">
+      <div class="prompt-library-controls section-inner">
+        <label for="promptLibraryCategoryFilter" class="prompt-library-control-label">Category</label>
+        <select id="promptLibraryCategoryFilter" class="prompt-library-select" aria-label="Filter by category">
+          <option value="">All</option>
+        </select>
+        <label for="promptLibraryFavoriteFilter" class="prompt-library-control-label">Favorites</label>
+        <select id="promptLibraryFavoriteFilter" class="prompt-library-select" aria-label="Filter by favorites">
+          <option value="">All</option>
+          <option value="only">Favorites Only</option>
+        </select>
+        <label for="promptLibraryGeneratorFilter" class="prompt-library-control-label">Generator</label>
+        <select id="promptLibraryGeneratorFilter" class="prompt-library-select" aria-label="Filter by generator">
+          <option value="">All Generators</option>
+        </select>
+        <label for="promptLibraryMoodFilter" class="prompt-library-control-label">Mood</label>
+        <select id="promptLibraryMoodFilter" class="prompt-library-select" aria-label="Filter by mood">
+          <option value="">All Moods</option>
+        </select>
+        <label for="promptLibrarySortFilter" class="prompt-library-control-label">Sort</label>
+        <select id="promptLibrarySortFilter" class="prompt-library-select" aria-label="Sort order">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="title-az">Title A-Z</option>
+        </select>
+        <label for="promptLibraryTagSearch" class="prompt-library-control-label">Search tags</label>
+        <input type="text" id="promptLibraryTagSearch" class="prompt-library-search" placeholder="Search by tag..." aria-label="Search by tag">
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="prompt-library-section section">
+      <div class="section-inner">
+        <div id="promptLibraryGrid" class="prompt-library-grid section-grid"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="prompt-library-section section prompt-library-cta-section">
+      <div class="prompt-library-cta section-inner">
+        <a href="prompt-lab.html" class="btn-cta btn btn-primary">Open Prompt Lab</a>
+        <a href="index.html" class="btn-cta btn-cta--outline btn btn-secondary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-link">
+          <img src="./images/logo.png" alt="" class="footer-logo" width="32" height="32">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col footer-quick">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="index.html#featured-works">Featured Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-labs">
+        <h4 class="footer-col-title">Labs</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-lab.html">Prompt Lab</a></li>
+          <li><a href="music-lab.html">Music Lab</a></li>
+          <li><a href="visual-lab.html">Visual Lab</a></li>
+          <li><a href="story-lab.html">Story Lab</a></li>
+          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-connect">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Line">Line</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="promptLibraryModal" class="prompt-library-modal">
+    <span class="prompt-library-modal-close" aria-label="Close">&times;</span>
+    <div class="prompt-library-modal-content">
+      <div class="prompt-library-modal-info library-detail">
+        <div class="prompt-library-modal-header">
+          <h3 id="promptLibraryModalTitle" class="prompt-library-modal-title library-detail-title"></h3>
+          <button type="button" id="promptLibraryModalFavoriteToggle" class="prompt-library-modal-favorite-toggle favorite-toggle" aria-label="Add to favorites">☆</button>
+        </div>
+        <div id="promptLibraryModalMeta" class="prompt-library-modal-meta library-detail-meta"></div>
+        <div id="promptLibraryModalTags" class="prompt-library-modal-tags"></div>
+        <div id="promptLibraryModalPrompt" class="prompt-library-modal-prompt" style="display:none;">
+          <span class="prompt-library-modal-label">Prompt</span>
+          <pre class="prompt-library-modal-prompt-text"></pre>
+        </div>
+        <div id="promptLibraryModalCopyActions" class="prompt-library-modal-copy-actions library-detail-actions" style="display:none;"></div>
+        <div id="promptLibraryModalViewImages" class="prompt-library-modal-link-wrap" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./js/library-core.js"></script>
+  <script src="./script.js"></script>
+  <script>
+(function () {
+  const JSON_PATH = './data/prompts.json';
+  const IMAGES_JSON_PATH = './data/images.json';
+  const FAVORITES_STORAGE_KEY = 'promptLibraryFavorites';
+  const grid = document.getElementById('promptLibraryGrid');
+  const categoryFilter = document.getElementById('promptLibraryCategoryFilter');
+  const favoriteFilter = document.getElementById('promptLibraryFavoriteFilter');
+  const generatorFilter = document.getElementById('promptLibraryGeneratorFilter');
+  const moodFilter = document.getElementById('promptLibraryMoodFilter');
+  const sortFilter = document.getElementById('promptLibrarySortFilter');
+  const tagSearch = document.getElementById('promptLibraryTagSearch');
+  const modal = document.getElementById('promptLibraryModal');
+  const closeBtn = document.querySelector('#promptLibraryModal .prompt-library-modal-close');
+
+  var rawData = [];
+  var lastRenderedList = [];
+  var currentModalItem = null;
+  var promptIdsWithImages = {};
+
+  function getUrlPromptParam() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      return params.get('prompt') || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  if (!grid) return;
+
+  function getItemKey(item) {
+    var series = (item.series || '').trim();
+    var title = (item.title || '').trim();
+    return series ? series + '|' + title : title || 'untitled';
+  }
+  var getItemKeyFn = getItemKey;
+
+  function getFavoritesFromStorage() {
+    try {
+      var raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function setFavoriteInStorage(key, value) {
+    try {
+      var obj = getFavoritesFromStorage();
+      obj[key] = value;
+      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(obj));
+    } catch (e) {}
+  }
+
+  function getActualFavorite(item) {
+    var fn = typeof window.getActualFavorite === 'function' ? window.getActualFavorite : null;
+    if (fn) return fn(item, FAVORITES_STORAGE_KEY, getItemKeyFn);
+    var key = getItemKey(item);
+    var stored = getFavoritesFromStorage();
+    if (key && stored.hasOwnProperty(key)) return stored[key] === true;
+    return item.favorite === true;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  var formatSeries = (typeof formatSeriesLabel === 'function' ? formatSeriesLabel : function (s) { if (!s) return ''; return String(s).replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }); });
+  var truncateTextLocal = (typeof truncateText === 'function' ? truncateText : function (p, maxLen) { if (!p) return ''; var s = String(p).trim(); return s.length <= maxLen ? s : s.slice(0, maxLen) + '...'; });
+
+  function formatDate(d) {
+    if (!d) return '';
+    return String(d);
+  }
+
+  function handleCopyToClipboard(text, buttonEl, originalLabel) {
+    var label = originalLabel || buttonEl.textContent;
+    navigator.clipboard.writeText(text).then(function () {
+      buttonEl.textContent = 'Copied!';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    }).catch(function () {
+      buttonEl.textContent = 'Failed';
+      setTimeout(function () { buttonEl.textContent = label; }, 1500);
+    });
+  }
+
+  function buildCard(item, index) {
+    var title = item.title || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var prompt = item.prompt || '';
+    var camera = item.camera || '';
+    var mood = item.mood || '';
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+    var favorite = getActualFavorite(item);
+    var promptId = item.id || '';
+    var hasImages = promptId && promptIdsWithImages[promptId];
+
+    var tagsHtml = '';
+    if (tags.length > 0) {
+      tagsHtml = '<div class="prompt-library-tags">' +
+        tags.map(function (t) { return '<span class="prompt-library-tag">' + escapeHtml(t) + '</span>'; }).join('') +
+        '</div>';
+    }
+
+    var metaParts = [];
+    if (camera) metaParts.push('<span class="prompt-library-meta-item library-card-meta-item">' + escapeHtml(camera) + '</span>');
+    if (mood) metaParts.push('<span class="prompt-library-meta-item library-card-meta-item">' + escapeHtml(mood) + '</span>');
+    if (generator) metaParts.push('<span class="prompt-library-meta-item library-card-meta-item">' + escapeHtml(generator) + '</span>');
+    if (createdAt) metaParts.push('<span class="prompt-library-meta-item library-card-meta-item">' + escapeHtml(formatDate(createdAt)) + '</span>');
+    if (favorite) metaParts.push('<span class="prompt-library-favorite">★ Favorite</span>');
+    var metaHtml = metaParts.length > 0 ? '<div class="prompt-library-meta library-card-meta">' + metaParts.join('') + '</div>' : '';
+
+    var promptHtml = '';
+    if (prompt) {
+      promptHtml = '<div class="prompt-library-prompt-preview library-card-text">' + escapeHtml(truncateTextLocal(prompt, 160)) + '</div>';
+    }
+
+    var copyBtns = [];
+    if (prompt) copyBtns.push('<button type="button" class="prompt-library-copy-button copy-button btn btn-outline" data-copy-type="prompt">Copy Prompt</button>');
+    if (camera) copyBtns.push('<button type="button" class="prompt-library-copy-button copy-button btn btn-outline" data-copy-type="camera">Copy Camera</button>');
+    if (hasImages) copyBtns.push('<a href="image-library.html?prompt=' + escapeHtml(promptId) + '" class="prompt-library-link-button btn btn-secondary">View Images</a>');
+    var copyActionsHtml = copyBtns.length > 0 ? '<div class="prompt-library-copy-actions library-card-actions">' + copyBtns.join('') + '</div>' : '';
+
+    var favSymbol = favorite ? '★' : '☆';
+    var favAria = favorite ? 'Remove from favorites' : 'Add to favorites';
+    var favToggleHtml = '<button type="button" class="prompt-library-favorite-toggle favorite-toggle' + (favorite ? ' is-favorite' : '') + '" data-item-key="' + escapeHtml(getItemKey(item)) + '" aria-label="' + escapeHtml(favAria) + '" title="' + escapeHtml(favAria) + '">' + favSymbol + '</button>';
+
+    return '<div class="prompt-library-card library-card" data-card-index="' + (index !== undefined ? index : '') + '">' +
+      '<div class="prompt-library-card-body">' +
+        '<div class="prompt-library-card-header">' +
+          favToggleHtml +
+          '<h3 class="prompt-library-title library-card-title">' + escapeHtml(title) + '</h3>' +
+          (series ? '<span class="prompt-library-series library-card-subtitle">' + escapeHtml(formatSeries(series)) + '</span>' : '') +
+        '</div>' +
+        metaHtml +
+        promptHtml +
+        copyActionsHtml +
+        tagsHtml +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderModalInfo(item) {
+    var titleEl = document.getElementById('promptLibraryModalTitle');
+    var favToggleEl = document.getElementById('promptLibraryModalFavoriteToggle');
+    var metaEl = document.getElementById('promptLibraryModalMeta');
+    var tagsEl = document.getElementById('promptLibraryModalTags');
+    var promptWrap = document.getElementById('promptLibraryModalPrompt');
+    var promptText = promptWrap ? promptWrap.querySelector('.prompt-library-modal-prompt-text') : null;
+
+    var title = item.title || '';
+    var series = item.series || '';
+    var tags = Array.isArray(item.tags) ? item.tags : [];
+    var prompt = item.prompt || '';
+    var camera = item.camera || '';
+    var mood = item.mood || '';
+    var generator = item.generator || '';
+    var createdAt = item.createdAt || '';
+
+    if (titleEl) titleEl.textContent = title;
+    var fav = getActualFavorite(item);
+    if (favToggleEl) {
+      favToggleEl.textContent = fav ? '★' : '☆';
+      favToggleEl.setAttribute('aria-label', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.setAttribute('title', fav ? 'Remove from favorites' : 'Add to favorites');
+      favToggleEl.classList.toggle('is-favorite', fav);
+    }
+    var detailParts = [];
+    if (series) detailParts.push('<div class="prompt-library-modal-detail-row"><span class="prompt-library-modal-label">Series</span> ' + escapeHtml(formatSeries(series)) + '</div>');
+    if (camera) detailParts.push('<div class="prompt-library-modal-detail-row"><span class="prompt-library-modal-label">Camera</span> ' + escapeHtml(camera) + '</div>');
+    if (mood) detailParts.push('<div class="prompt-library-modal-detail-row"><span class="prompt-library-modal-label">Mood</span> ' + escapeHtml(mood) + '</div>');
+    if (generator) detailParts.push('<div class="prompt-library-modal-detail-row"><span class="prompt-library-modal-label">Generator</span> ' + escapeHtml(generator) + '</div>');
+    if (createdAt) detailParts.push('<div class="prompt-library-modal-detail-row"><span class="prompt-library-modal-label">Created</span> ' + escapeHtml(formatDate(createdAt)) + '</div>');
+    if (metaEl) {
+      metaEl.innerHTML = detailParts.join('');
+      metaEl.style.display = detailParts.length > 0 ? '' : 'none';
+    }
+    if (tagsEl) {
+      tagsEl.innerHTML = tags.length > 0 ? tags.map(function (t) { return '<span class="prompt-library-tag">' + escapeHtml(t) + '</span>'; }).join('') : '';
+      tagsEl.style.display = tags.length > 0 ? '' : 'none';
+    }
+    if (promptWrap && promptText) {
+      if (prompt) {
+        promptText.textContent = prompt;
+        promptWrap.style.display = '';
+      } else {
+        promptWrap.style.display = 'none';
+      }
+    }
+    var promptId = item.id || '';
+    var hasImages = promptId && promptIdsWithImages[promptId];
+    var copyActionsEl = document.getElementById('promptLibraryModalCopyActions');
+    if (copyActionsEl) {
+      var copyBtns = [];
+      if (prompt) copyBtns.push('<button type="button" class="prompt-library-modal-copy-button copy-button btn btn-outline" data-copy-type="prompt">Copy Prompt</button>');
+      if (camera) copyBtns.push('<button type="button" class="prompt-library-modal-copy-button copy-button btn btn-outline" data-copy-type="camera">Copy Camera</button>');
+      copyActionsEl.innerHTML = copyBtns.join('');
+      copyActionsEl.style.display = copyBtns.length > 0 ? '' : 'none';
+    }
+    var viewImagesEl = document.getElementById('promptLibraryModalViewImages');
+    if (viewImagesEl) {
+      if (hasImages) {
+        viewImagesEl.innerHTML = '<a href="image-library.html?prompt=' + escapeHtml(promptId) + '" class="prompt-library-modal-link-button btn btn-secondary">View Images</a>';
+        viewImagesEl.style.display = '';
+      } else {
+        viewImagesEl.innerHTML = '';
+        viewImagesEl.style.display = 'none';
+      }
+    }
+  }
+
+  function getFilteredAndSorted() {
+    var category = (categoryFilter && categoryFilter.value) ? categoryFilter.value : '';
+    var favoriteVal = (favoriteFilter && favoriteFilter.value) ? favoriteFilter.value : '';
+    var generatorVal = (generatorFilter && generatorFilter.value) ? generatorFilter.value : '';
+    var moodVal = (moodFilter && moodFilter.value) ? moodFilter.value : '';
+    var tagQuery = typeof normalizeTagSearch === 'function' ? normalizeTagSearch(tagSearch && tagSearch.value) : ((tagSearch && tagSearch.value) ? String(tagSearch.value).trim().toLowerCase() : '');
+    var sortVal = (sortFilter && sortFilter.value) ? sortFilter.value : 'newest';
+
+    var list = rawData.slice();
+
+    if (category) {
+      list = list.filter(function (item) { return (item.series || '') === category; });
+    }
+    if (favoriteVal === 'only') {
+      list = list.filter(function (item) { return getActualFavorite(item); });
+    }
+    if (generatorVal) {
+      list = list.filter(function (item) { return (item.generator || '') === generatorVal; });
+    }
+    if (moodVal) {
+      list = list.filter(function (item) {
+        return typeof matchMoodToken === 'function' ? matchMoodToken(item.mood, moodVal) : (function () {
+          var m = item.mood || '';
+          if (!m) return false;
+          var parts = m.split(',').map(function (p) { return p.trim(); });
+          return parts.indexOf(moodVal) !== -1;
+        })();
+      });
+    }
+    if (tagQuery) {
+      list = list.filter(function (item) {
+        var tags = typeof safeArray === 'function' ? safeArray(item.tags) : (Array.isArray(item.tags) ? item.tags : []);
+        return typeof matchesTagSearch === 'function' ? matchesTagSearch(tags, tagQuery) : tags.some(function (t) { return String(t).toLowerCase().indexOf(tagQuery) !== -1; });
+      });
+    }
+
+    list = typeof sortLibraryItems === 'function' ? sortLibraryItems(list, sortVal) : (function () {
+      if (sortVal === 'oldest') list.reverse();
+      else if (sortVal === 'title-az') list.sort(function (a, b) { var ta = (a.title || '').toLowerCase(); var tb = (b.title || '').toLowerCase(); return ta < tb ? -1 : ta > tb ? 1 : 0; });
+      return list;
+    })();
+
+    return list;
+  }
+
+  function render() {
+    var list = getFilteredAndSorted();
+    lastRenderedList = list;
+    var urlPrompt = getUrlPromptParam();
+    var bannerSection = document.getElementById('promptLibraryContextBannerSection');
+    if (bannerSection) {
+      bannerSection.style.display = urlPrompt ? '' : 'none';
+    }
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'prompt-library-empty library-empty';
+      empty.innerHTML = typeof buildLibraryEmptyState === 'function' ? buildLibraryEmptyState('No prompts found for this filter.', 'add-entry.html?type=prompt', 'Add Prompt') : 'No prompts found for this filter.<div class="library-empty-action"><a href="add-entry.html?type=prompt" class="library-empty-action-link">Add Prompt</a></div>';
+      grid.appendChild(empty);
+      return;
+    }
+    list.forEach(function (item, index) {
+      grid.insertAdjacentHTML('beforeend', buildCard(item, index));
+    });
+    if (urlPrompt) {
+      var foundIdx = -1;
+      for (var i = 0; i < list.length; i++) {
+        if ((list[i].id || '') === urlPrompt) {
+          foundIdx = i;
+          break;
+        }
+      }
+      if (foundIdx >= 0) {
+        var item = list[foundIdx];
+        currentModalItem = item;
+        renderModalInfo(item);
+        modal.classList.add('is-open');
+        var cards = grid.querySelectorAll('.prompt-library-card');
+        var cardEl = cards[foundIdx];
+        if (cardEl) {
+          cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    }
+  }
+
+  function initModal() {
+    if (!modal || !closeBtn) return;
+    grid.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.prompt-library-favorite-toggle');
+      if (favToggle) {
+        e.preventDefault();
+        e.stopPropagation();
+        var card = favToggle.closest('.prompt-library-card');
+        var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+        var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+        if (item) {
+          var key = getItemKey(item);
+          var next = !getActualFavorite(item);
+          setFavoriteInStorage(key, next);
+          if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+            if (modal.classList.contains('is-open') && currentModalItem && getItemKey(currentModalItem) === key) {
+              modal.classList.remove('is-open');
+            }
+            render();
+          } else {
+            card.outerHTML = buildCard(item, idx);
+          }
+          if (modal.classList.contains('is-open') && currentModalItem && getItemKey(currentModalItem) === key) {
+            var lbFavEl = document.getElementById('promptLibraryModalFavoriteToggle');
+            if (lbFavEl) {
+              lbFavEl.textContent = next ? '★' : '☆';
+              lbFavEl.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+              lbFavEl.classList.toggle('is-favorite', next);
+            }
+          }
+        }
+        return;
+      }
+      if (e.target.closest('.prompt-library-link-button')) {
+        return;
+      }
+      if (e.target.closest('.prompt-library-copy-button') || e.target.closest('.prompt-library-copy-actions')) {
+        var btn = e.target.closest('.prompt-library-copy-button');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var card = btn.closest('.prompt-library-card');
+          var idx = card ? parseInt(card.getAttribute('data-card-index'), 10) : -1;
+          var item = (idx >= 0 && lastRenderedList[idx]) ? lastRenderedList[idx] : null;
+          if (item) {
+            var type = btn.getAttribute('data-copy-type');
+            var text = type === 'prompt' ? (item.prompt || '') : (type === 'camera' ? (item.camera || '') : '');
+            if (text) handleCopyToClipboard(text, btn, type === 'prompt' ? 'Copy Prompt' : 'Copy Camera');
+          }
+        }
+        return;
+      }
+      var card = e.target.closest('.prompt-library-card');
+      if (!card) return;
+      var cards = grid.querySelectorAll('.prompt-library-card');
+      var idx = Array.prototype.indexOf.call(cards, card);
+      var item = lastRenderedList[idx];
+      if (item) {
+        currentModalItem = item;
+        renderModalInfo(item);
+        modal.classList.add('is-open');
+      }
+    });
+    modal.addEventListener('click', function (e) {
+      var favToggle = e.target.closest('.prompt-library-modal-favorite-toggle');
+      if (favToggle && currentModalItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var key = getItemKey(currentModalItem);
+        var next = !getActualFavorite(currentModalItem);
+        setFavoriteInStorage(key, next);
+        favToggle.textContent = next ? '★' : '☆';
+        favToggle.setAttribute('aria-label', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.setAttribute('title', next ? 'Remove from favorites' : 'Add to favorites');
+        favToggle.classList.toggle('is-favorite', next);
+        if ((favoriteFilter && favoriteFilter.value) === 'only' && !next) {
+          modal.classList.remove('is-open');
+          render();
+        } else {
+          var cards = grid.querySelectorAll('.prompt-library-card');
+          for (var i = 0; i < cards.length; i++) {
+            var c = cards[i];
+            var cIdx = parseInt(c.getAttribute('data-card-index'), 10);
+            var it = lastRenderedList[cIdx];
+            if (it && getItemKey(it) === key) {
+              c.outerHTML = buildCard(it, cIdx);
+              break;
+            }
+          }
+        }
+        return;
+      }
+      var btn = e.target.closest('.prompt-library-modal-copy-button');
+      if (btn && currentModalItem) {
+        e.preventDefault();
+        e.stopPropagation();
+        var type = btn.getAttribute('data-copy-type');
+        var text = type === 'prompt' ? (currentModalItem.prompt || '') : (type === 'camera' ? (currentModalItem.camera || '') : '');
+        if (text) handleCopyToClipboard(text, btn, type === 'prompt' ? 'Copy Prompt' : 'Copy Camera');
+      }
+    });
+    closeBtn.addEventListener('click', function () {
+      modal.classList.remove('is-open');
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.classList.remove('is-open');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') modal.classList.remove('is-open');
+    });
+  }
+
+  function populateCategoryFilter() {
+    if (!categoryFilter) return;
+    var seriesSet = {};
+    rawData.forEach(function (item) {
+      var s = item.series || '';
+      if (s) seriesSet[s] = true;
+    });
+    var seriesList = Object.keys(seriesSet).sort();
+    seriesList.forEach(function (s) {
+      var opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = formatSeries(s);
+      categoryFilter.appendChild(opt);
+    });
+  }
+
+  function populateGeneratorFilter() {
+    if (!generatorFilter) return;
+    var genSet = {};
+    rawData.forEach(function (item) {
+      var g = (item.generator || '').trim();
+      if (g) genSet[g] = true;
+    });
+    Object.keys(genSet).sort().forEach(function (g) {
+      var opt = document.createElement('option');
+      opt.value = g;
+      opt.textContent = g;
+      generatorFilter.appendChild(opt);
+    });
+  }
+
+  function populateMoodFilter() {
+    if (!moodFilter) return;
+    var moodSet = {};
+    var fmt = typeof formatMoodTokens === 'function' ? formatMoodTokens : function (m) { var s = (m || '').toString(); return s ? s.split(',').map(function (p) { return p.trim(); }).filter(Boolean) : []; };
+    rawData.forEach(function (item) {
+      fmt(item.mood).forEach(function (p) { moodSet[p] = true; });
+    });
+    Object.keys(moodSet).sort().forEach(function (m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      moodFilter.appendChild(opt);
+    });
+  }
+
+  Promise.all([
+    fetch(JSON_PATH).then(function (res) { return res.json(); }),
+    fetch(IMAGES_JSON_PATH).then(function (res) { return res.json(); }).catch(function () { return []; })
+  ]).then(function (results) {
+    var data = results[0];
+    var imagesData = Array.isArray(results[1]) ? results[1] : [];
+    if (!Array.isArray(data)) return;
+    rawData = data;
+    promptIdsWithImages = {};
+    imagesData.forEach(function (img) {
+      var pid = img.promptId || '';
+      if (pid) promptIdsWithImages[pid] = true;
+    });
+    populateCategoryFilter();
+    populateGeneratorFilter();
+    populateMoodFilter();
+    render();
+    initModal();
+      if (categoryFilter) categoryFilter.addEventListener('change', render);
+      if (favoriteFilter) favoriteFilter.addEventListener('change', render);
+      if (generatorFilter) generatorFilter.addEventListener('change', render);
+      if (moodFilter) moodFilter.addEventListener('change', render);
+      if (sortFilter) sortFilter.addEventListener('change', render);
+      if (tagSearch) tagSearch.addEventListener('input', render);
+  })
+  .catch(function (err) {
+    console.warn('Prompt library load failed:', err);
+  });
+})();
+  </script>
+</body>
+
+</html>

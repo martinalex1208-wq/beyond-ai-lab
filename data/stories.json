@@ -1,0 +1,65 @@
+[
+  {
+    "id": "story-glimmer100-start",
+    "title": "微光 100 的起點",
+    "subtitle": "The Beginning of Glimmer 100",
+    "series": "glimmer-100",
+    "tags": ["glimmer", "photography", "daily", "100-days"],
+    "content": "微光 100 始於一個簡單的念頭：每天拍一張照片，持續一百天。不是為了證明什麼，而是想看看，當我們把注意力放在日常的細微之處，會發生什麼。\n\n第一張照片是在清晨的窗邊拍的。光線穿過窗簾，在地板上投下柔和的影子。那一刻我意識到，所謂的「微光」，不只是光線，更是我們願意停下來、看見它的那顆心。\n\n一百天之後，這些照片會成為什麼？也許是一本相簿，也許只是一段記憶。但更重要的是，這一百天裡，我們學會了在忙碌中尋找片刻的寧靜。",
+    "summary": "每天一張照片，持續一百天。在日常中尋找微光，在忙碌中尋找寧靜。",
+    "mood": "Reflective, Gentle",
+    "generator": "Human",
+    "createdAt": "2026-03-12",
+    "favorite": true
+  },
+  {
+    "id": "story-coffee-joy",
+    "title": "一杯咖啡，一份喜悅，讓孩子多一種期待",
+    "subtitle": "",
+    "series": "impact-texts",
+    "tags": ["coffee", "children", "joy", "impact"],
+    "content": "在偏鄉的教室裡，一杯熱咖啡的意義，遠超過它的味道。\n\n對許多孩子來說，那是他們第一次聞到現磨咖啡的香氣，第一次看到大人們為了「好好喝一杯」而專注的神情。那一刻，他們的眼神不一樣了。\n\n我們帶去的不是咖啡，而是一種可能：原來生活可以這樣被對待。原來，一個平凡的早晨，可以因為一杯咖啡而變得特別。\n\n讓孩子多一種期待，就是讓他們知道，這個世界還有許多美好的事物，值得他們去發現、去追求。",
+    "summary": "在偏鄉教室裡，一杯咖啡帶給孩子的，是對美好生活的期待與想像。",
+    "mood": "Warm, Hopeful",
+    "generator": "Human",
+    "createdAt": "2026-03-10",
+    "favorite": true
+  },
+  {
+    "id": "story-resulting-blooms",
+    "title": "隨之而來的繁花",
+    "subtitle": "創作自序",
+    "series": "creative-prefaces",
+    "tags": ["bloom", "creation", "resilience", "bilingual"],
+    "content": "創作是一場漫長的等待。\n\n你撒下種子，澆水、施肥、除草，然後等待。有時候，你以為什麼都不會發生；有時候，一場雨過後，花就開了。\n\n《隨之而來的繁花》這首歌，寫的是這種等待與綻放。當雨水輕輕落下，種子甦醒，破土而出；當晨光灑落，花瓣一片片展開。每一朵花都在訴說一個關於韌性的故事。\n\n隨之而來的繁花，開在我們走過的路。每一朵都是記憶，每一瓣都是祝福。\n\n願這首歌，也能成為你生命中的一朵小花。",
+    "summary": "創作如種花，需要等待。雨水落下，種子甦醒，繁花隨之而來。",
+    "mood": "Gentle, Hopeful",
+    "generator": "Human",
+    "createdAt": "2026-03-08"
+  },
+  {
+    "id": "story-ai-creation-reflection",
+    "title": "一段關於 AI 創作的反思",
+    "subtitle": "",
+    "series": "essays",
+    "tags": ["AI", "creation", "reflection", "ethics"],
+    "content": "AI 能創作嗎？這個問題，我問了自己很多次。\n\n當我使用 Suno 生成一首歌、用 Midjourney 畫出一張圖，我是在「創作」還是在「下指令」？\n\n後來我發現，這個問題本身可能問錯了。創作從來不是一個人的事。畫家需要顏料與畫布，音樂家需要樂器，作家需要語言。這些都是工具，而工具會隨著時代改變。\n\nAI 是新的工具。它擴大了我們表達的邊界，讓我們能把腦海中的畫面、旋律，更快地具象化。但最終，那個「想表達什麼」的意圖，仍然來自我們。\n\n與其糾結 AI 是否在創作，不如問：我們用 AI 創造了什麼？那些作品，有沒有傳達出我們真正想說的話？",
+    "summary": "AI 是創作的新工具。意圖來自我們，表達的邊界因 AI 而擴大。",
+    "mood": "Reflective, Thoughtful",
+    "generator": "Human",
+    "createdAt": "2026-03-05"
+  },
+  {
+    "id": "story-love-and-persistence",
+    "title": "熱愛與持續創作",
+    "subtitle": "給自己的備忘錄",
+    "series": "essays",
+    "tags": ["passion", "persistence", "creation", "mindset"],
+    "content": "熱愛一件事，不代表每天都會想去做。\n\n有時候你會累、會懷疑、會覺得自己寫的東西毫無意義。這些時刻，不是熱愛消失了，而是熱愛正在被考驗。\n\n持續創作的秘訣，不是等待靈感，而是建立習慣。每天寫一點、畫一點、唱一點。即使只有十分鐘，那也是十分鐘的累積。\n\n一百天後，你會發現，那些「沒什麼」的十分鐘，已經堆成了一座小山。而那座山，就是你的作品。\n\n熱愛是起點，習慣是燃料。兩者缺一不可。",
+    "summary": "熱愛需要習慣來支撐。每天一點點，一百天後就是一座山。",
+    "mood": "Motivational, Warm",
+    "generator": "Human",
+    "createdAt": "2026-03-01",
+    "favorite": true
+  }
+]
