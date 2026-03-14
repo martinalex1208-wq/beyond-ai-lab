@@ -13,7 +13,7 @@ body.page-home .glow-orb {
   justify-content: center;
   text-align: center;
   background: linear-gradient(180deg, #0B1020 0%, #0A0F1C 100%);
-  padding: 80px 24px 100px;
+  padding: 100px 24px 120px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -27,33 +27,36 @@ body.page-home .glow-orb {
 }
 
 .hero-fullscreen .hero-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0 0 48px;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 40px;
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
 .hero-fullscreen .hero-title {
   font-family: 'Playfair Display', 'Noto Serif TC', serif;
+  font-size: clamp(2.5rem, 5.5vw, 72px);
   font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: #f5f7fa;
-  margin: 0 0 64px;
+  margin: 0 0 28px;
 }
 
-.hero-fullscreen .hero-title span {
+.hero-fullscreen .hero-subtitle {
+  font-family: 'Playfair Display', 'Noto Serif TC', serif;
+  font-size: clamp(1.25rem, 2.2vw, 32px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: rgba(245, 247, 250, 0.75);
+  margin: 0 0 72px;
+}
+
+.hero-fullscreen .hero-subtitle span {
   display: block;
-}
-
-.hero-fullscreen .hero-title span:first-child {
-  font-size: 56px;
-}
-
-.hero-fullscreen .hero-title span:last-child {
-  font-size: 40px;
 }
 
 .hero-fullscreen .hero-concepts {
@@ -61,7 +64,7 @@ body.page-home .glow-orb {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: 900px;
-  margin: 60px auto 0;
+  margin: 0 auto;
 }
 
 .hero-fullscreen .hero-card {
@@ -92,7 +95,7 @@ body.page-home .glow-orb {
 
 @media (max-width: 768px) {
   .hero-fullscreen {
-    padding: 60px 20px 80px;
+    padding: 64px 20px 80px;
   }
 
   .hero-fullscreen .hero-eyebrow {
@@ -100,19 +103,16 @@ body.page-home .glow-orb {
   }
 
   .hero-fullscreen .hero-title {
-    margin-bottom: 40px;
+    font-size: clamp(2rem, 8vw, 40px);
+    margin-bottom: 20px;
   }
 
-  .hero-fullscreen .hero-title span:first-child {
-    font-size: 32px;
-  }
-
-  .hero-fullscreen .hero-title span:last-child {
-    font-size: 24px;
+  .hero-fullscreen .hero-subtitle {
+    font-size: clamp(1.1rem, 4vw, 24px);
+    margin-bottom: 56px;
   }
 
   .hero-fullscreen .hero-concepts {
-    margin-top: 60px;
     grid-template-columns: 1fr;
     gap: 20px;
   }
