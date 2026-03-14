@@ -16,11 +16,14 @@ body.page-home .glow-orb {
   padding: 80px 24px 100px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .hero-fullscreen .hero-inner {
   max-width: 1000px;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-fullscreen .hero-eyebrow {
@@ -34,7 +37,6 @@ body.page-home .glow-orb {
 
 .hero-fullscreen .hero-title {
   font-family: 'Playfair Display', 'Noto Serif TC', serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -46,28 +48,12 @@ body.page-home .glow-orb {
   display: block;
 }
 
-.hero-fullscreen .hero-butterfly-wrap {
-  margin: 0 0 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero-fullscreen .hero-title span:first-child {
+  font-size: 56px;
 }
 
-.hero-fullscreen .hero-butterfly {
-  width: 45%;
-  max-width: 480px;
-  height: auto;
-  filter: drop-shadow(0 0 24px rgba(0, 180, 255, 0.15)) drop-shadow(0 0 48px rgba(212, 175, 55, 0.08));
-  animation: hero-butterfly-float 6s ease-in-out infinite;
-}
-
-@keyframes hero-butterfly-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-fullscreen .hero-butterfly { animation: none !important; }
+.hero-fullscreen .hero-title span:last-child {
+  font-size: 40px;
 }
 
 .hero-fullscreen .hero-concepts {
@@ -75,7 +61,7 @@ body.page-home .glow-orb {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 60px auto 0;
 }
 
 .hero-fullscreen .hero-card {
@@ -117,15 +103,16 @@ body.page-home .glow-orb {
     margin-bottom: 40px;
   }
 
-  .hero-fullscreen .hero-butterfly {
-    width: 70%;
+  .hero-fullscreen .hero-title span:first-child {
+    font-size: 32px;
   }
 
-  .hero-fullscreen .hero-butterfly-wrap {
-    margin-bottom: 56px;
+  .hero-fullscreen .hero-title span:last-child {
+    font-size: 24px;
   }
 
   .hero-fullscreen .hero-concepts {
+    margin-top: 60px;
     grid-template-columns: 1fr;
     gap: 20px;
   }
