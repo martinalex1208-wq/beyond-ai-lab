@@ -10693,3 +10693,80 @@ main,
 .photo-grid img {
   cursor: pointer;
 }
+
+/* ===== Homepage Hero - Apple-style Dark Minimal ===== */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+  radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 40%),
+  linear-gradient(180deg, #0f1115 0%, #0b0d12 100%);
+
+  padding: 40px 20px;
+}
+
+.hero-inner {
+  max-width: 800px;
+}
+
+.hero-kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9aa4b2;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem,6vw,5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #f5f7fa;
+  margin: 0;
+}
+
+.hero-subtitle {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #aeb7c2;
+}
+
+.hero-actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-actions .btn-primary {
+  background: #f5f7fa;
+  color: #0f1115;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.hero-actions .btn-primary:hover {
+  opacity: 0.9;
+}
+
+.hero-actions .btn-secondary {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #e6edf3;
+  padding: 14px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.hero-actions .btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+}

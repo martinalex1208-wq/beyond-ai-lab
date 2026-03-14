@@ -42,17 +42,78 @@
     </nav>
   </header>
 
+  <style>
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 40%),
+        linear-gradient(180deg, #0f1115 0%, #0b0d12 100%);
+      padding: 40px 20px;
+    }
+    .hero-inner { max-width: 800px; }
+    .hero-kicker {
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9aa4b2;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(3rem,6vw,5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: #f5f7fa;
+      margin: 0;
+    }
+    .hero-subtitle {
+      margin-top: 24px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #aeb7c2;
+    }
+    .hero-actions {
+      margin-top: 36px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .hero-actions .btn-primary {
+      background: #f5f7fa;
+      color: #0f1115;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .hero-actions .btn-primary:hover { opacity: 0.9; }
+    .hero-actions .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #e6edf3;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .hero-actions .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+  </style>
+
   <main>
     <!-- Hero Section -->
-    <section class="home-hero lab-hub-hero" id="hero">
-      <h1 class="home-hero-title">
-        <span class="hero-title-line">Beyond</span>
-        <span class="hero-title-line hero-title-line--accent">AI Lab</span>
-      </h1>
-      <p class="home-hero-subtitle">A creative system for AI creation—structured workflows across prompts, images, music, stories, and impact. Collect, refine, and reuse.</p>
-      <div class="home-hero-actions">
-        <a href="prompt-library.html" class="btn-cta btn btn-primary">Explore Prompt Library</a>
-        <a href="search.html" class="btn-cta btn-cta--outline btn btn-secondary">Unified Search</a>
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <p class="hero-kicker">Beyond AI Lab</p>
+        <h1>Life × AI × Creativity × Impact</h1>
+        <p class="hero-subtitle">Turning ideas into music, images, stories and systems.</p>
+        <div class="hero-actions">
+          <a href="#labs" class="btn-primary">Explore the Lab</a>
+          <a href="life.html" class="btn-secondary">Read the Notes</a>
+        </div>
       </div>
     </section>
 
