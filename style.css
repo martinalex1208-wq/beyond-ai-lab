@@ -10778,3 +10778,151 @@ main,
 .hero-actions .btn-secondary:hover {
   background: rgba(255,255,255,0.08);
 }
+
+/* ===== Fullscreen Hero - AI Creation Museum ===== */
+body.page-home .grid-bg,
+body.page-home .glow-orb {
+  display: none;
+}
+
+.hero-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, #0B1020 0%, #0A0F1C 100%);
+  padding: 80px 24px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-fullscreen .hero-inner,
+.hero-fullscreen-inner {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.hero-fullscreen .hero-eyebrow,
+.hero-fullscreen-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 48px;
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+}
+
+.hero-fullscreen .hero-title,
+.hero-fullscreen-title {
+  font-family: 'Playfair Display', 'Noto Serif TC', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #f5f7fa;
+  margin: 0 0 64px;
+}
+
+.hero-fullscreen .hero-title span {
+  display: block;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-butterfly-wrap {
+  margin: 0 0 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-butterfly {
+  width: 45%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 0 24px rgba(0, 180, 255, 0.15)) drop-shadow(0 0 48px rgba(212, 175, 55, 0.08));
+  animation: hero-butterfly-float 6s ease-in-out infinite;
+}
+
+@keyframes hero-butterfly-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-butterfly { animation: none !important; }
+}
+
+.hero-concepts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-fullscreen .hero-card,
+.hero-concept-card {
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.hero-fullscreen .hero-card h3,
+.hero-concept-card h3 {
+  font-family: 'Playfair Display', 'Noto Serif TC', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #e8ecf0;
+  margin: 0 0 12px;
+}
+
+.hero-fullscreen .hero-card p,
+.hero-concept-card p {
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+  font-size: 0.95rem;
+  color: #9aa4b2;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-fullscreen {
+    padding: 60px 20px 80px;
+  }
+
+  .hero-fullscreen .hero-eyebrow,
+  .hero-fullscreen-kicker {
+    margin-bottom: 32px;
+  }
+
+  .hero-fullscreen .hero-title,
+  .hero-fullscreen-title {
+    margin-bottom: 40px;
+  }
+
+  .hero-butterfly {
+    width: 70%;
+  }
+
+  .hero-butterfly-wrap {
+    margin-bottom: 56px;
+  }
+
+  .hero-concepts {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero-fullscreen .hero-card,
+  .hero-concept-card {
+    padding: 28px 20px;
+  }
+}
