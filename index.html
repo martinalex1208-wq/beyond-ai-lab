@@ -44,6 +44,7 @@
 
   <style>
     .hero {
+      position: relative;
       min-height: 90vh;
       display: flex;
       align-items: center;
@@ -56,7 +57,30 @@
         linear-gradient(180deg, #0f1115 0%, #0b0d12 100%);
       padding: 40px 20px 64px;
     }
-    .hero-inner { max-width: 800px; }
+    .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.12);
+      box-shadow: 0 0 6px rgba(0, 229, 255, 0.15);
+      opacity: 0.35;
+      animation: hero-particle-float 14s ease-in-out infinite;
+    }
+    @keyframes hero-particle-float {
+      0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+      33% { transform: translate(3px, -6px); opacity: 0.45; }
+      66% { transform: translate(-2px, -10px); opacity: 0.35; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-particle { animation: none !important; }
+    }
     .hero-kicker {
       font-size: 0.9rem;
       letter-spacing: 0.15em;
@@ -73,9 +97,12 @@
     }
     .hero-subtitle {
       margin-top: 24px;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #aeb7c2;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #9aa4b2;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .hero-actions {
       margin-top: 36px;
@@ -84,15 +111,19 @@
       justify-content: center;
     }
     .hero-actions .btn-primary {
-      background: #f5f7fa;
-      color: #0f1115;
+      background: linear-gradient(180deg, #ffffff, #e8edf2);
+      color: #0b0d12;
       padding: 14px 22px;
       border-radius: 999px;
       font-weight: 500;
       text-decoration: none;
-      transition: opacity 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 10px 30px rgba(0,0,0,0.35), 0 0 12px rgba(0,229,255,0.18);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .hero-actions .btn-primary:hover { opacity: 0.9; }
+    .hero-actions .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 16px 40px rgba(0,0,0,0.45), 0 0 16px rgba(0,229,255,0.22);
+    }
     .hero-actions .btn-secondary {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
@@ -100,6 +131,7 @@
       padding: 14px 22px;
       border-radius: 999px;
       text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
       transition: background 0.2s ease;
     }
     .hero-actions .btn-secondary:hover { background: rgba(255,255,255,0.08); }
@@ -108,6 +140,7 @@
   <main>
     <!-- Hero Section -->
     <section class="hero" id="hero">
+      <div class="hero-particles" aria-hidden="true" id="heroParticles"></div>
       <div class="hero-inner">
         <p class="hero-kicker">Beyond AI Lab</p>
         <h1>Life × AI × Creativity × Impact</h1>
@@ -440,6 +473,27 @@
 
   <script src="./js/helpers.js"></script>
   <script src="./script.js"></script>
+  <script>
+(function() {
+  var container = document.getElementById('heroParticles');
+  if (!container) return;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+  var count = 18;
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('div');
+    p.className = 'hero-particle';
+    var size = 2 + Math.random() * 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.animationDuration = (12 + Math.random() * 8) + 's';
+    container.appendChild(p);
+  }
+})();
+  </script>
 </body>
 
 </html>

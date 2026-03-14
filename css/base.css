@@ -140,6 +140,7 @@ main,
   height: 32px;
   width: auto;
   background: transparent;
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.4));
 }
 
 .nav-toggle {
