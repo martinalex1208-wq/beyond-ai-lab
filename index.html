@@ -50,9 +50,11 @@
       justify-content: center;
       text-align: center;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 40%),
+        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.4) 100%),
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,0.12), transparent 45%),
+        radial-gradient(circle at 50% 10%, rgba(0,229,255,0.08), transparent 55%),
         linear-gradient(180deg, #0f1115 0%, #0b0d12 100%);
-      padding: 40px 20px;
+      padding: 40px 20px 64px;
     }
     .hero-inner { max-width: 800px; }
     .hero-kicker {
@@ -117,61 +119,84 @@
       </div>
     </section>
 
-    <!-- Labs Overview Section -->
-    <section class="lab-hub-section section" id="labs">
-      <div class="lab-hub-section-inner section-inner">
-        <h2 class="lab-hub-section-title section-title">Labs</h2>
-        <div class="lab-hub-grid section-grid">
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Prompt Library</h3>
-            <p class="lab-hub-card-text">Structured archive of prompts, camera language, moods, and reusable creative directions.</p>
-            <a href="prompt-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Image Library</h3>
-            <p class="lab-hub-card-text">Curated visual archive linked with prompts, tags, generators, and moods.</p>
-            <a href="image-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Music Library</h3>
-            <p class="lab-hub-card-text">Structured archive of songs, lyrics, styles, moods, and reusable directions.</p>
-            <a href="music-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Story Library</h3>
-            <p class="lab-hub-card-text">Structured archive of narratives, reflections, project texts, and creative writing.</p>
-            <a href="story-library.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Unified Search</h3>
-            <p class="lab-hub-card-text">Search across prompts, images, songs, and stories in one structured archive.</p>
-            <a href="search.html" class="lab-hub-card-link btn btn-secondary">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Add Entry</h3>
-            <p class="lab-hub-card-text">Create structured JSON entries for prompts, images, songs, and stories.</p>
-            <a href="add-entry.html" class="lab-hub-card-link">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Music Lab</h3>
-            <p class="lab-hub-card-text">AI music creation, composition tools, and sonic experimentation.</p>
-            <a href="music-lab.html" class="lab-hub-card-link">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Story Lab</h3>
-            <p class="lab-hub-card-text">Narrative and content creation with AI-assisted storytelling.</p>
-            <a href="story-lab.html" class="lab-hub-card-link">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Impact Lab</h3>
-            <p class="lab-hub-card-text">Social impact practice and meaningful application of creative work.</p>
-            <a href="impact-lab.html" class="lab-hub-card-link">Open →</a>
-          </article>
-          <article class="lab-hub-card">
-            <h3 class="lab-hub-card-title">Vibe Coding Lab</h3>
-            <p class="lab-hub-card-text">Atmospheric, intuitive programming and generative code experiments.</p>
-            <a href="vibe-coding-lab.html" class="lab-hub-card-link">Open →</a>
-          </article>
+    <!-- Labs Section -->
+    <section class="labs-section" id="labs">
+      <div class="labs-shell">
+        <div class="labs-header">
+          <p class="labs-kicker">Labs</p>
+          <h2>Explore the creative system</h2>
+          <p class="labs-subtitle">Explore the creative system across prompts, images, music, stories, impact and vibe coding.</p>
+        </div>
+
+        <div class="labs-grid">
+          <a class="lab-card" href="prompt-library.html">
+            <div class="lab-card-inner">
+              <h3>Prompt Library</h3>
+              <p>Build, organize and refine prompts for AI creation.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+
+          <a class="lab-card" href="image-library.html">
+            <div class="lab-card-inner">
+              <h3>Image Library</h3>
+              <p>Collect visual ideas, styles and cinematic inspiration.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+
+          <a class="lab-card" href="music-library.html">
+            <div class="lab-card-inner">
+              <h3>Music Library</h3>
+              <p>Archive songs, lyrics and AI music experiments.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+
+          <a class="lab-card" href="story-library.html">
+            <div class="lab-card-inner">
+              <h3>Story Library</h3>
+              <p>Write, structure and preserve creative stories.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+
+          <a class="lab-card" href="impact-lab.html">
+            <div class="lab-card-inner">
+              <h3>Impact Lab</h3>
+              <p>Connect creativity with meaning, service and real-world impact.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+
+          <a class="lab-card" href="vibe-coding-lab.html">
+            <div class="lab-card-inner">
+              <h3>Vibe Coding Lab</h3>
+              <p>Turn ideas into tools, websites and creative systems.</p>
+              <span class="lab-link">Open</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section class="notes-section" id="notes">
+      <div class="notes-shell">
+        <div class="notes-header">
+          <p class="notes-kicker">Notes</p>
+          <h2>A few ideas behind the work.</h2>
+        </div>
+        <div class="notes-grid">
+          <blockquote class="note-card">
+            <p class="note-quote">凡事動手做</p>
+          </blockquote>
+          <blockquote class="note-card">
+            <p class="note-quote">信任是一點一滴做出來的</p>
+          </blockquote>
+          <blockquote class="note-card">
+            <p class="note-quote">下屬的薪資，是主管的責任</p>
+          </blockquote>
         </div>
       </div>
     </section>

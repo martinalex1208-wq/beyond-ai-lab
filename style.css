@@ -10703,7 +10703,9 @@ main,
   text-align: center;
 
   background:
-  radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 40%),
+  radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.4) 100%),
+  radial-gradient(circle at 50% 20%, rgba(255,255,255,0.12), transparent 45%),
+  radial-gradient(circle at 50% 10%, rgba(0,229,255,0.08), transparent 55%),
   linear-gradient(180deg, #0f1115 0%, #0b0d12 100%);
 
   padding: 40px 20px;
