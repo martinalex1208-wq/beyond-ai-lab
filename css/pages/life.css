@@ -1,0 +1,120 @@
+/* Life Page — 安靜、極簡、有閱讀感 */
+
+.life-page {
+  background: #fafbfc;
+  color: #1a2332;
+  min-height: 100vh;
+}
+
+.life-page .grid-bg,
+.life-page .glow-orb {
+  display: none;
+}
+
+/* Header */
+.life-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+  background: rgba(250, 251, 252, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 35, 50, 0.08);
+}
+
+.life-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.life-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a2332;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.life-logo:hover {
+  opacity: 1;
+}
+
+.life-logo img {
+  height: 24px;
+  width: auto;
+}
+
+.life-back {
+  font-size: 0.85rem;
+  color: #4a5568;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.life-back:hover {
+  color: #1a2332;
+}
+
+/* Main */
+.life-main {
+  flex: 1;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.life-article {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.life-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #1a2332;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.life-date {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 3rem;
+}
+
+.life-body {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #1a2332;
+}
+
+.life-body p {
+  margin-bottom: 1.5rem;
+}
+
+.life-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+.life-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(26, 35, 50, 0.06);
+}
+
+.life-footer-brand {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}

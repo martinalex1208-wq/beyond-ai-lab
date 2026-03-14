@@ -1622,7 +1622,8 @@
 .filter-btn.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(0, 212, 255, 0.08);
+  background: rgba(0, 212, 255, 0.12);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.15);
 }
 
 .song-grid {
@@ -1824,11 +1825,13 @@
 
 .image-category {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--accent);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   display: block;
   margin-bottom: 0.35rem;
+  opacity: 0.95;
 }
 
 .image-title {

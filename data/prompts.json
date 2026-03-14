@@ -46,5 +46,30 @@
     "prompt": "Peaceful moment in a sun-dappled park, soft natural light through trees, relaxed pose, organic colors.",
     "mood": "Natural · Peaceful",
     "favorite": true
+  },
+  {
+    "title": "Freckled Morning Girl",
+    "category": "Portrait Photography",
+    "prompt": "A hyper-realistic close-up shot of a freckled young woman standing beside a window in soft morning sunlight, capturing every intricate detail of the skin texture, pores, and fine lines. Gentle peaceful expression, soft wind moving her hair, wearing a simple white linen dress. Shot on Phase One XF, 100mm macro lens, f/2.8. Natural side lighting, cinematic bokeh, 8k resolution, highly detailed, photorealistic, Ray Tracing, masterwork. natural imperfections, authentic skin detail, subtle asymmetry, candid emotion --ar 3:4"
+  },
+  {
+    "title": "Cafe Portrait Girl",
+    "category": "Portrait Photography",
+    "prompt": "A hyper-realistic close-up shot of a young woman sitting in a cozy cafe holding a cup of coffee, relaxed joyful expression, warm daylight from the window illuminating her face. Capturing every intricate detail of the skin texture, pores, and fine lines. Shot on Phase One XF, 100mm macro lens, f/2.8. Natural side lighting, cinematic bokeh, 8k resolution, highly detailed, photorealistic, Ray Tracing, masterwork. natural imperfections, authentic skin detail, subtle asymmetry, candid emotion --ar 3:4"
+  },
+  {
+    "title": "Bookstore Girl",
+    "category": "Portrait Photography",
+    "prompt": "A hyper-realistic close-up shot of a young woman inside a quiet bookstore holding an open book, thoughtful gentle expression, warm ambient lighting creating a calm atmosphere. Capturing every intricate detail of the skin texture, pores, and fine lines. Shot on Phase One XF, 100mm macro lens, f/2.8. Natural side lighting, cinematic bokeh, 8k resolution, highly detailed, photorealistic, Ray Tracing, masterwork. natural imperfections, authentic skin detail, subtle asymmetry, candid emotion --ar 3:4"
+  },
+  {
+    "title": "Golden Hour Girl",
+    "category": "Portrait Photography",
+    "prompt": "A hyper-realistic close-up shot of a young woman during golden hour sunset, warm backlight outlining her hair, calm emotional expression. Capturing every intricate detail of the skin texture, pores, and fine lines. Shot on Phase One XF, 100mm macro lens, f/2.8. Natural side lighting, cinematic bokeh, 8k resolution, highly detailed, photorealistic, Ray Tracing, masterwork. natural imperfections, authentic skin detail, subtle asymmetry, candid emotion --ar 3:4"
+  },
+  {
+    "title": "Direct Gaze Portrait",
+    "category": "Portrait Photography",
+    "prompt": "A hyper-realistic close-up shot of a young woman looking directly into the camera with expressive eyes and natural minimal makeup. Capturing every intricate detail of the skin texture, pores, and fine lines. Shot on Phase One XF, 100mm macro lens, f/2.8. Natural side lighting, cinematic bokeh, 8k resolution, highly detailed, photorealistic, Ray Tracing, masterwork. natural imperfections, authentic skin detail, subtle asymmetry, candid emotion --ar 3:4"
   }
 ]

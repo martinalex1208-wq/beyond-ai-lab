@@ -54,11 +54,11 @@ const TITLE_FORMAT = {
 };
 
 const CATEGORY_DISPLAY = {
-  female: 'AI Girl',
-  warrior: 'Fantasy Warrior',
-  scifi: 'SciFi Visual',
-  interior: 'Interior Design',
-  ai: 'AI Girl'
+  portrait: 'Portrait',
+  lifestyle: 'Lifestyle',
+  cinematic: 'Cinematic',
+  fantasy: 'Fantasy',
+  experimental: 'Experimental'
 };
 
 const VISUAL_PROMPT_LINKS_KEY = 'beyond-ai-lab-visual-prompt-links';
@@ -195,11 +195,12 @@ function softDeleteArtwork(id) {
 
 function getCategoryClassForFilter(categoryLabel) {
   const s = (categoryLabel || '').toLowerCase();
-  if (/ai girl|female|portrait/.test(s)) return 'ai';
-  if (/scifi|sci-fi|sci fi/.test(s)) return 'scifi';
-  if (/warrior|fantasy/.test(s)) return 'warrior';
-  if (/interior/.test(s)) return 'interior';
-  return 'ai';
+  if (/portrait|ai girl|female|bohemian|european/.test(s)) return 'portrait';
+  if (/lifestyle|cafe|street|coffee|interior|bookstore|park/.test(s)) return 'lifestyle';
+  if (/cinematic|scifi|sci-fi|sci fi|neon|cyberpunk|film/.test(s)) return 'cinematic';
+  if (/fantasy|warrior|dragon|mage|armor|mythical/.test(s)) return 'fantasy';
+  if (/experimental|abstract|mixed/.test(s)) return 'experimental';
+  return 'experimental';
 }
 
 function getArtworkList() {
@@ -264,16 +265,16 @@ function getCategoryFromFilename(filename) {
   const name = filename.replace(/\.(jpeg|jpg|png|webp)$/i, '');
   const lower = name.toLowerCase();
 
-  if (/ai_girl|^female|^ai/.test(lower)) return 'ai';
-  if (/sci-fi|scifi|sci_fi/.test(lower)) return 'scifi';
-  if (/warrior/.test(lower)) return 'warrior';
-  if (/interior/.test(lower)) return 'interior';
+  if (/warrior/.test(lower)) return 'fantasy';
+  if (/sci-fi|scifi|sci_fi/.test(lower)) return 'cinematic';
+  if (/coffee|interior/.test(lower)) return 'lifestyle';
+  if (/ai_girl|^female|^ai|bohemian|european/.test(lower)) return 'portrait';
 
-  return 'image';
+  return 'experimental';
 }
 
 function getCategoryCounts() {
-  const counts = { all: 0, female: 0, ai: 0, scifi: 0, warrior: 0, interior: 0 };
+  const counts = { all: 0, portrait: 0, lifestyle: 0, cinematic: 0, fantasy: 0, experimental: 0 };
   getArtworkList().forEach(({ id, type }) => {
     const meta = getMetadataForArtwork(id);
     const cat = type === 'builtin' ? getCategoryFromFilename(id) : getCategoryClassForFilter(meta.category);
@@ -285,13 +286,13 @@ function getCategoryCounts() {
 
 function updateFilterButtons() {
   const counts = getCategoryCounts();
-  const aiGirlCount = (counts.female || 0) + (counts.ai || 0);
   const labels = {
     all: `All (${counts.all})`,
-    ai_girl: `AI Girl (${aiGirlCount})`,
-    scifi: `Sci-Fi (${counts.scifi || 0})`,
-    warrior: `Warrior (${counts.warrior || 0})`,
-    interior: `Interior (${counts.interior || 0})`
+    portrait: `Portrait (${counts.portrait || 0})`,
+    lifestyle: `Lifestyle (${counts.lifestyle || 0})`,
+    cinematic: `Cinematic (${counts.cinematic || 0})`,
+    fantasy: `Fantasy (${counts.fantasy || 0})`,
+    experimental: `Experimental (${counts.experimental || 0})`
   };
   document.querySelectorAll('.visual-filter button[data-category]').forEach((btn) => {
     const cat = btn.dataset.category;
@@ -300,7 +301,7 @@ function updateFilterButtons() {
 }
 
 function getCategoryDisplay(category) {
-  return CATEGORY_DISPLAY[category] || 'AI Image';
+  return CATEGORY_DISPLAY[category] || 'Experimental';
 }
 
 function getMetadataForFilename(filename) {
@@ -339,7 +340,6 @@ function getVisibleImages() {
     const meta = getMetadataForArtwork(a.id);
     const cat = a.type === 'builtin' ? getCategoryFromFilename(a.id) : getCategoryClassForFilter(meta.category);
     if (currentFilter === 'all') return true;
-    if (currentFilter === 'ai_girl') return cat === 'female' || cat === 'ai';
     return cat === currentFilter;
   }).map((a) => a.id);
 }
@@ -675,13 +675,9 @@ function handleLightboxWheel(e) {
 function filterSelection(category) {
   currentFilter = category;
   const items = document.getElementsByClassName('gallery-item');
-  const showAiGirl = category === 'ai_girl';
   for (let i = 0; i < items.length; i++) {
-    items[i].style.display = 'none';
-    const match = category === 'all' ||
-      (showAiGirl && (items[i].classList.contains('female') || items[i].classList.contains('ai'))) ||
-      (!showAiGirl && items[i].classList.contains(category));
-    if (match) items[i].style.display = 'inline-block';
+    const match = category === 'all' || items[i].classList.contains(category);
+    items[i].style.display = match ? 'inline-block' : 'none';
   }
 
   const filterBtns = document.querySelectorAll('.visual-filter button');

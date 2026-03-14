@@ -110,6 +110,12 @@ data/
 
 ---
 
+## Deployment
+
+GitHub + Vercel 部署步驟請見 [DEPLOYMENT.md](DEPLOYMENT.md)。
+
+---
+
 ## Development Notes
 
 - 所有資料為 JSON
