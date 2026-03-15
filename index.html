@@ -11,6 +11,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .site-nav-link { position: relative; }
+    .site-nav-link::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20,20,20,0.95);
+      color: #c9a96e;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid rgba(201,169,110,0.3);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      transition-delay: 0s;
+      z-index: 999;
+    }
+    .site-nav-link:hover::after {
+      opacity: 1;
+      transition-delay: 0.8s;
+    }
+  </style>
 </head>
 <body>
   <div class="grid-bg" aria-hidden="true"></div>
@@ -25,18 +53,18 @@
       </a>
       <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <ul class="nav-links site-nav-list">
-        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
-        <li><a href="./life.html" class="site-nav-link" data-nav-page="life">生活有味道</a></li>
-        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
-        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
-        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library">Prompts</a></li>
-        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Images</a></li>
-        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music</a></li>
-        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Stories</a></li>
-        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
-        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
-        <li><a href="./glimmer100.html" class="site-nav-link" data-nav-page="glimmer100">微光100</a></li>
-        <li><a href="./steve.html" class="site-nav-link" data-nav-page="steve">Creator</a></li>
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index" data-tooltip="首頁">Home</a></li>
+        <li><a href="./life.html" class="site-nav-link" data-nav-page="life" data-tooltip="生活有味道">生活有味道</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search" data-tooltip="搜尋">Search</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry" data-tooltip="新增內容">Add Entry</a></li>
+        <li><a href="./prompt-library.html" class="site-nav-link" data-nav-page="prompt-library" data-tooltip="提示詞庫">Prompts</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library" data-tooltip="圖片庫">Images</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library" data-tooltip="音樂庫">Music</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library" data-tooltip="故事庫">Stories</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab" data-tooltip="公益計畫">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab" data-tooltip="程式實驗室">Vibe Coding Lab</a></li>
+        <li><a href="./glimmer100.html" class="site-nav-link" data-nav-page="glimmer100" data-tooltip="微光100公益計畫">微光100</a></li>
+        <li><a href="./steve.html" class="site-nav-link" data-nav-page="steve" data-tooltip="關於 Steve">Creator</a></li>
       </ul>
     </nav>
   </header>
