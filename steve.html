@@ -1,83 +1,382 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Steve Lu – Creator | Beyond AI Lab</title>
-  <meta name="description" content="Steve Lu, AI Creator at 62. Builder, storyteller, and the creator behind Beyond AI Lab. Ride · Create · Give.">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <link rel="stylesheet" href="./css/pages/legacy.css">
-  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <title>Steve Lu — Creator | Beyond AI Lab</title>
+  <meta name="description" content="Steve Lu, AI Creator at 62. From volleyball to cycling, immigration to AI creation. Ride · Create · Give.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#080808; --bg-2:#111111; --bg-3:#1a1a1a;
+      --border:rgba(255,255,255,0.07); --border-hover:rgba(255,255,255,0.18);
+      --text:#f0ece4; --text-muted:rgba(240,236,228,0.45); --text-faint:rgba(240,236,228,0.25);
+      --gold:#c9a96e; --gold-light:#e8d5a8; --gold-dim:rgba(201,169,110,0.15);
+      --font-serif:'Cormorant Garamond',Georgia,serif;
+      --font-sans:'DM Sans',system-ui,sans-serif;
+      --font-mono:'DM Mono',monospace;
+      --nav-h:64px; --ease:cubic-bezier(0.25,0,0,1);
+      --max-w:1400px; --content-w:720px;
+    }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font-sans); font-weight:300; line-height:1.6; min-height:100vh; overflow-x:hidden; }
+    .grid-bg { position:fixed; inset:0; z-index:0; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px); background-size:60px 60px; }
+    .glow-orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(120px); opacity:0.06; }
+    .glow-orb--1 { width:600px; height:600px; top:-200px; right:-100px; background:radial-gradient(circle,#c9a96e,transparent 70%); }
+    .glow-orb--2 { width:500px; height:500px; bottom:10%; left:-150px; background:radial-gradient(circle,#4a6fa5,transparent 70%); }
+    .site-header { position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h); background:rgba(8,8,8,0.85); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+    .site-nav { max-width:var(--max-w); margin:0 auto; height:100%; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-size:0.875rem; font-weight:400; }
+    .logo img { width:28px; height:28px; object-fit:contain; }
+    .nav-links { display:flex; align-items:center; list-style:none; }
+    .nav-links a { display:block; padding:0 0.9rem; color:var(--text-muted); text-decoration:none; font-size:0.8rem; letter-spacing:0.04em; white-space:nowrap; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a.active { color:var(--gold); }
+    main { position:relative; z-index:1; padding-top:var(--nav-h); }
 
+    /* Hero */
+    .steve-hero { max-width:var(--max-w); margin:0 auto; padding:7rem 2rem 5rem; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:end; }
+    .steve-hero-eyebrow { font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+    .steve-hero-name { font-family:var(--font-serif); font-size:clamp(3.5rem,8vw,7rem); font-weight:300; line-height:0.95; letter-spacing:-0.02em; color:var(--text); margin-bottom:1.5rem; }
+    .steve-hero-name em { display:block; font-style:italic; color:var(--gold); }
+    .steve-hero-tags { display:flex; gap:0.5rem; flex-wrap:wrap; }
+    .steve-hero-tag { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); border:1px solid var(--border); padding:4px 12px; border-radius:2px; }
+    .steve-hero-intro { font-family:var(--font-serif); font-size:1.3rem; font-weight:300; line-height:1.65; color:var(--text-muted); font-style:italic; }
+    .steve-hero-intro strong { font-style:normal; font-weight:400; color:var(--text); }
+
+    /* Section */
+    .steve-section { max-width:var(--max-w); margin:0 auto; padding:5rem 2rem; border-bottom:1px solid var(--border); }
+    .section-eyebrow { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+    .section-title { font-family:var(--font-serif); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:300; color:var(--text); line-height:1.1; margin-bottom:2.5rem; }
+    .section-title em { font-style:italic; color:var(--gold); }
+
+    /* Stats */
+    .stats-row { display:flex; flex-wrap:wrap; border:1px solid var(--border); }
+    .stat-item { flex:1; min-width:140px; padding:2rem 1.5rem; border-right:1px solid var(--border); transition:background 0.3s; }
+    .stat-item:last-child { border-right:none; }
+    .stat-item:hover { background:var(--bg-2); }
+    .stat-num { font-family:var(--font-serif); font-size:2.8rem; font-weight:300; color:var(--gold); line-height:1; display:block; margin-bottom:0.4rem; }
+    .stat-label { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); display:block; }
+
+    /* Timeline */
+    .timeline { position:relative; padding-left:2rem; max-width:var(--content-w); }
+    .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:var(--border); }
+    .timeline-item { position:relative; margin-bottom:2.5rem; padding-left:1.5rem; }
+    .timeline-item::before { content:''; position:absolute; left:-2rem; top:8px; width:7px; height:7px; border-radius:50%; background:var(--bg-3); border:1px solid var(--border); transition:background 0.3s,border-color 0.3s; }
+    .timeline-item:hover::before { background:var(--gold); border-color:var(--gold); }
+    .timeline-item:last-child { margin-bottom:0; }
+    .timeline-year { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.12em; color:var(--gold); margin-bottom:0.3rem; display:block; }
+    .timeline-title { font-family:var(--font-serif); font-size:1.1rem; font-weight:400; color:var(--text); margin-bottom:0.3rem; }
+    .timeline-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.65; }
+
+    /* AI Cards */
+    .ai-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+    .ai-card { background:var(--bg); padding:2rem 1.5rem; transition:background 0.3s; }
+    .ai-card:hover { background:var(--bg-2); }
+    .ai-card-date { font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.12em; color:var(--gold); margin-bottom:0.8rem; display:block; }
+    .ai-card-tool { font-family:var(--font-serif); font-size:1.5rem; font-weight:300; color:var(--text); margin-bottom:0.8rem; line-height:1; }
+    .ai-card-desc { font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+    .ai-card-highlight { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border); font-family:var(--font-mono); font-size:0.7rem; color:var(--gold); letter-spacing:0.06em; }
+
+    /* Sport grid */
+    .sport-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+    .sport-card { background:var(--bg); padding:1.8rem 1.5rem; transition:background 0.3s; }
+    .sport-card:hover { background:var(--bg-2); }
+    .sport-icon { font-size:1.5rem; margin-bottom:0.8rem; display:block; }
+    .sport-name { font-family:var(--font-serif); font-size:1.1rem; font-weight:400; color:var(--text); margin-bottom:0.3rem; }
+    .sport-years { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--gold); margin-bottom:0.5rem; display:block; }
+    .sport-note { font-size:0.78rem; color:var(--text-muted); line-height:1.5; }
+
+    /* 1919 */
+    .ride-desc { max-width:var(--content-w); font-size:1rem; color:var(--text-muted); line-height:1.8; margin-bottom:1.5rem; }
+    .ride-years { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; }
+    .ride-year { padding:0.5rem 1.2rem; border:1px solid var(--border); font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); border-radius:2px; transition:all 0.2s; }
+    .ride-year.captain { border-color:var(--gold); color:var(--gold); background:var(--gold-dim); }
+
+    /* Pillars */
+    .pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+    .pillar { background:var(--bg); padding:2.5rem 2rem; transition:background 0.3s; }
+    .pillar:hover { background:var(--bg-2); }
+    .pillar-num { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:1.2rem; display:block; }
+    .pillar-title { font-family:var(--font-serif); font-size:2rem; font-weight:300; color:var(--gold); margin-bottom:1.5rem; line-height:1; }
+    .pillar-list { list-style:none; }
+    .pillar-list li { font-size:0.85rem; color:var(--text-muted); padding:0.5rem 0; border-bottom:1px solid var(--border); transition:color 0.2s; }
+    .pillar-list li:last-child { border-bottom:none; }
+    .pillar:hover .pillar-list li { color:var(--text); }
+    .pillar-list li::before { content:'→ '; color:var(--gold); font-size:0.75rem; }
+
+    /* Manifesto */
+    .manifesto-wrap { text-align:center; }
+    .manifesto-quote { font-family:var(--font-serif); font-size:clamp(1.5rem,3vw,2.5rem); font-weight:300; font-style:italic; color:var(--text); line-height:1.5; max-width:750px; margin:0 auto 1.5rem; }
+    .manifesto-attr { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint); }
+
+    /* Mantra */
+    .mantra-section { text-align:center; border-bottom:none; }
+    .mantra-words { display:flex; justify-content:center; flex-wrap:wrap; }
+    .mantra-word { font-family:var(--font-serif); font-size:clamp(2.5rem,6vw,5.5rem); font-weight:300; line-height:1; padding:0 1.5rem; position:relative; color:var(--text-muted); transition:color 0.4s; cursor:default; }
+    .mantra-word:hover { color:var(--gold); }
+    .mantra-word:not(:last-child)::after { content:'·'; position:absolute; right:-0.1rem; color:var(--border-hover); }
+    .mantra-sub { margin-top:1.5rem; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-faint); }
+
+    /* CTA */
+    .cta-section { text-align:center; border-bottom:none; }
+    .cta-title { font-family:var(--font-serif); font-size:1.4rem; font-weight:300; color:var(--text-muted); margin-bottom:2rem; font-style:italic; }
+    .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-primary { padding:0.75rem 2rem; background:var(--gold); color:#080808; font-family:var(--font-sans); font-size:0.82rem; font-weight:500; letter-spacing:0.06em; text-decoration:none; border-radius:2px; transition:background 0.2s; }
+    .btn-primary:hover { background:var(--gold-light); }
+    .btn-secondary { padding:0.75rem 2rem; background:transparent; border:1px solid rgba(201,169,110,0.4); color:var(--gold); font-family:var(--font-sans); font-size:0.82rem; font-weight:400; letter-spacing:0.06em; text-decoration:none; border-radius:2px; transition:all 0.2s; }
+    .btn-secondary:hover { border-color:var(--gold); background:var(--gold-dim); }
+
+    /* Footer */
+    .footer { border-top:1px solid var(--border); padding:3rem 2rem 2rem; position:relative; z-index:1; }
+    .footer-inner { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; }
+    .footer-brand-name { font-size:0.875rem; font-weight:400; color:var(--text); }
+    .footer-logo { width:24px; height:24px; object-fit:contain; }
+    .footer-brand-tagline { font-size:0.8rem; color:var(--text-muted); line-height:1.6; margin-top:0.5rem; max-width:280px; }
+    .footer-col-title { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint); margin-bottom:1rem; }
+    .footer-links { list-style:none; }
+    .footer-links li { margin-bottom:0.4rem; }
+    .footer-links a { color:var(--text-muted); text-decoration:none; font-size:0.82rem; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--gold); }
+    .footer-bottom { max-width:var(--max-w); margin:2rem auto 0; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; }
+    .footer-mantra { font-family:var(--font-serif); font-style:italic; color:var(--gold); font-size:0.9rem; }
+    .footer-copy { font-size:0.75rem; color:var(--text-faint); font-family:var(--font-mono); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .steve-hero>*:first-child { animation:fadeUp 0.6s var(--ease) 0.1s both; }
+    .steve-hero>*:last-child  { animation:fadeUp 0.6s var(--ease) 0.25s both; }
+
+    @media(max-width:1000px){ .ai-cards{grid-template-columns:1fr} .sport-grid{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:900px){ .steve-hero{grid-template-columns:1fr;gap:2.5rem;padding-top:4rem} .pillars-grid{grid-template-columns:1fr} .footer-inner{grid-template-columns:1fr 1fr;gap:2rem} }
+    @media(max-width:600px){ .steve-section{padding:3rem 1.5rem} .steve-hero{padding:3rem 1.5rem 2.5rem} .sport-grid{grid-template-columns:1fr} .footer-inner{grid-template-columns:1fr} }
+  </style>
+</head>
 <body>
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
   <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
 
   <header class="site-header">
-    <nav class="nav">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Beyond AI Lab Logo">
+    <nav class="site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
         <span>Beyond AI Lab</span>
       </a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="prompt-lab.html">Prompt Lab</a></li>
-        <li><a href="music-lab.html">Music Lab</a></li>
-        <li><a href="visual-lab.html">Visual Lab</a></li>
-        <li><a href="story-lab.html">Story Lab</a></li>
-        <li><a href="impact-lab.html">Impact Lab</a></li>
-        <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./life.html">生活有味道</a></li>
+        <li><a href="./image-library.html">Image Library</a></li>
+        <li><a href="./music-library.html">Music Library</a></li>
+        <li><a href="./prompt-library.html">Prompt Library</a></li>
+        <li><a href="./impact-lab.html">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html">Vibe Coding Lab</a></li>
+        <li><a href="./steve.html" class="active">Creator</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="steve-main">
+  <main>
     <!-- Hero -->
     <section class="steve-hero">
-      <h1 class="steve-hero-title">Steve Lu</h1>
-      <p class="steve-hero-subtitle">AI Creator · Builder · Storyteller</p>
+      <div>
+        <p class="steve-hero-eyebrow">Beyond AI Lab · Creator</p>
+        <h1 class="steve-hero-name">Steve<br><em>Lu.</em></h1>
+        <div class="steve-hero-tags">
+          <span class="steve-hero-tag">B型射手座</span>
+          <span class="steve-hero-tag">1964 · 台灣</span>
+          <span class="steve-hero-tag">AI Creator</span>
+          <span class="steve-hero-tag">單車騎士</span>
+          <span class="steve-hero-tag">1919隊長</span>
+        </div>
+      </div>
+      <div>
+        <p class="steve-hero-intro">
+          62歲，從台灣到加拿大，從移民公司到避震器工廠，從投資人到 AI 創作者。<br><br>
+          <strong>2026年1月27日</strong>，接觸 Suno 的那天，一切開始改變。三個月內，300首歌、數百張 AI 圖片、幾個自動化系統，以及這個網站。<br><br>
+          <strong>人生不設限，創作沒有終點。</strong>
+        </p>
+      </div>
     </section>
 
-    <!-- Creator Journey -->
+    <!-- Stats -->
+    <section class="steve-section" style="padding-top:3rem;padding-bottom:3rem;">
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">62</span>
+          <span class="stat-label">歲 · 開始 AI 創作</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">300+</span>
+          <span class="stat-label">首 AI 歌曲</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">49</span>
+          <span class="stat-label">天 · 從 Suno 到 Vibe Coding</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-label">次 1919 環島募款</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">朋友 · 射手座本色</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Life Journey -->
     <section class="steve-section">
-      <h2 class="steve-section-title">Creator Journey</h2>
-      <p class="steve-journey-text">Steve began exploring AI creation in 2026, using tools for music generation with Suno, visual creation with AI image tools, and vibe coding to build interactive creative systems. Beyond AI Lab is the evolving home for that journey—a place where ideas move across prompts, visuals, sound, and code.</p>
+      <p class="section-eyebrow">人生軌跡</p>
+      <h2 class="section-title">Life<br><em>Journey.</em></h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1964</span>
+          <div class="timeline-title">出生於台灣</div>
+          <p class="timeline-desc">三專畢業，熱愛運動，人緣極好的射手座 B 型。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1984 – 1986</span>
+          <div class="timeline-title">金門防衛部排球代表隊</div>
+          <p class="timeline-desc">服役於金門，入選防衛部排球代表隊，用運動磨練意志與團隊精神。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1991</span>
+          <div class="timeline-title">移民加拿大</div>
+          <p class="timeline-desc">離開台灣，展開全新生活，拓寬對世界的視野與格局。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1996</span>
+          <div class="timeline-title">回台創業 · 移民公司</div>
+          <p class="timeline-desc">在台北成立移民公司，協助更多人走向世界，用自身經歷幫助他人。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1999 – 2006</span>
+          <div class="timeline-title">汽機車避震器專業廠</div>
+          <p class="timeline-desc">七年製造業經驗，學習精準、耐力與系統性思維。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2006 – 今</span>
+          <div class="timeline-title">獨立投資人</div>
+          <p class="timeline-desc">自主投資至今，培養對市場與趨勢的敏銳判斷力。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019</span>
+          <div class="timeline-title">開始騎單車</div>
+          <p class="timeline-desc">55歲踏上單車，開啟全新的體能與心靈旅程。2020年摔車，休息一年半後重新出發。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2026 · 01 · 27</span>
+          <div class="timeline-title">AI 創作者誕生</div>
+          <p class="timeline-desc">接觸 Suno 的那天，62歲的創作旅程正式開始。Beyond AI Lab 由此而來。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Journey -->
+    <section class="steve-section">
+      <p class="section-eyebrow">AI 創作起點</p>
+      <h2 class="section-title">49 Days.<br><em>Three Tools.</em></h2>
+      <div class="ai-cards">
+        <div class="ai-card">
+          <span class="ai-card-date">2026 · 01 · 27</span>
+          <div class="ai-card-tool">Suno</div>
+          <p class="ai-card-desc">第一次接觸 AI 音樂生成。從第一首歌開始，完全停不下來，創作的開關一旦打開就無法關上。</p>
+          <div class="ai-card-highlight">300+ 首歌曲 · 持續中</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-card-date">2026 · 02 · 07</span>
+          <div class="ai-card-tool">Grok</div>
+          <p class="ai-card-desc">接觸 AI 圖片與影片生成。視覺敘事的世界在此展開 — 宇宙獅子、冰川少女、劍齒虎系列逐步成形。</p>
+          <div class="ai-card-highlight">Image Library · Video Library</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-card-date">2026 · 03 · 08</span>
+          <div class="ai-card-tool">Vibe Coding</div>
+          <p class="ai-card-desc">第一次用 AI 寫程式。單頁網頁、1919 網頁、期貨訊號自動發送到 Line、每日自動生成圖片。</p>
+          <div class="ai-card-highlight">Beyond AI Lab · 自動化系統</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sports -->
+    <section class="steve-section">
+      <p class="section-eyebrow">運動人生</p>
+      <h2 class="section-title">Body in<br><em>Motion.</em></h2>
+      <div class="sport-grid">
+        <div class="sport-card">
+          <span class="sport-icon">🏐</span>
+          <div class="sport-name">排球</div>
+          <span class="sport-years">20 – 25 歲</span>
+          <p class="sport-note">大學排球校隊，後入選金門防衛部代表隊。用汗水與隊友情誼定義青春歲月。</p>
+        </div>
+        <div class="sport-card">
+          <span class="sport-icon">🏸</span>
+          <div class="sport-name">羽毛球</div>
+          <span class="sport-years">2015 – 2019</span>
+          <p class="sport-note">四年球場記憶，精準、速度、反應——運動的熱情從未熄滅。</p>
+        </div>
+        <div class="sport-card">
+          <span class="sport-icon">🚴</span>
+          <div class="sport-name">單車</div>
+          <span class="sport-years">2019 – 今</span>
+          <p class="sport-note">55歲開始騎車。2020年摔車，休息一年半後重新出發——跌倒只是暫停，從不是終點。</p>
+        </div>
+        <div class="sport-card">
+          <span class="sport-icon">🇹🇼</span>
+          <div class="sport-name">1919 環島</div>
+          <span class="sport-years">2023 – 2026</span>
+          <p class="sport-note">連續四年參加 1919 愛走動環島募款。2026年擔任隊長，帶隊騎行台灣一圈。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1919 -->
+    <section class="steve-section">
+      <p class="section-eyebrow">Give · 公益行動</p>
+      <h2 class="section-title">1919<br><em>環島募款.</em></h2>
+      <p class="ride-desc">每年騎上單車，繞行台灣一圈，為 1919 食物銀行募款。不只是運動，是用雙腿說的故事——告訴需要幫助的孩子們，有人在路上為他們前行。</p>
+      <p class="ride-desc"><strong style="color:var(--text)">2026年，第四度出發，以隊長身份帶隊</strong>，從 12月19日出發，2027年1月2日回程，用15天完成這份承諾。</p>
+      <div class="ride-years">
+        <span class="ride-year">2023 · 第一年</span>
+        <span class="ride-year">2024 · 第二年</span>
+        <span class="ride-year">2025 · 第三年</span>
+        <span class="ride-year captain">2026 · 隊長 ★</span>
+      </div>
     </section>
 
     <!-- Three Pillars -->
     <section class="steve-section">
-      <h2 class="steve-section-title">Three Pillars</h2>
-      <div class="steve-pillars">
-        <div class="steve-pillar">
-          <h3 class="steve-pillar-title">CREATE</h3>
-          <ul class="steve-pillar-list">
-            <li>AI Images</li>
-            <li>AI Music</li>
-            <li>Visual Storytelling</li>
+      <p class="section-eyebrow">Philosophy</p>
+      <h2 class="section-title">Three<br><em>Pillars.</em></h2>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <span class="pillar-num">01</span>
+          <div class="pillar-title">Ride</div>
+          <ul class="pillar-list">
+            <li>單車環島 4 年</li>
+            <li>1919 愛走動</li>
+            <li>身體力行的哲學</li>
           </ul>
         </div>
-        <div class="steve-pillar">
-          <h3 class="steve-pillar-title">BUILD</h3>
-          <ul class="steve-pillar-list">
-            <li>Beyond AI Lab</li>
-            <li>Prompt Systems</li>
-            <li>Vibe Coding</li>
+        <div class="pillar">
+          <span class="pillar-num">02</span>
+          <div class="pillar-title">Create</div>
+          <ul class="pillar-list">
+            <li>300+ 首 AI 歌曲</li>
+            <li>AI 圖片與影片</li>
+            <li>Vibe Coding 系統</li>
           </ul>
         </div>
-        <div class="steve-pillar">
-          <h3 class="steve-pillar-title">GIVE</h3>
-          <ul class="steve-pillar-list">
+        <div class="pillar">
+          <span class="pillar-num">03</span>
+          <div class="pillar-title">Give</div>
+          <ul class="pillar-list">
+            <li>1919 食物銀行募款</li>
             <li>Impact Lab</li>
-            <li>AI × Charity</li>
-            <li>Creative Experiments</li>
+            <li>創作回饋社會</li>
           </ul>
         </div>
       </div>
@@ -85,60 +384,66 @@
 
     <!-- Manifesto -->
     <section class="steve-section">
-      <blockquote class="steve-manifesto">
-        "Ideas can be generated, refined, organized, and shared with intention."
-      </blockquote>
+      <div class="manifesto-wrap">
+        <p class="section-eyebrow" style="text-align:center;">Manifesto</p>
+        <blockquote class="manifesto-quote">「62歲才開始，不晚。只要還在動，就還在創造。」</blockquote>
+        <p class="manifesto-attr">— Steve Lu · Beyond AI Lab · 2026</p>
+      </div>
+    </section>
+
+    <!-- Mantra -->
+    <section class="steve-section mantra-section">
+      <div class="mantra-words">
+        <span class="mantra-word">Ride</span>
+        <span class="mantra-word">Create</span>
+        <span class="mantra-word">Give</span>
+      </div>
+      <p class="mantra-sub">The three words that define the journey</p>
     </section>
 
     <!-- CTA -->
-    <section class="steve-section steve-cta-section">
-      <div class="steve-cta">
-        <a href="visual-lab.html" class="btn-cta">Explore Visual Lab</a>
-        <a href="index.html#prompt-library" class="btn-cta btn-cta--outline">Explore Prompt Systems</a>
+    <section class="steve-section cta-section">
+      <p class="cta-title">Explore the work.</p>
+      <div class="cta-buttons">
+        <a href="image-library.html" class="btn-primary">Image Library</a>
+        <a href="music-library.html" class="btn-secondary">Music Library</a>
+        <a href="impact-lab.html" class="btn-secondary">Impact Lab</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer--landing">
-    <div class="footer-glow" aria-hidden="true"></div>
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="footer-brand-link">
-          <img src="images/logo.png" alt="" class="footer-logo" width="32" height="32">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
           <span class="footer-brand-name">Beyond AI Lab</span>
         </a>
         <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
       </div>
-      <div class="footer-col footer-quick">
+      <div class="footer-col">
         <h4 class="footer-col-title">Quick Links</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="works.html">Works</a></li>
-          <li><a href="index.html#featured-works">Featured Works</a></li>
-          <li><a href="index.html#about">About</a></li>
+          <li><a href="life.html">生活有味道</a></li>
           <li><a href="steve.html">Creator</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-labs">
-        <h4 class="footer-col-title">Labs</h4>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
         <ul class="footer-links">
-          <li><a href="prompt-lab.html">Prompt Lab</a></li>
-          <li><a href="music-lab.html">Music Lab</a></li>
-          <li><a href="visual-lab.html">Visual Lab</a></li>
-          <li><a href="story-lab.html">Story Lab</a></li>
-          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
-          <li><a href="impact-lab.html">Impact Lab</a></li>
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+          <li><a href="story-library.html">Story Library</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-connect">
+      <div class="footer-col">
         <h4 class="footer-col-title">Connect</h4>
         <ul class="footer-links">
           <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
-          <li><a href="#">Line</a></li>
           <li><a href="#">Instagram</a></li>
           <li><a href="#">X</a></li>
-          <li><a href="#">Website</a></li>
         </ul>
       </div>
     </div>
@@ -147,8 +452,5 @@
       <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
-
 </html>

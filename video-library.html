@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Library — Beyond AI Lab</title>
+  <meta name="description" content="AI-generated video archive — dynamic visual narratives across fantasy and life.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #080808;
+      --bg-2:         #111111;
+      --bg-3:         #1a1a1a;
+      --border:       rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.18);
+      --text:         #f0ece4;
+      --text-muted:   rgba(240,236,228,0.45);
+      --text-faint:   rgba(240,236,228,0.25);
+      --gold:         #c9a96e;
+      --gold-light:   #e8d5a8;
+      --gold-dim:     rgba(201,169,110,0.15);
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+      --font-mono:    'DM Mono', monospace;
+      --nav-h:        64px;
+      --ease:         cubic-bezier(0.25, 0, 0, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient */
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .glow-orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+      filter: blur(120px); opacity: 0.06;
+    }
+    .glow-orb--1 {
+      width: 600px; height: 600px; top: -200px; right: -100px;
+      background: radial-gradient(circle, #c9a96e, transparent 70%);
+    }
+    .glow-orb--2 {
+      width: 500px; height: 500px; bottom: 10%; left: -150px;
+      background: radial-gradient(circle, #4a6fa5, transparent 70%);
+    }
+
+    /* Nav */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav {
+      max-width: 1400px; margin: 0 auto;
+      height: 100%; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400;
+    }
+    .logo img { width: 28px; height: 28px; object-fit: contain; }
+    .nav-links {
+      display: flex; align-items: center; list-style: none;
+    }
+    .nav-links a {
+      display: block; padding: 0 0.9rem;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a[data-nav-page="video-library"] { color: var(--gold); }
+
+    /* Main */
+    main { position: relative; z-index: 1; padding-top: var(--nav-h); }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 1400px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--text); margin-bottom: 1.2rem;
+    }
+    .page-hero-title em { font-style: italic; color: var(--gold); }
+    .page-hero-subtitle {
+      font-size: 0.95rem; color: var(--text-muted);
+      max-width: 520px; line-height: 1.7;
+    }
+    .page-hero-meta {
+      margin-top: 1.5rem;
+      display: flex; gap: 2rem; align-items: center;
+    }
+    .page-hero-count {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--text-faint); letter-spacing: 0.08em;
+    }
+    .page-hero-count span { color: var(--gold); font-weight: 500; }
+
+    /* Controls */
+    .controls-bar {
+      position: sticky; top: var(--nav-h); z-index: 50;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .controls-inner {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 2rem; min-height: 56px;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .filter-tabs { display: flex; gap: 0.25rem; flex: 1; flex-wrap: wrap; }
+    .filter-tab {
+      padding: 0.35rem 1rem;
+      background: transparent; border: 1px solid transparent;
+      color: var(--text-muted); font-family: var(--font-sans);
+      font-size: 0.78rem; letter-spacing: 0.06em;
+      cursor: pointer; border-radius: 2px;
+      transition: all 0.2s var(--ease); white-space: nowrap;
+    }
+    .filter-tab:hover { color: var(--text); border-color: var(--border-hover); }
+    .filter-tab.active {
+      color: var(--gold); border-color: var(--gold); background: var(--gold-dim);
+    }
+
+    /* Video Grid */
+    .video-section {
+      max-width: 1400px; margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1000px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .video-grid { grid-template-columns: 1fr; } }
+
+    /* Video Card */
+    .video-card {
+      position: relative; border-radius: 3px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-2);
+      cursor: pointer;
+      transition: border-color 0.3s var(--ease);
+      animation: fadeUp 0.4s var(--ease) both;
+    }
+    .video-card[data-hidden="true"] { display: none; }
+    .video-card:hover { border-color: var(--border-hover); }
+
+    .video-thumb {
+      position: relative; aspect-ratio: 16/9; overflow: hidden;
+      background: var(--bg-3);
+    }
+    .video-thumb video {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease);
+    }
+    .video-card:hover .video-thumb video { transform: scale(1.03); }
+
+    /* Play button */
+    .play-btn {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+    .play-btn-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); border: 1.5px solid rgba(201,169,110,0.6);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s var(--ease);
+    }
+    .play-btn-circle svg {
+      width: 20px; height: 20px; fill: var(--gold);
+      margin-left: 3px;
+    }
+    .video-card:hover .play-btn { background: rgba(0,0,0,0.15); }
+    .video-card:hover .play-btn-circle {
+      background: rgba(201,169,110,0.15);
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    /* Duration badge */
+    .video-duration {
+      position: absolute; bottom: 0.6rem; right: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.65rem;
+      background: rgba(0,0,0,0.75); color: var(--text-muted);
+      padding: 2px 7px; border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Category badge */
+    .video-category-badge {
+      position: absolute; top: 0.6rem; left: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 2px;
+      background: rgba(0,0,0,0.65); color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.3);
+    }
+
+    /* Card info */
+    .video-info {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+    .video-title {
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-weight: 400; color: var(--text);
+      line-height: 1.2; margin-bottom: 0.2rem;
+    }
+    .video-title-zh {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--gold); letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+    .video-desc {
+      font-size: 0.8rem; color: var(--text-muted);
+      line-height: 1.6; margin-bottom: 0.75rem;
+    }
+    .video-tags {
+      display: flex; flex-wrap: wrap; gap: 4px;
+    }
+    .video-tag {
+      font-size: 0.62rem; font-family: var(--font-mono);
+      color: var(--text-muted); letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 2px 7px; border-radius: 2px;
+    }
+
+    /* Lightbox / fullscreen player */
+    .player-modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.97);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s var(--ease);
+    }
+    .player-modal.open { opacity: 1; pointer-events: all; }
+    .player-inner {
+      position: relative; width: min(90vw, 1100px);
+    }
+    .player-inner video {
+      width: 100%; display: block; border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+    .player-close {
+      position: absolute; top: -2.5rem; right: 0;
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.2rem; cursor: pointer; transition: color 0.2s;
+    }
+    .player-close:hover { color: var(--text); }
+    .player-info {
+      margin-top: 1rem;
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .player-title {
+      font-family: var(--font-serif); font-size: 1.3rem;
+      font-weight: 300; color: var(--text);
+    }
+    .player-title-zh {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--gold); letter-spacing: 0.06em;
+    }
+    .player-nav {
+      margin-left: auto; display: flex; gap: 0.5rem;
+    }
+    .player-nav-btn {
+      background: var(--bg-2); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 0.3rem 0.9rem;
+      font-size: 0.9rem; cursor: pointer; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .player-nav-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Empty */
+    .video-empty {
+      text-align: center; padding: 6rem 2rem;
+      color: var(--text-faint); font-family: var(--font-serif);
+      font-size: 1.4rem; font-style: italic; display: none;
+    }
+    .video-empty.visible { display: block; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand-name {
+      font-family: var(--font-sans); font-size: 0.875rem;
+      font-weight: 400; color: var(--text);
+    }
+    .footer-logo { width: 24px; height: 24px; object-fit: contain; }
+    .footer-brand-tagline {
+      font-size: 0.8rem; color: var(--text-muted);
+      line-height: 1.6; margin-top: 0.5rem; max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.4rem; }
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.82rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1400px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+    .footer-mantra {
+      font-family: var(--font-serif); font-style: italic;
+      color: var(--gold); font-size: 0.9rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--text-faint); font-family: var(--font-mono);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html" data-nav-page="index">Home</a></li>
+        <li><a href="./life.html" data-nav-page="life">生活有味道</a></li>
+        <li><a href="./search.html" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" data-nav-page="prompt-library">Prompt Library</a></li>
+        <li><a href="./image-library.html" data-nav-page="image-library">Image Library</a></li>
+        <li><a href="./music-library.html" data-nav-page="music-library">Music Library</a></li>
+        <li><a href="./story-library.html" data-nav-page="story-library">Story Library</a></li>
+        <li><a href="./video-library.html" class="active" data-nav-page="video-library">Video Library</a></li>
+        <li><a href="./impact-lab.html" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <p class="page-hero-eyebrow">Beyond AI Lab · Motion Archive</p>
+      <h1 class="page-hero-title">Video<br><em>Library.</em></h1>
+      <p class="page-hero-subtitle">AI-generated motion narratives — dynamic scenes of fantasy warriors, ancient beasts, and primal bonds brought to life.</p>
+      <div class="page-hero-meta">
+        <span class="page-hero-count"><span id="visibleCount">6</span> / <span>6</span> videos</span>
+      </div>
+    </section>
+
+    <div class="controls-bar">
+      <div class="controls-inner">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-category="all">All</button>
+          <button class="filter-tab" data-category="fantasy-nordic">Fantasy · Nordic</button>
+          <button class="filter-tab" data-category="fantasy-warrior">Fantasy · Warrior</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="video-section">
+      <div class="video-grid" id="videoGrid"></div>
+      <div class="video-empty" id="videoEmpty">No videos found.</div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Player -->
+  <div class="player-modal" id="playerModal">
+    <div class="player-inner">
+      <button class="player-close" id="playerClose">✕</button>
+      <video id="playerVideo" controls playsinline></video>
+      <div class="player-info">
+        <div>
+          <div class="player-title" id="playerTitle"></div>
+          <div class="player-title-zh" id="playerTitleZh"></div>
+        </div>
+        <div class="player-nav">
+          <button class="player-nav-btn" id="playerPrev">‹ Prev</button>
+          <button class="player-nav-btn" id="playerNext">Next ›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="life.html">生活有味道</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+          <li><a href="story-library.html">Story Library</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="#">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const VIDEOS = [
+      {
+        id: "058", filename: "058.MP4",
+        path: "images/videos/058.MP4",
+        category: "fantasy-nordic",
+        title: "Glacier Rhino",
+        title_zh: "冰川犀牛",
+        desc: "A primal bond forged on glacial ice — girl and ancient rhino in a world before time.",
+        tags: ["rhino", "glacier", "prehistoric", "bond", "ice"]
+      },
+      {
+        id: "064", filename: "064.MP4",
+        path: "images/videos/064.MP4",
+        category: "fantasy-warrior",
+        title: "Tiger Walk",
+        title_zh: "虎行",
+        desc: "A warrior walks beside a massive tiger through the ancient forest — fearless and free.",
+        tags: ["tiger", "forest", "warrior", "power", "motion"]
+      },
+      {
+        id: "065", filename: "065.MP4",
+        path: "images/videos/065.MP4",
+        category: "fantasy-warrior",
+        title: "Tiger Companion",
+        title_zh: "虎之夥伴",
+        desc: "Side by side, girl and tiger move through jungle light — an unspoken alliance.",
+        tags: ["tiger", "forest", "companion", "warrior", "golden-light"]
+      },
+      {
+        id: "066", filename: "066.MP4",
+        path: "images/videos/066.MP4",
+        category: "fantasy-warrior",
+        title: "Snow Leopard Plain",
+        title_zh: "雪豹平原",
+        desc: "On open grassland, a warrior faces a snow leopard — power held in stillness.",
+        tags: ["snow-leopard", "grassland", "warrior", "strength", "wild"]
+      },
+      {
+        id: "067", filename: "067.MP4",
+        path: "images/videos/067.MP4",
+        category: "fantasy-warrior",
+        title: "Leopard Encounter",
+        title_zh: "豹遇",
+        desc: "Face to face with a snow leopard — the moment between fear and trust.",
+        tags: ["snow-leopard", "encounter", "warrior", "tension", "bond"]
+      },
+      {
+        id: "068", filename: "068.MP4",
+        path: "images/videos/068.MP4",
+        category: "fantasy-nordic",
+        title: "Snow Leopard · Ice",
+        title_zh: "雪豹・冰境",
+        desc: "In a frozen landscape, girl and leopard share a rare moment of stillness and wonder.",
+        tags: ["snow-leopard", "snow", "ice", "nordic", "calm"]
+      },
+    ];
+
+    const CATEGORY_LABELS = {
+      "fantasy-nordic":  "Fantasy · Nordic",
+      "fantasy-warrior": "Fantasy · Warrior",
+    };
+
+    let activeCategory = "all";
+    let playerIndex = 0;
+    let visibleVideos = [...VIDEOS];
+
+    const grid        = document.getElementById("videoGrid");
+    const emptyState  = document.getElementById("videoEmpty");
+    const modal       = document.getElementById("playerModal");
+    const playerVideo = document.getElementById("playerVideo");
+    const playerTitle = document.getElementById("playerTitle");
+    const playerTitleZh = document.getElementById("playerTitleZh");
+    const visibleCount = document.getElementById("visibleCount");
+
+    function filterVideos() {
+      return VIDEOS.filter(v =>
+        activeCategory === "all" || v.category === activeCategory
+      );
+    }
+
+    function renderGrid() {
+      visibleVideos = filterVideos();
+      grid.innerHTML = "";
+      visibleVideos.forEach((v, i) => {
+        const card = document.createElement("div");
+        card.className = "video-card";
+        card.style.animationDelay = `${i * 0.08}s`;
+        card.innerHTML = `
+          <div class="video-thumb">
+            <video src="${v.path}" muted loop preload="metadata" playsinline></video>
+            <div class="play-btn">
+              <div class="play-btn-circle">
+                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </div>
+            <span class="video-category-badge">${CATEGORY_LABELS[v.category] || v.category}</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">${v.title}</div>
+            <div class="video-title-zh">${v.title_zh}</div>
+            <p class="video-desc">${v.desc}</p>
+            <div class="video-tags">${v.tags.map(t => `<span class="video-tag">${t}</span>`).join("")}</div>
+          </div>
+        `;
+
+        // Hover: play preview
+        const vid = card.querySelector("video");
+        card.addEventListener("mouseenter", () => vid.play());
+        card.addEventListener("mouseleave", () => { vid.pause(); vid.currentTime = 0; });
+
+        // Click: open fullscreen
+        card.addEventListener("click", () => openPlayer(i));
+        grid.appendChild(card);
+      });
+
+      emptyState.classList.toggle("visible", visibleVideos.length === 0);
+      visibleCount.textContent = visibleVideos.length;
+    }
+
+    // Player
+    function openPlayer(index) {
+      playerIndex = index;
+      updatePlayer();
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closePlayer() {
+      modal.classList.remove("open");
+      playerVideo.pause();
+      playerVideo.src = "";
+      document.body.style.overflow = "";
+    }
+    function updatePlayer() {
+      const v = visibleVideos[playerIndex];
+      if (!v) return;
+      playerVideo.src = v.path;
+      playerVideo.play();
+      playerTitle.textContent   = v.title;
+      playerTitleZh.textContent = v.title_zh;
+    }
+
+    document.getElementById("playerClose").addEventListener("click", closePlayer);
+    modal.addEventListener("click", e => { if (e.target === modal) closePlayer(); });
+    document.getElementById("playerPrev").addEventListener("click", () => {
+      playerIndex = (playerIndex - 1 + visibleVideos.length) % visibleVideos.length;
+      updatePlayer();
+    });
+    document.getElementById("playerNext").addEventListener("click", () => {
+      playerIndex = (playerIndex + 1) % visibleVideos.length;
+      updatePlayer();
+    });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("open")) return;
+      if (e.key === "Escape") closePlayer();
+      if (e.key === "ArrowLeft")  { playerIndex = (playerIndex - 1 + visibleVideos.length) % visibleVideos.length; updatePlayer(); }
+      if (e.key === "ArrowRight") { playerIndex = (playerIndex + 1) % visibleVideos.length; updatePlayer(); }
+    });
+
+    // Filter tabs
+    document.getElementById("filterTabs").addEventListener("click", e => {
+      const btn = e.target.closest(".filter-tab");
+      if (!btn) return;
+      document.querySelectorAll(".filter-tab").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeCategory = btn.dataset.category;
+      renderGrid();
+    });
+
+    renderGrid();
+  </script>
+</body>
+</html>

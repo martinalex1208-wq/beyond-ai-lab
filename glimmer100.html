@@ -1,211 +1,888 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>微光100 | Glimmer100 | Beyond AI Lab</title>
-  <meta name="description" content="微光100邀請孩子分享生活中的心情與故事，讓一份小小的鼓勵，成為他們生活裡的一份期待。">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <link rel="stylesheet" href="./css/pages/legacy.css">
-  <link rel="stylesheet" href="./css/pages/responsive.css">
+  <title>微光100 · Glimmer 100 — Beyond AI Lab</title>
+  <meta name="description" content="一杯咖啡的花費，成為偏鄉孩子心裡的一道光。微光100計畫——期待、尊嚴、被看見。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<body class="glimmer100-page">
-  <header class="site-header site-header--light-page">
-    <nav class="nav">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Beyond AI Lab Logo">
+    :root {
+      --bg:          #080808;
+      --bg-2:        #111111;
+      --bg-3:        #1a1a1a;
+      --border:      rgba(255,255,255,0.07);
+      --border-hover:rgba(255,255,255,0.18);
+      --text:        #f0ece4;
+      --text-muted:  rgba(240,236,228,0.45);
+      --text-faint:  rgba(240,236,228,0.25);
+      --gold:        #c9a96e;
+      --gold-light:  #e8d5a8;
+      --gold-dim:    rgba(201,169,110,0.15);
+      --warm:        #d4a574;
+      --warm-dim:    rgba(212,165,116,0.12);
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'DM Sans', system-ui, sans-serif;
+      --font-mono:   'DM Mono', monospace;
+      --nav-h:       64px;
+      --ease:        cubic-bezier(0.25, 0, 0, 1);
+      --max-w:       1400px;
+      --content-w:   720px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .glow-orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+      filter: blur(120px); opacity: 0.07;
+    }
+    .glow-orb--1 {
+      width: 700px; height: 700px; top: -200px; right: -150px;
+      background: radial-gradient(circle, #c9a96e, transparent 70%);
+    }
+    .glow-orb--2 {
+      width: 500px; height: 500px; bottom: 20%; left: -150px;
+      background: radial-gradient(circle, #d4a574, transparent 70%);
+    }
+
+    /* Nav */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav {
+      max-width: var(--max-w); margin: 0 auto;
+      height: 100%; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-size: 0.875rem; font-weight: 400;
+    }
+    .logo img { width: 28px; height: 28px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; list-style: none; }
+    .nav-links a {
+      display: block; padding: 0 0.9rem;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--gold); }
+
+    main { position: relative; z-index: 1; padding-top: var(--nav-h); }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300; line-height: 0.95;
+      letter-spacing: -0.02em; color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-subtitle {
+      font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.4;
+    }
+    .hero-tagline {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      letter-spacing: 0.15em; color: var(--text-faint);
+      text-transform: uppercase;
+    }
+
+    /* Hero poem */
+    .hero-poem {
+      max-width: 480px; margin: 3rem auto 0;
+      padding: 2rem; border: 1px solid var(--border);
+      border-radius: 2px; background: var(--bg-2);
+    }
+    .hero-poem-line {
+      font-family: var(--font-serif); font-size: 1rem;
+      color: var(--text-muted); line-height: 2;
+      font-style: italic;
+    }
+    .hero-poem-line.highlight { color: var(--gold); font-style: normal; }
+
+    /* ── Section base ─────────────────────────────────────────── */
+    .section {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; color: var(--text);
+      line-height: 1.1; margin-bottom: 2.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-body {
+      max-width: var(--content-w);
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .section-body p + p { margin-top: 1.2rem; }
+    .section-body strong { color: var(--text); font-weight: 400; }
+
+    /* ── Brand Story ──────────────────────────────────────────── */
+    .brand-story-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .brand-story-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text); line-height: 1.5;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+    }
+
+    /* ── How it works ─────────────────────────────────────────── */
+    .how-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .how-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      transition: background 0.3s var(--ease);
+    }
+    .how-card:hover { background: var(--bg-2); }
+    .how-num {
+      font-family: var(--font-serif); font-size: 3.5rem;
+      font-weight: 300; color: var(--gold); opacity: 0.4;
+      line-height: 1; margin-bottom: 1rem; display: block;
+    }
+    .how-title {
+      font-family: var(--font-serif); font-size: 1.3rem;
+      font-weight: 400; color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .how-desc {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .how-highlight {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--gold); letter-spacing: 0.06em;
+    }
+
+    /* Math visual */
+    .math-row {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap; padding: 2rem;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .math-item {
+      text-align: center;
+    }
+    .math-num {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      font-weight: 300; color: var(--gold); display: block; line-height: 1;
+    }
+    .math-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 0.1em; color: var(--text-faint);
+      text-transform: uppercase; margin-top: 0.3rem; display: block;
+    }
+    .math-op {
+      font-family: var(--font-serif); font-size: 2rem;
+      color: var(--border-hover); line-height: 1;
+    }
+    .math-arrow {
+      font-size: 1.5rem; color: var(--gold); opacity: 0.5;
+    }
+
+    /* ── Values ───────────────────────────────────────────────── */
+    .values-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .value-card {
+      background: var(--bg); padding: 2rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .value-card:hover { background: var(--bg-2); }
+    .value-word {
+      font-family: var(--font-serif); font-size: 1.6rem;
+      font-weight: 300; color: var(--gold);
+      margin-bottom: 0.5rem; line-height: 1;
+    }
+    .value-desc {
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── Song section ─────────────────────────────────────────── */
+    .song-card {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      padding: 2.5rem; background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .song-info {}
+    .song-title {
+      font-family: var(--font-serif); font-size: 2rem;
+      font-weight: 300; color: var(--text); margin-bottom: 0.3rem;
+    }
+    .song-subtitle {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .song-desc {
+      font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 1.5rem;
+    }
+    .song-listen {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--gold); color: #080808;
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.06em; text-decoration: none; border-radius: 2px;
+      transition: background 0.2s; margin-bottom: 0.8rem; display: inline-flex;
+    }
+    .song-listen:hover { background: var(--gold-light); }
+    .audio-player {
+      margin-top: 1rem;
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: 2px; padding: 0.75rem 1rem;
+    }
+    .audio-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 0.4rem; display: block;
+    }
+    .audio-player audio {
+      width: 100%; height: 36px; accent-color: var(--gold);
+      display: block;
+    }
+    .song-lyrics {
+      border-left: 1px solid var(--border); padding-left: 2rem;
+      max-height: 300px; overflow-y: auto;
+    }
+    .song-lyrics::-webkit-scrollbar { width: 3px; }
+    .song-lyrics::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 2px; }
+    .lyric-section {
+      margin-bottom: 1.2rem;
+    }
+    .lyric-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.15em; color: var(--text-faint);
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .lyric-line {
+      font-family: var(--font-serif); font-size: 0.9rem;
+      color: var(--text-muted); line-height: 1.9;
+    }
+    .lyric-line.chorus { color: var(--text); font-size: 0.95rem; }
+
+    /* ── Vision ───────────────────────────────────────────────── */
+    .vision-numbers {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .vision-num-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      text-align: center; transition: background 0.3s;
+    }
+    .vision-num-card:hover { background: var(--bg-2); }
+    .vision-big-num {
+      font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300; color: var(--gold); line-height: 1; display: block;
+      margin-bottom: 0.5rem;
+    }
+    .vision-num-label {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .vision-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text); line-height: 1.6;
+      max-width: 700px; margin: 0 auto;
+      text-align: center; padding: 2rem 0;
+    }
+
+    /* ── Promise ──────────────────────────────────────────────── */
+    .promise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .promise-card {
+      padding: 1.8rem; border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .promise-card:hover { border-color: var(--border-hover); }
+    .promise-icon {
+      font-size: 1.3rem; margin-bottom: 0.8rem; display: block;
+    }
+    .promise-title {
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-weight: 400; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .promise-desc {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────── */
+    .cta-section {
+      text-align: center; border-bottom: none;
+    }
+    .cta-big {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300; color: var(--text);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .cta-big em { font-style: italic; color: var(--gold); }
+    .cta-sub {
+      font-size: 0.9rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; line-height: 1.7;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 0.8rem 2.2rem;
+      background: var(--gold); color: #080808;
+      font-family: var(--font-sans); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.06em;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-secondary {
+      padding: 0.8rem 2.2rem;
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.4);
+      color: var(--gold);
+      font-family: var(--font-sans); font-size: 0.85rem;
+      font-weight: 400; letter-spacing: 0.06em;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand-name { font-size: 0.875rem; font-weight: 400; color: var(--text); }
+    .footer-logo { width: 24px; height: 24px; object-fit: contain; }
+    .footer-brand-tagline {
+      font-size: 0.8rem; color: var(--text-muted);
+      line-height: 1.6; margin-top: 0.5rem; max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.4rem; }
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.82rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: var(--max-w); margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .footer-mantra {
+      font-family: var(--font-serif); font-style: italic;
+      color: var(--gold); font-size: 0.9rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--text-faint); font-family: var(--font-mono);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero > * { animation: fadeUp 0.6s var(--ease) both; }
+    .hero > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero > *:nth-child(3) { animation-delay: 0.2s; }
+    .hero > *:nth-child(4) { animation-delay: 0.3s; }
+    .hero > *:nth-child(5) { animation-delay: 0.4s; }
+
+    @media (max-width: 1000px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .vision-numbers { grid-template-columns: 1fr; }
+      .song-card { grid-template-columns: 1fr; }
+      .song-lyrics { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+    }
+    @media (max-width: 800px) {
+      .brand-story-grid { grid-template-columns: 1fr; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 3rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .math-row { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
         <span>Beyond AI Lab</span>
       </a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="prompt-lab.html">Prompt Lab</a></li>
-        <li><a href="music-lab.html">Music Lab</a></li>
-        <li><a href="visual-lab.html">Visual Lab</a></li>
-        <li><a href="story-lab.html">Story Lab</a></li>
-        <li><a href="impact-lab.html">Impact Lab</a></li>
-        <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./image-library.html">Image Library</a></li>
+        <li><a href="./music-library.html">Music Library</a></li>
+        <li><a href="./impact-lab.html">Impact Lab</a></li>
+        <li><a href="./glimmer100.html" class="active">微光100</a></li>
+        <li><a href="./steve.html">Creator</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="glimmer100-main">
-    <!-- 1. Hero Section -->
-    <section class="glimmer100-hero">
-      <div class="glimmer100-hero-bg" aria-hidden="true"></div>
-      <div class="glimmer100-hero-inner">
-        <h1 class="glimmer100-hero-title">
-          一杯咖啡<br>
-          一份喜悅<br>
-          讓孩子多一種期待
-        </h1>
-        <p class="glimmer100-hero-subheadline">讓孩子的聲音，被聽見</p>
-        <p class="glimmer100-hero-intro">微光100邀請孩子分享生活中的心情與故事，讓一份小小的鼓勵，成為他們生活裡的一份期待。</p>
-        <div class="glimmer100-hero-actions">
-          <a href="#support" class="glimmer100-btn glimmer100-btn--primary">支持微光100</a>
-          <a href="#origin" class="glimmer100-btn glimmer100-btn--secondary">了解計畫</a>
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-eyebrow">Beyond AI Lab · Impact · 公益計畫</p>
+      <h1 class="hero-title">微光<em>100</em></h1>
+      <p class="hero-subtitle">一杯咖啡的花費，成為偏鄉孩子心裡的一道光</p>
+      <p class="hero-tagline">Glimmer 100 · 期待 · 尊嚴 · 被看見</p>
+      <div class="hero-poem">
+        <p class="hero-poem-line">一杯咖啡</p>
+        <p class="hero-poem-line">一束微光</p>
+        <p class="hero-poem-line">一座燈塔</p>
+        <p class="hero-poem-line highlight" style="margin-top:1rem;">生活是有味道的。</p>
+        <p class="hero-poem-line">如果心是輕的，世界其實很美。</p>
+      </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="section">
+      <p class="section-eyebrow">起點</p>
+      <h2 class="section-title">一個很簡單的<br><em>想法。</em></h2>
+      <div class="brand-story-grid">
+        <div>
+          <p class="brand-story-quote">一杯咖啡的花費，能不能成為偏鄉孩子心裡的一道光？</p>
+        </div>
+        <div class="section-body">
+          <p>有些孩子從小沒有零用錢，不是因為不努力，而是生活沒有給他們太多選擇。</p>
+          <p>我們希望透過一百元的微小支持，讓孩子感受到的不只是幫助，而是一種<strong>被看見、被鼓勵、被期待</strong>的力量。</p>
+          <p>微光100不是施捨，而是一份關於<strong>尊嚴、勇氣與成長</strong>的約定。當孩子願意用自己的方式表達、努力與爭取，那一百元就不只是金錢，而是生命裡的一份喜悅，也是走向未來的一種期待。</p>
+          <p style="margin-top:1.5rem; font-family:var(--font-serif); font-size:1.1rem; font-style:italic; color:var(--gold);">一杯咖啡、一份喜悅、讓孩子多一種期待。</p>
         </div>
       </div>
     </section>
 
-    <!-- 2. Project Origin Section -->
-    <section class="glimmer100-section" id="origin">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">一個很小的想法</h2>
-        <div class="glimmer100-content-block">
-          <p>在城市裡，100元可能只是一杯咖啡。<br>但在偏鄉，這樣的一份心意，可能成為孩子生活裡的一份期待。</p>
-          <p>微光100想做的事情很簡單：<br>邀請孩子分享真實的心情與生活片段，<br>讓他們知道，有人願意聽他們說話。</p>
+    <!-- How it works -->
+    <section class="section">
+      <p class="section-eyebrow">認養機制</p>
+      <h2 class="section-title">五人集結，<br><em>點亮微光。</em></h2>
+      <div class="how-grid">
+        <div class="how-card">
+          <span class="how-num">01</span>
+          <div class="how-title">一杯咖啡的付出</div>
+          <p class="how-desc">每人每月 <strong style="color:var(--text)">100 元</strong>（每年 1,200 元）。少喝一杯咖啡，換孩子一個月最期待的時刻。</p>
+          <div class="how-highlight">NT$100 / 月 · NT$1,200 / 年</div>
+        </div>
+        <div class="how-card">
+          <span class="how-num">02</span>
+          <div class="how-title">五位朋友的喜悅</div>
+          <p class="how-desc">每 <strong style="color:var(--text)">5 位捐款人</strong>組成一個小組，共同認養一家<strong style="color:var(--text)">教會陪讀班</strong>。微光匯聚，照亮一個角落。</p>
+          <div class="how-highlight">5人 × 100元 = 500元 / 月</div>
+        </div>
+        <div class="how-card">
+          <span class="how-num">03</span>
+          <div class="how-title">孩子用努力爭取</div>
+          <p class="how-desc">每月 <strong style="color:var(--text)">5 個獲獎名額</strong>，孩子透過分享故事、朗讀、完成挑戰來獲得。<strong style="color:var(--text)">不是施捨，是榮譽。</strong></p>
+          <div class="how-highlight">5個名額 · 每人100元微光津貼</div>
+        </div>
+      </div>
+
+      <!-- Math visual -->
+      <div class="math-row">
+        <div class="math-item">
+          <span class="math-num">5</span>
+          <span class="math-label">位朋友</span>
+        </div>
+        <span class="math-op">×</span>
+        <div class="math-item">
+          <span class="math-num">100</span>
+          <span class="math-label">元 / 月</span>
+        </div>
+        <span class="math-op">=</span>
+        <div class="math-item">
+          <span class="math-num">500</span>
+          <span class="math-label">元 / 月</span>
+        </div>
+        <span class="math-arrow">→</span>
+        <div class="math-item">
+          <span class="math-num">5</span>
+          <span class="math-label">個孩子的期待</span>
+        </div>
+        <span class="math-arrow">→</span>
+        <div class="math-item">
+          <span class="math-num">1</span>
+          <span class="math-label">座陪讀班點亮</span>
         </div>
       </div>
     </section>
 
-    <!-- 3. What Glimmer 100 Does -->
-    <section class="glimmer100-section glimmer100-section--alt">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">微光100在做什麼</h2>
-        <div class="glimmer100-feature-grid">
-          <div class="glimmer100-feature-card">
-            <h3 class="glimmer100-feature-title">分享心情</h3>
-            <p class="glimmer100-feature-desc">孩子可以分享最近的心情與感受。</p>
+    <!-- Core Values -->
+    <section class="section">
+      <p class="section-eyebrow">核心價值</p>
+      <h2 class="section-title">八個關鍵字，<br><em>定義微光。</em></h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-word">期待</div>
+          <p class="value-desc">讓孩子有一個每月值得等待的時刻，一種明天也許會更好的感覺。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">尊嚴</div>
+          <p class="value-desc">不是被動接受的施捨，而是透過努力爭取而來的榮譽與自尊。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">被看見</div>
+          <p class="value-desc">每一個孩子的聲音都值得被聽見，每一份努力都值得被回應。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">勇氣</div>
+          <p class="value-desc">練習開口表達，是一種勇氣。當孩子敢於分享，世界就會聽見。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">誠實表達</div>
+          <p class="value-desc">說出真實的心聲，不加修飾。孩子最純粹的聲音，往往最有力量。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">微光匯聚</div>
+          <p class="value-desc">每一個100元都是微光。當微光聚在一起，就能照亮整個黑夜。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">孩子的聲音</div>
+          <p class="value-desc">計畫的核心不是大人的善意，而是讓孩子的聲音被世界聽見。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">不是施捨</div>
+          <p class="value-desc">是回應。回應孩子的努力，回應他們值得被愛、被看見的本質。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Songs -->
+    <section class="section">
+      <p class="section-eyebrow">音樂宇宙 · Suno AI</p>
+      <h2 class="section-title">三首歌，<br><em>一個故事。</em></h2>
+      <p style="max-width:var(--content-w); color:var(--text-muted); font-size:0.95rem; line-height:1.8; margin-bottom:3rem;">
+        微光100有自己的音樂敘事弧線——從孩子勇敢<strong style="color:var(--text)">表達</strong>，到微光慢慢<strong style="color:var(--text)">匯聚</strong>，最終<strong style="color:var(--text)">照亮</strong>整個世界。三首歌，三個階段，一個完整的故事。
+      </p>
+
+      <!-- Song 1 -->
+      <div class="song-card" style="margin-bottom:1.5rem;">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第一首 · 表達</div>
+          <div class="song-title">誠實的音符</div>
+          <div class="song-subtitle">Honest Notes · Suno AI · Acoustic</div>
+          <p class="song-desc">從花東山海之間，一百個孩子把心裡的話寫下來。不用押韻，不必完美，只要勇敢說出真話。孩子最純粹的聲音，往往最有力量。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Quiet acoustic guitar · Soft piano · Children choir · Gentle and sincere</p>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/誠實的音符.mp3" type="audio/mpeg">
+            </audio>
           </div>
-          <div class="glimmer100-feature-card">
-            <h3 class="glimmer100-feature-title">分享生活</h3>
-            <p class="glimmer100-feature-desc">孩子可以說說生活裡的小事與日常片段。</p>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">誠實的音符 落在紙上</div>
+            <div class="lyric-line chorus">像星星 點亮遠方</div>
+            <div class="lyric-line chorus">一句一句 沒有修飾</div>
+            <div class="lyric-line chorus">卻是生命 最真的故事</div>
           </div>
-          <div class="glimmer100-feature-card">
-            <h3 class="glimmer100-feature-title">分享夢想</h3>
-            <p class="glimmer100-feature-desc">孩子也可以分享心裡的盼望與想像。</p>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">老師說 孩子把心裡的話寫下</div>
+            <div class="lyric-line">不用押韻 也不必害怕</div>
+            <div class="lyric-line">也許只是 午餐少了一道菜</div>
+            <div class="lyric-line">或是夢想 還找不到方向</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Pre-Chorus</div>
+            <div class="lyric-line">世界很大 但聲音很小</div>
+            <div class="lyric-line">如果有人 願意聽到</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Bridge</div>
+            <div class="lyric-line">不用完美 不用偉大</div>
+            <div class="lyric-line">只要勇敢 說出真話</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Final Chorus</div>
+            <div class="lyric-line chorus">誠實的音符 飛向天空</div>
+            <div class="lyric-line chorus">讓每顆心 不再沉默</div>
+            <div class="lyric-line chorus">當歌聲 越過山丘</div>
+            <div class="lyric-line chorus">希望就會 慢慢生長</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song 2 -->
+      <div class="song-card" style="margin-bottom:1.5rem;">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第二首 · 匯聚</div>
+          <div class="song-title">百元微光</div>
+          <div class="song-subtitle">手心向上的勇氣 · Suno AI · Cinematic Pop</div>
+          <p class="song-desc">一百元不只是金錢，更是尊嚴的重量。當孩子手心向上，用努力爭取屬於自己的微光，每一道光都在匯聚，終將點燃太陽。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Emotional piano intro · Warm orchestral build · Children choir harmony · Hopeful charity anthem</p>
+          <a href="https://suno.com/s/gek1m7IBFEMBFj3c" target="_blank" class="song-listen">▶ 在 Suno 收聽</a>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/百元微光.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">百元微光 手心向上的力量</div>
+            <div class="lyric-line chorus">一字一句 都是自強的翅膀</div>
+            <div class="lyric-line chorus">不只是金錢 更是尊嚴的重量</div>
+            <div class="lyric-line chorus">微光匯聚 就能點燃太陽</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">記憶中 那個小小的手掌</div>
+            <div class="lyric-line">從沒見過 零用錢的模樣</div>
+            <div class="lyric-line">渴望的心 像微弱的星光</div>
+            <div class="lyric-line">在寂靜夜裡 獨自閃亮</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Pre-Chorus</div>
+            <div class="lyric-line">不必隱藏 你的委屈與迷惘</div>
+            <div class="lyric-line">說出真心 就能看見光亮</div>
+            <div class="lyric-line">這不是施捨 是勇氣的獎賞</div>
+            <div class="lyric-line">用你的筆 劃破現實的牆</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 2</div>
+            <div class="lyric-line">二十座教堂 種下希望的苗</div>
+            <div class="lyric-line">兩千個夢想 挺直稚嫩的腰</div>
+            <div class="lyric-line">影片會流傳 音樂會一直飄</div>
+            <div class="lyric-line">讓全世界聽見 你們的驕傲</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Outro</div>
+            <div class="lyric-line chorus">手心向上 勇敢去闖</div>
+            <div class="lyric-line chorus">微光閃亮 守護夢想</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song 3 -->
+      <div class="song-card">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第三首 · 照亮</div>
+          <div class="song-title">兩千座燈塔</div>
+          <div class="song-subtitle">Two Thousand Lighthouses · Suno AI · Epic Orchestral</div>
+          <p class="song-desc">從一個心願，到兩千座燈塔照亮每一條街道。當善意不再沉默，當孩子勇敢站起來，世界就會重新盛開。這是微光100最宏大的願景。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Epic piano · Distant choir · Grand orchestra crescendo · Powerful and hopeful</p>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/兩千座燈塔.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">兩千座燈塔 照亮每一條街道</div>
+            <div class="lyric-line chorus">百元的微光 匯聚成海嘯</div>
+            <div class="lyric-line chorus">一萬個孩子 抬頭微笑</div>
+            <div class="lyric-line chorus">那是世界 最好的回報</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Intro</div>
+            <div class="lyric-line">曾有一份願望 在寒風裡被遺忘</div>
+            <div class="lyric-line">曾有一張藍圖 被世界輕輕推開</div>
+            <div class="lyric-line">但有人 帶著微光走來</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">從一個城市 到遠方山海</div>
+            <div class="lyric-line">一盞燈 點亮一片黑暗</div>
+            <div class="lyric-line">一百變成千萬 一顆心帶動一片海</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Bridge</div>
+            <div class="lyric-line">今天種下 一顆希望</div>
+            <div class="lyric-line">明天就會 變成星光</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Final Chorus</div>
+            <div class="lyric-line chorus">兩千座燈塔 照亮整個時代</div>
+            <div class="lyric-line chorus">每一束光 都不再等待</div>
+            <div class="lyric-line chorus">當孩子 勇敢站起來</div>
+            <div class="lyric-line chorus">世界就會 重新盛開</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Encouragement Section -->
-    <section class="glimmer100-section">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">一份小小的鼓勵</h2>
-        <div class="glimmer100-encouragement">
-          <span class="glimmer100-amount">100 元</span>
-          <p class="glimmer100-encouragement-text">這不是獎勵表現，<br>而是一份被看見的喜悅。</p>
-          <p class="glimmer100-encouragement-note">在城市裡，100元可能只是一杯咖啡；<br>但在孩子的生活裡，可能是一份期待。</p>
+    <!-- Vision -->
+    <section class="section">
+      <p class="section-eyebrow">願景</p>
+      <h2 class="section-title">微光終將<br><em>匯聚成燈塔。</em></h2>
+      <div class="vision-numbers">
+        <div class="vision-num-card">
+          <span class="vision-big-num">20</span>
+          <span class="vision-num-label">座教會陪讀班</span>
+        </div>
+        <div class="vision-num-card">
+          <span class="vision-big-num">2,000</span>
+          <span class="vision-num-label">個孩子被看見</span>
+        </div>
+        <div class="vision-num-card">
+          <span class="vision-big-num">100</span>
+          <span class="vision-num-label">元 · 一杯咖啡的力量</span>
+        </div>
+      </div>
+      <p class="vision-quote">「當一杯咖啡的價值，成為一個孩子生命中的喜悅，當一份小小的善意在兩千個孩子之中慢慢傳開，我們相信，微光終將匯聚成燈塔。」</p>
+    </section>
+
+    <!-- Promise -->
+    <section class="section">
+      <p class="section-eyebrow">我們的承諾</p>
+      <h2 class="section-title">透明、安心、<br><em>純粹。</em></h2>
+      <div class="promise-grid">
+        <div class="promise-card">
+          <span class="promise-icon">🏦</span>
+          <div class="promise-title">直接匯款</div>
+          <p class="promise-desc">款項直接匯入教會官方帳戶，不經手任何中間組織。每一分錢都到達它該去的地方。</p>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">📄</span>
+          <div class="promise-title">合法收據</div>
+          <p class="promise-desc">教會將開立正式合法收據，可供年度個人所得稅抵稅。做好事也能抵稅。</p>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">✨</span>
+          <div class="promise-title">100% 純粹</div>
+          <p class="promise-desc">沒有行政抽成，只有 100% 的愛與傳遞。低調與尊重，不進行任何形式的商業宣傳。</p>
         </div>
       </div>
     </section>
 
-    <!-- 5. Four Principles Section -->
-    <section class="glimmer100-section glimmer100-section--alt">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">微光100的四個原則</h2>
-        <div class="glimmer100-principles-grid">
-          <div class="glimmer100-principle-card">
-            <h3 class="glimmer100-principle-title">不競爭</h3>
-            <p class="glimmer100-principle-desc">分享不是比賽，孩子不需要彼此比較。</p>
-          </div>
-          <div class="glimmer100-principle-card">
-            <h3 class="glimmer100-principle-title">不評分</h3>
-            <p class="glimmer100-principle-desc">沒有好壞之分，只要是真實的心情就足夠。</p>
-          </div>
-          <div class="glimmer100-principle-card">
-            <h3 class="glimmer100-principle-title">不標籤</h3>
-            <p class="glimmer100-principle-desc">每個孩子都有自己的成長節奏。</p>
-          </div>
-          <div class="glimmer100-principle-card">
-            <h3 class="glimmer100-principle-title">不具名</h3>
-            <p class="glimmer100-principle-desc">為尊重孩子與家庭隱私，所有分享內容皆以不具名方式收集與整理。</p>
-          </div>
-        </div>
+    <!-- CTA -->
+    <section class="section cta-section">
+      <h2 class="cta-big">每個月少喝<br>一杯咖啡，<br><em>點亮一道光。</em></h2>
+      <p class="cta-sub">這份喜悅，誠摯邀請您一起參與。<br>「熱情是引擎，享受是過程，而成果只是隨之而來的繁花。」</p>
+      <div class="cta-buttons">
+        <a href="/cdn-cgi/l/email-protection#4e2c2b3721202a602f2760222f2c0e29232f2722602d2123713d3b2c242b2d3a73abf0e0abcbc77f7e7ea6e6c6a9dbe5a6e7ecabdbc1" class="btn-primary">我想參與</a>
+        <a href="./impact-lab.html" class="btn-secondary">Impact Lab</a>
+        <a href="./steve.html" class="btn-secondary">關於 Steve</a>
       </div>
     </section>
 
-    <!-- 6. Annual Goal Section -->
-    <section class="glimmer100-section">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">第一年的目標</h2>
-        <div class="glimmer100-goals">
-          <div class="glimmer100-goal-item">
-            <span class="glimmer100-goal-num">20</span>
-            <span class="glimmer100-goal-label">間教會</span>
-          </div>
-          <div class="glimmer100-goal-item">
-            <span class="glimmer100-goal-num">5</span>
-            <span class="glimmer100-goal-label">每月 5 位孩子</span>
-          </div>
-          <div class="glimmer100-goal-item">
-            <span class="glimmer100-goal-num">100</span>
-            <span class="glimmer100-goal-label">每位 100 元</span>
-          </div>
-        </div>
-        <p class="glimmer100-goal-note">一年只需要 120,000 元，就可以讓這個計畫持續運作。</p>
-      </div>
-    </section>
-
-    <!-- 7. Support Section -->
-    <section class="glimmer100-section glimmer100-section--support" id="support">
-      <div class="glimmer100-container">
-        <h2 class="glimmer100-section-title">支持方式</h2>
-        <div class="glimmer100-support-card">
-          <p class="glimmer100-support-intro">您可以認養一間教會</p>
-          <div class="glimmer100-support-price">
-            <span class="glimmer100-support-amount">每月 500 元</span>
-            <span class="glimmer100-support-annual">一年 6000 元</span>
-          </div>
-          <p class="glimmer100-support-desc">這份支持將用於孩子的鼓勵金，讓一份小小的心意，成為穩定的陪伴。</p>
-          <div class="glimmer100-support-actions">
-            <a href="mailto:beyond.ai.lab@gmail.com?subject=支持微光100" class="glimmer100-btn glimmer100-btn--primary glimmer100-btn--large">支持微光100</a>
-            <a href="#origin" class="glimmer100-btn glimmer100-btn--secondary glimmer100-btn--large">了解計畫</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. Origin / Testimony Section -->
-    <section class="glimmer100-section glimmer100-section--origin">
-      <div class="glimmer100-origin-inner">
-        <p class="glimmer100-origin-eyebrow">一個開始</p>
-        <h2 class="glimmer100-origin-title">這個網站的起點</h2>
-        <div class="glimmer100-origin-body">
-          <p>我很期待這個網站的完成。<br>對我來說，它的意義很特別。</p>
-          <p>從一個完全不會寫程式的人開始，<br>在 AI 的幫助下，一步一步建立這個網站。</p>
-          <p>這本身，就是一個小小的見證。</p>
-          <p>希望有一天，當孩子或老師看到這個網站時，也能感受到：<br>很多事情，只要有人願意開始，就會慢慢發生。</p>
-        </div>
-        <p class="glimmer100-origin-close">這個網站，不只是為了孩子。<br>也是一個開始的見證。</p>
-      </div>
-    </section>
-
-    <!-- 9. Final Closing Section -->
-    <section class="glimmer100-section glimmer100-section--closing">
-      <div class="glimmer100-container">
-        <p class="glimmer100-closing-text">微光100不是要改變孩子。<br>我們只是希望，在他們的世界裡，<br>有人願意停下來，聽他們說話。</p>
-        <p class="glimmer100-closing-core">我們不是要孩子表現得更好，<br>只是想讓他們的聲音被聽見。</p>
-        <p class="glimmer100-closing-end">讓孩子的聲音，被世界溫柔地聽見</p>
-      </div>
-    </section>
-
-    <!-- 10. Quiet Ending -->
-    <section class="glimmer100-section glimmer100-section--quiet-end">
-      <div class="glimmer100-quiet-end-inner">
-        <p class="glimmer100-quiet-end-line">讓孩子的聲音<br>被溫柔地聽見</p>
-        <p class="glimmer100-quiet-end-signature">Glimmer 100<br>一杯咖啡，一份喜悅，讓孩子多一種期待。</p>
-      </div>
-    </section>
   </main>
 
-  <footer class="glimmer100-footer">
-    <div class="glimmer100-footer-inner">
-      <a href="index.html" class="glimmer100-footer-brand">Beyond AI Lab</a>
-      <p class="glimmer100-footer-tagline">Ride · Create · Give</p>
-      <p class="glimmer100-footer-copy">© 2026 Beyond AI Lab</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Impact</h4>
+        <ul class="footer-links">
+          <li><a href="glimmer100.html">微光100</a></li>
+          <li><a href="impact-lab.html">Impact Lab</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompt Library</a></li>
+          <li><a href="image-library.html">Image Library</a></li>
+          <li><a href="music-library.html">Music Library</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="/cdn-cgi/l/email-protection#1e7c7b6771707a307f7730727f7c5e79737f7772307d7173">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-
-</html>
+    <div class="footer-bottom">
+      <p class="footer-mantra">Ride · Create · Give

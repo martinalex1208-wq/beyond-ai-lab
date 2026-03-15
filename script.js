@@ -2,7 +2,12 @@
  * Creation Stats - Live metrics dashboard
  */
 const GENERATED_PROMPTS_KEY = 'beyond-ai-lab-generated-count';
-const AI_SONGS_COUNT = 300;
+const PROMPTS_PATH = './data/prompts.json';
+const IMAGES_PATH  = './data/images.json';
+const SONGS_PATH   = './data/songs.json';
+const STORIES_PATH = './data/stories.json';
+let AI_SONGS_COUNT = 0;
+fetch('songs.json').then(r=>r.json()).then(data=>{if(Array.isArray(data)){AI_SONGS_COUNT=data.length;const el=document.getElementById('statSongCount');if(el)el.textContent=String(AI_SONGS_COUNT);}}).catch(()=>{});
 
 /**
  * Featured Works - Artworks from Visual Lab marked as featured
@@ -1393,11 +1398,6 @@ function initLatestAdditions() {
 function initArchiveStats() {
   const section = document.getElementById('archive-stats');
   if (!section) return;
-
-  const PROMPTS_PATH = './data/prompts.json';
-  const IMAGES_PATH = './data/images.json';
-  const SONGS_PATH = './data/songs.json';
-  const STORIES_PATH = './data/stories.json';
 
   const elIds = {
     prompts: 'archiveStatsPrompts',
