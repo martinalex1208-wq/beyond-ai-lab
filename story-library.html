@@ -303,8 +303,7 @@
           (series ? '<span class="story-library-series library-card-subtitle">' + escapeHtml(formatSeries(series)) + '</span>' : '') +
         '</div>' +
         metaHtml +
-        (summary ? '<div class="story-library-summary-preview library-card-text">' + escapeHtml(truncateTextLocal(summary, 80)) + '</div>' : '') +
-        contentPreviewHtml +
+        (summary ? '<div class="story-library-summary-preview library-card-text">' + escapeHtml(truncateTextLocal(summary, 120)) + '</div>' : contentPreviewHtml) +
         copyActionsHtml +
         tagsHtml +
       '</div>' +
