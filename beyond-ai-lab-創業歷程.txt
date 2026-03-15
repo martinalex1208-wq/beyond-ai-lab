@@ -1,0 +1,94 @@
+【Beyond AI Lab · 創業歷程】
+創辦人：Steve 盧俊傑
+記錄日期：2026-03-15
+RCG · Ride · Create · Give
+
+=== 創辦人簡介 ===
+
+Steve 盧俊傑，1964年生於台灣高雄，62歲。
+三專畢業，1991年移民加拿大，1996年回台北創業（移民公司），
+1999-2007年任職汽機車避震器專業廠，2007年起獨立投資至今。
+2019年與太太一同受洗，同年開始騎單車。
+B型射手座，人際關係好，朋友多。
+1919愛走動環島：2023第一年、2024第二年、2025副隊長、2026隊長。
+
+=== AI 創作起點 ===
+
+2026年1月27日 — 接觸 Suno
+第一次接觸AI音樂生成，完全停不下來。
+至今創作 300+ 首歌曲。
+
+2026年2月7日 — 接觸 Grok
+開始生成AI圖片與影片。
+建立科幻、奇幻、生命等系列作品。
+
+2026年3月8日 — 接觸 Vibe Coding
+第一次用AI寫程式。
+建立單頁網頁、1919網頁、期貨訊號自動發送Line、每日自動生成圖片。
+
+=== Beyond AI Lab 建立歷程 ===
+
+【Vibe Coding 第1-7天】
+- 學會基礎 Vibe Coding
+- 建立 Beyond AI Lab 網站架構
+- 連接 GitHub + Vercel 部署上線
+- 網址：beyond-ai-lab.vercel.app
+
+【Vibe Coding 第8天 · 2026年3月15日】
+這一天完成了：
+✅ 32張AI圖片分類整理（sci-fi、fantasy-nordic、fantasy-warrior、life、ai-girl-modern）
+✅ Image Library 上線（瀑布流、分類篩選、Lightbox）
+✅ Video Library 上線（6支影片、全螢幕播放）
+✅ 微光100完整頁面（三首歌、播放器、歌詞、Suno連結）
+✅ Impact Lab 重建
+✅ Steve 個人頁面（含《救助》雜誌2025年10月號專訪內容）
+✅ Music Library 加入三首微光100歌曲
+✅ Story Library 修復重複文字問題
+✅ 導航列更新（加入微光100、Creator）
+✅ 微光100文案完成（bit.ly/glimmer100）
+✅ LINE QR Code 加入網站（@899nuuvy）
+✅ 「我想參與」Email 按鈕設定
+✅ RCG 品牌確立，加入所有頁面
+✅ 致教會牧師邀請函完成
+✅ 部署到 Vercel 全部上線
+
+=== 微光100計畫 ===
+
+發起日期：2026年3月15日
+核心理念：一杯咖啡的花費，成為偏鄉孩子心裡的一道光。
+短連結：https://bit.ly/glimmer100
+聯絡：beyond.ai.lab@gmail.com / LINE @899nuuvy
+
+三首主題曲：
+1. 誠實的音符 — https://suno.com/s/2fkfTWJ1GSSDqD0L（表達）
+2. 百元微光 — https://suno.com/s/gek1m7IBFEMBFj3c（匯聚）
+3. 兩千座燈塔 — https://suno.com/s/dTOOimEPGBGKcqlC（照亮）
+
+發展階段：
+第一階段：100位創始捐款人 + 第一間合作教會
+第二階段：成立協會，擴大到20間教會，2000個孩子
+第三階段：兩千座燈塔，全台灣
+終極願景：社會影響力平台（創業、就業、產品輸出）
+
+=== 品牌核心 ===
+
+品牌名稱：Beyond AI Lab
+品牌標語：RCG · Ride · Create · Give
+網址：beyond-ai-lab.vercel.app
+GitHub：github.com/martinalex1208-wq/beyond-ai-lab
+
+核心精神：
+「62歲才開始，不晚。只要還在動，就還在創造。」
+「熱情是引擎，享受是過程，而成果只是隨之而來的繁花。」
+「不要小看自己，無論處境如何，都能帶來影響。只要堅持努力，總有一天你也能成為別人的祝福。」
+
+=== 創業宣言 ===
+
+Beyond AI Lab 不只是一個網站，是一個創業故事。
+從第一首歌到今天，49天。
+從零到一個完整的AI創作平台。
+
+一個人，AI加持，RCG。
+62歲創業，AI時代最美的故事。
+
+Ride · Create · Give 🚴✨🌟
