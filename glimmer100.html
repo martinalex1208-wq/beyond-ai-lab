@@ -85,9 +85,9 @@
     }
     .logo img { width: 37px; height: 37px; object-fit: contain; }
     .logo span { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; }
-    .nav-links { display: flex; align-items: center; list-style: none; }
+    .nav-links { display: flex; align-items: center; list-style: none; flex-wrap: nowrap; overflow-x: auto; gap: 2px; }
     .nav-links a {
-      display: block; padding: 0 0.9rem;
+      display: block; padding: 6px 12px;
       color: var(--text-muted); text-decoration: none;
       font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap;
       transition: color 0.2s;
