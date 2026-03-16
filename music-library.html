@@ -200,9 +200,9 @@
 
     function esc(s){ if(!s)return''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
-    function getMoods(song){
-      if(Array.isArray(song.mood)) return song.mood;
-      if(song.mood) return String(song.mood).split(/[,·|]/).map(s=>s.trim()).filter(Boolean);
+    function getTags(song){
+      if(Array.isArray(song.tags)) return song.tags;
+      if(song.tags) return String(song.tags).split(/[,·|]/).map(s=>s.trim()).filter(Boolean);
       return [];
     }
 
@@ -215,40 +215,38 @@
 
       let list=all.filter(s=>{
         if(featuredOnly && !s.featured) return false;
-        if(type!=='all' && (s.type||s.category||'')!==type) return false;
-        if(mood && !getMoods(s).includes(mood)) return false;
+        if(type!=='all' && (s.type||'')!==type) return false;
+        if(mood && !getTags(s).includes(mood)) return false;
         if(q){
-          const hay=[s.title,s.summary,s.type,...(s.tags||[]),...getMoods(s)].join(' ').toLowerCase();
+          const hay=[s.title,s.preface,...getTags(s)].join(' ').toLowerCase();
           if(!hay.includes(q)) return false;
         }
         return true;
       });
 
-      if(sort==='newest') list.sort((a,b)=>(b.year||0)-(a.year||0));
+      if(sort==='newest') list.sort((a,b)=>(b.id||0)-(a.id||0));
       else if(sort==='title') list.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
       else if(sort==='featured') list.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
       return list;
     }
 
     function renderCard(s){
-      const moods=getMoods(s);
-      const moodHtml=moods.map(m=>`<span class="ml-mood">${esc(m)}</span>`).join('');
-      const hasCover=s.coverImage&&s.coverImage.length>0;
-      const coverStyle=hasCover?`background-image:url('${esc(s.coverImage)}');`:'';
-      const coverContent=hasCover?'':`<span class="ml-cover-placeholder">${esc((s.title||'?')[0])}</span>`;
+      const tags=getTags(s);
+      const tagHtml=tags.slice(0,4).map(t=>`<span class="ml-mood">${esc(t)}</span>`).join('');
       const favActive=isFav(s.id||s.title)?'active':'';
-      const featBadge=s.featured?'<span class="ml-badge">Featured</span>':'';
-      return `<article class="ml-card" data-id="${esc(s.id||s.title)}">
-        <div class="ml-cover" style="${coverStyle}">${coverContent}${featBadge}</div>
+      const previewText=s.preface?s.preface.slice(0,80)+'…':'';
+      return `<article class="ml-card" data-id="${esc(String(s.id||s.title))}">
+        <div class="ml-cover" style="">
+          <span class="ml-cover-placeholder">${esc((s.title||'?')[0])}</span>
+        </div>
         <div class="ml-body">
-          <span class="ml-type">${esc(s.type||s.category||'')}</span>
           <h3 class="ml-title">${esc(s.title||'')}</h3>
-          ${s.summary?`<p class="ml-summary">${esc(s.summary)}</p>`:''}
-          ${moodHtml?`<div class="ml-moods">${moodHtml}</div>`:''}
+          ${previewText?`<p class="ml-summary">${esc(previewText)}</p>`:''}
+          ${tagHtml?`<div class="ml-moods">${tagHtml}</div>`:''}
           <div class="ml-actions">
             ${s.sunoUrl&&s.sunoUrl!=='#'?`<a href="${esc(s.sunoUrl)}" class="ml-btn ml-btn--accent" target="_blank" rel="noopener">Listen ↗</a>`:''}
-            ${s.lyricsPage?`<a href="${esc(s.lyricsPage)}" class="ml-btn">Lyrics</a>`:''}
-            <button class="ml-fav ${favActive}" data-fav="${esc(s.id||s.title)}" aria-label="Favorite">♥</button>
+            <button class="ml-btn" data-open="${esc(String(s.id||s.title))}">詳情</button>
+            <button class="ml-fav ${favActive}" data-fav="${esc(String(s.id||s.title))}" aria-label="Favorite">♥</button>
           </div>
         </div>
       </article>`;
@@ -278,9 +276,7 @@
 
     function buildFilters(){
       const bar=document.getElementById('mlFilterBar');
-      const types=[...new Set(all.map(s=>s.type||s.category).filter(Boolean))];
-      bar.innerHTML=`<button class="ml-filter-btn active" data-filter="all">All</button>`+
-        types.map(t=>`<button class="ml-filter-btn" data-filter="${esc(t)}">${esc(t)}</button>`).join('');
+      bar.innerHTML=`<button class="ml-filter-btn active" data-filter="all">All</button>`;
       bar.querySelectorAll('.ml-filter-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
           bar.querySelectorAll('.ml-filter-btn').forEach(b=>b.classList.remove('active'));
@@ -290,31 +286,63 @@
       });
 
       const moodSel=document.getElementById('mlMood');
-      const moods=[...new Set(all.flatMap(s=>getMoods(s)))].sort();
-      moods.forEach(m=>{
+      const allTags=[...new Set(all.flatMap(s=>getTags(s)))].sort();
+      allTags.forEach(t=>{
         const o=document.createElement('option');
-        o.value=m; o.textContent=m;
+        o.value=t; o.textContent=t;
         moodSel.appendChild(o);
       });
     }
 
     function openModal(id){
-      const s=all.find(x=>(x.id||x.title)===id);
+      const s=all.find(x=>String(x.id||x.title)===String(id));
       if(!s) return;
-      document.getElementById('mlModalType').textContent=s.type||s.category||'';
+
+      document.getElementById('mlModalType').textContent='';
       document.getElementById('mlModalTitle').textContent=s.title||'';
-      document.getElementById('mlModalSub').textContent=s.subtitle||'';
-      document.getElementById('mlModalSummary').textContent=s.summary||'';
-      const moods=getMoods(s);
-      document.getElementById('mlModalMoods').innerHTML=moods.map(m=>`<span class="ml-mood">${esc(m)}</span>`).join('');
-      document.getElementById('mlModalMoodsWrap').style.display=moods.length?'':'none';
-      const tags=s.tags||[];
+      document.getElementById('mlModalSub').textContent='';
+
+      // 創曲自序
+      const summaryWrap=document.getElementById('mlModalSummaryWrap');
+      const summaryEl=document.getElementById('mlModalSummary');
+      if(s.preface){
+        summaryEl.textContent=s.preface;
+        summaryWrap.style.display='';
+        document.querySelector('#mlModalSummaryWrap .ml-modal-label').textContent='創曲自序';
+      } else {
+        summaryWrap.style.display='none';
+      }
+
+      // 風格標籤
+      const tags=getTags(s);
       document.getElementById('mlModalTags').innerHTML=tags.map(t=>`<span class="ml-mood">${esc(t)}</span>`).join('');
       document.getElementById('mlModalTagsWrap').style.display=tags.length?'':'none';
+      document.querySelector('#mlModalTagsWrap .ml-modal-label').textContent='風格標籤';
+
+      // 隱藏 Mood 區塊（改用 Tags）
+      document.getElementById('mlModalMoodsWrap').style.display='none';
+
+      // 歌詞
+      let lyricsWrap=document.getElementById('mlModalLyricsWrap');
+      if(!lyricsWrap){
+        lyricsWrap=document.createElement('div');
+        lyricsWrap.className='ml-modal-section';
+        lyricsWrap.id='mlModalLyricsWrap';
+        lyricsWrap.innerHTML='<span class="ml-modal-label">歌詞</span><pre class="ml-modal-pre" id="mlModalLyrics"></pre>';
+        document.getElementById('mlModalTagsWrap').after(lyricsWrap);
+      }
+      if(s.lyrics){
+        document.getElementById('mlModalLyrics').textContent=s.lyrics;
+        lyricsWrap.style.display='';
+      } else {
+        lyricsWrap.style.display='none';
+      }
+
+      // 按鈕
       const actions=[];
       if(s.sunoUrl&&s.sunoUrl!=='#') actions.push(`<a href="${esc(s.sunoUrl)}" class="btn btn-primary" target="_blank" rel="noopener">Listen on Suno ↗</a>`);
-      if(s.lyricsPage) actions.push(`<a href="${esc(s.lyricsPage)}" class="btn btn-secondary">View Lyrics</a>`);
       document.getElementById('mlModalActions').innerHTML=actions.join('');
+
       document.getElementById('mlModal').classList.add('open');
       document.body.style.overflow='hidden';
     }
@@ -331,6 +359,8 @@
     document.getElementById('mlGrid').addEventListener('click',e=>{
       const fav=e.target.closest('.ml-fav');
       if(fav){ e.stopPropagation(); toggleFav(fav.dataset.fav); fav.classList.toggle('active'); return; }
+      const openBtn=e.target.closest('[data-open]');
+      if(openBtn){ openModal(openBtn.dataset.open); return; }
       const card=e.target.closest('.ml-card');
       if(card && !e.target.closest('a') && !e.target.closest('button')) openModal(card.dataset.id);
     });
@@ -341,7 +371,7 @@
     document.getElementById('mlSort').addEventListener('change',render);
     document.getElementById('mlFeatured').addEventListener('change',render);
 
-    fetch('songs.json')
+    fetch('data/songs.json')
       .then(r=>r.json())
       .then(data=>{ all=Array.isArray(data)?data:[]; buildFilters(); render(); })
       .catch(()=>{ document.getElementById('mlGrid').innerHTML='<div class="ml-empty">Unable to load songs.</div>'; });

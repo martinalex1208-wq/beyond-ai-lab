@@ -1,107 +1,314 @@
 [
   {
-    "id": "song-honest-notes",
-    "title": "誠實的音符",
-    "subtitle": "Honest Notes",
-    "series": "glimmer100",
-    "tags": ["glimmer100", "children", "honesty", "hope"],
-    "lyrics": "在花東的山海之間\n有一百個小小窗口\n沒有華麗的劇本\n只有真實的脈搏\n\n誠實的音符 落在紙上\n像星星 點亮遠方\n一句一句 沒有修飾\n卻是生命 最真的故事",
-    "style": "Quiet acoustic guitar, soft piano, children choir",
-    "mood": "Gentle, Sincere",
-    "generator": "Suno AI",
-    "createdAt": "2026-03-15",
-    "favorite": true,
-    "file": "誠實的音符.mp3",
-    "folder": "images/music"
+    "id": 1,
+    "title": "《誠實的音符》",
+    "sunoUrl": "https://suno.com/s/2fkfTWJ1GSSDqD0L",
+    "tags": ["acoustic inspirational folk", "soft piano and guitar", "warm children's choir", "emotional and sincere", "gentle build", "hopeful and touching"],
+    "preface": "這首歌，來自孩子寫在紙上的聲音。沒有華麗的句子，沒有精心安排的劇情。只是生活裡最簡單的一句話，最直接的一份心情。在偏鄉的陪讀班裡，孩子們把心裡的故事慢慢寫下來。那些文字，就像一顆顆誠實的音符，落在安靜的紙上。也許微小，卻真實而明亮。如果有人願意停下腳步聽一聽，就會發現，那些簡單的聲音裡，藏著勇氣、希望，還有一點點正在發芽的未來。《誠實的音符》，就是這些聲音的旋律。",
+    "lyrics": "[Intro]\n(Quiet acoustic guitar and soft piano)\n在花東的山海之間\n有一百個小小窗口\n沒有華麗的劇本\n只有真實的脈搏\n[Verse 1]\n老師說\n孩子把心裡的話寫下\n不用押韻\n也不必害怕\n也許只是\n午餐少了一道菜\n或是夢想\n還找不到方向\n[Pre-Chorus]\n世界很大\n但聲音很小\n如果有人\n願意聽到\n[Chorus]\n誠實的音符\n落在紙上\n像星星\n點亮遠方\n一句一句\n沒有修飾\n卻是生命\n最真的故事\n[Verse 2]\n有些夢\n藏在舊書包裡\n有些願望\n寫在窗邊日記\n如果有一天\n風會把歌帶走\n希望世界\n能聽見這首\n[Bridge]\n(children choir softly)\n不用完美\n不用偉大\n只要勇敢\n說出真話\n[Final Chorus]\n誠實的音符\n飛向天空\n讓每顆心\n不再沉默\n當歌聲\n越過山丘\n希望就會\n慢慢生長"
   },
   {
-    "id": "song-hundred-glimmer",
-    "title": "百元微光",
-    "subtitle": "手心向上的勇氣",
-    "series": "glimmer100",
-    "tags": ["glimmer100", "children", "dignity", "courage"],
-    "lyrics": "百元微光 手心向上的力量\n一字一句 都是飛翔的翅膀\n不只是金錢 更是尊嚴的重量\n微光匯聚 終會點亮太陽",
-    "style": "Emotional piano, warm orchestral, children choir",
-    "mood": "Hopeful, Cinematic",
-    "generator": "Suno AI",
-    "createdAt": "2026-03-15",
-    "favorite": true,
-    "file": "百元微光.mp3",
-    "folder": "images/music"
+    "id": 2,
+    "title": "《百元微光》",
+    "sunoUrl": "https://suno.com/s/gek1m7IBFEMBFj3c",
+    "tags": ["Inspirational cinematic pop", "emotional piano intro", "warm orchestral build", "children choir harmony", "hopeful charity anthem", "uplifting and sincere", "cinematic strings", "gradual build to powerful chorus", "touching and inspiring"],
+    "preface": "這首歌寫給偏鄉孩子的希望。有些孩子從小沒有零用錢，但他們仍然努力長大。「百元微光」不是施捨，而是一種尊嚴與勇氣的象徵。當孩子用自己的努力爭取機會，那一百元就不只是金錢，而是一種被世界看見的光。當微光匯聚，就能點亮整個未來。",
+    "lyrics": "[Intro]\n(Soft piano, distant children's humming)\n記憶裡 那雙小小的手掌\n從沒見過 零用錢的模樣\n渴望的心 像微弱的星光\n在寂靜夜裡 靜靜發亮\n[Verse 1]\n一顆心 在風中慢慢成長\n在沉默裡 學會堅強\n有些夢 在紙上悄悄發芽\n有些話 還來不及說吧\n一支筆 就能畫出方向\n讓希望慢慢發光\n[Chorus]\n百元微光 手心向上的力量\n一字一句 都是飛翔的翅膀\n不只是金錢 更是尊嚴的重量\n微光匯聚 終會點亮太陽\n[Outro]\n手心向上 勇敢去闖\n微光閃亮 守護夢想"
   },
   {
-    "id": "song-two-thousand-lighthouses",
-    "title": "兩千座燈塔",
-    "subtitle": "Two Thousand Lighthouses",
-    "series": "glimmer100",
-    "tags": ["glimmer100", "hope", "light", "vision"],
-    "lyrics": "兩千座燈塔 照亮每一條街道\n百元的微光 匯聚成海嘯\n當孩子 勇敢站起來\n世界就會 重新盛開",
-    "style": "Epic piano, distant choir, grand orchestra",
-    "mood": "Powerful, Hopeful",
-    "generator": "Suno AI",
-    "createdAt": "2026-03-15",
-    "favorite": true,
-    "file": "兩千座燈塔.mp3",
-    "folder": "images/music"
+    "id": 3,
+    "title": "《兩千座燈塔》",
+    "sunoUrl": "https://suno.com/s/dTOOimEPGBGKcqlC",
+    "tags": ["epic cinematic orchestral anthem", "grand piano intro", "powerful orchestra", "children's choir", "inspirational and emotional", "charity anthem", "uplifting and majestic"],
+    "preface": "這首歌描繪一個關於希望的願景。當一份小小的善意開始傳遞，當一杯咖啡的價值變成一束微光，它就可能點亮一個孩子的未來。《兩千座燈塔》象徵的是微光匯聚的力量。當越來越多的人願意分享善意，那些看似微小的光，終將連成一片光海。",
+    "lyrics": "[Intro]\n(Epic piano with distant choir)\n曾有一份願望\n在寒風裡被遺忘\n[Chorus]\n兩千座燈塔\n照亮每一條街道\n百元的微光\n匯聚成海嘯\n一萬個孩子\n抬頭微笑\n那是世界\n最好的回報"
   },
   {
-    "id": "song-resulting-blooms",
-    "title": "隨之而來的繁花",
-    "subtitle": "The Resulting Blooms",
-    "series": "original-songs",
-    "tags": ["bloom", "growth", "hope"],
-    "lyrics": "When the rain falls gently on the ground\nSeeds awaken, breaking through the soil\nPetals unfold in the morning light\nEvery bloom tells a story of resilience\n\n隨之而來的繁花\n開在我們走過的路\n每一朵都是記憶\n每一瓣都是祝福",
-    "style": "Indie folk, acoustic guitar, soft vocals, bilingual",
-    "mood": "Gentle, Hopeful",
-    "generator": "Suno",
-    "createdAt": "2026-03-10",
-    "favorite": true
+    "id": 4,
+    "title": "隨之而來的繁花 (The Resulting Blooms)",
+    "sunoUrl": "https://suno.com/s/Rw2HcIZ1qaXo6BXF",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "踏入 62 歲，我發現最有力量的聲音往往最安靜。這首歌不談競爭，不談賺錢，只談「熱情」。當我們不再追逐結果，而是單純享受踩踏的節奏、享受快門按下的震動，那些所謂的「成果」，就會像路邊不經意綻放的繁花，自然而然地填滿整個人生。",
+    "lyrics": "[Chorus]\n我不追逐繁花 我只是享受奔行\n在那純粹的起伏間 聽見靈魂的聲音\n而花 就在我回頭的那一瞬\n漫山遍野地開了"
   },
   {
-    "id": "song-one-hour-road",
-    "title": "One Hour Road",
-    "subtitle": "",
-    "series": "road-songs",
-    "tags": ["road", "freedom", "motion"],
-    "lyrics": "One hour on the road\nWindows down, radio on\nMiles of asphalt stretching out\nNothing behind, everything ahead",
-    "style": "Upbeat, driving rhythm, electric guitar",
-    "mood": "Upbeat, Freedom",
-    "generator": "Suno",
-    "createdAt": "2026-03-08"
+    "id": 5,
+    "title": "《Vibe Coding 里程碑日誌》",
+    "sunoUrl": "https://suno.com/s/c74pq7qmfT1aZ3lV",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌不僅是這三天的進度報告，更是對你這份「開心」的註解。我們用 Vibe Coding 的效率處理了繁雜的任務，把省下的時間用來感受影像中的「生命厚度」。這份「與眾不同」，就是將冰冷的 AI 技術，轉化為帶有溫度的感官覺知。",
+    "lyrics": "[Chorus]\nOh~ 這是我們的微光\n每天清晨 七點半準時啟航\n五張照片 帶著 Phase One 的重量\n每一粒肌理 都是生命的勳章"
   },
   {
-    "id": "song-if-that-day",
-    "title": "If That Day Without You",
-    "subtitle": "",
-    "series": "story-songs",
-    "tags": ["memory", "gratitude", "turning-points"],
-    "lyrics": "If that day without you\nI would never have known\nHow the light could change\nWhen someone truly sees you",
-    "style": "Reflective ballad, piano-led",
-    "mood": "Reflective, Gentle",
-    "generator": "Suno",
-    "createdAt": "2026-03-05",
-    "favorite": true
+    "id": 6,
+    "title": "《百元微光：純粹的對話》",
+    "sunoUrl": "https://suno.com/s/hGp8cpPNbJUFY0hO",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌寫給那些在偏鄉教會裡，或許不常被世界看見，卻擁有最純粹靈魂的孩子們。我們質疑成功的標準，刪除複雜的教條，只留下最簡單的愛。每一張百元鈔票，換來的是一個故事，也是一個靈魂的對話。",
+    "lyrics": "[Chorus]\n微光 一百 點亮了 夢想的 窗台\n哪怕 只有 一點點 也能 驅散 陰霾\n我們 在 謙卑中 聽見 未來的 節拍\n愛是 唯一的 語言 不分 彼此 門牌"
   },
   {
-    "id": "song-city-night",
-    "title": "City Night",
-    "subtitle": "都市的夜",
-    "series": "urban-songs",
-    "tags": ["urban", "night", "ambient"],
-    "lyrics": "Neon signs and empty streets\nFootsteps echo in the rain\nCity night holds its breath\nWaiting for the dawn",
-    "style": "Ambient, synth, minimal",
-    "mood": "Melancholic, Ambient",
-    "generator": "Suno",
-    "createdAt": "2026-03-01"
+    "id": 7,
+    "title": "微光中的守望 (Watching over the Glimmer)",
+    "sunoUrl": "https://suno.com/s/aC2ifxPkVhsdC0BB",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Double Outro"],
+    "preface": "這首歌是為了「微光100」計畫而生。運用溫暖的童聲合唱與宏大的交響弦樂，營造出一種神聖卻親近的氛圍。歌詞中強調「不是施予，而是彼此的行囊」，體現了計畫中「尊重」與「對等」的核心價值。",
+    "lyrics": "[Chorus]\n純真歌聲 穿透了雲層\n每一份關懷 都是溫柔的延伸\n微光閃爍 點亮了清晨\n我們在這裡 守護最初的熱誠"
   },
   {
-    "id": "song-summer-breeze",
-    "title": "Summer Breeze",
-    "subtitle": "",
-    "series": "original-songs",
-    "tags": ["summer", "light", "easy"],
-    "lyrics": "Summer breeze through the window\nCarrying the scent of flowers\nLazy afternoon, nothing to do\nJust the sky and you",
-    "mood": "Light, Easy",
-    "createdAt": "2026-02-28"
+    "id": 8,
+    "title": "微光 100 的起點",
+    "sunoUrl": "https://suno.com/s/WxAN6VRL0olPhlg4",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌，獻給那些在偏鄉角落默默發芽的心靈。我們用一杯咖啡的預算，試圖去交換一個生命被聽見的喜悅。100元，不是施捨的重量，而是一份「我看見你了」的溫暖肯定。",
+    "lyrics": "[Chorus]\nOh 微光 100 點亮每個小小夢想\n透過 傾聽 讓勇氣在心底綻放\n不張揚 也不遺忘\n這100元的重量 是被看見的希望"
+  },
+  {
+    "id": 9,
+    "title": "《靈魂的重量》(Weight of a Soul)",
+    "sunoUrl": "https://suno.com/s/oG3JBGxOkR5QDiEJ",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌以乾淨的鋼琴起頭，象徵孩子純粹的起點。歌詞對比了「一千字的廢話」與「一句話的體悟」，旨在強調教育的真諦不在於填鴨式的產出，而在於內在生命的質變。",
+    "lyrics": "[Chorus]\n我學會了 走自己的路\n我學會了 縫補自己的傷處\n那一句話 抵過千言萬語的盲目\n靈魂的重量 不在於長度\n而在於 覺醒那一刻的溫度"
+  },
+  {
+    "id": 10,
+    "title": "微光中的渴望 (The Spark Inside)",
+    "sunoUrl": "https://suno.com/s/uGG9jljjVIIIa1f6",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Cinematic Atmosphere", "Deep Empathy"],
+    "preface": "這首歌不只是旋律，而是一次「心靈的氣候控制」。我們不頒獎、不競爭，只在微光中溫柔地承接孩子們的渴望。我們相信，當環境對了，生命自然會找到綻放的路。",
+    "lyrics": "[Chorus]\n微光中 我們溫柔地守候\n這渴望 在角落裡自由地流\n每一顆種子 都有開花的自由\n在尊重裡 讓愛無聲地流"
+  },
+  {
+    "id": 11,
+    "title": "【靈魂的火種，自燃的生命】",
+    "sunoUrl": "https://suno.com/s/MEaP143kMpUtU11w",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "獻給 1919 的每一位戰友。人生有限，最好的領導不是形影不離，而是轉身離去時，系統依然跳動。我們不餵食，是為了讓生命找回獵食的本能；我們不拉手，是為了讓靈魂學會自燃。",
+    "lyrics": "[Chorus]\n靈魂最重要 它是 火種 在 黑夜裡 燃燒\n觀念最重要 它是 舵盤 在 大海中 尋找\n與努力無關 真正的 覺醒 才是 自由\n當你 肚子餓了 自己動手 煮一碗 溫柔"
+  },
+  {
+    "id": 12,
+    "title": "回聲中的和解 (Echoes of Reconciliation)",
+    "sunoUrl": "https://suno.com/s/KCzcsPK0nXX7dAUX",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "在這場小小風波後，最動人的莫過於那份主動釋出的善意。這首歌將捕捉那種從緊繃到鬆綁、從誤解到握手言和的純粹喜悅。",
+    "lyrics": "[Chorus]\n愛是最好的答案 也是勇氣的來源\n手牽著手 走向光亮的明天\n純真的笑聲 穿過時間的長線\n這份情誼 永遠都不會變"
+  },
+  {
+    "id": 13,
+    "title": "核心的微光 (The Inner Light)",
+    "sunoUrl": "https://suno.com/s/dgQMAOd4EcPPTZ6V",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌旨在捕捉從「在意他人」到「找回自我」的質變。選用童聲合唱是為了展現那份找回初心後的純真與神聖感。",
+    "lyrics": "[Chorus]\n我寫下 我的宣言 像星火點燃荒原\n不為誰的眼光 卑微了 自己的尊嚴\n當內在 變得強大 世界也隨之改變\n每一處 枯萎的角落 重新 綻開了春天"
+  },
+  {
+    "id": 14,
+    "title": "《好事發生》 (Something Good)",
+    "sunoUrl": "https://suno.com/s/lA9wLMUBZMKbZiWJ",
+    "tags": ["Modern Smooth Pop", "Mid-tempo", "76 BPM", "Clean Male Vocals", "Elegant Piano", "Ambient Synth Pads", "Polished", "Sincere", "Hopeful Atmosphere"],
+    "preface": "這首歌試圖將「我很忙」轉化為對「熱情」的探索。透過中速節奏與鋼琴的鋪陳，營造出在城市深夜，兩個人拋開社交面具、真誠交流的優雅氛圍。",
+    "lyrics": "[Chorus]\n今天有什麼好事？ 讓我們慶祝勝利\n讓多巴胺流動 讓光線照進心底\n跟我說些真實的 跟我說些勇敢的\n一個關於熱情 還未被訴說的故事"
+  },
+  {
+    "id": 15,
+    "title": "山谷的迴響：愛的回音壁",
+    "sunoUrl": "https://suno.com/s/17GqbZLAr5zN6sFf",
+    "tags": ["Children's Choir", "Grand Acoustic", "Warm", "Innocent", "Hopeful", "Elegant Piano", "Orchestral Strings", "Emotional Build-Up", "4/4 Time", "72 BPM"],
+    "preface": "這首歌，從一個問題開始：善意，會消失嗎？山谷的迴響，不是音效，是一種隱喻。每一份善意，每一次陪伴，都不會憑空消失，它會在山壁之間來回震盪，最終化成孩子心裡那抹「我值得被看見」的亮光。",
+    "lyrics": "[Chorus]\n這是山谷的迴響 奏響不滅的星\n萬千種陪伴 匯聚成堅定的真心\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有回望未來的自信"
+  },
+  {
+    "id": 16,
+    "title": "100元助學金計劃",
+    "sunoUrl": "https://suno.com/s/eIrr8uWRidGTvdnA",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌寫給每一個在逆風中前行的孩子，也寫給每一顆願意伸出援手的心。100元不只是數字，它是一份承諾，告訴孩子們：「別怕，我們在背後支持你。」",
+    "lyrics": "[Chorus]\n一百元的夢想 飛過高山與海洋\n那是光 的重量 點亮未來的方向\n純真的 歌聲響 迴盪在蔚藍天空上\n這條路 很漫長 卻因為愛 充滿希望"
+  },
+  {
+    "id": 17,
+    "title": "點亮微光 (Kindle the Light)",
+    "sunoUrl": "https://suno.com/s/FwVns6WZuzO21iHZ",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Double Outro"],
+    "preface": "這首歌描述的是「傳遞」。從一個微小的聲音開始，逐漸匯聚成改變世界的海浪。這不只是關於個人的夢想，更是關於人類共有的希望。",
+    "lyrics": "[Chorus]\n這世界 值得我們 去愛\n用純真的歌聲 填滿 空白\n小小的光 聚成 浩瀚星海\n美麗的夢 永遠 不會 更改"
+  },
+  {
+    "id": 18,
+    "title": "〈三餐外的長路〉",
+    "sunoUrl": "https://suno.com/s/4SGJZg5zqTT8Gx6z",
+    "tags": ["City Blues", "Soulful Urban Folk", "Deep Male Vocals", "Melancholic Rhodes Piano", "Distant Slide Guitar", "Low-Tempo", "Gritty & Atmospheric"],
+    "preface": "有一天，我在想一個很簡單的問題：這個世界，還值得愛嗎？這首歌，是我想給自己的答案：值得。小小的光不需要很亮，只要不熄滅。一百個微光，就是一片星海。",
+    "lyrics": "[Chorus]\n生存是場重複的繁衍 還是未完成的夢？\n一日三餐的滋味 消失在匆忙的時鐘\n若生命只剩 延續後代的火種\n誰來叫醒 那顆在平庸裡 冰封的英雄"
+  },
+  {
+    "id": 19,
+    "title": "隨之而來的繁花 (The Resulting Blooms) v2",
+    "sunoUrl": "https://suno.com/s/Rw2HcIZ1qaXo6BXF",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "踏入 62 歲，我發現最有力量的聲音往往最安靜。這首歌不談競爭，不談賺錢，只談「熱情」。當我們不再追逐結果，成果就會像路邊不經意綻放的繁花，自然而然地填滿整個人生。",
+    "lyrics": "[Bridge]\n熱情是引擎 享受是過程\n成果是隨之而來的 繁花"
+  },
+  {
+    "id": 20,
+    "title": "螢火蟲的集會：微光織成的林",
+    "sunoUrl": "https://suno.com/s/dslqjMxX9fCr5iVl",
+    "tags": ["Children's Choir", "Grand Acoustic", "Warm", "Innocent", "Hopeful", "Elegant Piano", "Orchestral Strings", "Emotional Build-Up", "4/4 Time", "72 BPM"],
+    "preface": "螢火蟲不是太陽，它不能照亮整片天空。但在最深的夜裡，一隻螢火蟲出現了，然後兩隻，然後一百隻。那片漆黑的林子，忽然有了脈搏。微光100不需要每個人都是烈火，只要願意在黑暗裡亮起來，就足以讓沉睡的森林感受到溫度。",
+    "lyrics": "[Chorus]\n這是螢火蟲的集會 照亮不滅的星\n萬千種善念 匯聚成堅定的真心\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有仰望陽光的自信"
+  },
+  {
+    "id": 21,
+    "title": "指尖的鋼琴家：沈默的樂章",
+    "sunoUrl": "https://suno.com/s/Cf0nDvpCEChamxFN",
+    "tags": ["Children's Choir", "Intricate Piano Solo", "Orchestral Strings", "Warm", "Innocent", "Hopeful", "Emotional Build-up", "Pure", "4/4 Time", "72 BPM"],
+    "preface": "那台鋼琴，蒙著塵。沒有人彈它，不是因為沒有人想，而是因為沒有人告訴那個孩子：你可以碰它。每個孩子心裡，都有一首還沒被聽見的樂章。微光100，就是那雙願意安靜聆聽的耳朵。",
+    "lyrics": "[Chorus]\n這是指尖的鋼琴家 點亮不滅的星\n萬千種音符 匯聚成堅定的真心\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有彈奏夢想的自信"
+  },
+  {
+    "id": 22,
+    "title": "微光 100 的起點 v2",
+    "sunoUrl": "https://suno.com/s/WxAN6VRL0olPhlg4",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "這首歌，獻給那些在偏鄉角落默默發芽的心靈。100元，不是施捨的重量，而是一份「我看見你了」的溫暖肯定。這份初心，從都市延伸到花東的海岸線，細水長流。",
+    "lyrics": "[Chorus]\nOh 微光 100 點亮每個小小夢想\n透過 傾聽 讓勇氣在心底綻放\n不張揚 也不遺忘\n這100元的重量 是被看見的希望"
+  },
+  {
+    "id": 23,
+    "title": "《微光 100：純真之約》",
+    "sunoUrl": "https://suno.com/s/o1B8Ojveqe29yvXx",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Double Outro"],
+    "preface": "這首歌是為「微光 100」計畫量身打造的靈魂旋律。強調的不是施予，而是「低調、尊重、具備同理心」的對等交流。這份愛不帶負擔，像是一抹微光，雖然微小，卻足以在孩子心中種下溫暖的種子。",
+    "lyrics": "[Chorus]\n微光 100，照亮純真的期待\n同理心的灌溉，讓愛不再是阻礙\n小小的手，握住大大的未來\n純潔的合唱，跨越山海的對白"
+  },
+  {
+    "id": 24,
+    "title": "微光中的守望 (Watching over the Glimmer) v2",
+    "sunoUrl": "https://suno.com/s/aC2ifxPkVhsdC0BB",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Double Outro"],
+    "preface": "這首歌強調「不是施予，而是彼此的行囊」，體現了計畫中「尊重」與「對等」的核心價值。結尾的 Double Outro 象徵這份關懷將持續延展。",
+    "lyrics": "[Chorus]\n純真歌聲 穿透了雲層\n每一份關懷 都是溫柔的延伸\n微光閃爍 點亮了清晨\n我們在這裡 守護最初的熱誠"
+  },
+  {
+    "id": 25,
+    "title": "微光中的渴望 (The Spark Inside) v2",
+    "sunoUrl": "https://suno.com/s/uGG9jljjVIIIa1f6",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Cinematic Atmosphere", "Deep Empathy"],
+    "preface": "我們不頒獎、不競爭，只在微光中溫柔地承接孩子們的渴望。讓陪讀老師的同理心與孩子的喜悅交織。我們相信，當環境對了，生命自然會找到綻放的路。",
+    "lyrics": "[Outro]\n微光 渴望... 溫柔的承諾...\n你看見我了，對嗎？"
+  },
+  {
+    "id": 26,
+    "title": "守望的翅膀：愛的迴響",
+    "sunoUrl": "https://suno.com/s/TwKEJerOrp9ksO9q",
+    "tags": ["Children's Choir", "Grand Acoustic", "Warm", "Innocent", "Hopeful", "Elegant Piano", "Orchestral Strings", "Emotional Build-Up", "4/4 Time", "72 BPM"],
+    "preface": "翅膀，不是天生就會飛的。它需要風，需要練習，需要有人在旁邊說：「沒關係，再試一次。」不是給予，是相遇。不是施捨，是接力。每一份守望，都會在某個孩子的生命裡，變成一對翅膀。",
+    "lyrics": "[Chorus]\n這是守望的翅膀 飛向遠方的星\n千百雙手掌 匯聚成堅定的前行\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有翻越山嶺的勇氣"
+  },
+  {
+    "id": 27,
+    "title": "《靈魂的重量》(Weight of a Soul) v2",
+    "sunoUrl": "https://suno.com/s/oG3JBGxOkR5QDiEJ",
+    "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
+    "preface": "教育的真諦不在於填鴨式的產出，而在於內在生命的質變。這是一份送給教育者與孩子們的禮物，提醒我們守護那份最貴的靈魂。",
+    "lyrics": "[Outro]\n我們的靈魂 很貴...\n不再是打字機..."
+  },
+  {
+    "id": 28,
+    "title": "點燃火種 (Ignite the Spark - Kids Version)",
+    "sunoUrl": "https://suno.com/s/UaS0FFvLm5gfFccD",
+    "tags": ["Children's Choir", "Warm Acoustic Guitar", "Elegant Piano", "Mid-tempo", "76 BPM", "Innocent and Pure Vocals", "Sincere", "Hopeful", "Growing Intensity"],
+    "preface": "這首歌聚焦於「主動性」的喚醒。描述了教育從灌輸到啟發的轉變。我們希望教育最終帶給孩子的，是那種眼神發光、日以繼夜尋找答案的內在動力。",
+    "lyrics": "[Chorus]\n不是為了 得到 誰的 讚揚\n是心底 燃起了 一束 灼熱的 火光\n日以繼夜 尋找 消失的 答案\n因為 熱愛 本身 就是 最美的 報償"
+  },
+  {
+    "id": 29,
+    "title": "守護的影子：穩固的陪伴",
+    "sunoUrl": "https://suno.com/s/6CWiO8nDDz8d4IoE",
+    "tags": ["Children's Choir", "Grand Acoustic", "Warm", "Innocent", "Hopeful", "Elegant Piano", "Orchestral Strings", "Emotional Build-Up", "4/4 Time", "72 BPM"],
+    "preface": "影子，從不說話。它不會告訴你它在。但當你回頭，它永遠都在那裡。微光100，是泥土，是影子，是那份不張揚卻從未消失的愛。",
+    "lyrics": "[Chorus]\n這是守護的影子 奏響不滅的星\n萬千種陪伴 匯聚成堅定的真心\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有譜寫未來的自信"
+  },
+  {
+    "id": 30,
+    "title": "兩千座燈塔的約定",
+    "sunoUrl": "https://suno.com/s/AWAWSJXkNURWntQz",
+    "tags": ["Children's Choir", "Warm Acoustic Piano intro", "gradual build-up to Epic Orchestral Pop", "Cinematic Strings", "Hopeful and Grand", "72 BPM", "Emotional crescendo"],
+    "preface": "這首歌，是寫給未來的。二十，會變成兩百。兩百，會變成兩千。這不是口號，是幾何級數的愛。每個月，兩千處，一百元，永遠。",
+    "lyrics": "[Chorus]\n兩千座 燈塔 照亮 每一條 街道\n百元的 脈搏 匯聚成 壯闊的 海嘯\n每個月 的 約定 是 永不 熄滅 的 號角\n我們 終於 讓 世界 聽見 微小的 驕傲"
+  },
+  {
+    "id": 31,
+    "title": "《百元微光：手心的傳承》",
+    "sunoUrl": "https://suno.com/s/e1j1vC1OmyKKNfvP",
+    "tags": ["Children's Choir", "Grand Acoustic", "Warm", "Innocent", "Hopeful", "Elegant Piano", "Orchestral Strings", "Emotional Build-up", "4/4 Time", "72 BPM"],
+    "preface": "這首歌，是從一個畫面開始的。一個偏鄉的孩子，坐在書桌前，桌角有一道裂痕，手裡握著一根褪色的筆桿。一百元是一聲敲門，是一個大人對他說：「我看見你了。」愛不會遲到。夢想在長高。",
+    "lyrics": "[Chorus]\n這是微光的傳承 點亮希望的星\n一百元的暖流 匯聚成大海的深情\n我們拉起手 圍成守護的圓心\n讓每個孩子 都有仰望星空的權利"
+  },
+  {
+    "id": 32,
+    "title": "純真啟航",
+    "sunoUrl": "https://suno.com/s/aMRmQtwUaMm7nIDN",
+    "tags": ["Children's choir", "pure and innocent vocals", "gentle acoustic guitar and piano", "heartwarming", "mid-tempo", "emotional", "uplifting", "inspiring atmosphere"],
+    "preface": "每個孩子來到這個世界的時候，都是純真的。微光100，就是那一把推力。不是憐憫，是信任。純真，是最好的羅盤。愛，是最強的風。讓我們一起，送每個孩子出海。",
+    "lyrics": "[Chorus]\n唱一首歌 送給明天的自己\n用最純真 的聲音 擁抱大地\n不管世界 有多少 風風雨雨\n我們的愛 是最堅定的 奇蹟"
+  },
+  {
+    "id": 33,
+    "title": "傳承的微光 (The Spark We Share)",
+    "sunoUrl": "https://suno.com/s/tHYbENCcIZNFaMkw",
+    "tags": ["Children's Choir", "Acoustic Guitar", "Gentle Piano", "Warm", "Pure", "Hopeful", "Orchestral Swell", "85 BPM"],
+    "preface": "我只是想記錄一個很小的畫面：兩個人，坐在午後的陽光裡，一杯溫熱的咖啡，一句「關於未來，你怎麼想？」傳承，不需要儀式感。「在給予之間，我們都學會了完整。」",
+    "lyrics": "[Chorus]\n哦　讓純真指引　這一段平凡的相遇\n不用叫你導師　你卻已在我的生命紮根\n像微光傳遞　點燃了彼此的靈魂\n在給予之間　我們都學會了完整"
+  },
+  {
+    "id": 34,
+    "title": "《微小的總和》 (The Sum of Small Things)",
+    "sunoUrl": "https://suno.com/s/MINRXzPVmxSugGRT",
+    "tags": ["Modern Smooth Pop", "Mid-tempo", "76 BPM", "Clean Male Vocals", "featuring Warm Children's Choir", "Elegant Piano", "Sincere", "Hopeful Atmosphere"],
+    "preface": "這首歌的靈感源於關於愛與領導力的深刻洞察。真正驅動情感與信任的，其實是那些枯燥、重複且微小的日常。愛與信任沒有捷徑，它們是無數個兩分鐘的累積，是每一聲早安的總和。",
+    "lyrics": "[Chorus]\n愛不是一場 壯烈的煙火 燒完就空洞\n它是每天兩分鐘 規律的刷牙聲\n它是健身房裡 看不見線條的汗水\n是無數個平凡 疊加成的永恆"
+  },
+  {
+    "id": 35,
+    "title": "〈山谷裡的小聲音〉",
+    "sunoUrl": "https://suno.com/s/gKo4tt9CKSR79dFv",
+    "tags": ["Acoustic Pop", "Children's Choir", "Emotional", "Folk", "Soft Guitar", "Gradual Crescendo", "Pure and Innocent Vocals", "Cinematic piano"],
+    "preface": "每個孩子，都有一條找不到出口的小魚住在心裡。山谷裡最小的聲音，只要有迴響，就能飛得很高很遠。每個孩子都值得被聽見。",
+    "lyrics": "[Chorus]\n嘿！讓我們 換個節奏 唱出 心裡的色調\n憤怒 是重重的 鼓聲 咚、咚、咚\n孤單 是長長的 笛聲 嗚、嗚、嗚\n我的歌 雖然 沒寫在 課本裡\n但我的聲音 飛得 很高 很遠"
+  },
+  {
+    "id": 36,
+    "title": "《故事裡的微光》",
+    "sunoUrl": "https://suno.com/s/K840nw5mIzdS5lY9",
+    "tags": ["Acoustic Pop", "Folk", "Warm Acoustic Guitar", "Piano", "Emotional", "Inspirational", "Storytelling", "Heartwarming"],
+    "preface": "如果給一個偏鄉的孩子一張白紙，他會寫什麼？故事裡的微光計畫，讓孩子用一個故事換一百元。不是施捨，是肯定。伸出手，讓那些心情被聽懂。",
+    "lyrics": "[Chorus]\n寫下一個故事 換一百元的夢\n寫下溪水的歌 寫下阿嬤的笑容\n這份零用金 是努力過的收穫\n讓孩子看見 文字也有重量與彩虹\n邀請你 伸出手 讓心情能被聽懂"
+  },
+  {
+    "id": 37,
+    "title": "《換取夢想的聲音》",
+    "sunoUrl": "https://suno.com/s/Iws0kNuMwWG0iPTe",
+    "tags": ["Children's choir", "pure and innocent vocals", "gentle acoustic guitar and piano", "heartwarming", "mid-tempo", "emotional", "uplifting", "inspiring atmosphere"],
+    "preface": "這首歌，是從孩子的角度唱出來的。不是大人對孩子說「我來幫你」，而是孩子對世界說「我來了，請聽我說」。這是平等的交換，是有尊嚴的給予。謝謝你，聽見我。",
+    "lyrics": "[Chorus]\n這是 故事的音符 編織愛的旋律\n你伸出的雙手 讓我看見了遠方\n我寫下的故事 穿過大山和海洋\n讓世界聽見我 正在努力的歌唱"
+  },
+  {
+    "id": 38,
+    "title": "《爭取的重量》",
+    "sunoUrl": "https://suno.com/s/rr8rxQjMO9bEJ9UM",
+    "tags": ["Acoustic Folk Pop", "Emotional Male Vocals", "introspective", "building intensity", "rhythmic acoustic guitar", "soulful", "90bpm"],
+    "preface": "一百元，放在孩子面前。不是零用錢，不是獎勵，是一個邀請——去爭取，去感受那個過程的重量。把當年的遺憾，換成下一代眼神裡的閃電。這，就是傳承。",
+    "lyrics": "[Chorus]\n所以我把 這一百元 放在你的面前\n它不是隨手的給予 是跨越時空的誓言\n去體驗競爭的苦澀 去觀察機會的邊緣\n把我當年的遺憾 換成你眼神裡的閃電"
+  },
+  {
+    "id": 39,
+    "title": "樣子",
+    "sunoUrl": "https://suno.com/s/e9vDFGVbi9jp0cNg",
+    "tags": ["Healing Folk Pop", "Male heartfelt and warm vocals", "72 BPM", "Mid-tempo", "Layered acoustic guitar", "Soft piano", "Inspiring and sincere", "Emotional build-up"],
+    "preface": "活到八十歲，扣掉睡眠，真正清醒地活著的時間，還剩多少？福音不在嘴裡說了什麼，而在你的生命活成了什麼。你的樣子，就是恩典。",
+    "lyrics": "[Outro]\n不必說話\n你的樣子 就是 答案\n你的樣子 就是 恩典"
   }
 ]
