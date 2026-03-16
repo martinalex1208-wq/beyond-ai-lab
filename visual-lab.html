@@ -27,6 +27,38 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.photo-series-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-series-lightbox.is-open {
+  display: flex;
+}
+
+.photo-series-lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.photo-series-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1000;
+}
   </style>
 </head>
 
