@@ -195,6 +195,7 @@ button.btn-danger-subtle { border-color: rgba(180, 80, 80, 0.3); }
 }
 
 .hero-title {
+  font-family: var(--font-serif);
   font-size: clamp(3rem, 10vw, 5.5rem);
   font-weight: 700;
   line-height: 1.1;
