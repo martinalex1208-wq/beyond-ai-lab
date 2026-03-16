@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guardian Prompts — Gentle Warrior Guardians | Beyond AI Lab</title>
+  <meta name="description" content="Gentle Warrior Guardians prompt library. Woman and mythical creature bonds — pterosaur, eagle, phoenix, wolf, deer, bear, white tiger, dragon, wyvern, griffin, serpent, unicorn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --bg-2: #111111; --bg-3: #1a1a1a;
+      --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.18);
+      --text: #f0ece4; --text-muted: rgba(240,236,228,0.45); --text-faint: rgba(240,236,228,0.25);
+      --gold: #c9a96e; --gold-light: #e8d5a8; --gold-dim: rgba(201,169,110,0.15);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --nav-h: 64px; --ease: cubic-bezier(0.25, 0, 0, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
+
+    .grid-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+    .glow-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); opacity: 0.06; }
+    .glow-orb--1 { width: 600px; height: 600px; top: -200px; right: -100px; background: radial-gradient(circle, #c9a96e, transparent 70%); }
+    .glow-orb--2 { width: 500px; height: 500px; bottom: 10%; left: -150px; background: radial-gradient(circle, #4a6fa5, transparent 70%); }
+
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(8,8,8,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .site-nav { max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400; letter-spacing: 0.02em; }
+    .logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 0; list-style: none; flex-wrap: nowrap; overflow-x: auto; }
+    .nav-links a { display: block; padding: 0 0.9rem; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a[data-nav-page="guardian-prompts"] { color: var(--gold); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.2rem; cursor: pointer; }
+
+    main { position: relative; z-index: 1; padding-top: var(--nav-h); }
+
+    .page-hero { padding: 5rem 2rem 3rem; max-width: 1400px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .page-hero-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero-title { font-family: var(--font-serif); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.2rem; }
+    .page-hero-title em { font-style: italic; color: var(--gold); }
+    .page-hero-subtitle { font-size: 0.95rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; }
+
+    .controls-bar { position: sticky; top: var(--nav-h); z-index: 50; background: rgba(8,8,8,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .controls-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; min-height: 56px; }
+    .filter-tabs { display: flex; gap: 0.25rem; flex-wrap: wrap; flex: 1; }
+    .filter-tab { padding: 0.35rem 1rem; background: transparent; border: 1px solid transparent; color: var(--text-muted); font-family: var(--font-sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; cursor: pointer; border-radius: 2px; transition: all 0.2s var(--ease); white-space: nowrap; }
+    .filter-tab:hover { color: var(--text); border-color: var(--border-hover); }
+    .filter-tab.active { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+
+    .content-section { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+    .master-prompt-block { background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 3rem; }
+    .master-prompt-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .master-prompt-text { font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; color: var(--text-muted); white-space: pre-wrap; word-break: break-word; }
+    .master-prompt-actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .copy-btn { padding: 0.4rem 1rem; background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); font-family: var(--font-sans); font-size: 0.78rem; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+    .copy-btn:hover { background: var(--gold); color: var(--bg); }
+
+    .guardian-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+    .guardian-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: border-color 0.2s; }
+    .guardian-card:hover { border-color: var(--border-hover); }
+    .guardian-card[data-hidden="true"] { display: none; }
+    .guardian-card-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .guardian-card-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; color: var(--text); }
+    .guardian-card-title-zh { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.06em; margin-top: 0.25rem; }
+    .guardian-card-badge { font-size: 0.6rem; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,169,110,0.3); }
+    .guardian-card-body { padding: 1rem 1.5rem; }
+    .guardian-card-prompt { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); white-space: pre-wrap; word-break: break-word; max-height: 4.5em; overflow: hidden; transition: max-height 0.3s var(--ease); }
+    .guardian-card-prompt.expanded { max-height: 800px; }
+    .guardian-card-actions { margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .guardian-card-actions .copy-btn { padding: 0.3rem 0.75rem; font-size: 0.72rem; }
+
+    .footer { border-top: 1px solid var(--border); padding: 3rem 2rem 2rem; position: relative; z-index: 1; }
+    .footer-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand-name { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400; color: var(--text); }
+    .footer-logo { width: 24px; height: 24px; object-fit: contain; }
+    .footer-brand-tagline { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.5rem; max-width: 280px; }
+    .footer-col-title { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.4rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1400px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-mantra { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-size: 0.9rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--text-faint); font-family: var(--font-mono); }
+
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+    @media (max-width: 600px) { .controls-inner { padding: 0.5rem 1rem; } .page-hero { padding: 3rem 1rem 2rem; } .content-section { padding: 1.5rem 1rem 3rem; } .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="./index.html" data-nav-page="index">Home</a></li>
+        <li><a href="./life.html" data-nav-page="life">生活有味道</a></li>
+        <li><a href="./search.html" data-nav-page="search">Search</a></li>
+        <li><a href="./add-entry.html" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./prompt-library.html" data-nav-page="prompt-library">Prompts</a></li>
+        <li><a href="./image-library.html" data-nav-page="image-library">Images</a></li>
+        <li><a href="./visual-lab.html" data-nav-page="visual-lab">Visual Lab</a></li>
+        <li><a href="./music-library.html" data-nav-page="music-library">Music</a></li>
+        <li><a href="./story-library.html" data-nav-page="story-library">Stories</a></li>
+        <li><a href="./impact-lab.html" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+        <li><a href="./glimmer100.html" data-nav-page="glimmer100">微光100</a></li>
+        <li><a href="./guardian-prompts.html" class="active" data-nav-page="guardian-prompts">Guardian</a></li>
+        <li><a href="./steve.html" data-nav-page="creator">Creator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <p class="page-hero-eyebrow">Beyond AI Lab · Prompt Library</p>
+      <h1 class="page-hero-title">Gentle Warrior<br><em>Guardians.</em></h1>
+      <p class="page-hero-subtitle">Woman and mythical creature bonds. Twelve guardians — pterosaur, eagle, phoenix, wolf, deer, bear, white tiger, dragon, wyvern, griffin, serpent, unicorn.</p>
+    </section>
+
+    <div class="controls-bar">
+      <div class="controls-inner">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-category="all">All</button>
+          <button class="filter-tab" data-category="sky">Sky Guardians</button>
+          <button class="filter-tab" data-category="forest">Forest Guardians</button>
+          <button class="filter-tab" data-category="mythic">Mythic Guardians</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="master-prompt-block">
+        <div class="master-prompt-label">Studio Master Prompt</div>
+        <pre class="master-prompt-text" id="masterPromptText">A young woman in flowing dress, standing beside a majestic mythical creature. Soft natural lighting, cinematic composition, shallow depth of field. The bond between human and creature is gentle yet powerful — trust, wonder, and mutual respect. Photorealistic, 8K, detailed textures, atmospheric mood.</pre>
+        <div class="master-prompt-actions">
+          <button type="button" class="copy-btn" data-copy-target="masterPromptText">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="guardian-grid" id="guardianGrid">
+        <article class="guardian-card" data-category="sky">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Pterosaur · 翼龍</h2>
+              <p class="guardian-card-title-zh">Sky Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Sky</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman with long hair, standing on a mountain cliff at sunset. A large pterosaur with crested head perches beside her. Wind in hair, golden hour light. Bond of trust, prehistoric majesty meets feminine grace. Photorealistic, cinematic, 8K.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="sky">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Eagle · 巨鷹</h2>
+              <p class="guardian-card-title-zh">Sky Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Sky</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in forest clearing, sunlight filtering through leaves. A giant eagle with sharp orange eyes stands beside her, feathers gleaming. Intimate bond, feather detail, warm golden light. Photorealistic, 8K, shallow DOF.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="sky">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Phoenix · 鳳凰</h2>
+              <p class="guardian-card-title-zh">Sky Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Sky</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in flowing dress, standing before a phoenix with fiery plumage. Ember glow, rebirth symbolism, golden-red light. The creature's wings half-spread, protective stance. Mythic, photorealistic, 8K, dramatic lighting.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="forest">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Wolf · 巨狼</h2>
+              <p class="guardian-card-title-zh">Forest Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Forest</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in forest, mist between trees. A large wolf with silver-gray fur sits beside her, loyal gaze. Pack bond, wild yet gentle. Cool tones, atmospheric, photorealistic, 8K.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="forest">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Deer · 巨鹿</h2>
+              <p class="guardian-card-title-zh">Forest Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Forest</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in open field, wind in her hair. A majestic deer with large antlers stands beside her. Graceful, ethereal bond. Golden hour, soft focus, photorealistic, 8K.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="forest">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Bear · 巨熊</h2>
+              <p class="guardian-card-title-zh">Forest Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Forest</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in forest clearing, a massive bear with thick fur beside her. Protective presence, gentle strength. Dappled sunlight, moss, ancient trees. Photorealistic, 8K, cinematic.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="forest">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">White Tiger · 白虎</h2>
+              <p class="guardian-card-title-zh">Forest Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Forest</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman embracing a white tiger in forest. Backlight glow, intense gaze, sacred bond. Snow-white fur, green foliage. Photorealistic, 8K, dramatic lighting, mythic atmosphere.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="mythic">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Dragon · 龍</h2>
+              <p class="guardian-card-title-zh">Mythic Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Mythic</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in field, cloudy sky. An Eastern dragon with scaled body coils beside her. Asian aesthetic, serene bond, mythic presence. Photorealistic, 8K, soft diffused light.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="sky">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Wyvern · 飛龍</h2>
+              <p class="guardian-card-title-zh">Sky Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Sky</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman on mountain peak, a wyvern with leathery wings beside her. Wind, clouds, epic scale. Bond of sky and earth. Photorealistic, 8K, cinematic composition.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="sky">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Griffin · 獅鷲</h2>
+              <p class="guardian-card-title-zh">Sky Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Sky</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman with griffin — lion body, eagle head and wings. Golden sunlight, noble stance. Mythic guardian, regal bond. Photorealistic, 8K, detailed feathers and fur.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="mythic">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Serpent · 巨蛇</h2>
+              <p class="guardian-card-title-zh">Mythic Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Mythic</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in ancient temple or forest, a giant serpent with iridescent scales coils protectively. Wisdom, mythic symbolism. Soft light, photorealistic, 8K, atmospheric.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="guardian-card" data-category="forest">
+          <div class="guardian-card-header">
+            <div>
+              <h2 class="guardian-card-title">Unicorn · 獨角獸</h2>
+              <p class="guardian-card-title-zh">Forest Guardian</p>
+            </div>
+            <span class="guardian-card-badge">Forest</span>
+          </div>
+          <div class="guardian-card-body">
+            <pre class="guardian-card-prompt" data-prompt>Woman in enchanted forest, white unicorn with spiral horn beside her. Pure, magical bond. Soft glow, dappled light, photorealistic, 8K, ethereal mood.</pre>
+            <div class="guardian-card-actions">
+              <button type="button" class="copy-btn guardian-expand-btn">Expand</button>
+              <button type="button" class="copy-btn guardian-copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="life.html">生活有味道</a></li>
+          <li><a href="#labs">Labs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          <li><a href="prompt-library.html">Prompts</a></li>
+          <li><a href="image-library.html">Images</a></li>
+          <li><a href="music-library.html">Music</a></li>
+          <li><a href="story-library.html">Stories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="#">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">RCG · Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var filterTabs = document.getElementById('filterTabs');
+      var cards = document.querySelectorAll('.guardian-card');
+
+      if (filterTabs) {
+        filterTabs.addEventListener('click', function (e) {
+          var tab = e.target.closest('.filter-tab');
+          if (!tab) return;
+          var cat = tab.getAttribute('data-category');
+          filterTabs.querySelectorAll('.filter-tab').forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          cards.forEach(function (card) {
+            var cardCat = card.getAttribute('data-category');
+            card.setAttribute('data-hidden', (cat === 'all' || cardCat === cat) ? 'false' : 'true');
+          });
+        });
+      }
+
+      document.querySelectorAll('.guardian-expand-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var card = btn.closest('.guardian-card');
+          var pre = card ? card.querySelector('.guardian-card-prompt') : null;
+          if (pre) {
+            pre.classList.toggle('expanded');
+            btn.textContent = pre.classList.contains('expanded') ? 'Collapse' : 'Expand';
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-copy-target], .guardian-copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var text = '';
+          if (btn.getAttribute('data-copy-target')) {
+            var el = document.getElementById(btn.getAttribute('data-copy-target'));
+            text = el ? el.textContent : '';
+          } else {
+            var pre = btn.closest('.guardian-card') ? btn.closest('.guardian-card').querySelector('[data-prompt]') : null;
+            text = pre ? pre.textContent : '';
+          }
+          if (text) {
+            navigator.clipboard.writeText(text).then(function () {
+              var orig = btn.textContent;
+              btn.textContent = 'Copied!';
+              setTimeout(function () { btn.textContent = orig; }, 1500);
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
