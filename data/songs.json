@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "《誠實的音符》",
+    "coverImage": "images/music/song-01.jpg",
     "sunoUrl": "https://suno.com/s/2fkfTWJ1GSSDqD0L",
     "tags": ["acoustic inspirational folk", "soft piano and guitar", "warm children's choir", "emotional and sincere", "gentle build", "hopeful and touching"],
     "preface": "這首歌，來自孩子寫在紙上的聲音。沒有華麗的句子，沒有精心安排的劇情。只是生活裡最簡單的一句話，最直接的一份心情。在偏鄉的陪讀班裡，孩子們把心裡的故事慢慢寫下來。那些文字，就像一顆顆誠實的音符，落在安靜的紙上。也許微小，卻真實而明亮。如果有人願意停下腳步聽一聽，就會發現，那些簡單的聲音裡，藏著勇氣、希望，還有一點點正在發芽的未來。《誠實的音符》，就是這些聲音的旋律。",
@@ -10,6 +11,7 @@
   {
     "id": 2,
     "title": "《百元微光》",
+    "coverImage": "images/music/song-02.jpg",
     "sunoUrl": "https://suno.com/s/gek1m7IBFEMBFj3c",
     "tags": ["Inspirational cinematic pop", "emotional piano intro", "warm orchestral build", "children choir harmony", "hopeful charity anthem", "uplifting and sincere", "cinematic strings", "gradual build to powerful chorus", "touching and inspiring"],
     "preface": "這首歌寫給偏鄉孩子的希望。有些孩子從小沒有零用錢，但他們仍然努力長大。「百元微光」不是施捨，而是一種尊嚴與勇氣的象徵。當孩子用自己的努力爭取機會，那一百元就不只是金錢，而是一種被世界看見的光。當微光匯聚，就能點亮整個未來。",
@@ -18,6 +20,7 @@
   {
     "id": 3,
     "title": "《兩千座燈塔》",
+    "coverImage": "images/music/song-03.jpg",
     "sunoUrl": "https://suno.com/s/dTOOimEPGBGKcqlC",
     "tags": ["epic cinematic orchestral anthem", "grand piano intro", "powerful orchestra", "children's choir", "inspirational and emotional", "charity anthem", "uplifting and majestic"],
     "preface": "這首歌描繪一個關於希望的願景。當一份小小的善意開始傳遞，當一杯咖啡的價值變成一束微光，它就可能點亮一個孩子的未來。《兩千座燈塔》象徵的是微光匯聚的力量。當越來越多的人願意分享善意，那些看似微小的光，終將連成一片光海。",
@@ -26,6 +29,7 @@
   {
     "id": 4,
     "title": "隨之而來的繁花 (The Resulting Blooms)",
+    "coverImage": "images/music/song-04.jpg",
     "sunoUrl": "https://suno.com/s/Rw2HcIZ1qaXo6BXF",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
     "preface": "踏入 62 歲，我發現最有力量的聲音往往最安靜。這首歌不談競爭，不談賺錢，只談「熱情」。當我們不再追逐結果，而是單純享受踩踏的節奏、享受快門按下的震動，那些所謂的「成果」，就會像路邊不經意綻放的繁花，自然而然地填滿整個人生。",
@@ -34,6 +38,7 @@
   {
     "id": 5,
     "title": "《Vibe Coding 里程碑日誌》",
+    "coverImage": "images/music/song-05.jpg",
     "sunoUrl": "https://suno.com/s/c74pq7qmfT1aZ3lV",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
     "preface": "這首歌不僅是這三天的進度報告，更是對你這份「開心」的註解。我們用 Vibe Coding 的效率處理了繁雜的任務，把省下的時間用來感受影像中的「生命厚度」。這份「與眾不同」，就是將冰冷的 AI 技術，轉化為帶有溫度的感官覺知。",
@@ -42,6 +47,7 @@
   {
     "id": 6,
     "title": "《百元微光：純粹的對話》",
+    "coverImage": "images/music/song-06.jpg",
     "sunoUrl": "https://suno.com/s/hGp8cpPNbJUFY0hO",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
     "preface": "這首歌寫給那些在偏鄉教會裡，或許不常被世界看見，卻擁有最純粹靈魂的孩子們。我們質疑成功的標準，刪除複雜的教條，只留下最簡單的愛。每一張百元鈔票，換來的是一個故事，也是一個靈魂的對話。",
@@ -50,6 +56,7 @@
   {
     "id": 7,
     "title": "微光中的守望 (Watching over the Glimmer)",
+    "coverImage": "images/music/song-07.jpg",
     "sunoUrl": "https://suno.com/s/aC2ifxPkVhsdC0BB",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Double Outro"],
     "preface": "這首歌是為了「微光100」計畫而生。運用溫暖的童聲合唱與宏大的交響弦樂，營造出一種神聖卻親近的氛圍。歌詞中強調「不是施予，而是彼此的行囊」，體現了計畫中「尊重」與「對等」的核心價值。",
@@ -58,6 +65,7 @@
   {
     "id": 8,
     "title": "微光 100 的起點",
+    "coverImage": "images/music/song-08.jpg",
     "sunoUrl": "https://suno.com/s/WxAN6VRL0olPhlg4",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
     "preface": "這首歌，獻給那些在偏鄉角落默默發芽的心靈。我們用一杯咖啡的預算，試圖去交換一個生命被聽見的喜悅。100元，不是施捨的重量，而是一份「我看見你了」的溫暖肯定。",
@@ -66,6 +74,7 @@
   {
     "id": 9,
     "title": "《靈魂的重量》(Weight of a Soul)",
+    "coverImage": "images/music/song-09.jpg",
     "sunoUrl": "https://suno.com/s/oG3JBGxOkR5QDiEJ",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM"],
     "preface": "這首歌以乾淨的鋼琴起頭，象徵孩子純粹的起點。歌詞對比了「一千字的廢話」與「一句話的體悟」，旨在強調教育的真諦不在於填鴨式的產出，而在於內在生命的質變。",
@@ -74,6 +83,7 @@
   {
     "id": 10,
     "title": "微光中的渴望 (The Spark Inside)",
+    "coverImage": "images/music/song-10.jpg",
     "sunoUrl": "https://suno.com/s/uGG9jljjVIIIa1f6",
     "tags": ["Children's Choir", "Echoing Piano", "Layered Strings", "Pure", "Sincere", "Grand", "Hopeful", "4/4 Time", "72 BPM", "Cinematic Atmosphere", "Deep Empathy"],
     "preface": "這首歌不只是旋律，而是一次「心靈的氣候控制」。我們不頒獎、不競爭，只在微光中溫柔地承接孩子們的渴望。我們相信，當環境對了，生命自然會找到綻放的路。",

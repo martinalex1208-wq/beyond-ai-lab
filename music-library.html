@@ -235,9 +235,11 @@
       const tagHtml=tags.slice(0,4).map(t=>`<span class="ml-mood">${esc(t)}</span>`).join('');
       const favActive=isFav(s.id||s.title)?'active':'';
       const previewText=s.preface?s.preface.slice(0,80)+'…':'';
+      const coverStyle=s.coverImage?`background-image:url('${esc(s.coverImage)}');background-size:cover;background-position:center;`:'';
+      const coverContent=s.coverImage?'':`<span class="ml-cover-placeholder">${esc((s.title||'?')[0])}</span>`;
       return `<article class="ml-card" data-id="${esc(String(s.id||s.title))}">
-        <div class="ml-cover" style="">
-          <span class="ml-cover-placeholder">${esc((s.title||'?')[0])}</span>
+        <div class="ml-cover" style="${coverStyle}">
+          ${coverContent}
         </div>
         <div class="ml-body">
           <h3 class="ml-title">${esc(s.title||'')}</h3>
