@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portrait Prompt Generator | Beyond AI Lab</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .pg-hero{padding:100px 2rem 3rem;max-width:var(--max-w);margin:0 auto;}
+    .pg-hero-eyebrow{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:1rem;display:block;}
+    .pg-hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);font-weight:300;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;line-height:1.05;}
+    .pg-hero-sub{font-size:1rem;color:var(--text-2);max-width:480px;line-height:1.7;}
+    .pg-wrap{max-width:var(--max-w);margin:0 auto;padding:0 2rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    @media(max-width:768px){.pg-wrap{grid-template-columns:1fr;padding:0 1.25rem 4rem;}}
+    .pg-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;}
+    .pg-panel-title{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:1.5rem;display:block;}
+    .pg-field{margin-bottom:1.25rem;}
+    .pg-label{font-size:0.78rem;color:var(--text-2);display:block;margin-bottom:0.4rem;font-family:var(--font-mono);letter-spacing:0.05em;}
+    .pg-select{width:100%;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-family:var(--font-sans);font-size:0.875rem;color:var(--text);outline:none;cursor:pointer;transition:border-color var(--t);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+    .pg-select:focus{border-color:var(--border-mid);}
+    .pg-actions{display:flex;gap:0.75rem;margin-top:1.75rem;flex-wrap:wrap;}
+    .pg-btn{font-family:var(--font-sans);font-size:0.85rem;font-weight:500;padding:10px 20px;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--t);border:1px solid;}
+    .pg-btn--primary{background:var(--accent);border-color:var(--accent);color:#000;}
+    .pg-btn--primary:hover{background:transparent;color:var(--accent);}
+    .pg-btn--secondary{background:transparent;border-color:var(--border-mid);color:var(--text-2);}
+    .pg-btn--secondary:hover{border-color:var(--border-hi);color:var(--text);}
+    .pg-result-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;display:flex;flex-direction:column;}
+    .pg-result-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:1rem;display:block;}
+    .pg-result-box{flex:1;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;font-family:var(--font-mono);font-size:0.82rem;color:var(--text-2);line-height:1.8;white-space:pre-wrap;min-height:280px;transition:all var(--t);}
+    .pg-result-box.has-content{color:var(--text);border-color:var(--border-mid);}
+    .pg-result-actions{display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;}
+    .pg-copy-btn{font-family:var(--font-sans);font-size:0.78rem;padding:7px 16px;border-radius:var(--radius-sm);border:1px solid var(--border-mid);color:var(--text-2);background:transparent;cursor:pointer;transition:all var(--t);}
+    .pg-copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .pg-copy-btn.copied{border-color:var(--accent);color:var(--accent);background:var(--accent-pale);}
+    .pg-history{max-width:var(--max-w);margin:0 auto;padding:0 2rem 4rem;}
+    .pg-history-title{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;display:block;}
+    .pg-history-list{display:flex;flex-direction:column;gap:0.5rem;}
+    .pg-history-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.875rem 1.25rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--text-2);line-height:1.6;cursor:pointer;transition:all var(--t);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+    .pg-history-item:hover{border-color:var(--border-mid);color:var(--text);}
+    .pg-history-text{flex:1;}
+    .pg-history-copy{font-size:0.7rem;color:var(--text-3);white-space:nowrap;padding:3px 8px;border:1px solid var(--border);border-radius:99px;transition:all var(--t);}
+    .pg-history-copy:hover{border-color:var(--accent);color:var(--accent);}
+    .pg-empty{color:var(--text-3);font-size:0.85rem;font-style:italic;}
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./life.html" class="site-nav-link" data-nav-page="life">生活有味道</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+        <li><a href="./image-library.html" class="site-nav-link" data-nav-page="image-library">Images</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music</a></li>
+        <li><a href="./story-library.html" class="site-nav-link" data-nav-page="story-library">Stories</a></li>
+        <li><a href="./impact-lab.html" class="site-nav-link" data-nav-page="impact-lab">Impact Lab</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding Lab</a></li>
+        <li><a href="./glimmer100.html" class="site-nav-link" data-nav-page="glimmer100">微光100</a></li>
+        <li><a href="./steve.html" class="site-nav-link" data-nav-page="creator">Creator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="pg-hero">
+      <span class="pg-hero-eyebrow">Visual Lab · Beyond AI Lab</span>
+      <h1 class="pg-hero-title">Portrait Prompt Generator</h1>
+      <p class="pg-hero-sub">選擇風格組合，生成專業的 AI 圖片提示詞，直接貼到 Grok 使用。</p>
+    </div>
+
+    <div class="pg-wrap">
+      <div class="pg-panel">
+        <span class="pg-panel-title">設定參數</span>
+        <div class="pg-field">
+          <label class="pg-label" for="pgSubject">Subject 主題人物</label>
+          <select class="pg-select" id="pgSubject"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgTheme">Theme 場景</label>
+          <select class="pg-select" id="pgTheme"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgStyle">Style 風格</label>
+          <select class="pg-select" id="pgStyle"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgLighting">Lighting 光線</label>
+          <select class="pg-select" id="pgLighting"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgMood">Mood 情緒</label>
+          <select class="pg-select" id="pgMood"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgCamera">Camera 相機</label>
+          <select class="pg-select" id="pgCamera"></select>
+        </div>
+        <div class="pg-field">
+          <label class="pg-label" for="pgRatio">Ratio 比例</label>
+          <select class="pg-select" id="pgRatio"></select>
+        </div>
+        <div class="pg-actions">
+          <button class="pg-btn pg-btn--primary" id="pgGenerate">✦ Generate Prompt</button>
+          <button class="pg-btn pg-btn--secondary" id="pgRandom">↻ Random</button>
+        </div>
+      </div>
+
+      <div class="pg-result-panel">
+        <span class="pg-result-label">Generated Prompt</span>
+        <div class="pg-result-box" id="pgResult">選擇參數後按 Generate Prompt...</div>
+        <div class="pg-result-actions">
+          <button class="pg-copy-btn" id="pgCopy">Copy Prompt</button>
+          <button class="pg-copy-btn" id="pgClear">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-history">
+      <span class="pg-history-title">Recent Prompts</span>
+      <div class="pg-history-list" id="pgHistoryList">
+        <p class="pg-empty">還沒有生成過提示詞。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">RCG · Ride · Create · Give</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">RCG · Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./script.js"></script>
+  <script>
+  (function(){
+    function populate(selectId, items, addRandom){
+      const sel = document.getElementById(selectId);
+      if(addRandom) sel.innerHTML = '<option value="__random__">🎲 Random</option>';
+      items.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item; opt.textContent = item;
+        sel.appendChild(opt);
+      });
+    }
+
+    function getVal(id){
+      const sel = document.getElementById(id);
+      const val = sel.value;
+      if(val === '__random__'){
+        const opts = Array.from(sel.options).filter(o => o.value !== '__random__');
+        return opts[Math.floor(Math.random() * opts.length)].value;
+      }
+      return val;
+    }
+
+    function randomize(){
+      ['pgSubject','pgTheme','pgStyle','pgLighting','pgMood','pgCamera','pgRatio'].forEach(id => {
+        const sel = document.getElementById(id);
+        const opts = Array.from(sel.options).filter(o => o.value !== '__random__');
+        sel.value = opts[Math.floor(Math.random() * opts.length)].value;
+      });
+    }
+
+    let history = [];
+
+    function generate(){
+      const subject = getVal('pgSubject');
+      const theme = getVal('pgTheme');
+      const style = getVal('pgStyle');
+      const lighting = getVal('pgLighting');
+      const mood = getVal('pgMood');
+      const camera = getVal('pgCamera');
+      const ratio = getVal('pgRatio');
+
+      const prompt = `A hyper-realistic portrait of ${subject}, ${theme}.\n\n${style}, ${lighting}, ${mood} atmosphere.\n\n${camera}, photorealistic, ultra-detailed, 8K resolution.\n\nAspect ratio: ${ratio}`;
+
+      const box = document.getElementById('pgResult');
+      box.textContent = prompt;
+      box.classList.add('has-content');
+
+      history.unshift(prompt);
+      if(history.length > 5) history.pop();
+      renderHistory();
+    }
+
+    function renderHistory(){
+      const list = document.getElementById('pgHistoryList');
+      if(history.length === 0){
+        list.innerHTML = '<p class="pg-empty">還沒有生成過提示詞。</p>';
+        return;
+      }
+      list.innerHTML = history.map((p, i) => `
+        <div class="pg-history-item">
+          <div class="pg-history-text">${p.slice(0,120)}...</div>
+          <button class="pg-history-copy" data-index="${i}">Copy</button>
+        </div>
+      `).join('');
+      list.querySelectorAll('.pg-history-copy').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(history[btn.dataset.index]);
+          btn.textContent = '✓'; setTimeout(() => btn.textContent = 'Copy', 2000);
+        });
+      });
+    }
+
+    document.getElementById('pgCopy').addEventListener('click', () => {
+      const text = document.getElementById('pgResult').textContent;
+      if(text && text !== '選擇參數後按 Generate Prompt...'){
+        navigator.clipboard.writeText(text);
+        const btn = document.getElementById('pgCopy');
+        btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 2000);
+      }
+    });
+
+    document.getElementById('pgClear').addEventListener('click', () => {
+      const box = document.getElementById('pgResult');
+      box.textContent = '選擇參數後按 Generate Prompt...';
+      box.classList.remove('has-content');
+    });
+
+    document.getElementById('pgGenerate').addEventListener('click', generate);
+    document.getElementById('pgRandom').addEventListener('click', () => { randomize(); generate(); });
+
+    fetch('data/portrait-prompts.json')
+      .then(r => r.json())
+      .then(d => {
+        populate('pgSubject', d.subjects, true);
+        populate('pgTheme', d.themes, true);
+        populate('pgStyle', d.styles, true);
+        populate('pgLighting', d.lighting, true);
+        populate('pgMood', d.mood, true);
+        populate('pgCamera', d.camera, false);
+        populate('pgRatio', d.ratio, false);
+      })
+      .catch(() => console.error('Failed to load portrait-prompts.json'));
+  })();
+  </script>
+</body>
+</html>

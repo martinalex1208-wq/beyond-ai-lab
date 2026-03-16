@@ -1,0 +1,63 @@
+{
+  "subjects": [
+    "a freckled young woman with natural freckles and sun-kissed skin",
+    "a European woman with blonde hair and delicate features",
+    "a young woman with expressive eyes and a gentle smile",
+    "a natural beauty with flowing hair in the wind",
+    "a cowgirl with dark hair and a warm smile",
+    "a woman with short blonde hair and serene expression",
+    "a young woman with closed eyes facing the sunlight",
+    "a woman with wavy hair and effortless elegance"
+  ],
+  "themes": [
+    "city street with bokeh background",
+    "rooftop overlooking a European city",
+    "open countryside with golden fields",
+    "horse ranch in dry summer landscape",
+    "quiet bookstore with warm lighting",
+    "summer meadow at golden hour",
+    "cozy coffee shop with soft light",
+    "coastal cliffside at sunrise"
+  ],
+  "styles": [
+    "cinematic portrait photography",
+    "documentary street photography",
+    "editorial fashion portrait",
+    "natural light lifestyle photography",
+    "fine art portraiture",
+    "moody atmospheric photography",
+    "warm golden hour photography"
+  ],
+  "lighting": [
+    "golden hour sunlight from the side",
+    "soft diffused natural daylight",
+    "dramatic side lighting with deep shadows",
+    "backlit with lens flare",
+    "overcast soft light",
+    "warm afternoon sunlight",
+    "blue hour ambient light"
+  ],
+  "mood": [
+    "serene and contemplative",
+    "joyful and free-spirited",
+    "mysterious and introspective",
+    "warm and approachable",
+    "confident and empowered",
+    "dreamy and romantic",
+    "peaceful and grounded"
+  ],
+  "camera": [
+    "Shot on Phase One XF, 100mm macro lens, f/2.8",
+    "Shot on Hasselblad X2D, 90mm lens, f/1.8",
+    "Shot on Sony A7R V, 85mm f/1.4 GM lens",
+    "Shot on Leica SL2, 75mm Summilux, f/1.4",
+    "Shot on Canon EOS R5, 50mm f/1.2L lens",
+    "Shot on Nikon Z9, 85mm f/1.2 S lens"
+  ],
+  "ratio": [
+    "9:16 vertical portrait",
+    "1:1 square",
+    "4:5 portrait",
+    "3:2 horizontal"
+  ]
+}
