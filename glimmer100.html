@@ -1100,3 +1100,29 @@ Email：beyond.ai.lab@gmail.com
       setTimeout(() => win.print(), 500);
     }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function downloadPdf() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const lines = planText.split('\n');
+  let y = 15;
+  doc.setFont('helvetica');
+  lines.forEach(line => {
+    if (y > 280) { doc.addPage(); y = 15; }
+    if (line.startsWith('【')) {
+      doc.setFontSize(13);
+      doc.setTextColor(139, 105, 20);
+    } else if (line === '') {
+      y += 3; return;
+    } else {
+      doc.setFontSize(10);
+      doc.setTextColor(40, 40, 40);
+    }
+    const split = doc.splitTextToSize(line, 180);
+    doc.text(split, 15, y);
+    y += split.length * 6 + 2;
+  });
+  doc.save('微光100計畫說明.pdf');
+}
+</script>
