@@ -1,185 +1,459 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibe Coding Lab | Beyond AI Lab</title>
-  <meta name="description" content="Creative systems built with AI, code, and curiosity. Vibe coding projects and philosophy.">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <link rel="stylesheet" href="./css/pages/vibe-coding.css">
-  <link rel="stylesheet" href="./css/pages/responsive.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
-:root {
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'DM Mono', monospace;
-}
+    :root {
+      --bg: #080c10;
+      --surface: #0d1117;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0ece4;
+      --text-muted: rgba(240,236,228,0.45);
+      --gold: #c9a84c;
+      --gold-muted: rgba(201,168,76,0.15);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --nav-h: 60px;
+      --max-w: 1100px;
+      --section-py: 6rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Nav */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex; align-items: center;
+    }
+    .nav {
+      width: 100%; max-width: var(--max-w);
+      margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: var(--text);
+      font-family: var(--font-serif); font-size: 1rem;
+    }
+    .logo img { width: 24px; height: 24px; }
+    .nav-links {
+      display: flex; align-items: center; gap: 0.25rem;
+      list-style: none; margin-left: auto;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.8rem; padding: 0.35rem 0.75rem;
+      border-radius: 4px; transition: color 0.2s;
+      font-family: var(--font-sans);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active {
+      background: rgba(255,255,255,0.06);
+      color: var(--gold);
+    }
+
+    /* Main */
+    main { padding-top: var(--nav-h); position: relative; z-index: 1; }
+
+    /* Hero */
+    .vibe-hero {
+      min-height: 70vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+    }
+    .vibe-hero-inner { max-width: 700px; }
+    .vibe-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .vibe-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+    .vibe-hero-title em { font-style: italic; color: var(--gold); }
+    .vibe-hero-sub {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.8; max-width: 500px; margin: 0 auto 2rem;
+    }
+    .vibe-hero-quote {
+      font-family: var(--font-serif);
+      font-size: 1.1rem; font-style: italic;
+      color: var(--gold); opacity: 0.8;
+    }
+
+    /* Section */
+    .section {
+      padding: var(--section-py) 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: 0.7; display: block; margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; color: var(--text);
+      line-height: 1.1; margin-bottom: 2.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* What is Vibe Coding */
+    .what-grid {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 4rem; align-items: start;
+    }
+    .what-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-style: italic; color: var(--gold);
+      line-height: 1.4;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+    }
+    .what-body p {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 1.2rem;
+    }
+    .what-body strong { color: var(--text); font-weight: 400; }
+
+    /* Days Timeline */
+    .days-grid {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .day-item {
+      display: grid; grid-template-columns: 120px 1fr;
+      gap: 2rem; align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .day-item:last-child { border-bottom: none; }
+    .day-left { text-align: right; padding-top: 0.2rem; }
+    .day-num {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--gold); opacity: 0.4;
+      line-height: 1; display: block;
+    }
+    .day-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem; color: var(--text-muted);
+      letter-spacing: 0.08em; margin-top: 0.3rem;
+      display: block;
+    }
+    .day-right {}
+    .day-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.6rem;
+    }
+    .day-desc {
+      font-size: 0.9rem; color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .day-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+    .day-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem; letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 2px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .project-card {
+      background: var(--bg);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .project-card:hover { background: rgba(255,255,255,0.02); }
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem; color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .project-desc {
+      font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 1rem;
+    }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem; letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold); border-radius: 2px;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .footer-brand-name {
+      font-family: var(--font-serif); font-size: 1rem;
+      color: var(--text); display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand-name img { width: 20px; }
+    .footer-tagline { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+    .footer-col-title {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom {
+      max-width: var(--max-w); margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-mantra {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; color: var(--text-muted);
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); opacity: 0.5; }
+
+    @media (max-width: 768px) {
+      .what-grid { grid-template-columns: 1fr; }
+      .day-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
-
 <body>
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
-  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
 
   <header class="site-header">
-    <nav class="nav site-nav">
+    <nav class="nav">
       <a href="./index.html" class="logo">
-        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab">
         <span>Beyond AI Lab</span>
       </a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-      <ul class="nav-links site-nav-list">
-        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
-        <li><a href="./steve.html" class="site-nav-link" data-nav-page="steve">Creator</a></li>
-        <li><a href="./glimmer100.html" class="site-nav-link" data-nav-page="glimmer100">微光100</a></li>
-        <li><a href="./visual-lab.html" class="site-nav-link" data-nav-page="visual-lab">Gallery</a></li>
-        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music</a></li>
-        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding</a></li>
-        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
-        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./steve.html">Creator</a></li>
+        <li><a href="./glimmer100.html">微光100</a></li>
+        <li><a href="./visual-lab.html">Gallery</a></li>
+        <li><a href="./music-library.html">Music</a></li>
+        <li><a href="./vibe-coding-lab.html" class="active">Vibe Coding</a></li>
+        <li><a href="./add-entry.html">Add Entry</a></li>
+        <li><a href="./search.html">Search</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="vibe-coding-main">
-    <section class="vibe-coding-hero">
-      <p class="hero-tagline">Vibe Coding Lab</p>
-      <h1 class="hero-title">
-        <span class="hero-title-line hero-title-line--accent">Vibe Coding Lab</span>
-      </h1>
-      <p class="hero-subtitle">Creative systems built with AI, code, and curiosity</p>
-    </section>
+  <main>
 
-    <section class="vibe-section" id="what-is">
-      <div class="vibe-card">
-        <h2 class="vibe-section-title">What is Vibe Coding</h2>
-        <p class="vibe-desc">Vibe Coding 是在 AI 輔助下，將想法轉化為實用創意工具的開發方式。不追求完美架構，而是專注於快速迭代、實驗與學習——用好奇心驅動，讓靈感落地成可用的系統。</p>
+    <!-- Hero -->
+    <section class="vibe-hero">
+      <div class="vibe-hero-inner">
+        <span class="vibe-hero-eyebrow">Beyond AI Lab · Vibe Coding</span>
+        <h1 class="vibe-hero-title">Vibe<br><em>Coding.</em></h1>
+        <p class="vibe-hero-sub">程式界的小白，眼睛一亮。<br>原來平民也可以寫網頁。</p>
+        <p class="vibe-hero-quote">「不追求完美架構，只要靈感落地成可用的系統。」</p>
       </div>
     </section>
 
-    <section class="vibe-section" id="projects">
-      <h2 class="vibe-section-title vibe-section-title--centered">Projects</h2>
-      <div class="project-grid">
-        <article class="project-card">
-          <h3 class="project-title">1919 Event Webpage</h3>
-          <p class="project-desc">公益環島活動專頁，整合活動資訊、報名與募款流程。</p>
-          <div class="project-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
+    <!-- What is Vibe Coding -->
+    <section class="section">
+      <div class="section-inner">
+        <span class="section-eyebrow">What is Vibe Coding</span>
+        <div class="what-grid">
+          <blockquote class="what-quote">用好奇心驅動，讓想法變成可用的工具。</blockquote>
+          <div class="what-body">
+            <p>Vibe Coding 是在 <strong>AI 輔助下</strong>，將想法轉化為實用創意工具的開發方式。不追求完美架構，而是專注於快速迭代、實驗與學習。</p>
+            <p>2026年3月8日，我看到一支影片，眼睛一亮——<strong>原來不會寫程式的人也可以建網站</strong>。從那天開始，我每天都在 Vibe Coding。</p>
+            <p>這個頁面記錄我從第一天到現在的每一步，給所有還在觀望的人看：<strong>你也可以。</strong></p>
           </div>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">LINE Futures Message Automation</h3>
-          <p class="project-desc">自動化發送期貨相關訊息至 LINE 群組，節省重複操作時間。</p>
-          <div class="project-tags">
-            <span class="tag">Automation</span>
-            <span class="tag">JavaScript</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">Daily AI Image Generation</h3>
-          <p class="project-desc">每日自動生成 AI 圖像的系統，結合排程與 API 串接。</p>
-          <div class="project-tags">
-            <span class="tag">AI</span>
-            <span class="tag">Automation</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">Beyond AI Lab Website</h3>
-          <p class="project-desc">本網站，整合 Music Lab、Visual Lab、Story Lab 等創作實驗室。</p>
-          <div class="project-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="vibe-section" id="workflow">
-      <h2 class="vibe-section-title vibe-section-title--centered">Workflow</h2>
-      <div class="workflow-flow">
-        <span class="workflow-step">Idea</span>
-        <span class="workflow-arrow">→</span>
-        <span class="workflow-step">Prompt</span>
-        <span class="workflow-arrow">→</span>
-        <span class="workflow-step">Agent</span>
-        <span class="workflow-arrow">→</span>
-        <span class="workflow-step">Code</span>
-        <span class="workflow-arrow">→</span>
-        <span class="workflow-step">Test</span>
-        <span class="workflow-arrow">→</span>
-        <span class="workflow-step">Improve</span>
+    <!-- 每日進度 -->
+    <section class="section">
+      <div class="section-inner">
+        <span class="section-eyebrow">每日進度</span>
+        <h2 class="section-title">第一天到<br><em>現在。</em></h2>
+        <div class="days-grid">
+
+          <div class="day-item">
+            <div class="day-left">
+              <span class="day-num">01</span>
+              <span class="day-date">3 / 08</span>
+            </div>
+            <div class="day-right">
+              <h3 class="day-title">第一次 Vibe Coding</h3>
+              <p class="day-desc">看到 YouTube 影片，程式界的小白眼睛一亮——原來平民也可以寫網頁。當天就開始動手，建立第一個單頁網站。</p>
+              <div class="day-tags">
+                <span class="day-tag">HTML</span>
+                <span class="day-tag">CSS</span>
+                <span class="day-tag">Claude</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-item">
+            <div class="day-left">
+              <span class="day-num">11</span>
+              <span class="day-date">3 / 17</span>
+            </div>
+            <div class="day-right">
+              <h3 class="day-title">微光100 功能完善 + Vibe Coding 頁面</h3>
+              <p class="day-desc">完成微光100頁面的複製、下載 TXT、下載 PDF、分享到 LINE 四個按鈕。更新 Creator 頁面故事，建立 Vibe Coding 日記頁面。</p>
+              <div class="day-tags">
+                <span class="day-tag">JavaScript</span>
+                <span class="day-tag">jsPDF</span>
+                <span class="day-tag">LINE Share</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <section class="vibe-section" id="philosophy">
-      <div class="vibe-philosophy-card">
-        <p class="vibe-philosophy">"Curiosity turns ideas into systems."</p>
+    <!-- Projects -->
+    <section class="section">
+      <div class="section-inner">
+        <span class="section-eyebrow">Projects</span>
+        <h2 class="section-title">用 AI 建出來的<br><em>東西。</em></h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3 class="project-title">1919 環島活動網頁</h3>
+            <p class="project-desc">公益環島活動專頁，整合活動資訊、報名與募款流程。</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3 class="project-title">LINE 期貨訊息自動化</h3>
+            <p class="project-desc">自動化發送期貨相關訊息至 LINE 群組，節省重複操作時間。</p>
+            <div class="project-tags">
+              <span class="project-tag">Automation</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3 class="project-title">每日 AI 圖片生成</h3>
+            <p class="project-desc">每日自動生成 AI 圖像的系統，結合排程與 API 串接。</p>
+            <div class="project-tags">
+              <span class="project-tag">AI</span>
+              <span class="project-tag">Automation</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3 class="project-title">Beyond AI Lab 網站</h3>
+            <p class="project-desc">本網站。整合 Gallery、Music、微光100、Guardian Prompts 等創作實驗室。</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="footer footer--landing">
-    <div class="footer-glow" aria-hidden="true"></div>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-brand-link">
-          <img src="images/logo.png" alt="" class="footer-logo" width="32" height="32">
-          <span class="footer-brand-name">Beyond AI Lab</span>
-        </a>
-        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      <div>
+        <p class="footer-brand-name">
+          <img src="./images/logo.png" alt="">
+          Beyond AI Lab
+        </p>
+        <p class="footer-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
       </div>
-      <div class="footer-col footer-quick">
-        <h4 class="footer-col-title">Quick Links</h4>
+      <div>
+        <h4 class="footer-col-title">Impact</h4>
         <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="works.html">Works</a></li>
-          <li><a href="index.html#featured-works">Featured Works</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="steve.html">Creator</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="./glimmer100.html">微光100</a></li>
+          <li><a href="./steve.html">Creator</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-labs">
-        <h4 class="footer-col-title">Labs</h4>
+      <div>
+        <h4 class="footer-col-title">Libraries</h4>
         <ul class="footer-links">
-          <li><a href="prompt-lab.html">Prompt Lab</a></li>
-          <li><a href="music-lab.html">Music Lab</a></li>
-          <li><a href="visual-lab.html">Visual Lab</a></li>
-          <li><a href="story-lab.html">Story Lab</a></li>
-          <li><a href="vibe-coding-lab.html">Vibe Coding Lab</a></li>
-          
+          <li><a href="./visual-lab.html">Images</a></li>
+          <li><a href="./music-library.html">Music</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-connect">
+      <div>
         <h4 class="footer-col-title">Connect</h4>
         <ul class="footer-links">
           <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
-          <li><a href="#">Line</a></li>
           <li><a href="#">Instagram</a></li>
           <li><a href="#">X</a></li>
-          <li><a href="#">Website</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-mantra">Ride · Create · Give</p>
+      <p class="footer-mantra">RCG · Ride · Create · Give</p>
       <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
-
 </html>
