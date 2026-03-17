@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微光100 · Glimmer 100 — Beyond AI Lab</title>
+  <meta name="description" content="一杯咖啡的花費，成為偏鄉孩子心裡的一道光。微光100計畫——期待、尊嚴、被看見。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #080808;
+      --bg-2:        #111111;
+      --bg-3:        #1a1a1a;
+      --border:      rgba(255,255,255,0.07);
+      --border-hover:rgba(255,255,255,0.18);
+      --text:        #f0ece4;
+      --text-muted:  rgba(240,236,228,0.45);
+      --text-faint:  rgba(240,236,228,0.25);
+      --gold:        #c9a96e;
+      --gold-light:  #e8d5a8;
+      --gold-dim:    rgba(201,169,110,0.15);
+      --warm:        #d4a574;
+      --warm-dim:    rgba(212,165,116,0.12);
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'DM Sans', system-ui, sans-serif;
+      --font-mono:   'DM Mono', monospace;
+      --nav-h:       64px;
+      --ease:        cubic-bezier(0.25, 0, 0, 1);
+      --max-w:       1400px;
+      --content-w:   720px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .glow-orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+      filter: blur(120px); opacity: 0.07;
+    }
+    .glow-orb--1 {
+      width: 700px; height: 700px; top: -200px; right: -150px;
+      background: radial-gradient(circle, #c9a96e, transparent 70%);
+    }
+    .glow-orb--2 {
+      width: 500px; height: 500px; bottom: 20%; left: -150px;
+      background: radial-gradient(circle, #d4a574, transparent 70%);
+    }
+
+    /* Nav */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav {
+      max-width: 1400px; margin: 0 auto;
+      height: 100%; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: flex-start; gap: 2rem;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-size: 0.875rem; font-weight: 400;
+    }
+    .logo img { width: 37px; height: 37px; object-fit: contain; }
+    .logo span { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; }
+    .nav-links { display: flex; align-items: center; list-style: none; flex-wrap: nowrap; overflow-x: auto; gap: 2px; }
+    .nav-links a {
+      display: block; padding: 6px 12px;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--gold); }
+
+    main { position: relative; z-index: 1; padding-top: var(--nav-h); }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      max-width: 1400px; margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300; line-height: 0.95;
+      letter-spacing: -0.02em; color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-subtitle {
+      font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.4;
+    }
+    .hero-tagline {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      letter-spacing: 0.15em; color: var(--text-faint);
+      text-transform: uppercase;
+    }
+
+    /* Hero poem */
+    .hero-poem {
+      max-width: 480px; margin: 3rem auto 0;
+      padding: 2rem; border: 1px solid var(--border);
+      border-radius: 2px; background: var(--bg-2);
+    }
+    .hero-poem-line {
+      font-family: var(--font-serif); font-size: 1rem;
+      color: var(--text-muted); line-height: 2;
+      font-style: italic;
+    }
+    .hero-poem-line.highlight { color: var(--gold); font-style: normal; }
+
+    /* ── Section base ─────────────────────────────────────────── */
+    .section {
+      max-width: 1400px; margin: 0 auto;
+      padding: 5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; color: var(--text);
+      line-height: 1.1; margin-bottom: 2.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-body {
+      max-width: var(--content-w);
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .section-body p + p { margin-top: 1.2rem; }
+    .section-body strong { color: var(--text); font-weight: 400; }
+
+    /* ── Brand Story ──────────────────────────────────────────── */
+    .brand-story-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .brand-story-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text); line-height: 1.5;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+    }
+
+    /* ── How it works ─────────────────────────────────────────── */
+    .how-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .how-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      transition: background 0.3s var(--ease);
+    }
+    .how-card:hover { background: var(--bg-2); }
+    .how-num {
+      font-family: var(--font-serif); font-size: 3.5rem;
+      font-weight: 300; color: var(--gold); opacity: 0.4;
+      line-height: 1; margin-bottom: 1rem; display: block;
+    }
+    .how-title {
+      font-family: var(--font-serif); font-size: 1.3rem;
+      font-weight: 400; color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .how-desc {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .how-highlight {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--gold); letter-spacing: 0.06em;
+    }
+
+    /* Math visual */
+    .math-row {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap; padding: 2rem;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .math-item {
+      text-align: center;
+    }
+    .math-num {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      font-weight: 300; color: var(--gold); display: block; line-height: 1;
+    }
+    .math-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 0.1em; color: var(--text-faint);
+      text-transform: uppercase; margin-top: 0.3rem; display: block;
+    }
+    .math-op {
+      font-family: var(--font-serif); font-size: 2rem;
+      color: var(--border-hover); line-height: 1;
+    }
+    .math-arrow {
+      font-size: 1.5rem; color: var(--gold); opacity: 0.5;
+    }
+
+    /* ── Values ───────────────────────────────────────────────── */
+    .values-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .value-card {
+      background: var(--bg); padding: 2rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .value-card:hover { background: var(--bg-2); }
+    .value-word {
+      font-family: var(--font-serif); font-size: 1.6rem;
+      font-weight: 300; color: var(--gold);
+      margin-bottom: 0.5rem; line-height: 1;
+    }
+    .value-desc {
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── Song section ─────────────────────────────────────────── */
+    .song-card {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      padding: 2.5rem; background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .song-info {}
+    .song-title {
+      font-family: var(--font-serif); font-size: 2rem;
+      font-weight: 300; color: var(--text); margin-bottom: 0.3rem;
+    }
+    .song-subtitle {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .song-desc {
+      font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 1.5rem;
+    }
+    .song-listen {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--gold); color: #080808;
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.06em; text-decoration: none; border-radius: 2px;
+      transition: background 0.2s; margin-bottom: 0.8rem; display: inline-flex;
+    }
+    .song-listen:hover { background: var(--gold-light); }
+    .audio-player {
+      margin-top: 1rem;
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: 2px; padding: 0.75rem 1rem;
+    }
+    .audio-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 0.4rem; display: block;
+    }
+    .audio-player audio {
+      width: 100%; height: 36px; accent-color: var(--gold);
+      display: block;
+    }
+    .song-lyrics {
+      border-left: 1px solid var(--border); padding-left: 2rem;
+      max-height: 300px; overflow-y: auto;
+    }
+    .song-lyrics::-webkit-scrollbar { width: 3px; }
+    .song-lyrics::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 2px; }
+    .lyric-section {
+      margin-bottom: 1.2rem;
+    }
+    .lyric-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.15em; color: var(--text-faint);
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .lyric-line {
+      font-family: var(--font-serif); font-size: 0.9rem;
+      color: var(--text-muted); line-height: 1.9;
+    }
+    .lyric-line.chorus { color: var(--text); font-size: 0.95rem; }
+
+    /* ── Vision ───────────────────────────────────────────────── */
+    .vision-numbers {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .vision-num-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      text-align: center; transition: background 0.3s;
+    }
+    .vision-num-card:hover { background: var(--bg-2); }
+    .vision-big-num {
+      font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300; color: var(--gold); line-height: 1; display: block;
+      margin-bottom: 0.5rem;
+    }
+    .vision-num-label {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .vision-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--text); line-height: 1.6;
+      max-width: 700px; margin: 0 auto;
+      text-align: center; padding: 2rem 0;
+    }
+
+    /* ── Promise ──────────────────────────────────────────────── */
+    .promise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .promise-card {
+      padding: 1.8rem; border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .promise-card:hover { border-color: var(--border-hover); }
+    .promise-icon {
+      font-size: 1.3rem; margin-bottom: 0.8rem; display: block;
+    }
+    .promise-title {
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-weight: 400; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .promise-desc {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────── */
+    .cta-section {
+      text-align: center; border-bottom: none;
+    }
+    .cta-big {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300; color: var(--text);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .cta-big em { font-style: italic; color: var(--gold); }
+    .cta-sub {
+      font-size: 0.9rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; line-height: 1.7;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 0.8rem 2.2rem;
+      background: var(--gold); color: #080808;
+      font-family: var(--font-sans); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.06em;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-secondary {
+      padding: 0.8rem 2.2rem;
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.4);
+      color: var(--gold);
+      font-family: var(--font-sans); font-size: 0.85rem;
+      font-weight: 400; letter-spacing: 0.06em;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand-name { font-size: 0.875rem; font-weight: 400; color: var(--text); }
+    .footer-logo { width: 24px; height: 24px; object-fit: contain; }
+    .footer-brand-tagline {
+      font-size: 0.8rem; color: var(--text-muted);
+      line-height: 1.6; margin-top: 0.5rem; max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.4rem; }
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.82rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1400px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: flex-start; gap: 2rem;
+      align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .footer-mantra {
+      font-family: var(--font-serif); font-style: italic;
+      color: var(--gold); font-size: 0.9rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--text-faint); font-family: var(--font-mono);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero > * { animation: fadeUp 0.6s var(--ease) both; }
+    .hero > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero > *:nth-child(3) { animation-delay: 0.2s; }
+    .hero > *:nth-child(4) { animation-delay: 0.3s; }
+    .hero > *:nth-child(5) { animation-delay: 0.4s; }
+
+    @media (max-width: 1000px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .vision-numbers { grid-template-columns: 1fr; }
+      .song-card { grid-template-columns: 1fr; }
+      .song-lyrics { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+    }
+    @media (max-width: 800px) {
+      .brand-story-grid { grid-template-columns: 1fr; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 3rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .math-row { justify-content: center; }
+    }
+
+    .founder-section { border-bottom: 1px solid var(--border); }
+    .founder-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .founder-quote-col { position: sticky; top: calc(var(--nav-h) + 2rem); }
+    .founder-blockquote { font-family: var(--font-serif); font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 300; font-style: italic; color: var(--gold); line-height: 1.4; border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 0 0 2.5rem 0; }
+    .founder-avatar { display: flex; flex-direction: column; gap: 0.3rem; padding-left: 1.5rem; }
+    .founder-avatar-ring { width: 32px; height: 2px; background: var(--gold); opacity: 0.5; margin-bottom: 0.6rem; }
+    .founder-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--text); letter-spacing: 0.04em; }
+    .founder-role { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .founder-body { display: flex; flex-direction: column; gap: 1.2rem; }
+    .founder-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
+    .founder-body .highlight { color: var(--gold); }
+    .founder-closing { color: var(--text) !important; font-family: var(--font-serif); font-size: 1.05rem !important; font-style: italic; line-height: 1.7 !important; }
+    .founder-divider { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
+    .founder-divider span:not(.founder-divider-dot) { flex: 1; height: 1px; background: var(--border); }
+    .founder-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex: none !important; }
+    @media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; } .founder-quote-col { position: static; } }
+  
+.founder-section { border-bottom: 1px solid var(--border); }
+.founder-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+.founder-quote-col { position: sticky; top: calc(var(--nav-h) + 2rem); }
+.founder-blockquote { font-family: var(--font-serif); font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 300; font-style: italic; color: var(--gold); line-height: 1.4; border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 0 0 2.5rem 0; }
+.founder-avatar { display: flex; flex-direction: column; gap: 0.3rem; padding-left: 1.5rem; }
+.founder-avatar-ring { width: 32px; height: 2px; background: var(--gold); opacity: 0.5; margin-bottom: 0.6rem; }
+.founder-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--text); letter-spacing: 0.04em; }
+.founder-role { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.founder-body { display: flex; flex-direction: column; gap: 1.2rem; }
+.founder-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
+.founder-closing { color: var(--text) !important; font-family: var(--font-serif); font-size: 1.05rem !important; font-style: italic; line-height: 1.7 !important; }
+.founder-divider { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
+.founder-divider span:not(.founder-divider-dot) { flex: 1; height: 1px; background: var(--border); }
+.founder-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex: none !important; }
+@media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; } .founder-quote-col { position: static; } }
+</style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html" data-nav-page="index">Home</a></li>
+        <li><a href="./steve.html" data-nav-page="steve">Creator</a></li>
+        <li><a href="./glimmer100.html" data-nav-page="glimmer100">微光100</a></li>
+        <li><a href="./visual-lab.html" data-nav-page="visual-lab">Gallery</a></li>
+        <li><a href="./music-library.html" data-nav-page="music-library">Music</a></li>
+        <li><a href="./vibe-coding-lab.html" data-nav-page="vibe-coding-lab">Vibe Coding</a></li>
+        <li><a href="./add-entry.html" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./search.html" data-nav-page="search">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-eyebrow">Beyond AI Lab · Impact · 公益計畫</p>
+      <h1 class="hero-title">微光<em>100</em></h1>
+      <p class="hero-subtitle">一杯咖啡的花費，成為偏鄉孩子心裡的一道光</p>
+      <p class="hero-tagline">Glimmer 100 · 期待 · 尊嚴 · 被看見</p>
+      <div class="hero-poem">
+        <p class="hero-poem-line">一杯咖啡</p>
+        <p class="hero-poem-line">一束微光</p>
+        <p class="hero-poem-line">一座燈塔</p>
+        <p class="hero-poem-line highlight" style="margin-top:1rem;">生活是有味道的。</p>
+        <p class="hero-poem-line">如果心是輕的，世界其實很美。</p>
+      </div>
+    </section>
+
+    <!-- 創辦人的話 -->
+    <section class="section founder-section">
+      <div class="section-inner">
+        <span class="section-eyebrow">創辦人的話</span>
+        <h2 class="section-title">五元，握在<br><em>手心裡的喜悅。</em></h2>
+        <div class="founder-grid">
+          <div class="founder-quote-col">
+            <blockquote class="founder-blockquote">我小時候，五元是很大的事。</blockquote>
+            <div class="founder-avatar">
+              <div class="founder-avatar-ring"></div>
+              <span class="founder-name">Steve</span>
+              <span class="founder-role">Beyond AI Lab · 創辦人</span>
+            </div>
+          </div>
+          <div class="founder-body">
+            <p>把硬幣握在手心裡，走進巷口的雜貨店，那種開心，現在想起來還記得清楚。</p>
+            <p>不是因為五元能買到多少東西。<br>是因為那是屬於我的、我能決定的、我期待了很久的一刻。</p>
+            <div class="founder-divider"><span></span><span class="founder-divider-dot"></span><span></span></div>
+            <p>後來長大了。吃過很貴的餐，出國旅遊，買過很多東西。<br>但那種感動，再也沒有過了。</p>
+            <p>後來我懂了——那五元的喜悅，不只是喜悅。<br>是一種「被給予、被看見、被期待」的感覺。<br>是一個孩子知道：<span class="highlight">有人願意讓我有這一刻。</span></p>
+            <p>現在有很多偏鄉的孩子，從小沒有零用錢。<br>不是因為不努力，是因為生活沒給他們這個選項。</p>
+            <p class="founder-closing">我想把我當初的那份喜悅，給他們一次。<br>這就是微光100。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Story -->
+    
+<section class="section">
+      <p class="section-eyebrow">起點</p>
+      <h2 class="section-title">一個很簡單的<br><em>想法。</em></h2>
+      <div class="brand-story-grid">
+        <div>
+          <p class="brand-story-quote">一杯咖啡的花費，能不能成為偏鄉孩子心裡的一道光？</p>
+        </div>
+        <div class="section-body">
+          <p>有些孩子從小<strong style="color:var(--text)">沒有零用錢</strong>，<strong style="color:var(--text)">不是因為不努力</strong>，而是<strong style="color:var(--text)">生活沒有給他們太多選擇</strong>。</p>
+          <p>我們希望透過一百元的微小支持，讓孩子感受到的不只是幫助，而是一種<strong>被看見、被鼓勵、被期待</strong>的力量。</p>
+          <p>微光100不是施捨，而是一份關於<strong>尊嚴、勇氣與成長</strong>的約定。當孩子願意用自己的方式表達、努力與爭取，那一百元就不只是金錢，而是生命裡的一份喜悅，也是走向未來的一種期待。</p>
+          <p style="margin-top:1.5rem; font-family:var(--font-serif); font-size:1.1rem; font-style:italic; color:var(--gold);">一杯咖啡、一份喜悅、讓孩子多一種期待。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <p class="section-eyebrow">認養機制</p>
+      <h2 class="section-title">一個人就能開始，<br><em>微光自然匯聚。</em></h2>
+      <div class="how-grid">
+        <div class="how-card">
+          <span class="how-num">01</span>
+          <div class="how-title">一杯咖啡的付出</div>
+          <p class="how-desc">每人每月 <strong style="color:var(--text)">100 元</strong>（每年 1,200 元）。少喝一杯咖啡，換孩子一個月最期待的時刻。款項<strong style="color:var(--text)">直接匯入教會官方帳戶</strong>，不經手任何中間組織。教會將開立<strong style="color:var(--text)">合法收據</strong>，可供個人所得稅抵稅。</p>
+          <div class="how-highlight">NT$100 / 月 · NT$1,200 / 年</div>
+        </div>
+        <div class="how-card">
+          <span class="how-num">02</span>
+          <div class="how-title">不需要找人，系統自動配對</div>
+          <p class="how-desc">你只需要完成捐款，其他什麼都不用做。每間陪讀班每月開放 <strong style="color:var(--text)">5 個名額</strong>，當 5 位捐款人各自完成捐款，這間陪讀班就自動被點亮。<strong style="color:var(--text)">不需要自己找人，不需要去陪讀班，不需要做任何其他事。</strong></p>
+          <div class="how-highlight">每月 500 元照亮一個陪讀班，你只需要貢獻其中的 100 元</div>
+        </div>
+        <div class="how-card">
+          <span class="how-num">03</span>
+          <div class="how-title">孩子用努力爭取</div>
+          <p class="how-desc">每月 <strong style="color:var(--text)">5 個名額</strong>，老師邀請孩子把心裡的話說出來——一個真實的心情。可以是文字，可以是錄音轉成文字，不用修飾，不必押韻，無需完美。<strong style="color:var(--text)">只要勇敢表達，就有機會獲得那個月的微光津貼。</strong></p>
+          <div class="how-highlight">5個名額 · 每人100元微光津貼</div>
+        </div>
+      </div>
+
+      <!-- Math visual -->
+      <div class="math-row">
+        <div class="math-item">
+          <span class="math-num">100</span>
+          <span class="math-label">元 / 你</span>
+        </div>
+        <span class="math-arrow">→</span>
+        <div class="math-item">
+          <span class="math-num">5</span>
+          <span class="math-label">個孩子的期待</span>
+        </div>
+        <span class="math-arrow">→</span>
+        <div class="math-item">
+          <span class="math-num">20</span>
+          <span class="math-label">座陪讀班點亮</span>
+        </div>
+        <span class="math-arrow">→</span>
+        <div class="math-item">
+          <span class="math-num">100</span>
+          <span class="math-label">個孩子被看見</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section">
+      <p class="section-eyebrow">核心價值</p>
+      <h2 class="section-title">八個關鍵字，<br><em>定義微光。</em></h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-word">期待</div>
+          <p class="value-desc">讓孩子有一個每月值得等待的時刻，一種明天也許會更好的感覺。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">尊嚴</div>
+          <p class="value-desc">不是被動接受的施捨，而是透過努力爭取而來的榮譽與自尊。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">被看見</div>
+          <p class="value-desc">每一個孩子的聲音都值得被聽見，每一份努力都值得被回應。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">勇氣</div>
+          <p class="value-desc">練習開口表達，是一種勇氣。當孩子敢於分享，世界就會聽見。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">誠實表達</div>
+          <p class="value-desc">說出真實的心聲，不加修飾。孩子最純粹的聲音，往往最有力量。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">微光匯聚</div>
+          <p class="value-desc">每一個100元都是微光。當微光聚在一起，就能照亮整個黑夜。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">孩子的聲音</div>
+          <p class="value-desc">計畫的核心不是大人的善意，而是讓孩子的聲音被世界聽見。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-word">不是施捨</div>
+          <p class="value-desc">是回應。回應孩子的努力，回應他們值得被愛、被看見的本質。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Songs -->
+    <section class="section">
+      <p class="section-eyebrow">音樂宇宙 · Suno AI</p>
+      <h2 class="section-title">三首歌，<br><em>一個故事。</em></h2>
+      <p style="max-width:var(--content-w); color:var(--text-muted); font-size:0.95rem; line-height:1.8; margin-bottom:3rem;">
+        微光100有自己的音樂敘事弧線——從孩子勇敢<strong style="color:var(--text)">表達</strong>，到微光慢慢<strong style="color:var(--text)">匯聚</strong>，最終<strong style="color:var(--text)">照亮</strong>整個世界。三首歌，三個階段，一個完整的故事。
+      </p>
+
+      <!-- Song 1 -->
+      <div class="song-card" id="song-1" style="margin-bottom:1.5rem;">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第一首 · 表達</div>
+          <div class="song-title">誠實的音符</div>
+          <div class="song-subtitle">Honest Notes · Suno AI · Acoustic</div>
+          <p class="song-desc">從花東山海之間，一百個孩子把心裡的話寫下來。不用押韻，不必完美，只要勇敢說出真話。孩子最純粹的聲音，往往最有力量。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Quiet acoustic guitar · Soft piano · Children choir · Gentle and sincere</p>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/誠實的音符.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Intro</div>
+            <div class="lyric-line">在花東的山海之間</div>
+            <div class="lyric-line">有一百個小小窗口</div>
+            <div class="lyric-line">沒有華麗的劇本</div>
+            <div class="lyric-line">只有真實的脈搏</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">老師說 孩子把心裡的話寫下</div>
+            <div class="lyric-line">不用押韻 也不必害怕</div>
+            <div class="lyric-line">也許只是 午餐少了一道菜</div>
+            <div class="lyric-line">或是夢想 還找不到方向</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Pre-Chorus</div>
+            <div class="lyric-line">世界很大 但聲音很小</div>
+            <div class="lyric-line">如果有人 願意聽到</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">誠實的音符 落在紙上</div>
+            <div class="lyric-line chorus">像星星 點亮遠方</div>
+            <div class="lyric-line chorus">一句一句 沒有修飾</div>
+            <div class="lyric-line chorus">卻是生命 最真的故事</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 2</div>
+            <div class="lyric-line">有些夢 藏在舊書包裡</div>
+            <div class="lyric-line">有些願望 寫在窗邊日記</div>
+            <div class="lyric-line">如果有一天 風會把歌帶走</div>
+            <div class="lyric-line">希望世界 能聽見這首</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Bridge</div>
+            <div class="lyric-line">不用完美 不用偉大</div>
+            <div class="lyric-line">只要勇敢 說出真話</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Final Chorus</div>
+            <div class="lyric-line chorus">誠實的音符 飛向天空</div>
+            <div class="lyric-line chorus">讓每顆心 不再沉默</div>
+            <div class="lyric-line chorus">當歌聲 越過山丘</div>
+            <div class="lyric-line chorus">希望就會 慢慢生長</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song 2 -->
+      <div class="song-card" style="margin-bottom:1.5rem;">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第二首 · 匯聚</div>
+          <div class="song-title">百元微光</div>
+          <div class="song-subtitle">手心向上的勇氣 · Suno AI · Cinematic Pop</div>
+          <p class="song-desc">一百元不只是金錢，更是尊嚴的重量。當孩子手心向上，用努力爭取屬於自己的微光，每一道光都在匯聚，終將點燃太陽。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Emotional piano intro · Warm orchestral build · Children choir harmony · Hopeful charity anthem</p>
+          <a href="https://suno.com/s/2fkfTWJ1GSSDqD0L" target="_blank" class="song-listen">▶ 在 Suno 收聽</a>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/百元微光.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Intro</div>
+            <div class="lyric-line">記憶裡 那雙小小的手掌</div>
+            <div class="lyric-line">從沒見過 零用錢的模樣</div>
+            <div class="lyric-line">渴望的心 像微弱的星光</div>
+            <div class="lyric-line">在寂靜夜裡 靜靜發亮</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">記憶裡 那雙小小的手掌</div>
+            <div class="lyric-line">從沒見過 零用錢的模樣</div>
+            <div class="lyric-line">一顆心 在風中慢慢成長</div>
+            <div class="lyric-line">在沉默裡 學會堅強</div>
+            <div class="lyric-line">有些夢 在紙上悄悄發芽</div>
+            <div class="lyric-line">有些話 還來不及說吧</div>
+            <div class="lyric-line">一支筆 就能畫出方向</div>
+            <div class="lyric-line">讓希望慢慢發光</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Pre-Chorus</div>
+            <div class="lyric-line">不必隱藏 你的委屈與迷惘</div>
+            <div class="lyric-line">說出真心 就會看見光</div>
+            <div class="lyric-line">這不是施捨 也不是憐憫</div>
+            <div class="lyric-line">而是勇氣的獎賞</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">百元微光 手心向上的力量</div>
+            <div class="lyric-line chorus">一字一句 都是飛翔的翅膀</div>
+            <div class="lyric-line chorus">不只是金錢 更是尊嚴的重量</div>
+            <div class="lyric-line chorus">微光匯聚 終會點亮太陽</div>
+            <div class="lyric-line chorus">百元微光 在世界悄悄發亮</div>
+            <div class="lyric-line chorus">一顆顆心 正學會堅強</div>
+            <div class="lyric-line chorus">當善意慢慢流向遠方</div>
+            <div class="lyric-line chorus">希望就會 生長</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 2</div>
+            <div class="lyric-line">二十座教堂 點亮小小街角</div>
+            <div class="lyric-line">兩千個孩子 把夢想寫得很高</div>
+            <div class="lyric-line">歌聲會飄過 山谷與海潮</div>
+            <div class="lyric-line">讓世界聽見 你們的驕傲</div>
+            <div class="lyric-line">每一次努力 都有人看到</div>
+            <div class="lyric-line">每一份勇敢 都值得擁抱</div>
+            <div class="lyric-line">當一束微光 悄悄燃燒</div>
+            <div class="lyric-line">夜空就不再寂寥</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Bridge</div>
+            <div class="lyric-line">孩子們 勇敢爭取未來</div>
+            <div class="lyric-line">每一滴眼淚 都會開成花海</div>
+            <div class="lyric-line">當你們抬頭 世界會明白</div>
+            <div class="lyric-line">微光正在 改變時代</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Final Chorus</div>
+            <div class="lyric-line chorus">百元微光 手心向上的力量</div>
+            <div class="lyric-line chorus">一字一句 都是飛翔的翅膀</div>
+            <div class="lyric-line chorus">不只是金錢 更是尊嚴的重量</div>
+            <div class="lyric-line chorus">微光匯聚 終會點亮太陽</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Outro</div>
+            <div class="lyric-line chorus">手心向上 勇敢去闖</div>
+            <div class="lyric-line chorus">微光閃亮 守護夢想</div>
+            <div class="lyric-line chorus">手心向上 勇敢去闖</div>
+            <div class="lyric-line chorus">微光閃亮 守護夢想</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song 3 -->
+      <div class="song-card">
+        <div class="song-info">
+          <div style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:0.5rem;">第三首 · 照亮</div>
+          <div class="song-title">兩千座燈塔</div>
+          <div class="song-subtitle">Two Thousand Lighthouses · Suno AI · Epic Orchestral</div>
+          <p class="song-desc">從一個心願，到兩千座燈塔照亮每一條街道。當善意不再沉默，當孩子勇敢站起來，世界就會重新盛開。這是微光100最宏大的願景。</p>
+          <p class="song-desc" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">Epic piano · Distant choir · Grand orchestra crescendo · Powerful and hopeful</p>
+          <div class="audio-player">
+            <span class="audio-label">▶ 試聽</span>
+            <audio controls preload="metadata">
+              <source src="images/music/兩千座燈塔.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <div class="song-lyrics">
+          <div class="lyric-section">
+            <div class="lyric-label">Intro</div>
+            <div class="lyric-line">曾有一份願望 在寒風裡被遺忘</div>
+            <div class="lyric-line">曾有一張藍圖 被世界輕輕推開</div>
+            <div class="lyric-line">但有人 帶著微光走來</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 1</div>
+            <div class="lyric-line">從一個城市 到遠方山海</div>
+            <div class="lyric-line">一盞燈 點亮一片黑暗</div>
+            <div class="lyric-line">一百變成千萬 一顆心帶動一片海</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Pre-Chorus</div>
+            <div class="lyric-line">當善意 不再沉默</div>
+            <div class="lyric-line">世界就會改變</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Chorus</div>
+            <div class="lyric-line chorus">兩千座燈塔 照亮每一條街道</div>
+            <div class="lyric-line chorus">百元的微光 匯聚成海嘯</div>
+            <div class="lyric-line chorus">一萬個孩子 抬頭微笑</div>
+            <div class="lyric-line chorus">那是世界 最好的回報</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Verse 2</div>
+            <div class="lyric-line">從教室 到遠方村落</div>
+            <div class="lyric-line">歌聲 沿著海岸漂流</div>
+            <div class="lyric-line">如果光 願意傳遞</div>
+            <div class="lyric-line">黑夜 終究會退去</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Bridge</div>
+            <div class="lyric-line">今天種下 一顆希望</div>
+            <div class="lyric-line">明天就會 變成星光</div>
+          </div>
+          <div class="lyric-section">
+            <div class="lyric-label">Final Chorus</div>
+            <div class="lyric-line chorus">兩千座燈塔 照亮整個時代</div>
+            <div class="lyric-line chorus">每一束光 都不再等待</div>
+            <div class="lyric-line chorus">當孩子 勇敢站起來</div>
+            <div class="lyric-line chorus">世界就會 重新盛開</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="section">
+      <p class="section-eyebrow">願景</p>
+      <h2 class="section-title">微光終將<br><em>匯聚成燈塔。</em></h2>
+      <div class="vision-numbers">
+        <div class="vision-num-card">
+          <span class="vision-big-num">20</span>
+          <span class="vision-num-label">座教會陪讀班</span>
+        </div>
+        <div class="vision-num-card">
+          <span class="vision-big-num">2,000</span>
+          <span class="vision-num-label">個孩子被看見</span>
+        </div>
+        <div class="vision-num-card">
+          <span class="vision-big-num">100</span>
+          <span class="vision-num-label">元 · 一杯咖啡的力量</span>
+        </div>
+      </div>
+      <p class="vision-quote">「當一杯咖啡的價值，成為一個孩子生命中的喜悅，當一份小小的善意在兩千個孩子之中慢慢傳開，我們相信，微光終將匯聚成燈塔。」</p>
+    </section>
+
+    <!-- Promise -->
+    <section class="section">
+      <p class="section-eyebrow">我們的承諾</p>
+      <h2 class="section-title">透明、安心、<br><em>純粹。</em></h2>
+      <div class="promise-grid">
+        <div class="promise-card">
+          <span class="promise-icon">🏦</span>
+          <div class="promise-title">直接匯款</div>
+          <p class="promise-desc">款項直接匯入教會官方帳戶，不經手任何中間組織。每一分錢都到達它該去的地方。</p>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">📄</span>
+          <div class="promise-title">合法收據</div>
+          <p class="promise-desc">教會將開立正式合法收據，可供年度個人所得稅抵稅。做好事也能抵稅。</p>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">✨</span>
+          <div class="promise-title">100% 純粹</div>
+          <p class="promise-desc">沒有行政抽成，只有 100% 的愛與傳遞。低調與尊重，不進行任何形式的商業宣傳。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <h2 class="cta-big">每個月少喝<br>一杯咖啡，<br><em>點亮一道光。</em></h2>
+      <p class="cta-sub">這份喜悅，誠摯邀請您一起參與。<br>「熱情是引擎，享受是過程，而成果只是隨之而來的繁花。」</p>
+      <div class="cta-buttons">
+        <a href="mailto:beyond.ai.lab@gmail.com?subject=微光100計畫詢問" class="btn-primary">我想參與</a>
+        <a href="https://line.me/R/ti/p/@899nuuvy" target="_blank" class="btn-secondary">LINE 聯絡我們</a>
+        <div style="margin-top:1.2rem; display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
+          <button onclick="copyPlan()" id="copyBtn" style="padding:0.6rem 1.2rem; border:1px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-size:0.8rem; cursor:pointer; border-radius:4px;">📋 複製說明</button>
+          <button onclick="downloadTxt()" style="padding:0.6rem 1.2rem; border:1px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-size:0.8rem; cursor:pointer; border-radius:4px;">⬇ 下載 TXT</button>
+          <button onclick="downloadPdf()" style="padding:0.6rem 1.2rem; border:1px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-size:0.8rem; cursor:pointer; border-radius:4px;">⬇ 下載 PDF</button>
+        </div>
+        <div style="margin-top:1.5rem; text-align:center;">
+          <p style="font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(240,236,228,0.35); margin-bottom:0.75rem;">或掃描 QR Code 加入 LINE</p>
+          <a href="https://line.me/R/ti/p/@899nuuvy" target="_blank">
+            <img src="https://qr-official.line.me/gs/M_899nuuvy_GW.png" alt="Beyond AI Lab LINE QR Code" style="width:160px; height:160px; border-radius:8px;">
+          </a>
+        </div>
+        <p style="margin-top:0.75rem; font-family:'DM Mono',monospace; font-size:0.72rem; color:rgba(240,236,228,0.35); letter-spacing:0.06em;">或直接寄信至 beyond.ai.lab@gmail.com</p>
+        
+        <a href="./steve.html" class="btn-secondary">關於 Steve</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Impact</h4>
+        <ul class="footer-links">
+          <li><a href="glimmer100.html">微光100</a></li>
+          
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          
+          <li><a href="image-library.html">Images</a></li>
+          <li><a href="music-library.html">Music</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="/cdn-cgi/l/email-protection#1e7c7b6771707a307f7730727f7c5e79737f7772307d7173">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">RCG · Ride · Create · Give<script>
+    const planText = `微光100 · Glimmer 100
+一杯咖啡的花費，成為偏鄉孩子心裡的一道光
+
+【創辦人的話】
+五元，握在手心裡的喜悅。
+
+我小時候，五元是很大的事。
+
+把硬幣握在手心裡，走進巷口的雜貨店，那種開心，現在想起來還記得清楚。
+不是因為五元能買到多少東西，是因為那是屬於我的、我能決定的、我期待了很久的一刻。
+
+後來長大了。吃過很貴的餐，出國旅遊，買過很多東西。
+但那種感動，再也沒有過了。
+
+後來我懂了——那五元的喜悅，不只是喜悅。
+是一種「被給予、被看見、被期待」的感覺。
+是一個孩子知道：有人願意讓我有這一刻。
+
+現在有很多偏鄉的孩子，從小沒有零用錢。
+不是因為不努力，是因為生活沒給他們這個選項。
+
+我想把我當初的那份喜悅，給他們一次，這就是微光100。
+
+— Steve · Beyond AI Lab 創辦人
+
+【關於微光100】
+一杯咖啡的花費，能不能成為偏鄉孩子心裡的一道光？
+有些孩子從小沒有零用錢，不是因為不努力，而是生活沒有給他們太多選擇。
+我們希望透過一百元的微小支持，讓孩子感受到的不只是幫助，而是一種被看見、被鼓勵、被期待的力量。
+微光100不是施捨，而是一份關於尊嚴、勇氣與成長的約定。
+
+【認養機制】
+
+01 一杯咖啡的付出
+每人每月 100 元（每年 1,200 元）。款項直接匯入教會官方帳戶，不經手任何中間組織。教會將開立合法收據，可供個人所得稅抵稅。
+
+02 不需要找人，系統自動配對
+你只需要完成捐款，其他什麼都不用做。每間陪讀班每月開放 5 個名額，當 5 位捐款人各自完成捐款，這間陪讀班就自動被點亮。不需要自己找人，不需要去陪讀班，不需要做任何其他事。
+每月 500 元照亮一個陪讀班，你只需要貢獻其中的 100 元。
+
+03 孩子用努力爭取
+每月 5 個名額，老師邀請孩子把心裡的話說出來——一個真實的心情。可以是文字，可以是錄音轉成文字，不用修飾，不必押韻，無需完美。只要勇敢表達，就有機會獲得那個月的微光津貼。
+
+你的 100 元 → 5 個孩子的期待 → 20 座陪讀班點亮 → 100 個孩子被看見
+
+【我們的承諾】
+直接匯款：款項直接匯入教會官方帳戶，不經手任何中間組織。
+合法收據：教會將開立正式合法收據，可供年度個人所得稅抵稅。
+100% 純粹：沒有行政抽成，只有 100% 的愛與傳遞。
+
+【願景】
+20 座教會陪讀班 · 2,000 個孩子被看見 · 100 元 · 一杯咖啡的力量
+
+【聯絡我們】
+Email：beyond.ai.lab@gmail.com
+
+一杯咖啡、一份喜悅、讓孩子多一種期待。`;
+
+    function copyPlan() {
+      navigator.clipboard.writeText(planText).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✅ 已複製！';
+        setTimeout(() => btn.textContent = '📋 複製說明', 2000);
+      });
+    }
+
+    function downloadTxt() {
+      const blob = new Blob([planText], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '微光100計畫說明.txt';
+      a.click();
+    }
+
+    function downloadPdf() {
+      const win = window.open('', '_blank');
+      win.document.write('<html><head><meta charset="utf-8"><title>微光100計畫說明</title><style>body{font-family:serif;max-width:700px;margin:40px auto;line-height:1.9;color:#222;}pre{white-space:pre-wrap;font-family:serif;font-size:1rem;}</style></head><body><pre>' + planText + '</pre></body></html>');
+      win.document.close();
+      setTimeout(() => win.print(), 500);
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function downloadPdf() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const lines = planText.split('\n');
+  let y = 15;
+  doc.setFont('helvetica');
+  lines.forEach(line => {
+    if (y > 280) { doc.addPage(); y = 15; }
+    if (line.startsWith('【')) {
+      doc.setFontSize(13);
+      doc.setTextColor(139, 105, 20);
+    } else if (line === '') {
+      y += 3; return;
+    } else {
+      doc.setFontSize(10);
+      doc.setTextColor(40, 40, 40);
+    }
+    const split = doc.splitTextToSize(line, 180);
+    doc.text(split, 15, y);
+    y += split.length * 6 + 2;
+  });
+  doc.save('微光100計畫說明.pdf');
+}
+</script>
+<script>
+function downloadPdf() {
+  const content = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>微光100計畫說明</title>
+<style>
+  body { font-family: 'Noto Serif TC', serif; max-width: 700px; margin: 40px auto; line-height: 1.9; color: #222; padding: 0 20px; }
+  h1 { color: #8B6914; font-size: 1.5rem; margin-bottom: 0.3rem; }
+  h2 { color: #8B6914; font-size: 1.1rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+  p { margin: 0.6rem 0; }
+  .founder { background: #fdf8f0; border-left: 3px solid #c9a84c; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .closing { font-style: italic; color: #555; margin-top: 2rem; }
+  @media print { body { margin: 20px; } }
+</style>
+</head>
+<body>
+<h1>微光100 · Glimmer 100</h1>
+<p>一杯咖啡的花費，成為偏鄉孩子心裡的一道光</p>
+
+<div class="founder">
+<h2>創辦人的話</h2>
+<p>五元，握在手心裡的喜悅。</p>
+<p>我小時候，五元是很大的事。把硬幣握在手心裡，走進巷口的雜貨店，那種開心，現在想起來還記得清楚。不是因為五元能買到多少東西，是因為那是屬於我的、我能決定的、我期待了很久的一刻。</p>
+<p>後來長大了。吃過很貴的餐，出國旅遊，買過很多東西。但那種感動，再也沒有過了。</p>
+<p>後來我懂了——那五元的喜悅，不只是喜悅。是一種「被給予、被看見、被期待」的感覺。是一個孩子知道：有人願意讓我有這一刻。</p>
+<p>現在有很多偏鄉的孩子，從小沒有零用錢。不是因為不努力，是因為生活沒給他們這個選項。</p>
+<p><strong>我想把我當初的那份喜悅，給他們一次，這就是微光100。</strong></p>
+<p>— Steve · Beyond AI Lab 創辦人</p>
+</div>
+
+<h2>關於微光100</h2>
+<p>一杯咖啡的花費，能不能成為偏鄉孩子心裡的一道光？有些孩子從小沒有零用錢，不是因為不努力，而是生活沒有給他們太多選擇。我們希望透過一百元的微小支持，讓孩子感受到的不只是幫助，而是一種被看見、被鼓勵、被期待的力量。微光100不是施捨，而是一份關於尊嚴、勇氣與成長的約定。</p>
+
+<h2>認養機制</h2>
+<p><strong>01 一杯咖啡的付出</strong><br>每人每月 100 元（每年 1,200 元）。款項直接匯入教會官方帳戶，不經手任何中間組織。教會將開立合法收據，可供個人所得稅抵稅。</p>
+<p><strong>02 不需要找人，系統自動配對</strong><br>你只需要完成捐款，其他什麼都不用做。每間陪讀班每月開放 5 個名額，當 5 位捐款人各自完成捐款，這間陪讀班就自動被點亮。不需要自己找人，不需要去陪讀班，不需要做任何其他事。每月 500 元照亮一個陪讀班，你只需要貢獻其中的 100 元。</p>
+<p><strong>03 孩子用努力爭取</strong><br>每月 5 個名額，老師邀請孩子把心裡的話說出來——一個真實的心情。可以是文字，可以是錄音轉成文字，不用修飾，不必押韻，無需完美。只要勇敢表達，就有機會獲得那個月的微光津貼。</p>
+<p>你的 100 元 → 5 個孩子的期待 → 20 座陪讀班點亮 → 100 個孩子被看見</p>
+
+<h2>我們的承諾</h2>
+<p>🏦 直接匯款：款項直接匯入教會官方帳戶，不經手任何中間組織。</p>
+<p>📄 合法收據：教會將開立正式合法收據，可供年度個人所得稅抵稅。</p>
+<p>✨ 100% 純粹：沒有行政抽成，只有 100% 的愛與傳遞。</p>
+
+<h2>願景</h2>
+<p>20 座教會陪讀班 · 2,000 個孩子被看見 · 100 元 · 一杯咖啡的力量</p>
+
+<h2>聯絡我們</h2>
+<p>Email：beyond.ai.lab@gmail.com</p>
+
+<p class="closing">一杯咖啡、一份喜悅、讓孩子多一種期待。</p>
+</body>
+</html>`;
+
+  const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '微光100計畫說明.html';
+  a.click();
+}
+</script>
+<script>
+// 加說明文字和 LINE 分享按鈕
+document.addEventListener('DOMContentLoaded', function() {
+  const btnDiv = document.getElementById('copyBtn').parentElement;
+  
+  // 加說明文字
+  const msg = document.createElement('p');
+  msg.style.cssText = 'font-family:serif; font-size:0.9rem; color:rgba(240,236,228,0.5); font-style:italic; margin-bottom:0.8rem; text-align:center;';
+  msg.textContent = '覺得有意義嗎？把微光100傳給一個朋友。';
+  btnDiv.parentElement.insertBefore(msg, btnDiv);
+
+  // 加 LINE 分享按鈕
+  const lineBtn = document.createElement('button');
+  lineBtn.style.cssText = 'padding:0.6rem 1.2rem; border:1px solid #06C755; background:transparent; color:#06C755; font-size:0.8rem; cursor:pointer; border-radius:4px;';
+  lineBtn.textContent = '💚 分享到 LINE';
+  lineBtn.onclick = function() {
+    const text = encodeURIComponent('微光100 · 一杯咖啡的花費，成為偏鄉孩子心裡的一道光。\n\nhttps://beyond-ai-lab.vercel.app/glimmer100.html');
+    window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://beyond-ai-lab.vercel.app/glimmer100.html') + '&text=' + text, '_blank');
+  };
+  btnDiv.appendChild(lineBtn);
+});
+</script>
