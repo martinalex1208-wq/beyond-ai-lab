@@ -1189,3 +1189,25 @@ function downloadPdf() {
   a.click();
 }
 </script>
+<script>
+// 加說明文字和 LINE 分享按鈕
+document.addEventListener('DOMContentLoaded', function() {
+  const btnDiv = document.getElementById('copyBtn').parentElement;
+  
+  // 加說明文字
+  const msg = document.createElement('p');
+  msg.style.cssText = 'font-family:serif; font-size:0.9rem; color:rgba(240,236,228,0.5); font-style:italic; margin-bottom:0.8rem; text-align:center;';
+  msg.textContent = '覺得有意義嗎？把微光100傳給一個朋友。';
+  btnDiv.parentElement.insertBefore(msg, btnDiv);
+
+  // 加 LINE 分享按鈕
+  const lineBtn = document.createElement('button');
+  lineBtn.style.cssText = 'padding:0.6rem 1.2rem; border:1px solid #06C755; background:transparent; color:#06C755; font-size:0.8rem; cursor:pointer; border-radius:4px;';
+  lineBtn.textContent = '💚 分享到 LINE';
+  lineBtn.onclick = function() {
+    const text = encodeURIComponent('微光100 · 一杯咖啡的花費，成為偏鄉孩子心裡的一道光。\n\nhttps://beyond-ai-lab.vercel.app/glimmer100.html');
+    window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://beyond-ai-lab.vercel.app/glimmer100.html') + '&text=' + text, '_blank');
+  };
+  btnDiv.appendChild(lineBtn);
+});
+</script>
