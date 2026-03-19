@@ -1,59 +1,124 @@
-# GitHub + Vercel 部署指南
+# Market Pulse — Deployment Checklist
 
-## 1. GitHub 設定
+This guide walks you through deploying the **Market Pulse** static website to GitHub and Vercel.
 
-### 建立遠端儲存庫
+---
 
-1. 前往 [GitHub](https://github.com/new) 建立新儲存庫
-2. 儲存庫名稱建議：`beyond-ai-lab`
-3. 選擇 **Public**，**不要**勾選 "Add a README"
-4. 建立後複製儲存庫 URL（例如 `https://github.com/你的帳號/beyond-ai-lab.git`）
+## Prerequisites
 
-### 推送到 GitHub
+- [Git](https://git-scm.com/downloads) installed on your computer
+- A [GitHub](https://github.com) account
+- A [Vercel](https://vercel.com) account (free tier works)
 
-在專案根目錄執行：
+---
+
+## Step 1: Initialize Git (if needed)
+
+If your project is not yet a Git repository, open a terminal in the project folder and run:
 
 ```bash
 git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/你的帳號/beyond-ai-lab.git
-git push -u origin main
 ```
 
-若使用 SSH：
+To check if Git is already initialized, run:
 
 ```bash
-git remote add origin git@github.com:你的帳號/beyond-ai-lab.git
+git status
 ```
+
+If you see a list of files or "nothing to commit", Git is already set up.
 
 ---
 
-## 2. Vercel 部署
+## Step 2: Commit the Project
 
-### 方式 A：透過 Vercel 網站
+1. **Stage all files:**
+   ```bash
+   git add .
+   ```
 
-1. 前往 [vercel.com](https://vercel.com) 並登入（可用 GitHub 帳號）
-2. 點擊 **Add New** → **Project**
-3. 選擇 **Import Git Repository**，選取 `beyond-ai-lab`
-4. Vercel 會自動偵測為靜態網站，無需額外設定
-5. 點擊 **Deploy**
-
-### 方式 B：透過 Vercel CLI
-
-```bash
-npm i -g vercel
-vercel login
-vercel
-```
-
-依提示選擇專案設定，完成後會產生線上網址。
+2. **Create your first commit:**
+   ```bash
+   git commit -m "Initial commit: Market Pulse static site"
+   ```
 
 ---
 
-## 3. 部署後
+## Step 3: Create a GitHub Repository
 
-- 每次推送到 `main` 分支，Vercel 會自動重新部署
-- 預覽網址格式：`https://beyond-ai-lab-xxx.vercel.app`
-- 可於 Vercel 專案設定中綁定自訂網域
+1. Go to [github.com](https://github.com) and sign in.
+2. Click the **+** icon in the top-right corner → **New repository**.
+3. Fill in the details:
+   - **Repository name:** `market-pulse` (or any name you prefer)
+   - **Description:** (optional) e.g. "AI Market Decision System"
+   - **Visibility:** Public
+   - **Do not** check "Add a README file" (you already have files)
+4. Click **Create repository**.
+
+---
+
+## Step 4: Push to GitHub
+
+1. **Connect your local project to GitHub** (replace `YOUR_USERNAME` and `YOUR_REPO` with your values):
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   ```
+
+2. **Push your code:**
+   ```bash
+   git branch -M main
+   git push -u origin main
+   ```
+
+   If prompted, sign in with your GitHub credentials or use a Personal Access Token.
+
+---
+
+## Step 5: Import the Project into Vercel
+
+1. Go to [vercel.com](https://vercel.com) and sign in (use "Continue with GitHub" for easiest setup).
+2. Click **Add New…** → **Project**.
+3. Find your **Market Pulse** repository in the list and click **Import**.
+4. Vercel will auto-detect the project type. For this static site:
+   - **Framework Preset:** Other (or leave as detected)
+   - **Root Directory:** `./` (leave default)
+   - **Build Command:** Leave empty (no build needed for plain HTML)
+   - **Output Directory:** Leave empty or `./`
+5. Click **Deploy**.
+
+---
+
+## Step 6: Deploy as a Static Site
+
+Vercel treats this as a static site by default because it only contains HTML, CSS, and JavaScript.
+
+- **No build step required** — the `index.html` file is served directly.
+- After deployment, Vercel will give you a URL like: `https://market-pulse-xxx.vercel.app`
+- Every push to the `main` branch will trigger a new deployment automatically.
+
+---
+
+## Quick Reference
+
+| Step | Action |
+|------|--------|
+| 1 | `git init` (if needed) |
+| 2 | `git add .` → `git commit -m "Initial commit"` |
+| 3 | Create new repo on GitHub |
+| 4 | `git remote add origin <url>` → `git push -u origin main` |
+| 5 | Import repo in Vercel |
+| 6 | Deploy (automatic for static sites) |
+
+---
+
+## Troubleshooting
+
+- **"Repository not found"** — Check that the remote URL is correct and you have push access.
+- **Vercel build fails** — Ensure there are no build commands; this project is static and needs none.
+- **404 on Vercel** — Make sure `index.html` is in the project root.
+
+---
+
+## Custom Domain (Optional)
+
+In Vercel, go to **Project Settings** → **Domains** to add your own domain.

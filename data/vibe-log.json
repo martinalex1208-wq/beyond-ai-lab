@@ -1,0 +1,18 @@
+[
+  {
+    "day": 1,
+    "date": "2026-03-08",
+    "title": "第一次 Vibe Coding",
+    "desc": "看到 YouTube 影片，程式界的小白眼睛一亮——原來平民也可以寫網頁。當天就開始動手，建立第一個單頁網站。",
+    "tags": ["HTML", "CSS", "Claude"],
+    "link": ""
+  },
+  {
+    "day": 11,
+    "date": "2026-03-17",
+    "title": "微光100 功能完善 + Vibe Coding 頁面",
+    "desc": "完成微光100頁面的複製、下載 TXT、下載 PDF、分享到 LINE 四個按鈕。更新 Creator 頁面故事，建立 Vibe Coding 日記頁面。",
+    "tags": ["JavaScript", "jsPDF", "LINE Share"],
+    "link": ""
+  }
+]

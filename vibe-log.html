@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Log | Beyond AI Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c10;
+      --surface: #0d1117;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0ece4;
+      --text-muted: rgba(240,236,228,0.45);
+      --gold: #c9a84c;
+      --gold-muted: rgba(201,168,76,0.15);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --nav-h: 60px;
+      --max-w: 1100px;
+      --section-py: 6rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; min-height: 100vh; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px; pointer-events: none; z-index: 0;
+    }
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(8,12,16,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); z-index: 100; display: flex; align-items: center;
+    }
+    .nav { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; gap: 2rem; }
+    .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text); font-family: var(--font-serif); font-size: 1rem; }
+    .logo img { width: 24px; height: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin-left: auto; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 4px; transition: color 0.2s; font-family: var(--font-sans); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active { background: rgba(255,255,255,0.06); color: var(--gold); }
+    main { padding-top: var(--nav-h); position: relative; z-index: 1; }
+    .vibe-hero {
+      min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center;
+      border-bottom: 1px solid var(--border); padding: 4rem 2rem;
+    }
+    .vibe-hero-inner { max-width: 700px; }
+    .vibe-hero-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
+    .vibe-hero-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 300; line-height: 1.05; color: var(--text); margin-bottom: 1rem; }
+    .vibe-hero-title em { font-style: italic; color: var(--gold); }
+    .vibe-hero-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+    .section { padding: var(--section-py) 2rem; border-bottom: 1px solid var(--border); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); opacity: 0.7; display: block; margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--text); line-height: 1.1; margin-bottom: 2.5rem; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .days-grid { display: flex; flex-direction: column; gap: 0; }
+    .day-item {
+      display: grid; grid-template-columns: 120px 1fr; gap: 2rem; align-items: start;
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
+    }
+    .day-item:last-child { border-bottom: none; }
+    .day-left { text-align: right; padding-top: 0.2rem; }
+    .day-num { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem); color: var(--gold); opacity: 0.4; line-height: 1; display: block; }
+    .day-date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 0.3rem; display: block; }
+    .day-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; color: var(--text); margin-bottom: 0.6rem; }
+    .day-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+    .day-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+    .day-tag { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; border: 1px solid var(--border); color: var(--text-muted); border-radius: 2px; }
+    .site-footer { padding: 3rem 2rem; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 3rem; }
+    .footer-brand-name { font-family: var(--font-serif); font-size: 1rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .footer-brand-name img { width: 20px; }
+    .footer-tagline { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+    .footer-col-title { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom { max-width: var(--max-w); margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-mantra { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); opacity: 0.5; }
+    @media (max-width: 768px) { .day-item { grid-template-columns: 80px 1fr; gap: 1rem; } .footer-inner { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab">
+        <span>Beyond AI Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./steve.html">Creator</a></li>
+        <li><a href="./glimmer100.html">微光100</a></li>
+        <li><a href="./visual-lab.html">Gallery</a></li>
+        <li><a href="./music-library.html">Music</a></li>
+        <li><a href="./vibe-coding-lab.html">Vibe Coding</a></li>
+        <li><a href="./vibe-log.html" class="active">Vibe Log</a></li>
+        <li><a href="./add-entry.html">Add Entry</a></li>
+        <li><a href="./search.html">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="vibe-hero">
+      <div class="vibe-hero-inner">
+        <span class="vibe-hero-eyebrow">Beyond AI Lab · Vibe Log</span>
+        <h1 class="vibe-hero-title">Vibe<br><em>Log.</em></h1>
+        <p class="vibe-hero-sub">從第一天到現在的每一步紀錄。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <span class="section-eyebrow">每日進度</span>
+        <h2 class="section-title">第一天到<br><em>現在。</em></h2>
+        <div class="days-grid" id="vibeLogGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name"><img src="./images/logo.png" alt=""> Beyond AI Lab</p>
+        <p class="footer-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Impact</h4>
+        <ul class="footer-links">
+          <li><a href="./glimmer100.html">微光100</a></li>
+          <li><a href="./steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          <li><a href="./visual-lab.html">Images</a></li>
+          <li><a href="./music-library.html">Music</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:beyond.ai.lab@gmail.com">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">RCG · Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      fetch('./data/vibe-log.json')
+        .then(r => r.json())
+        .then(data => {
+          const grid = document.getElementById('vibeLogGrid');
+          if (!grid) return;
+          data.forEach(item => {
+            const d = item.date || '';
+            const dateParts = d.split('-');
+            const dateShort = dateParts.length >= 2 ? dateParts[1] + ' / ' + dateParts[2] : d;
+            const dayNum = String(item.day).padStart(2, '0');
+            const tagsHtml = (item.tags || []).map(t => '<span class="day-tag">' + t + '</span>').join('');
+            const linkHtml = item.link ? '<a href="' + item.link + '" target="_blank" style="display:inline-block; margin-top:1rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.08em; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,168,76,0.3); padding-bottom:2px;">查看 →</a>' : '';
+            grid.innerHTML += '<div class="day-item"><div class="day-left"><span class="day-num">' + dayNum + '</span><span class="day-date">' + dateShort + '</span></div><div><h3 class="day-title">' + (item.title || '') + '</h3><p class="day-desc">' + (item.desc || '') + '</p><div class="day-tags">' + tagsHtml + '</div>' + linkHtml + '</div></div>';
+          });
+        })
+        .catch(() => {
+          const grid = document.getElementById('vibeLogGrid');
+          if (grid) grid.innerHTML = '<p style="color:var(--text-muted);">無法載入日誌資料。</p>';
+        });
+    })();
+  </script>
+
+</body>
+</html>
