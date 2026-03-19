@@ -8,6 +8,30 @@
     "link": ""
   },
   {
+    "day": 2,
+    "date": "2026-03-09",
+    "title": "LINE 期貨訊息自動化",
+    "desc": "用 AI 寫出即時監控台指期、波動警示、散戶多空比的系統，自動發送到 LINE 群組。真的跑起來過——這是第一個讓我相信「原來可以做到」的作品。",
+    "tags": ["JavaScript", "Automation", "LINE", "Claude"],
+    "link": ""
+  },
+  {
+    "day": 3,
+    "date": "2026-03-10",
+    "title": "每日 AI 圖片生成系統",
+    "desc": "每日自動生成 AI 圖像的系統，結合排程與 API 串接。",
+    "tags": ["Automation", "API", "Claude"],
+    "link": ""
+  },
+  {
+    "day": 4,
+    "date": "2026-03-11",
+    "title": "1919 愛走動環島網頁上線",
+    "desc": "建立並上線 1919 愛走動單車環台官網，整合活動資訊、報名與募款流程。2026年擔任隊長，帶隊騎行台灣一圈。",
+    "tags": ["HTML", "CSS", "JavaScript", "Claude", "Vercel"],
+    "link": "https://1919-ride-sop.vercel.app"
+  },
+  {
     "day": 7,
     "date": "2026-03-14",
     "title": "全面接手網站 + 開始重建設計系統",
