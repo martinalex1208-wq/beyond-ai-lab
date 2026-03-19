@@ -70,5 +70,13 @@
     "desc": "整合17份1919環島相關PDF文件（包含勇士價值宣言、守時宣言、車隊行進規範、兩路騎乘規範、電輔車使用規範、禁止公開喝酒規範、風險清單、Ride Smart教戰手冊、2026行程規劃等），建立全新的 1919-warriors.html 完整網頁。設計「先感動再教育」的閱讀旅程：情感層（價值宣言→勇士故事→加入須知）→知識層（各項規範SOP）→執行層（風險清單→行程規劃）。調整規範用語從命令式改為文化認同式，軟化語氣。嘗試部署到 Vercel，建立新 GitHub repo（1919-warriors-2026.html）。",
     "tags": ["HTML", "CSS", "Claude", "1919", "PDF整合"],
     "link": "https://1919-ride-sop.vercel.app"
+  },
+  {
+    "day": 13,
+    "date": "2026-03-19",
+    "title": "Vibe Log 上線 + 實驗室宗旨整合",
+    "desc": "將「不完美但完整」與複利哲學（1.01^365≈37.8×）的實驗室宗旨區塊整合進 vibe-coding-lab.html，完全對齊網站原有風格（Cormorant Garamond + DM Sans + 金色主題）。建立全新 Vibe Log 頁面（vibe-log.html），以 JSON 管理每日進度，支援技術標籤篩選、統計欄、動態渲染，加入導航欄。補齊 Day 2-4、7-9、11-12 的歷史記錄，讓整個 Vibe Coding 旅程完整呈現。整個流程使用 Claude + Cursor Agent + Git + Vercel 協作完成。",
+    "tags": ["HTML", "CSS", "JavaScript", "Claude", "Cursor", "Vercel", "JSON"],
+    "link": "https://beyond-ai-lab.vercel.app/vibe-log.html"
   }
 ]
