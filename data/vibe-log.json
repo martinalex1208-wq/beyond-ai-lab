@@ -98,9 +98,9 @@
   {
     "day": 13,
     "date": "2026-03-19",
-    "title": "Vibe Log 上線 + 實驗室宗旨整合",
-    "desc": "將「不完美但完整」與複利哲學（1.01^365≈37.8×）的實驗室宗旨區塊整合進 vibe-coding-lab.html，完全對齊網站原有風格（Cormorant Garamond + DM Sans + 金色主題）。建立全新 Vibe Log 頁面（vibe-log.html），以 JSON 管理每日進度，支援技術標籤篩選、統計欄、動態渲染，加入導航欄。補齊 Day 2-4、7-9、11-12 的歷史記錄，讓整個 Vibe Coding 旅程完整呈現。整個流程使用 Claude + Cursor Agent + Git + Vercel 協作完成。截至今日（3/19），Suno 創作歌曲已達 351 首，從 1/27 接觸 AI 至今共 51 天。Vibe Coding 旅程從 Gemini 開始，接著 ChatGPT，最後由 Claude 全面接手。同日建立「一杯咖啡的 AI 革命」全螢幕滑動頁面（coffee-ai-revolution.html），以詩意的視覺敘事呈現 AI 時代的人生轉變哲學。",
-    "tags": ["HTML", "CSS", "JavaScript", "Claude", "Cursor", "Vercel", "JSON", "滑動頁面"],
+    "title": "Vibe Log 上線 + 實驗室宗旨 + 勇士聚會報名系統 + AI革命頁面",
+    "desc": "將「不完美但完整」與複利哲學（1.01^365≈37.8×）的實驗室宗旨區塊整合進 vibe-coding-lab.html，完全對齊網站原有風格（Cormorant Garamond + DM Sans + 金色主題）。建立全新 Vibe Log 頁面（vibe-log.html），以 JSON 管理每日進度，支援技術標籤篩選、統計欄、動態渲染，加入導航欄。補齊 Day 2-4、7-9、11-12 的歷史記錄，讓整個 Vibe Coding 旅程完整呈現。整個流程使用 Claude + Cursor Agent + Git + Vercel 協作完成。截至今日（3/19），Suno 創作歌曲已達 351 首，從 1/27 接觸 AI 至今共 51 天。Vibe Coding 旅程從 Gemini 開始，接著 ChatGPT，最後由 Claude 全面接手。同日建立「一杯咖啡的 AI 革命」全螢幕滑動頁面（coffee-ai-revolution.html），以詩意的視覺敘事呈現 AI 時代的人生轉變哲學。同日完成「1919 勇士聚會報名系統」，採黑白灰極簡風格，整合 Google Apps Script 後端 + Google Sheet 自動寫入報名名單，含台灣地圖動畫、光圈刻度盤、即時人數統計，部署至 Netlify（https://1919-warriors-2026.netlify.app）。活動日期：2026/4/9 18:30 瓦城泰國料理台北中山。",
+    "tags": ["HTML", "CSS", "JavaScript", "Claude", "Cursor", "Vercel", "JSON", "滑動頁面", "Netlify", "Google Apps Script"],
     "link": "https://beyond-ai-lab.vercel.app/coffee-ai-revolution.html"
   }
 ]
