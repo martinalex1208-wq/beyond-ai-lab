@@ -38,5 +38,13 @@
     "desc": "完成微光100頁面的複製、下載 TXT、下載 PDF、分享到 LINE 四個按鈕。更新 Creator 頁面故事，建立 Vibe Coding 日記頁面。",
     "tags": ["JavaScript", "jsPDF", "LINE Share"],
     "link": ""
+  },
+  {
+    "day": 12,
+    "date": "2026-03-18",
+    "title": "1919 勇士手冊網頁建立",
+    "desc": "整合17份1919環島相關PDF文件（包含勇士價值宣言、守時宣言、車隊行進規範、兩路騎乘規範、電輔車使用規範、禁止公開喝酒規範、風險清單、Ride Smart教戰手冊、2026行程規劃等），建立全新的 1919-warriors.html 完整網頁。設計「先感動再教育」的閱讀旅程：情感層（價值宣言→勇士故事→加入須知）→知識層（各項規範SOP）→執行層（風險清單→行程規劃）。調整規範用語從命令式改為文化認同式，軟化語氣。嘗試部署到 Vercel，建立新 GitHub repo（1919-warriors-2026.html）。",
+    "tags": ["HTML", "CSS", "Claude", "1919", "PDF整合"],
+    "link": "https://1919-ride-sop.vercel.app"
   }
 ]
