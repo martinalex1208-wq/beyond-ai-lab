@@ -32,6 +32,22 @@
     "link": "https://1919-ride-sop.vercel.app"
   },
   {
+    "day": 5,
+    "date": "2026-03-12",
+    "title": "持續探索與實驗",
+    "desc": "每天都有進展，持續用 AI 工具探索與實驗。Vibe Coding 的精神就是不停 Go。",
+    "tags": ["Claude", "Vibe Coding"],
+    "link": ""
+  },
+  {
+    "day": 6,
+    "date": "2026-03-13",
+    "title": "持續探索與實驗",
+    "desc": "每天都有進展，持續用 AI 工具探索與實驗。Vibe Coding 的精神就是不停 Go。",
+    "tags": ["Claude", "Vibe Coding"],
+    "link": ""
+  },
+  {
     "day": 7,
     "date": "2026-03-14",
     "title": "全面接手網站 + 開始重建設計系統",
@@ -54,6 +70,14 @@
     "desc": "整理39首歌曲完整資料並匯出 songs.json；Music Library 升級加入創曲自序、歌詞、Modal詳情頁；用 Grok 生成39張 AI 封面圖全部上線；Portrait Prompt Generator 上線（7個參數）；Visual Lab 整理並加入工具入口卡片；AI Photography Series 累積至27張；Fantasy Warrior Series 開始建立；所有頁面導航列統一；微光100第五組滿，總捐款人數達25位。",
     "tags": ["JavaScript", "JSON", "Grok", "Claude", "jsPDF"],
     "link": "https://beyond-ai-lab.vercel.app/music-library.html"
+  },
+  {
+    "day": 10,
+    "date": "2026-03-17",
+    "title": "持續探索與實驗",
+    "desc": "每天都有進展，持續用 AI 工具探索與實驗。Vibe Coding 的精神就是不停 Go。",
+    "tags": ["Claude", "Vibe Coding"],
+    "link": ""
   },
   {
     "day": 11,
