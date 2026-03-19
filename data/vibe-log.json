@@ -8,6 +8,14 @@
     "link": ""
   },
   {
+    "day": 7,
+    "date": "2026-03-14",
+    "title": "全面接手網站 + 開始重建設計系統",
+    "desc": "第一次讓 Claude 完全接手 Beyond AI Lab 網站。修復 script.js 路徑變數 bug、music-lab.js 改為從 songs.json 動態讀取。全面重建設計系統：新版 base.css（Cormorant Garamond + DM Sans + 金色主題）、home.css、index.html 首頁。完成 Music Library、Add Entry、Prompt Library、Image Library、Story Library、Search 六個頁面的字體與導覽列更新。上傳大量 AI 圖片並規劃六大分類系列（ai-girl-modern、ai-girl-ancient、fantasy-warrior、fantasy-nordic、sci-fi、life）。",
+    "tags": ["HTML", "CSS", "JavaScript", "Claude", "設計系統", "Cormorant Garamond"],
+    "link": "https://beyond-ai-lab.vercel.app"
+  },
+  {
     "day": 9,
     "date": "2026-03-16",
     "title": "Music Library 全面升級 + Visual Lab 重整",
