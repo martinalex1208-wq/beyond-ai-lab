@@ -35,8 +35,8 @@
     "day": 11,
     "date": "2026-03-17",
     "title": "微光100 功能完善 + Vibe Coding 頁面",
-    "desc": "完成微光100頁面的複製、下載 TXT、下載 PDF、分享到 LINE 四個按鈕。更新 Creator 頁面故事，建立 Vibe Coding 日記頁面。",
-    "tags": ["JavaScript", "jsPDF", "LINE Share"],
+    "desc": "完成微光100頁面的複製、下載 TXT、下載 PDF、分享到 LINE 四個按鈕。更新 Creator 頁面故事，建立 Vibe Coding 日記頁面。同日建立「微光100管理系統」（本機 HTML 應用），可管理捐款人名單、組別進度、統計達成率，即時追蹤100人目標進度。",
+    "tags": ["JavaScript", "jsPDF", "LINE Share", "微光100", "管理系統"],
     "link": ""
   },
   {
