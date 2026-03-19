@@ -16,6 +16,14 @@
     "link": "https://beyond-ai-lab.vercel.app"
   },
   {
+    "day": 8,
+    "date": "2026-03-15",
+    "title": "Beyond AI Lab 全面上線 + 微光100計畫啟動",
+    "desc": "史上最密集的一天！完成 Image Library（32張AI圖片分類）、Video Library（6支影片）、Steve個人頁面（含雜誌專訪）、微光100完整頁面（三首主題曲+播放器+正確歌詞+Suno連結）、Impact Lab重建、Music Library加入三首歌、Story Library修復重複文字。確立 RCG 品牌（Ride・Create・Give），加入所有頁面。撰寫致教會牧師邀請函與Line招募文案（bit.ly/glimmer100），加入LINE QR Code與Email按鈕。建立創業歷程記錄、微光100願景文件、捐款人名單。當天招募到25位捐款人，5組全滿。",
+    "tags": ["HTML", "CSS", "JavaScript", "Claude", "微光100", "Vercel", "GitHub", "RCG"],
+    "link": "https://beyond-ai-lab.vercel.app/glimmer100.html"
+  },
+  {
     "day": 9,
     "date": "2026-03-16",
     "title": "Music Library 全面升級 + Visual Lab 重整",
