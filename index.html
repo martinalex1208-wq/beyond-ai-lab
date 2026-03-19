@@ -1,14 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-<title>Market Pulse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond AI Lab — AI Music · Visual · Coding · Impact</title>
+  <meta name="description" content="A creative system for AI music, visuals, prompts, storytelling, and experimentation.">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages/home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .site-nav-link { position: relative; }
+    .site-nav-link::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(8, 8, 8, 0.85);
+      color: #c9a96e;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid rgba(201,169,110,0.3);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      transition-delay: 0s;
+      z-index: 999;
+    }
+    .site-nav-link:hover::after {
+      opacity: 1;
+      transition-delay: 0.8s;
+    }
+  
+    .home-hero-story { margin-top: 1.5rem; font-family: var(--font-serif, serif); font-size: 0.9rem; color: var(--text-muted, rgba(255,255,255,0.45)); font-style: italic; }
+    .home-hero-story-link { color: var(--gold, #c9a84c); text-decoration: none; margin-left: 0.5rem; }
+    .home-hero-story-link:hover { opacity: 0.8; }
+</style>
 </head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
 
-<body style="background:#0b1220;color:white;text-align:center;padding:100px">
+  <header class="site-header">
+    <nav class="nav site-nav">
+      <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="Beyond AI Lab Logo">
+        <span>Beyond AI Lab</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links site-nav-list">
+        <li><a href="./index.html" class="site-nav-link" data-nav-page="index">Home</a></li>
+        <li><a href="./steve.html" class="site-nav-link" data-nav-page="steve">Creator</a></li>
+        <li><a href="./glimmer100.html" class="site-nav-link" data-nav-page="glimmer100">微光100</a></li>
+        <li><a href="./visual-lab.html" class="site-nav-link" data-nav-page="visual-lab">Gallery</a></li>
+        <li><a href="./music-library.html" class="site-nav-link" data-nav-page="music-library">Music</a></li>
+        <li><a href="./vibe-coding-lab.html" class="site-nav-link" data-nav-page="vibe-coding-lab">Vibe Coding</a></li>
+        <li><a href="./add-entry.html" class="site-nav-link" data-nav-page="add-entry">Add Entry</a></li>
+        <li><a href="./search.html" class="site-nav-link" data-nav-page="search">Search</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<h1>Market Pulse ✅ NEW VERSION</h1>
+  <main>
+    <!-- Hero -->
+    <section class="home-hero" id="hero">
+      <p class="home-hero-eyebrow">Beyond AI Lab</p>
+      <h1 class="home-hero-title">Create.<br><em>Collect.</em><br>Evolve.</h1>
+      <p class="home-hero-subtitle">A creative system for AI-powered prompts, visuals, music, and stories. Structured workflows to collect, refine, and reuse.</p>
+      <div class="home-hero-actions">
+        <a href="prompt-library.html" class="btn btn-primary">Explore Prompts</a>
+        <a href="search.html" class="btn btn-secondary">Unified Search</a>
+      </div>
+      <p class="home-hero-story">62歲，43天，從第一首歌到這個網站。<a href="steve.html" class="home-hero-story-link">我的故事 →</a></p>
+      <span class="home-hero-scroll" aria-hidden="true">scroll</span>
+    </section>
 
-<p>AI-Powered System Running</p>
+    <!-- Labs -->
+    <section class="lab-hub-section section" id="labs">
+      <div class="section-inner">
+        <h2 class="section-title">Labs</h2>
+                <div class="lab-hub-grid">
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Gallery</h3>
+            <p class="lab-hub-card-text">Curated visual archive linked with prompts, tags, generators, and moods.</p>
+            <a href="image-library.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Music</h3>
+            <p class="lab-hub-card-text">Structured archive of songs, lyrics, styles, moods, and reusable directions.</p>
+            <a href="music-library.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">Vibe Coding Lab</h3>
+            <p class="lab-hub-card-text">Atmospheric, intuitive programming and generative code experiments.</p>
+            <a href="vibe-coding-lab.html" class="lab-hub-card-link">Open →</a>
+          </article>
+          <article class="lab-hub-card">
+            <h3 class="lab-hub-card-title">生活有味道</h3>
+            <p class="lab-hub-card-text">Life with flavor — personal reflections, food, cycling, and everyday creativity.</p>
+            <a href="life.html" class="lab-hub-card-link">Open →</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <!-- Featured Libraries -->
+    
+
+    <!-- Creation Stats -->
+    
+
+    <!-- Latest Additions -->
+    
+
+    <!-- Featured Favorites -->
+    
+
+    <!-- Continue Creating -->
+    
+
+    <!-- Recent Activity -->
+    
+
+    <!-- Quick Add -->
+    
+
+    <!-- Workflow -->
+    
+  </main>
+
+  <footer class="footer footer--landing">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <img src="./images/logo.png" alt="" class="footer-logo">
+          <span class="footer-brand-name">Beyond AI Lab</span>
+        </a>
+        <p class="footer-brand-tagline">A creative system for prompts, visuals, music, storytelling, and AI-powered experimentation.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="life.html">生活有味道</a></li>
+          <li><a href="#labs">Labs</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="steve.html">Creator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Libraries</h4>
+        <ul class="footer-links">
+          
+          <li><a href="image-library.html">Images</a></li>
+          <li><a href="music-library.html">Music</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:steve@beyondailab.com">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-mantra">RCG · Ride · Create · Give</p>
+      <p class="footer-copy">© 2026 Beyond AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./js/helpers.js"></script>
+  <script src="./js/library-core.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
