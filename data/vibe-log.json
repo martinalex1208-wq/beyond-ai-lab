@@ -102,5 +102,13 @@
     "desc": "將「不完美但完整」與複利哲學（1.01^365≈37.8×）的實驗室宗旨區塊整合進 vibe-coding-lab.html，完全對齊網站原有風格（Cormorant Garamond + DM Sans + 金色主題）。建立全新 Vibe Log 頁面（vibe-log.html），以 JSON 管理每日進度，支援技術標籤篩選、統計欄、動態渲染，加入導航欄。補齊 Day 2-4、7-9、11-12 的歷史記錄，讓整個 Vibe Coding 旅程完整呈現。整個流程使用 Claude + Cursor Agent + Git + Vercel 協作完成。截至今日（3/19），Suno 創作歌曲已達 351 首，從 1/27 接觸 AI 至今共 51 天。Vibe Coding 旅程從 Gemini 開始，接著 ChatGPT，最後由 Claude 全面接手。同日建立「一杯咖啡的 AI 革命」全螢幕滑動頁面（coffee-ai-revolution.html），以詩意的視覺敘事呈現 AI 時代的人生轉變哲學。同日完成「1919 勇士聚會報名系統」，採黑白灰極簡風格，整合 Google Apps Script 後端 + Google Sheet 自動寫入報名名單，含台灣地圖動畫、光圈刻度盤、即時人數統計，部署至 Netlify（https://1919-warriors-2026.netlify.app）。活動日期：2026/4/9 18:30 瓦城泰國料理台北中山。",
     "tags": ["HTML", "CSS", "JavaScript", "Claude", "Cursor", "Vercel", "JSON", "滑動頁面", "Netlify", "Google Apps Script"],
     "link": "https://beyond-ai-lab.vercel.app/coffee-ai-revolution.html"
+  },
+  {
+    "day": 14,
+    "date": "2026-03-20",
+    "title": "Go 系列 Prompt 庫建立 + 第一個 AI 產品上架 Gumroad",
+    "desc": "今天完成兩件大事。第一：將 Gemini Gem 設定完整移植進 Claude 記憶系統，建立 12 個 go 系列 AI Prompt 指令（go one、go b、go body、go w、go cow、go korea、go dino、go knit、go slav、go snow、go c、go m），涵蓋超寫實人像、奇幻冒險、Suno 音樂三大系列，全部存入跨對話記憶，new chat 也能使用。第二：製作 Beyond AI Lab Fantasy Adventure Prompt Pack Vol.1，用 Grok 生成三張示範圖（女戰士×龍、中世紀公主×恐龍、暴雪冰雪女王），生成帶圖 PDF，製作 Gumroad 封面圖 1280×720px，正式上架 Gumroad 定價 $9 美金，完成身份驗證與收款設定，測試購買成功收到 You made a sale! 通知。從想法到上架約 3 小時。Prompt 市場 2024 年估值 $14 億美元，年增 25.9%，圖片 Prompt 是成長最快品類。",
+    "tags": ["Claude", "Grok", "Gumroad", "Prompt Pack", "AI創業", "go系列", "PDF", "商業化"],
+    "link": "https://martinalex01.gumroad.com/l/jnfvvq"
   }
 ]
