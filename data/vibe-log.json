@@ -110,5 +110,13 @@
     "desc": "今天完成兩件大事。第一：將 Gemini Gem 設定完整移植進 Claude 記憶系統，建立 12 個 go 系列 AI Prompt 指令（go one、go b、go body、go w、go cow、go korea、go dino、go knit、go slav、go snow、go c、go m），涵蓋超寫實人像、奇幻冒險、Suno 音樂三大系列，全部存入跨對話記憶，new chat 也能使用。第二：製作 Beyond AI Lab Fantasy Adventure Prompt Pack Vol.1，用 Grok 生成三張示範圖（女戰士×龍、中世紀公主×恐龍、暴雪冰雪女王），生成帶圖 PDF，製作 Gumroad 封面圖 1280×720px，正式上架 Gumroad 定價 $9 美金，完成身份驗證與收款設定，測試購買成功收到 You made a sale! 通知。從想法到上架約 3 小時。Prompt 市場 2024 年估值 $14 億美元，年增 25.9%，圖片 Prompt 是成長最快品類。",
     "tags": ["Claude", "Grok", "Gumroad", "Prompt Pack", "AI創業", "go系列", "PDF", "商業化"],
     "link": "https://martinalex01.gumroad.com/l/jnfvvq"
+  },
+  {
+    "day": "✦",
+    "date": "2026-03-20",
+    "title": "微光100 · 第一筆捐款匯出",
+    "desc": "2026年3月20日，微光100計畫第一筆捐款正式匯出，台東浸信會靈光堂，第一間被點亮的教會。從一個騎車的人，一首 Suno 的歌，一頁 Vibe Coding 的網頁，到真實的愛流向台東。這一刻值得好好留下來。RCG · Ride · Create · Give。",
+    "tags": ["微光100", "里程碑", "Give", "RCG", "台東"],
+    "link": "https://beyond-ai-lab.vercel.app/glimmer100.html"
   }
 ]

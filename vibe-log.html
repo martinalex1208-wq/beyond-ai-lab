@@ -172,7 +172,7 @@
             const d = item.date || '';
             const dateParts = d.split('-');
             const dateShort = dateParts.length >= 2 ? dateParts[1] + ' / ' + dateParts[2] : d;
-            const dayNum = String(item.day).padStart(2, '0');
+            const dayNum = typeof item.day === 'number' ? String(item.day).padStart(2, '0') : String(item.day);
             const tagsHtml = (item.tags || []).map(t => '<span class="day-tag">' + t + '</span>').join('');
             const linkHtml = item.link ? '<a href="' + item.link + '" target="_blank" style="display:inline-block; margin-top:1rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.08em; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,168,76,0.3); padding-bottom:2px;">查看 →</a>' : '';
             grid.innerHTML += '<div class="day-item"><div class="day-left"><span class="day-num">' + dayNum + '</span><span class="day-date">' + dateShort + '</span></div><div><h3 class="day-title">' + (item.title || '') + '</h3><p class="day-desc">' + (item.desc || '') + '</p><div class="day-tags">' + tagsHtml + '</div>' + linkHtml + '</div></div>';
