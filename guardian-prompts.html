@@ -90,8 +90,39 @@
     .footer-mantra { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-size: 0.9rem; }
     .footer-copy { font-size: 0.75rem; color: var(--text-faint); font-family: var(--font-mono); }
 
+    .gumroad-banner {
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+      padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .gumroad-banner-inner { max-width: 1400px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .gumroad-banner-text { font-family: var(--font-sans); font-size: 0.85rem; color: var(--gold); letter-spacing: 0.03em; }
+    .gumroad-banner-btn {
+      display: inline-flex; align-items: center; padding: 0.4rem 1rem;
+      background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold);
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-decoration: none;
+      border-radius: 2px; transition: all 0.2s var(--ease); white-space: nowrap;
+    }
+    .gumroad-banner-btn:hover { background: var(--gold); color: var(--bg); }
+
+    .gumroad-cta {
+      max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 4rem; text-align: center;
+    }
+    .gumroad-cta-card {
+      background: var(--bg-2); border: 1px solid var(--gold); border-radius: 4px;
+      padding: 2.5rem 2rem; max-width: 520px; margin: 0 auto;
+    }
+    .gumroad-cta-title { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; color: var(--text); margin-bottom: 0.6rem; }
+    .gumroad-cta-sub { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+    .gumroad-cta-btn {
+      display: inline-flex; align-items: center; padding: 0.6rem 1.4rem;
+      background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold);
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-decoration: none;
+      border-radius: 2px; transition: all 0.2s var(--ease);
+    }
+    .gumroad-cta-btn:hover { background: var(--gold); color: var(--bg); }
+
     @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; } }
-    @media (max-width: 600px) { .controls-inner { padding: 0.5rem 1rem; } .page-hero { padding: 3rem 1rem 2rem; } .content-section { padding: 1.5rem 1rem 3rem; } .footer-inner { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .controls-inner { padding: 0.5rem 1rem; } .page-hero { padding: 3rem 1rem 2rem; } .content-section { padding: 1.5rem 1rem 3rem; } .footer-inner { grid-template-columns: 1fr; } .gumroad-banner { padding: 0.6rem 1rem; } .gumroad-cta { padding: 2rem 1rem 3rem; } .gumroad-cta-card { padding: 1.5rem 1rem; } }
   </style>
 </head>
 <body>
@@ -126,6 +157,12 @@
   </header>
 
   <main>
+    <section class="gumroad-banner">
+      <div class="gumroad-banner-inner">
+        <span class="gumroad-banner-text">✦ Get the Complete Fantasy Adventure Prompt Pack — PDF with sample images</span>
+        <a href="https://martinalex01.gumroad.com/l/jnfvvq" target="_blank" rel="noopener" class="gumroad-banner-btn">Download on Gumroad · $9 USD</a>
+      </div>
+    </section>
     <section class="page-hero">
       <p class="page-hero-eyebrow">Beyond AI Lab · Prompt Library</p>
       <h1 class="page-hero-title">Gentle Warrior<br><em>Guardians.</em></h1>
@@ -368,6 +405,14 @@
             </div>
           </div>
         </article>
+      </div>
+
+      <div class="gumroad-cta">
+        <div class="gumroad-cta-card">
+          <h2 class="gumroad-cta-title">Get the Complete Fantasy Pack</h2>
+          <p class="gumroad-cta-sub">All 3 guardian prompts · sample images · usage guide · instant PDF download</p>
+          <a href="https://martinalex01.gumroad.com/l/jnfvvq" target="_blank" rel="noopener" class="gumroad-cta-btn">Download on Gumroad · $9 USD</a>
+        </div>
       </div>
     </section>
   </main>
